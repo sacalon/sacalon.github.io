@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="">Home</a>
                     </li>
                     
                     <li class="nav-item">
@@ -33,7 +33,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="learn.html">Learn</a>
+                        <a class="nav-link" href="https://github.com/hascal/hascal/wiki">Documentation</a>
                     </li>
                     
                     <li class="nav-item">
@@ -149,28 +149,37 @@ function main(argv:[string]) : int {
             </div>
           </main>
       
-          <footer class="container">
-            <p>&copy; Hascal Foundation 2019-2022</p>
-            <br>
-            <p align="center">
-                This page is also available in the following languages
+            <footer class="container">
+                <p>&copy; Hascal Foundation 2019-2022</p>
                 <br>
-                <a href="fa/index.html">فارسی</a>
-            </p>
-          </footer>
-          <script type="text/javascript">
-        var header = document.getElementById('header');
+                <p align="center">
+                    This page is also available in the following languages
+                    <br>
+                    <a href="fa/index.html">فارسی</a>
+                </p>
+            </footer>
+            <script type="text/javascript">
+                var header = document.getElementById('header');
+                var type_this = "Hascal";
+                var index = 0;
 
-var type_this = "Hascal";
-var index = 0;
+                window.next_letter = function() {
+                    if (index <= type_this.length) {
+                        header.innerText = type_this.substr(0, index++);
+                        setTimeout("next_letter()", 50);
+                    }
+                }
 
-window.next_letter = function() {
-    if (index <= type_this.length) {
-        header.innerText = type_this.substr(0, index++);
-        setTimeout("next_letter()", 50);
-    }
-}
+                next_letter();
+                $(document).ready(function(){
+                    $('#get-started').click(function(){
+                        window.location.href = "https://github.com/hascal/hascal/wiki";
+                    })
 
-next_letter();</script>
+                    $('#download').click(function(){
+                        window.location.href = "";
+                    })
+                })
+            </script>
     </body>
 </html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Hascal Programming Language</title>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap-rtl.min.css">
+        <link rel="stylesheet" href="../css/prism.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/prism.js"></script>
+        <script src="../js/popper.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>*{max-width:100%;}</style>
+
+    </head>
+
+    <body dir="rtl">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <img src="../images/logo.svg" width="40" alt="Hascal Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="">خانه</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="download.html">دانلود</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/hascal/hascal/wiki">مستندات</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">اخبار</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="use-cases.html">موارد استفاده</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="foundation.html">بنیاد هاسکال</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/hascal/hascal">سورس کد</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main">
+
+            <div class="jumbotron">
+              <div class="container">
+                <h1 style="text-align: center;" class="display-3" id="header">هاسکال</h1>
+                <p>
+                    هاسکال یک زبان برنامه نویسی متن باز همه منظوره است که ساختن نرم افزارهای ساده، بهینه، قابل اعتماد و کارآمد را آسان می کند.
+                </p>
+                <button id="download" class="btn btn-success btn-lg">دانلود نسخه 1.3.1</button>
+                <button id="get-started" class="btn btn-primary btn-lg">شروع به کار &raquo;</button>
+              </div>
+            </div>
+      
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>زبانی ساده و آسان</h2>
+                                <p>
+                                    هاسکال دارای یک نحو ساده و آسان و کتابخانه استاندارد آسان است، شما می توانید هاسکال را در 15 دقیقه یاد بگیرید!
+                                    <br>
+                                    <br>
+                                    هاسکال بسیار شبیه به تایپ اسکریپت و سوئیفت است و بر اساس ایده های خوب زبان پاسکال در ابتدا پایه گذاری شد.
+                                    <br>
+                                    <br>
+                                    اگر شما با سوئیفت آشنایی داشته باشید، حدود 60 درصد از سینتکس هاسکال را نیز میدانید!
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                      
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>سریع و قدرتمند</h2>
+                                <p>
+                                    هاسکال توسط <a href="https://github.com/dlang/dmd">dmd</a> به زبان ماشین ترجمه میشود و شما میتوانید از جمع کننده زباله پیشفرض و یا قابلیت مدیریت دستی حافظه در برنامه های خود استفاده کنید
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>در هرجایی از هاسکال استفاده کنید</h2>
+                                <p>
+                                    شما میتوانید از کد های زبان های دی، سی، سی پلاس پلاس و آبجکتیو سی در کد های هاسکال خود استفاده کنید؛ همچنین میتوانید توابع و ساختار های هاسکالی خود را در زبان های خانواده سی و حتی پایتون استفاده کنید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+					
+                    <div class="col-md-8">
+						<br>
+                        <div class="card">
+                            <div class="card-body">
+                                سلام دنیا! :
+                                <pre><code class="language-hascal">function main(argv:[string]) : int {
+    print("Hello World!")
+    return 0   
+}                               </code></pre>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                اسم شما چیه ?
+                                <pre><code class="language-hascal">use http
+function main(argv:[string]) : int {
+    print("What's your name ?")
+    var name = ReadStr()
+    print("Hello,",name)    
+    return 0
+}                               </code></pre>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                درخواست های HTTP :
+                                <pre><code class="language-hascal">function main(argv:[string]) : int {
+    print(get("google.com"))
+    return 0   
+}                               </code></pre>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+              <hr>
+            </div>
+          </main>
+      
+            <footer class="container">
+                <p>&copy; بنیاد هاسکال 2019-2022</p>
+                <br>
+                <p align="center">
+                    این صفحه در زبان های زیر نیز قابل دسترسی است
+                    <br>
+                    <a href="../index.html">English</a>
+                </p>
+            </footer>
+            <script type="text/javascript">
+                var header = document.getElementById('header');
+                var type_this = "هاسکال";
+                var index = 0;
+
+                window.next_letter = function() {
+                    if (index <= type_this.length) {
+                        header.innerText = type_this.substr(0, index++);
+                        setTimeout("next_letter()", 50);
+                    }
+                }
+
+                next_letter();
+                $(document).ready(function(){
+                    $('#get-started').click(function(){
+                        window.location.href = "https://github.com/hascal/hascal/wiki";
+                    })
+
+                    $('#download').click(function(){
+                        window.location.href = "";
+                    })
+                })
+            </script>
+    </body>
+</html>
