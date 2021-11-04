@@ -1,8 +1,0 @@
-@font-face {
-    font-family: Shabnam;
-    font-size: 400;
-    src:    url('fonts/Shabnam-Medium-FD.eot?') format('eot'),
-            url('fonts/Shabnam-Medium-FD.woff') format('woff'),
-            url('fonts/Shabnam-Medium-FD.ttf') format('truetype');
-}
-* {font-family:Shabnam;}
