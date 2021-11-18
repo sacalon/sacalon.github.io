@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://hascal.github.io/cond_op/">
+        <link rel="canonical" href="https://hascal.github.io/libmanager/">
       
       <link rel="icon" href="../assets/logo.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
     
     
       
-        <title>Conditional Operators - Hascal Documentation</title>
+        <title>Library Mangaer - Hascal Documentation</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#conditional-operators" class="md-skip">
+        <a href="#hascal-library-managerhlm" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Conditional Operators
+              Library Mangaer
             
           </span>
         </div>
@@ -212,10 +212,12 @@
         
   
   
+    
+  
 
 
   <li class="md-tabs__item">
-    <a href="../libmanager/" class="md-tabs__link">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
       Library Mangaer
     </a>
   </li>
@@ -339,11 +341,67 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../libmanager/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Library Mangaer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Library Mangaer
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-a-library" class="md-nav__link">
+    Install a library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-a-library" class="md-nav__link">
+    Uninstall a library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publish-you-libraries" class="md-nav__link">
+    Publish you libraries
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -360,68 +418,52 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/hascal/hascal/edit/master/docs/cond_op.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/hascal/hascal/edit/master/docs/libmanager.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="conditional-operators">Conditional Operators</h1>
-<table>
-<thead>
-<tr>
-<th align="left">Operator</th>
-<th align="center">Description</th>
-<th align="center">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">==</td>
-<td align="center">Returns true if the operands are equal.</td>
-<td align="center">var1 == var2</td>
-</tr>
-<tr>
-<td align="left">!=</td>
-<td align="center">Returns true if the operands are not equal.</td>
-<td align="center">var1 != var2</td>
-</tr>
-<tr>
-<td align="left">&gt;</td>
-<td align="center">Returns true if the left operand is greater than the right operand.</td>
-<td align="center">var1 &gt; var2</td>
-</tr>
-<tr>
-<td align="left">&gt;=</td>
-<td align="center">Returns true if the left operand is greater than or equal to the right operand.</td>
-<td align="center">var1 &gt;= var2</td>
-</tr>
-<tr>
-<td align="left">&lt;</td>
-<td align="center">Returns true if the left operand is less than the right operand.</td>
-<td align="center">var1 &lt; var2</td>
-</tr>
-<tr>
-<td align="left">&lt;=</td>
-<td align="center">Returns true if the left operand is less than or equal to the right operand.</td>
-<td align="center">var1 &lt;= var2</td>
-</tr>
-<tr>
-<td align="left"><code>and</code></td>
-<td align="center">Returns true if the left operand and right operand are true</td>
-<td align="center">var1 == 1 and var2 == 2</td>
-</tr>
-<tr>
-<td align="left"><code>or</code></td>
-<td align="center">Returns true if the left operand or right operand are true</td>
-<td align="center">var1 == 1 or var2 == 2</td>
-</tr>
-<tr>
-<td align="left"><code>not</code></td>
-<td align="center">Returns true if the operand are false or if the operand is true returns false</td>
-<td align="center">not true</td>
-</tr>
-</tbody>
-</table>
+                <h1 id="hascal-library-managerhlm">Hascal Library Manager(HLM)</h1>
+<p><strong>HLM</strong> is default and builtin Hascal's library manager.</p>
+<h2 id="install-a-library">Install a library</h2>
+<pre><code>$ hascal install &lt;library name&gt;
+</code></pre>
+
+<p>example :</p>
+<pre><code>$ hascal install log
+</code></pre>
+
+<h2 id="uninstall-a-library">Uninstall a library</h2>
+<pre><code>$ hascal uninstall &lt;library name&gt;
+</code></pre>
+
+<p>example :</p>
+<pre><code>$ hascal uninstall log
+</code></pre>
+
+<h2 id="publish-you-libraries">Publish you libraries</h2>
+<p>You can publish your library and users can install it with hlm.
+Steps :
+- Fork <a href="https://github.com/hascal/libs">this repo</a>
+- Clone your forked repo
+- Add a directory contains your library name</p>
+<pre><code>$ mkdir &lt;your library name&gt;
+</code></pre>
+
+<ul>
+<li>Put your library source in created directory</li>
+<li>Open <code>index.json</code> file and add your library with following template(don't change anything only add your information) :
+<code>index.json</code> :</li>
+</ul>
+<pre><code class="json">{
+    ...
+    &quot;your library name&quot; : {
+        &quot;author&quot; : &quot;&quot;, // your name
+        &quot;files&quot; : [&quot;file1.has&quot;,&quot;file2.has&quot;,...] // your files name should be included
+    }
+    ...
+}
+</code></pre>
                 
               
               
@@ -442,6 +484,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../interfacing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Interfacing to C\C++" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Interfacing to C\C++
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

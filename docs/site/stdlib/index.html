@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://hascal.github.io/cond_op/">
+        <link rel="canonical" href="https://hascal.github.io/stdlib/">
       
       <link rel="icon" href="../assets/logo.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
     
     
       
-        <title>Conditional Operators - Hascal Documentation</title>
+        <title>Standard Library - Hascal Documentation</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#conditional-operators" class="md-skip">
+        <a href="#hascal-standard-library" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Conditional Operators
+              Standard Library
             
           </span>
         </div>
@@ -188,10 +188,12 @@
         
   
   
+    
+  
 
 
   <li class="md-tabs__item">
-    <a href="../stdlib/" class="md-tabs__link">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
       Standard Library
     </a>
   </li>
@@ -205,18 +207,6 @@
   <li class="md-tabs__item">
     <a href="../interfacing/" class="md-tabs__link">
       Interfacing to C\C++
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../libmanager/" class="md-tabs__link">
-      Library Mangaer
     </a>
   </li>
 
@@ -309,11 +299,156 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../stdlib/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Standard Library
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Standard Library
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-functions" class="md-nav__link">
+    Built-in functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#print" class="md-nav__link">
+    print(...)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readstr-string" class="md-nav__link">
+    ReadStr() : string
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readint-int" class="md-nav__link">
+    ReadInt() : int
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readchar-char" class="md-nav__link">
+    ReadChar() : char
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readbool-bool" class="md-nav__link">
+    ReadBool() : bool
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readfloat-float" class="md-nav__link">
+    ReadFloat() : float
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to_intinputtype-int" class="md-nav__link">
+    to_int(input:Type) : int
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to_stringinputtype-string" class="md-nav__link">
+    to_string(input:Type) : string
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to_floatinputtype-float" class="md-nav__link">
+    to_float(input:Type) : float
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exitexit_codeint" class="md-nav__link">
+    exit(exit_code:int)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file" class="md-nav__link">
+    file
+  </a>
+  
+    <nav class="md-nav" aria-label="file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read_filefile_namestring-string" class="md-nav__link">
+    read_file(file_name:string) : string
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write_filepathstringtextstring-bool" class="md-nav__link">
+    write_file(path:string,text:string) : bool
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -333,21 +468,6 @@
   
 
     
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../libmanager/" class="md-nav__link">
-        Library Mangaer
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -360,68 +480,153 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/hascal/hascal/edit/master/docs/cond_op.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/hascal/hascal/edit/master/docs/stdlib.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="conditional-operators">Conditional Operators</h1>
-<table>
-<thead>
-<tr>
-<th align="left">Operator</th>
-<th align="center">Description</th>
-<th align="center">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">==</td>
-<td align="center">Returns true if the operands are equal.</td>
-<td align="center">var1 == var2</td>
-</tr>
-<tr>
-<td align="left">!=</td>
-<td align="center">Returns true if the operands are not equal.</td>
-<td align="center">var1 != var2</td>
-</tr>
-<tr>
-<td align="left">&gt;</td>
-<td align="center">Returns true if the left operand is greater than the right operand.</td>
-<td align="center">var1 &gt; var2</td>
-</tr>
-<tr>
-<td align="left">&gt;=</td>
-<td align="center">Returns true if the left operand is greater than or equal to the right operand.</td>
-<td align="center">var1 &gt;= var2</td>
-</tr>
-<tr>
-<td align="left">&lt;</td>
-<td align="center">Returns true if the left operand is less than the right operand.</td>
-<td align="center">var1 &lt; var2</td>
-</tr>
-<tr>
-<td align="left">&lt;=</td>
-<td align="center">Returns true if the left operand is less than or equal to the right operand.</td>
-<td align="center">var1 &lt;= var2</td>
-</tr>
-<tr>
-<td align="left"><code>and</code></td>
-<td align="center">Returns true if the left operand and right operand are true</td>
-<td align="center">var1 == 1 and var2 == 2</td>
-</tr>
-<tr>
-<td align="left"><code>or</code></td>
-<td align="center">Returns true if the left operand or right operand are true</td>
-<td align="center">var1 == 1 or var2 == 2</td>
-</tr>
-<tr>
-<td align="left"><code>not</code></td>
-<td align="center">Returns true if the operand are false or if the operand is true returns false</td>
-<td align="center">not true</td>
-</tr>
-</tbody>
-</table>
+                <h1 id="hascal-standard-library">Hascal Standard Library</h1>
+<ul>
+<li><a href="#built-in-functions">Built-in Functions</a></li>
+<li><a href="#file"><code>file</code></a></li>
+<li><a href="#os"><code>os</code></a></li>
+<li><a href="#time"><code>time</code></a></li>
+<li><a href="#math"><code>math</code></a></li>
+</ul>
+<h2 id="built-in-functions">Built-in functions</h2>
+<h3 id="print">print(...)</h3>
+<p>Standard Hascal's print function</p>
+<p>example :</p>
+<pre><code>print(&quot;Hello World&quot;);
+</code></pre>
+
+<h3 id="readstr-string">ReadStr() : string</h3>
+<p>Read string values from stdin</p>
+<p>example :</p>
+<pre><code>print(&quot;What's your name ?&quot;);
+var name = ReadStr();
+print(&quot;Hi,&quot;,name);
+</code></pre>
+
+<h3 id="readint-int">ReadInt() : int</h3>
+<p>Read int values from stdin</p>
+<p>example :</p>
+<pre><code>print(&quot;What's your age ?&quot;);
+var name = ReadInt();
+print(&quot;your age :&quot;,name);
+</code></pre>
+
+<h3 id="readchar-char">ReadChar() : char</h3>
+<p>Read a character from stdin</p>
+<p>example :</p>
+<pre><code>print(&quot;char :&quot;,ReadChar());
+</code></pre>
+
+<h3 id="readbool-bool">ReadBool() : bool</h3>
+<p>Read a bool values from stdin</p>
+<p>example :</p>
+<pre><code>print(&quot;bool :&quot;,ReadBool());
+</code></pre>
+
+<h3 id="readfloat-float">ReadFloat() : float</h3>
+<p>Read float values from stdin</p>
+<p>example :</p>
+<pre><code>print(&quot;float :&quot;,ReadFloat());
+</code></pre>
+
+<h3 id="to_intinputtype-int">to_int(input:Type) : int</h3>
+<p>Convert values to int</p>
+<p>example :</p>
+<pre><code>print(to_int(&quot;123456&quot;));
+</code></pre>
+
+<h3 id="to_stringinputtype-string">to_string(input:Type) : string</h3>
+<p>Convert values to string</p>
+<p>example :</p>
+<pre><code>print(to_string(123));
+</code></pre>
+
+<h3 id="to_floatinputtype-float">to_float(input:Type) : float</h3>
+<p>Convert values to float</p>
+<p>example :</p>
+<pre><code>print(to_float(&quot;3.14&quot;));
+</code></pre>
+
+<h3 id="exitexit_codeint">exit(exit_code:int)</h3>
+<p>End program</p>
+<p>example:</p>
+<pre><code>print(&quot;Hello&quot;);
+exit(0);
+print(&quot;Bye&quot;);
+</code></pre>
+
+<h2 id="file"><code>file</code></h2>
+<h3 id="read_filefile_namestring-string">read_file(file_name:string) : string</h3>
+<p>Read from file</p>
+<p>example :</p>
+<pre><code>var content : string = read_file(&quot;todo.txt&quot;);
+</code></pre>
+
+<h3 id="write_filepathstringtextstring-bool">write_file(path:string,text:string) : bool</h3>
+<p>Write to file</p>
+<p>example :</p>
+<pre><code>write_file(&quot;todo.txt&quot;,&quot;- Going to gym&quot;)
+</code></pre>
+
+<!-- ### listdir(path:string) : [string]
+Lists dirs,files on a path
+
+example :
+
+<pre><code>print(listdir(&quot;C:\\&quot;));
+``` --&gt;
+
+## `os`
+
+### os_name() : string
+Gets type of OS(win32,linux,freebsd,macos,...)
+
+</code></pre>
+
+print(os_name());
+
+<pre><code>
+### system(command:string)
+Excutes a terminal command
+
+example :
+</code></pre>
+
+var comm = "";
+
+while true {
+    print2("MyCMD>>>");
+    comm = ReadStr();
+    system(comm);
+}
+```
+
+## `time`
+
+- `get_year():int` : Get current year
+- `get_month():int` : Get current month
+- `get_day():int` : Get current day
+- `get_hour():int` : Get current hour
+- `get_minute():int` : Get current minute
+- `get_second():int` : Get current second
+
+
+## `math`
+Math Functions
+- `sin(val:float):float` : Returns sine of x
+- `cos(val:float):float` : Returns cosine of x
+- `tan(val:float):float` : Returns tangent of x
+- `PI : float` : PI number
+- `fmax(x:float,y:float):float` : Returns the larger of x and y(floating point). 
+- `fmin(x:float,y:float):float` : Returns the smaller of x and y(floating point). 
+- `max(x:int,y:int):int` : Returns the larger of x and y. 
+- `min(x:int,y:int):int` : Returns the smaller of x and y. 
+- `abs(x:float):float` : Calculates the absolute value of a number.
                 
               
               
@@ -442,6 +647,41 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Hascal Documentation" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Hascal Documentation
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../interfacing/" class="md-footer__link md-footer__link--next" aria-label="Next: Interfacing to C\C++" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Interfacing to C\C++
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
