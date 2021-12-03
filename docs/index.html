@@ -477,6 +477,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#inline-c-code" class="md-nav__link">
+    Inline C++ Code
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -585,7 +592,7 @@ NOTE: But you can add Hascal to <code>$PATH</code> for easily use.</p>
 <p>As in many other languages (such as C++ and Rust), <code>main</code> is the entry point of your program.</p>
 <p><code>print</code> is one of the few built-in functions. It prints the value passed to it to standard output.</p>
 <h2 id="comments">Comments</h2>
-<pre><code class="py"># This is a single line command
+<pre><code class="typescript">// This is a single line command
 </code></pre>
 
 <h2 id="variables">Variables</h2>
@@ -622,23 +629,23 @@ function main(): int {
 <p>Again, the type comes after <code>:</code> and <code>:</code> comes after the argument's name.</p>
 <h2 id="hascal-types">Hascal Types</h2>
 <h3 id="primitive-types">Primitive types</h3>
-<pre><code class="nim">bool # boolean value
+<pre><code class="typescript">bool // boolean value
 
-string # string literal
+string // string literal
 
-int # integer value
+int // integer value
 
-float # floating point 
-double # double floating point(soon)
+float // floating point 
+double // double floating point(soon)
 </code></pre>
 
 <h3 id="strings">Strings</h3>
 <pre><code class="typescript">function main() : int {
     var text = &quot;Hello World&quot;
-    print(text[0]) # output : H 
+    print(text[0]) // output : H 
 
     var text2 = &quot;Hello\tWorld&quot;
-    print(text2) # output : Hello   World
+    print(text2) // output : Hello   World
     return 0
 }
 </code></pre>
@@ -646,7 +653,7 @@ double # double floating point(soon)
 <h3 id="string-operators">String operators</h3>
 <pre><code class="typescript">function main() : int {
     var text = &quot;Hello &quot;
-    print(text + &quot;World&quot;) # output : Hello World 
+    print(text + &quot;World&quot;) // output : Hello World 
     return 0
 }
 </code></pre>
@@ -655,7 +662,7 @@ double # double floating point(soon)
 <pre><code class="typescript">function main() : int {
     var text = &quot;age = &quot;
     var age = 23
-    print(text + age) # error : Mismatched type 'string' and 'int' :2 
+    print(text + age) // error : Mismatched type 'string' and 'int' :2 
     return 0
 }
 </code></pre>
@@ -664,15 +671,15 @@ double # double floating point(soon)
 <pre><code class="typescript">function main() : int {
     var text = &quot;age = &quot;
     var age = 23
-    print(text + to_string(age)) # error : Mismatched type 'string' and 'int' :3
+    print(text + to_string(age)) // error : Mismatched type 'string' and 'int' :3
     return 0
 }
 </code></pre>
 
 <h3 id="numbers">Numbers</h3>
 <pre><code class="typescript">function main() : int {
-    var a : int = 123 # or : var a = 123
-    var b : float = 1.23 # or : var b = 1.24
+    var a : int = 123 // or : var a = 123
+    var b : float = 1.23 // or : var b = 1.24
     return 0
 }
 </code></pre>
@@ -682,8 +689,8 @@ double # double floating point(soon)
 <h4 id="basic-array-concepts">Basic Array Concepts</h4>
 <p>Arrays are collections of data elements of the same type. They can be represented by a list of elements surrounded by brackets. The elements can be accessed by appending an index (starting with 0) in brackets to the array variable:</p>
 <pre><code class="typescript">function main() : int {
-    var a = [1,2,3] # int array with length 3
-    var b = [1.0,2.0,3.0] # float array with length 3
+    var a = [1,2,3] // int array with length 3
+    var b = [1.0,2.0,3.0] // float array with length 3
     print(a[0])
     a[0] = 4
     print(a[0])
@@ -701,7 +708,7 @@ double # double floating point(soon)
 <p>You can get length of array's elements with <code>len</code> function :</p>
 <pre><code class="typescript">function main() : int {
    var a = [1,2,3]
-   print(len(a)) # output : 3
+   print(len(a)) // output : 3
 }
 </code></pre>
 
@@ -715,7 +722,7 @@ function main() : int {
 </code></pre>
 
 <p>If you want to import a local library, you can use <code>local</code> keyword :</p>
-<pre><code class="typescript">local use addlib #import add()
+<pre><code class="typescript">local use addlib //import add()
 function main() : int {
    print(add(1,2))
    return 0
@@ -723,8 +730,7 @@ function main() : int {
 </code></pre>
 
 <h2 id="if">If</h2>
-<pre><code class="typescript">local use addlib #import add()
-var x = 1
+<pre><code class="typescript">var x = 1
 var y = 2
 function main() : int {
    if x == y {
@@ -750,7 +756,7 @@ function main() : int {
 <pre><code class="typescript">function main() : int {
    var a = [1,2,3]
    for i in a {
-       print(i) # prints elements of `a` variable
+       print(i) // prints elements of `a` variable
    }
    return 0
 }
@@ -772,7 +778,7 @@ function main() : int {
    var r : int
    var g : int
    var b : int
-   var name = &quot;Transparent&quot; # optional value
+   var name = &quot;Transparent&quot; // optional value
 }
 
 function main() : int {
@@ -785,6 +791,13 @@ function main() : int {
    var b = Color(34,156,255,&quot;AColor&quot;)
    return 0
 }
+</code></pre>
+
+<h2 id="inline-c-code">Inline C++ Code</h2>
+<p>You can use inline c++ code in hascal with <code>cuse</code> keyword :</p>
+<pre><code class="typescript">cuse '#include &lt;cstdio&gt;'
+cuse 'int main(){printf(&quot;%d&quot;,1);return 0;}'
+// output : 1
 </code></pre>
                 
               
