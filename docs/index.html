@@ -57,6 +57,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#hello-world">Hello World</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configjson">config.json :</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#comments">Comments</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a>
@@ -81,6 +83,8 @@
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#array-size">Array Size</a>
     </li>
+    <li class="toctree-l4"><a class="reference internal" href="#array-append">Array append</a>
+    </li>
         </ul>
     </li>
         </ul>
@@ -96,6 +100,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#inline-c-code">Inline C++ Code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#include-c-code">Include C++ Code</a>
     </li>
     </ul>
                     </li>
@@ -185,6 +191,30 @@ NOTE: But you can add Hascal to <code>$PATH</code> for easily use.</p>
 <p>Congratulations - you just wrote and executed your first Hascal program!</p>
 <p>As in many other languages (such as C++ and Rust), <code>main</code> is the entry point of your program.</p>
 <p><code>print</code> is one of the few built-in functions. It prints the value passed to it to standard output.</p>
+<h2 id="configjson"><code>config.json</code> :</h2>
+<p>You can use <code>config.json</code> to configure your Hascal compiler.</p>
+<ul>
+<li><code>compiler</code> : your c++ compiler name(e.g : <code>g++</code>,<code>clang++</code>)</li>
+<li><code>optimize</code> : optimize level(0,1,2,3)</li>
+<li><code>flags</code> : flags list for your compiler(e.g:<code>["-pthread"]</code>)</li>
+<li><code>no_check_g++</code> : if you don't use g++, set this to <code>1</code></li>
+<li><code>c++_version</code> : your c++ standard(e.g:<code>c++17</code> or <code>c++20</code>).note: c++ version must be greater than or equal to c++17</li>
+<li><code>g++_out</code> : if you want to see g++ output, set this to <code>1</code></li>
+<li><code>c++_out</code> : if you want to see generated c++ code, set this to <code>1</code></li>
+</ul>
+<p>example :</p>
+<pre><code class="json">
+{
+    &quot;compiler&quot;:&quot;g++&quot;,
+    &quot;optimize&quot;:&quot;-O2&quot;,
+    &quot;flags&quot;:[&quot;-pthread&quot;],
+    &quot;no_check_g++&quot;:1,
+    &quot;c++_version&quot;:&quot;c++17&quot;,
+    &quot;g++_out&quot;:1,
+    &quot;c++_out&quot;:1
+}
+</code></pre>
+
 <h2 id="comments">Comments</h2>
 <pre><code class="typescript">// This is a single line comment
 </code></pre>
@@ -205,7 +235,7 @@ function main() : int {
     return x + y
 }
 
-# overloading function
+// overloading function
 function add(x:int,y:int,z:int): int {
     return x + y + z
 }
@@ -306,6 +336,18 @@ double // double floating point(soon)
 }
 </code></pre>
 
+<h4 id="array-append">Array append</h4>
+<p>You can append elements to array with <code>append</code> function :</p>
+<pre><code class="typescript">function main() : int {
+   var a = [1,2,3]
+   append(a,4)
+   for e in a {
+       print(e)
+   }
+   return 0
+}
+</code></pre>
+
 <h2 id="importing-libraries">Importing Libraries</h2>
 <p>Libraries can imported with <code>use</code> keyword :</p>
 <pre><code class="typescript">use os
@@ -369,21 +411,27 @@ function main() : int {
 
 <h2 id="structs">Structs</h2>
 <pre><code class="typescript">struct Color {
-   var r : int
-   var g : int
-   var b : int
-   var name = &quot;Transparent&quot; // optional value
+    var r : int
+    var g : int
+    var b : int
+    var name = &quot;Transparent&quot; // optional value
+}
+
+struct RGB : Color {
+    // struct inheritance
 }
 
 function main() : int {
-   var a : Color
-   a.r = 1
-   a.g = 110
-   a.b = 255
-   print(a.r,a.g,a.b)
+    var a : Color
+    a.r = 1
+    a.g = 110
+    a.b = 255
+    print(a.r,a.g,a.b)
 
-   var b = Color(34,156,255,&quot;AColor&quot;)
-   return 0
+    var b = Color(34,156,255,&quot;AColor&quot;)
+
+    var c = RGB(255,0,0,&quot;AColor&quot;)
+    return 0
 }
 </code></pre>
 
@@ -392,6 +440,34 @@ function main() : int {
 <pre><code class="typescript">cuse '#include &lt;cstdio&gt;'
 cuse 'int main(){printf(&quot;%d&quot;,1);return 0;}'
 // output : 1
+</code></pre>
+
+<h2 id="include-c-code">Include C++ Code</h2>
+<p>You can include C++ code in your Hascal file with <code>cuse</code> keyword :</p>
+<p><code>add.cc</code> :</p>
+<pre><code class="cpp">int add(int x, int y) {
+    return x + y;
+}
+</code></pre>
+
+<p><code>add.hpp</code> :</p>
+<pre><code class="cpp">// nothing but should be exist
+// if you want to include a c++ header file, you should include it in this file and not in `xxx.cc`
+// e.g :
+// #include &lt;cmath&gt;
+</code></pre>
+
+<p><code>main.has</code> :</p>
+<pre><code class="typescript">// if you want to include a local file use `local` keyword 
+// but if you want to include a file in hascal standard library folder don't use `local` keyword
+local cuse add 
+
+function add(a:int,b:int): int
+
+function main() : int {
+    print(add(1,2))
+    return 0
+}
 </code></pre>
               
             </div>
@@ -453,5 +529,5 @@ cuse 'int main(){printf(&quot;%d&quot;,1);return 0;}'
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-12-09 16:18:58.403246+00:00
+Build Date UTC : 2021-12-13 12:49:19.646493+00:00
 -->
