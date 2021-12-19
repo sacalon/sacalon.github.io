@@ -104,17 +104,45 @@
               
                 <h1 id="hascal-changelog">Hascal Changelog</h1>
 <p><details>
-<summary>v1.3.4</summary></p>
+<summary>v1.3.6</summary></p>
 <h4 id="new-features">New features</h4>
-<ul>
-<li>compiler option : now can generate c++ code from hascal code with <code>c++_code : 1</code> in <code>config.json</code> file</li>
-<li>use <code>cuse</code> keyword to include c++ files.</li>
-</ul>
 <h4 id="bug-fixes">Bug fixes</h4>
-<ul>
-<li>Fix semantic analyser bugs</li>
-<li>Fix standard library bug</li>
-</ul>
+<h4 id="removed">Removed</h4>
+</details>
+
+<details>
+<summary>v1.3.5</summary>
+
+#### Standard library
+##### Updated
+`os` :
+- add `compiler_name` function to get the name of the compiler
+- add `arch` function to get the architecture of the system
+- add `is_x86` function to check if the architecture is x86
+- add `is_x64` function to check if the architecture is x64
+- add `getenv` function to get an environment variable
+##### Added
+- add `libcinfo` library to get information about the libc
+- add `termcolor` library to colorize the output
+
+![assets/termcolor.png](assets/termcolor.png)
+
+#### Bug fixes
+- Fix incomplete type defination bug
+
+</details>
+
+<details>
+<summary>v1.3.4</summary>
+
+#### New features
+- compiler option : now can generate c++ code from hascal code with `c++_code : 1` in `config.json` file
+- use `cuse` keyword to include c++ files.
+
+#### Bug fixes
+- Fix semantic analyser bugs
+- Fix standard library bug
+
 </details>
 
 <details>

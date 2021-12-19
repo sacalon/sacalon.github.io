@@ -58,36 +58,24 @@
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Standard Library</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#built-in-functions">Built-in functions</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#print">print(...)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#readstr-string">ReadStr() : string</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#readint-int">ReadInt() : int</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#readchar-char">ReadChar() : char</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#readbool-bool">ReadBool() : bool</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#readfloat-float">ReadFloat() : float</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#to_intinputtype-int">to_int(input:Type) : int</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#to_stringinputtype-string">to_string(input:Type) : string</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#to_floatinputtype-float">to_float(input:Type) : float</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#exitexit_codeint">exit(exit_code:int)</a>
-    </li>
-        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#file">file</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#read_filefile_namestring-string">read_file(file_name:string) : string</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#write_filepathstringtextstring-bool">write_file(path:string,text:string) : bool</a>
+    <li class="toctree-l2"><a class="reference internal" href="#os">os</a>
     </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#time">time</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#math">math</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#strings">strings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#http">http</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#random">random</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#libcinfo">libcinfo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#termcolor">termcolor</a>
     </li>
     </ul>
                     </li>
@@ -143,154 +131,90 @@
 <li><a href="#os"><code>os</code></a></li>
 <li><a href="#time"><code>time</code></a></li>
 <li><a href="#math"><code>math</code></a></li>
+<li><a href="#strings"><code>strings</code></a></li>
+<li><a href="#http"><code>http</code></a></li>
+<li><a href="#random"><code>random</code></a></li>
+<li><a href="#libcinfo"><code>libcinfo</code></a></li>
+<li><a href="#termcolor"><code>termcolor</code></a></li>
 </ul>
 <h2 id="built-in-functions">Built-in functions</h2>
-<h3 id="print">print(...)</h3>
-<p>Standard Hascal's print function</p>
-<p>example :</p>
-<pre><code>print(&quot;Hello World&quot;);
-</code></pre>
-
-<h3 id="readstr-string">ReadStr() : string</h3>
-<p>Read string values from stdin</p>
-<p>example :</p>
-<pre><code>print(&quot;What's your name ?&quot;);
-var name = ReadStr();
-print(&quot;Hi,&quot;,name);
-</code></pre>
-
-<h3 id="readint-int">ReadInt() : int</h3>
-<p>Read int values from stdin</p>
-<p>example :</p>
-<pre><code>print(&quot;What's your age ?&quot;);
-var name = ReadInt();
-print(&quot;your age :&quot;,name);
-</code></pre>
-
-<h3 id="readchar-char">ReadChar() : char</h3>
-<p>Read a character from stdin</p>
-<p>example :</p>
-<pre><code>print(&quot;char :&quot;,ReadChar());
-</code></pre>
-
-<h3 id="readbool-bool">ReadBool() : bool</h3>
-<p>Read a bool values from stdin</p>
-<p>example :</p>
-<pre><code>print(&quot;bool :&quot;,ReadBool());
-</code></pre>
-
-<h3 id="readfloat-float">ReadFloat() : float</h3>
-<p>Read float values from stdin</p>
-<p>example :</p>
-<pre><code>print(&quot;float :&quot;,ReadFloat());
-</code></pre>
-
-<h3 id="to_intinputtype-int">to_int(input:Type) : int</h3>
-<p>Convert values to int</p>
-<p>example :</p>
-<pre><code>print(to_int(&quot;123456&quot;));
-</code></pre>
-
-<h3 id="to_stringinputtype-string">to_string(input:Type) : string</h3>
-<p>Convert values to string</p>
-<p>example :</p>
-<pre><code>print(to_string(123));
-</code></pre>
-
-<h3 id="to_floatinputtype-float">to_float(input:Type) : float</h3>
-<p>Convert values to float</p>
-<p>example :</p>
-<pre><code>print(to_float(&quot;3.14&quot;));
-</code></pre>
-
-<h3 id="exitexit_codeint">exit(exit_code:int)</h3>
-<p>End program</p>
-<p>example:</p>
-<pre><code>print(&quot;Hello&quot;);
-exit(0);
-print(&quot;Bye&quot;);
-</code></pre>
-
+<ul>
+<li><code>print(...)</code> : Standard Hascal's print function</li>
+<li><code>ReadStr()</code> : Standard Hascal's read string function</li>
+<li><code>ReadInt()</code> : Standard Hascal's read integer function</li>
+<li><code>ReadFloat()</code> : Standard Hascal's read float function</li>
+<li><code>ReadBool()</code> : Standard Hascal's read boolean function</li>
+<li><code>ReadChar()</code> : Standard Hascal's read character function</li>
+<li><code>to_int(val:T)</code> : Standard Hascal's convert to integer function</li>
+<li><code>to_float(val:T)</code> : Standard Hascal's convert to float function</li>
+<li><code>to_bool(val:T)</code> : Standard Hascal's convert to boolean function</li>
+<li><code>to_char(val:T)</code> : Standard Hascal's convert to character function</li>
+<li><code>to_string(val:T)</code> : Standard Hascal's convert to string function</li>
+<li><code>exit(exit_code:int)</code> : Standard Hascal's exit function</li>
+</ul>
 <h2 id="file"><code>file</code></h2>
-<h3 id="read_filefile_namestring-string">read_file(file_name:string) : string</h3>
-<p>Read from file</p>
-<p>example :</p>
-<pre><code>var content : string = read_file(&quot;todo.txt&quot;);
-</code></pre>
-
-<h3 id="write_filepathstringtextstring-bool">write_file(path:string,text:string) : bool</h3>
-<p>Write to file</p>
-<p>example :</p>
-<pre><code>write_file(&quot;todo.txt&quot;,&quot;- Going to gym&quot;)
-</code></pre>
-
+<ul>
+<li><code>read_file(file_name:string) : string</code> : Read a file and return its content</li>
+<li><code>write_file(file_name:string,content:string)</code> : Write a file</li>
+</ul>
 <!-- ### listdir(path:string) : [string]
 Lists dirs,files on a path
 
 example :
-
-<pre><code>print(listdir(&quot;C:\\&quot;));
-``` --&gt;
-
-## `os`
-
-### os_name() : string
-Gets type of OS(win32,linux,freebsd,macos,...)
-
-</code></pre>
-
-print(os_name());
-
-<pre><code>
-### system(command:string)
-Excutes a terminal command
-
-example :
-</code></pre>
-
-var comm = "";
-
-while true {
-    print2("MyCMD>>>");
-    comm = ReadStr();
-    system(comm);
-}
 ```
+print(listdir("C:\\"));
+``` -->
 
-## `time`
-
-- `get_year():int` : Get current year
-- `get_month():int` : Get current month
-- `get_day():int` : Get current day
-- `get_hour():int` : Get current hour
-- `get_minute():int` : Get current minute
-- `get_second():int` : Get current second
-
-
-## `math`
-Math Functions
-- `sin(val:float):float` : Returns sine of x
-- `cos(val:float):float` : Returns cosine of x
-- `tan(val:float):float` : Returns tangent of x
-- `PI : float` : PI number
-- `fmax(x:float,y:float):float` : Returns the larger of x and y(floating point). 
-- `fmin(x:float,y:float):float` : Returns the smaller of x and y(floating point). 
-- `max(x:int,y:int):int` : Returns the larger of x and y. 
-- `min(x:int,y:int):int` : Returns the smaller of x and y. 
-- `abs(x:float):float` : Calculates the absolute value of a number. 
-
-## `strings`
-Work with strings
-- `is_alpha(c:char): bool` : check if char is alphabetic
-- `is_alphanum(c:char): bool` : check if char is alphanumeric
-- `is_number(c:char): bool` : check if char is number
-- `is_space(c:char): bool` : check if char is space
-- `is_lower(c:char): bool` : check if char is lowercase
-- `is_upper(c:char): bool` : check if char is uppercase
-
-## `http`
-HTTP client-server library
-- `get(url:string) : string` : get content from url(only support http)
+<h2 id="os"><code>os</code></h2>
+<ul>
+<li><code>os_name() : string</code> : Return OS name</li>
+<li><code>system()</code> : Execute a command</li>
+<li><code>compiler_name() : string</code> : Return compiler name</li>
+<li><code>arch() : string</code> : Return architecture</li>
+<li><code>is_x86() : bool</code> : Return true if architecture is x86</li>
+<li><code>is_x64() : bool</code> : Return true if architecture is x64</li>
+<li><code>getenv(name:string) : string</code> : Return environment variable</li>
+</ul>
+<h2 id="time"><code>time</code></h2>
+<p>Work with time/date
+- <code>get_year():int</code> : Get current year
+- <code>get_month():int</code> : Get current month
+- <code>get_day():int</code> : Get current day
+- <code>get_hour():int</code> : Get current hour
+- <code>get_minute():int</code> : Get current minute
+- <code>get_second():int</code> : Get current second</p>
+<h2 id="math"><code>math</code></h2>
+<p>Math Functions
+- <code>sin(val:float):float</code> : Returns sine of x
+- <code>cos(val:float):float</code> : Returns cosine of x
+- <code>tan(val:float):float</code> : Returns tangent of x
+- <code>PI : float</code> : PI number
+- <code>fmax(x:float,y:float):float</code> : Returns the larger of x and y(floating point). 
+- <code>fmin(x:float,y:float):float</code> : Returns the smaller of x and y(floating point). 
+- <code>max(x:int,y:int):int</code> : Returns the larger of x and y. 
+- <code>min(x:int,y:int):int</code> : Returns the smaller of x and y. 
+- <code>abs(x:float):float</code> : Calculates the absolute value of a number. </p>
+<h2 id="strings"><code>strings</code></h2>
+<p>Work with strings
+- <code>is_alpha(c:char): bool</code> : check if char is alphabetic
+- <code>is_alphanum(c:char): bool</code> : check if char is alphanumeric
+- <code>is_number(c:char): bool</code> : check if char is number
+- <code>is_space(c:char): bool</code> : check if char is space
+- <code>is_lower(c:char): bool</code> : check if char is lowercase
+- <code>is_upper(c:char): bool</code> : check if char is uppercase</p>
+<h2 id="http"><code>http</code></h2>
+<p>HTTP client-server library
+- <code>get(url:string) : string</code> : get content from url(only support http)</p>
+<h2 id="random"><code>random</code></h2>
+<p>Random number generator
+- <code>random_int(max:int):int</code> : Returns a random integer between 0 and max</p>
+<h2 id="libcinfo"><code>libcinfo</code></h2>
+<p>Get information about libc
+- <code>libc_name() : string</code> : get name of libc</p>
+<h2 id="termcolor"><code>termcolor</code></h2>
+<p>Colorize text
+- <code>cprint(txt:string,color:string)</code> : print text in color
+- <code>reset_color()</code> : reset color</p>
               
             </div>
           </div>

@@ -110,6 +110,11 @@
 - C++ in back-end
 - `new/delete` c++ keyword based memory management
 - null safety
+- basic support for pointers
+- use `std::array` for fixed sized array instead of `std::vector`
+- check if a function returns a value, else show error
+- redesign logo
+
 ### Language
 - multi library import :
 
@@ -120,14 +125,6 @@
 - inline assembly
 
 <pre><code>asm(&quot;mov e1, bx&quot;)
-</code></pre>
-
-
-- multi line string
-
-<pre><code>var str = &quot;&quot;&quot;line1
-line2
-&quot;&quot;&quot;
 </code></pre>
 
 
@@ -166,7 +163,25 @@ var foo = {
 </code></pre>
 
 
-- `panic` based error management
+- namespace based library import
+e.g:
+`foo.has` :
+
+<pre><code>function bar(): string {
+    return &quot;bar&quot;
+}
+</code></pre>
+
+
+`main.has` :
+
+<pre><code>use foo
+
+function main () : int {
+    print(foo::bar())
+    return 0
+}
+</code></pre>
 
 ### Standard Library
 - `json`, `sqlite`, `thread` library
