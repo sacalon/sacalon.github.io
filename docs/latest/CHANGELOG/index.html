@@ -107,17 +107,42 @@
 <summary>v1.3.6</summary></p>
 <h4 id="new-features">New features</h4>
 <ul>
+<li>more data types : <code>int8</code>,<code>uint8</code>,<code>int16</code>,<code>uint16</code>,<code>int32</code>,<code>uint32</code>,<code>int64</code>,<code>uint64</code>,<code>double</code></li>
+<li>type compatibility</li>
 <li>multi line string</li>
-<li>add <code>sdl2</code> wrapper</li>
-<li>add <code>export</code> library for exporting to C(see : <a href="https://github.com/bistcuite/haspy">haspy</a>)</li>
+<li>pointers and references</li>
+</ul>
+<pre><code class="typescript">var x : *int = 20
+var y : int = 10
+x = &amp;y
+var z = *x // type : int
+
+// Pointers fix incomplete types on struct defination
+struct bar {
+    var self : *bar
+}
+</code></pre>
+
+<ul>
+<li>add <code>sizeof</code> function</li>
 </ul>
 <h4 id="bug-fixes">Bug fixes</h4>
 <ul>
 <li>fix lexer bugs</li>
 <li>check if function returns a value at end of string else show error</li>
 <li><code>main</code> function should returns int</li>
+<li>fix <code>termcolor</code> library bugs</li>
+</ul>
+<h4 id="standart-library">Standart library</h4>
+<ul>
+<li>add <code>sdl2</code> wrapper</li>
+<li>add <code>export</code> library for exporting to C(see : <a href="https://github.com/bistcuite/haspy">haspy</a>)</li>
+<li>add <code>crypto.sha256</code> for sha256 hashing</li>
 </ul>
 <h4 id="removed">Removed</h4>
+<ul>
+<li><code>libcinfo</code> library removed</li>
+</ul>
 </details>
 
 <details>

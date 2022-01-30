@@ -107,11 +107,9 @@
 <summary>v1.3.x</summary>
 
 ### Base
-- `new/delete` c++ keyword based memory management
+- signals
 - null safety
-- basic support for pointers
 - use `std::array` for fixed sized array instead of `std::vector`
-- check if a function not returns a value, else show error
 - redesign logo
 - js backend(`hascal2js`)
 
@@ -178,7 +176,7 @@ e.g:
 <pre><code>use foo
 
 function main () : int {
-    print(foo::bar())
+    print(foo.bar())
     return 0
 }
 </code></pre>

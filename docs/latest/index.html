@@ -63,6 +63,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pointers">Pointers</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#hascal-types">Hascal Types</a>
@@ -195,7 +197,7 @@ NOTE: But you can add Hascal to <code>$PATH</code> for easily use.</p>
 <p>You can use <code>config.json</code> to configure your Hascal compiler.</p>
 <ul>
 <li><code>compiler</code> : your c++ compiler name(e.g : <code>g++</code>,<code>clang++</code>)</li>
-<li><code>optimize</code> : optimize level(0,1,2,3)</li>
+<li><code>optimize</code> : optimize level(0,1,2,3)(default : no optimize)</li>
 <li><code>flags</code> : flags list for your compiler(e.g:<code>["-pthread"]</code>)</li>
 <li><code>no_check_g++</code> : if you don't use g++, set this to <code>1</code></li>
 <li><code>c++_version</code> : your c++ standard(e.g:<code>c++17</code> or <code>c++20</code>).note: c++ version must be greater than or equal to c++17</li>
@@ -230,6 +232,13 @@ function main() : int {
 }
 </code></pre>
 
+<h2 id="pointers">Pointers</h2>
+<pre><code class="typescript">var foo : int*
+var foobar : int = *foo
+var bar : int = 2
+foo = &amp;bar
+</code></pre>
+
 <h2 id="functions">Functions</h2>
 <pre><code class="typescript">function add(x:int,y:int): int {
     return x + y
@@ -257,10 +266,13 @@ function main(): int {
 
 string // string literal
 
-int // integer value
+int8 uint8 // 8-bit integer
+int16 uint16 // 16-bit integer
+int int32 uint32 // 32-bit integer
+int64 uint64 // 64-bit integer
 
 float // floating point 
-double // double floating point(soon)
+double // double floating point
 </code></pre>
 
 <h3 id="strings">Strings</h3>
@@ -304,11 +316,14 @@ double // double floating point(soon)
 <pre><code class="typescript">function main() : int {
     var a : int = 123 // or : var a = 123
     var b : float = 1.23 // or : var b = 1.24
+    var c : double = b // type compatibility
+    var cc : int8 = c // type conversion
+
     return 0
 }
 </code></pre>
 
-<p>This will assign the value of <code>123</code> to <code>a</code> and <code>1.23</code> to <code>b</code>.</p>
+<p>This will assign the value of <code>123</code> to <code>a</code> and <code>1.23</code> to <code>b</code> and <code>1.23</code> to <code>c</code> and <code>1</code> to <code>cc</code>.</p>
 <h3 id="arrays">Arrays</h3>
 <h4 id="basic-array-concepts">Basic Array Concepts</h4>
 <p>Arrays are collections of data elements of the same type. They can be represented by a list of elements surrounded by brackets. The elements can be accessed by appending an index (starting with 0) in brackets to the array variable:</p>
@@ -529,5 +544,5 @@ function main() : int {
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-01-16 16:38:19.812125+00:00
+Build Date UTC : 2022-01-30 16:18:34.270814+00:00
 -->

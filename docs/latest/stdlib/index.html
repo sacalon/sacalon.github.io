@@ -77,6 +77,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#termcolor">termcolor</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cryptosha256">crypto.sha256</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -136,6 +138,7 @@
 <li><a href="#random"><code>random</code></a></li>
 <li><a href="#libcinfo"><code>libcinfo</code></a></li>
 <li><a href="#termcolor"><code>termcolor</code></a></li>
+<li><a href="#crypto-sha256"><code>crypto.sha256</code></a></li>
 </ul>
 <h2 id="built-in-functions">Built-in functions</h2>
 <ul>
@@ -151,6 +154,7 @@
 <li><code>to_char(val:T)</code> : Standard Hascal's convert to character function</li>
 <li><code>to_string(val:T)</code> : Standard Hascal's convert to string function</li>
 <li><code>exit(exit_code:int)</code> : Standard Hascal's exit function</li>
+<li><code>sizeof(T)</code> : Standard Hascal's sizeof function</li>
 </ul>
 <h2 id="file"><code>file</code></h2>
 <ul>
@@ -215,6 +219,18 @@ print(listdir("C:\\"));
 <p>Colorize text
 - <code>cprint(txt:string,color:string)</code> : print text in color
 - <code>reset_color()</code> : reset color</p>
+<p>Colors :
+- <code>red</code>
+- <code>green</code>
+- <code>yellow</code>
+- <code>blue</code>
+- <code>magenta</code>
+- <code>cyan</code>
+- <code>white</code>
+- <code>black</code></p>
+<h2 id="cryptosha256"><code>crypto.sha256</code></h2>
+<p>SHA256 hash
+- <code>generate_sha256(data:string) : string</code> : return sha256 hash of string</p>
               
             </div>
           </div>
