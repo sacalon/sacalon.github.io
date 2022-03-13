@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://hascal.github.io/libmanager/">
+  <link rel="canonical" href="https://hascal.github.io/CHANGELOG/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Library Mangaer - Hascal Documentation</title>
+  <title>Hascal's Changelog - Hascal Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Library Mangaer";
-    var mkdocs_page_input_path = "libmanager.md";
-    var mkdocs_page_url = "/libmanager/";
+    var mkdocs_page_name = "Hascal's Changelog";
+    var mkdocs_page_input_path = "CHANGELOG.md";
+    var mkdocs_page_url = "/CHANGELOG/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -62,16 +62,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../interfacing/">Interfacing to C\C++</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Library Mangaer</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#install-a-library">Install a library</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#uninstall-a-library">Uninstall a library</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#publish-your-libraries">Publish your libraries</a>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../libmanager/">Library Mangaer</a>
                     </li>
                 </ul>
       </div>
@@ -95,10 +87,10 @@
     
       
     
-    <li>Library Mangaer</li>
+    <li>Hascal's Changelog</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/hascal/hascal/edit/main/docs/libmanager.md"
+        <a href="https://github.com/hascal/hascal/edit/main/docs/CHANGELOG.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -110,33 +102,130 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="hascal-library-managerhlm">Hascal Library Manager(HLM)</h1>
-<p><strong>HLM</strong> is default and builtin Hascal's library manager.</p>
-<h2 id="install-a-library">Install a library</h2>
-<pre><code>$ hascal install &lt;library name&gt;
+                <h1 id="hascals-changelog">Hascal's Changelog</h1>
+<p><details>
+<summary>v1.3.6</summary></p>
+<h4 id="new-features">New features</h4>
+<ul>
+<li>more data types : <code>int8</code>,<code>uint8</code>,<code>int16</code>,<code>uint16</code>,<code>int32</code>,<code>uint32</code>,<code>int64</code>,<code>uint64</code>,<code>double</code></li>
+<li>type compatibility</li>
+<li>multi line string</li>
+<li>pointers and references</li>
+</ul>
+<pre><code class="typescript">var x : *int = 20
+var y : int = 10
+x = &amp;y
+var z = *x // type : int
+
+// Pointers fix incomplete types on struct defination
+struct bar {
+    var self : *bar
+}
 </code></pre>
-<p>example :</p>
-<pre><code>$ hascal install log
-</code></pre>
-<h2 id="uninstall-a-library">Uninstall a library</h2>
-<pre><code>$ hascal uninstall &lt;library name&gt;
-</code></pre>
-<p>example :</p>
-<pre><code>$ hascal uninstall log
-</code></pre>
-<h2 id="publish-your-libraries">Publish your libraries</h2>
-<p>Todo</p>
+
+<ul>
+<li>add <code>sizeof</code> function</li>
+</ul>
+<h4 id="bug-fixes">Bug fixes</h4>
+<ul>
+<li>fix lexer bugs</li>
+<li>check if function returns a value at end of string else show error</li>
+<li><code>main</code> function should returns int</li>
+<li>fix <code>termcolor</code> library bugs</li>
+</ul>
+<h4 id="standart-library">Standart library</h4>
+<ul>
+<li>add <code>sdl2</code> wrapper</li>
+<li>add <code>export</code> library for exporting to C(see : <a href="https://github.com/bistcuite/haspy">haspy</a>)</li>
+<li>add <code>crypto.sha256</code> for sha256 hashing</li>
+</ul>
+<h4 id="removed">Removed</h4>
+<ul>
+<li><code>libcinfo</code> library removed</li>
+</ul>
+</details>
+
+<details>
+<summary>v1.3.5</summary>
+
+#### Standard library
+##### Updated
+`os` :
+- add `compiler_name` function to get the name of the compiler
+- add `arch` function to get the architecture of the system
+- add `is_x86` function to check if the architecture is x86
+- add `is_x64` function to check if the architecture is x64
+- add `getenv` function to get an environment variable
+##### Added
+- add `libcinfo` library to get information about the libc
+- add `termcolor` library to colorize the output
+
+![assets/termcolor.png](assets/termcolor.png)
+
+#### Bug fixes
+- Fix incomplete type defination bug
+
+</details>
+
+<details>
+<summary>v1.3.4</summary>
+
+#### New features
+- compiler option : now can generate c++ code from hascal code with `c++_code : 1` in `config.json` file
+- use `cuse` keyword to include c++ files.
+
+#### Bug fixes
+- Fix semantic analyser bugs
+- Fix standard library bug
+
+</details>
+
+<details>
+<summary>v1.3.3</summary>
+
+#### New features
+- struct inheritance
+- can use `cuse` statement on struct declaration
+
+#### Bug fixes
+- Fix variable scope bug
+- Fix variable declaration bug
+- Fix semantic analyser bug
+
+</details>
+
+<details>
+<summary>v1.3.2</summary>
+
+#### New features
+- `for in` statement
+- library manager
+- flag option
+- `cuse` statement
+
+#### Bug fixes
+- Fix semantic analyser bugs
+- Fix nested struct bug
+
+#### Removed
+- `for to` and `for downto` statement removed
+
+</details>
+
+<details>
+<summary>v1.3.1</summary>
+
+#### New features
+- Basic Semantic Anaslyser
+
+#### Removed
+- remove semicolon from syntax
+
+</details>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="../interfacing/" class="btn btn-neutral" title="Interfacing to C\C++"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -165,8 +254,6 @@
           <a href="https://github.com/hascal/hascal/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
         </span>
     
-    
-      <span><a href="../interfacing/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
   </span>

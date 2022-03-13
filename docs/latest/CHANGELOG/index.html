@@ -103,16 +103,55 @@
             <div class="section">
               
                 <h1 id="hascals-changelog">Hascal's Changelog</h1>
-<p><details>
-<summary>v1.3.6</summary></p>
-<h4 id="new-features">New features</h4>
-<ul>
-<li>more data types : <code>int8</code>,<code>uint8</code>,<code>int16</code>,<code>uint16</code>,<code>int32</code>,<code>uint32</code>,<code>int64</code>,<code>uint64</code>,<code>double</code></li>
-<li>type compatibility</li>
-<li>multi line string</li>
-<li>pointers and references</li>
-</ul>
-<pre><code class="typescript">var x : *int = 20
+<details>
+<summary>v1.3.8</summary>
+
+#### New features
+
+#### Changes
+
+#### Bug fixes
+
+#### Removed
+
+</details>
+
+<details>
+<summary>v1.3.7</summary>
+
+#### New features
+- manual memory management with `new` and `delete` keyword
+- functional programming paradigm
+- speed up compilation time
+- add `typeof` function
+- now can print arrays and structures
+- function decorators
+- `static` and `extern` decorator
+- multiple library import
+- improve importing system
+- improve stdlib architecture
+
+#### Bug fixes
+- fix scoping bug
+- fix `conv` library bug
+- fix conditions bug
+
+#### Removed
+- `export` library removed
+- `local use` statement removed
+
+</details>
+
+<details>
+<summary>v1.3.6</summary>
+
+#### New features
+- more data types : `int8`,`uint8`,`int16`,`uint16`,`int32`,`uint32`,`int64`,`uint64`,`double`
+- type compatibility
+- multi line string
+- pointers and references
+
+<pre><code class="language-typescript">var x : *int = 20
 var y : int = 10
 x = &amp;y
 var z = *x // type : int
@@ -123,26 +162,23 @@ struct bar {
 }
 </code></pre>
 
-<ul>
-<li>add <code>sizeof</code> function</li>
-</ul>
-<h4 id="bug-fixes">Bug fixes</h4>
-<ul>
-<li>fix lexer bugs</li>
-<li>check if function returns a value at end of string else show error</li>
-<li><code>main</code> function should returns int</li>
-<li>fix <code>termcolor</code> library bugs</li>
-</ul>
-<h4 id="standart-library">Standart library</h4>
-<ul>
-<li>add <code>sdl2</code> wrapper</li>
-<li>add <code>export</code> library for exporting to C(see : <a href="https://github.com/bistcuite/haspy">haspy</a>)</li>
-<li>add <code>crypto.sha256</code> for sha256 hashing</li>
-</ul>
-<h4 id="removed">Removed</h4>
-<ul>
-<li><code>libcinfo</code> library removed</li>
-</ul>
+- add `sizeof` function
+
+#### Bug fixes
+- fix lexer bugs
+- check if function returns a value at end of string else show error
+- `main` function should returns int
+- fix `termcolor` library bugs
+- fix enum bugs
+
+#### Standart library
+- add `sdl2` wrapper
+- add `export` library for exporting to C(see : [haspy](https://github.com/bistcuite/haspy))
+- add `crypto.sha256` for sha256 hashing
+
+#### Removed
+- `libcinfo` library removed
+
 </details>
 
 <details>

@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://hascal.github.io/libmanager/">
+  <link rel="canonical" href="https://hascal.github.io/ROADMAP/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Library Mangaer - Hascal Documentation</title>
+  <title>Hascal's Roadmap - Hascal Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Library Mangaer";
-    var mkdocs_page_input_path = "libmanager.md";
-    var mkdocs_page_url = "/libmanager/";
+    var mkdocs_page_name = "Hascal's Roadmap";
+    var mkdocs_page_input_path = "ROADMAP.md";
+    var mkdocs_page_url = "/ROADMAP/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -62,16 +62,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../interfacing/">Interfacing to C\C++</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Library Mangaer</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#install-a-library">Install a library</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#uninstall-a-library">Uninstall a library</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#publish-your-libraries">Publish your libraries</a>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../libmanager/">Library Mangaer</a>
                     </li>
                 </ul>
       </div>
@@ -95,10 +87,10 @@
     
       
     
-    <li>Library Mangaer</li>
+    <li>Hascal's Roadmap</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/hascal/hascal/edit/main/docs/libmanager.md"
+        <a href="https://github.com/hascal/hascal/edit/main/docs/ROADMAP.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -110,33 +102,97 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="hascal-library-managerhlm">Hascal Library Manager(HLM)</h1>
-<p><strong>HLM</strong> is default and builtin Hascal's library manager.</p>
-<h2 id="install-a-library">Install a library</h2>
-<pre><code>$ hascal install &lt;library name&gt;
+                <h1 id="hascals-roadmap">Hascal's Roadmap</h1>
+<details>
+<summary>v1.3.x</summary>
+
+### Base
+- signals
+- null safety
+- use `std::array` for fixed sized array instead of `std::vector`
+- redesign logo
+- js backend(`hascal2js`)
+
+### Language
+- multi library import :
+
+<pre><code>use http, random
 </code></pre>
-<p>example :</p>
-<pre><code>$ hascal install log
+
+
+- inline assembly
+
+<pre><code>asm(&quot;mov e1, bx&quot;)
 </code></pre>
-<h2 id="uninstall-a-library">Uninstall a library</h2>
-<pre><code>$ hascal uninstall &lt;library name&gt;
+
+
+- lambdas :
+
+<pre><code>var mythread = thread(@(1000,true){
+    print(&quot;hi&quot;)
+})
 </code></pre>
-<p>example :</p>
-<pre><code>$ hascal uninstall log
+
+
+- function decorators :
+
+<pre><code>@static
+function add(a:int,b:int) : int {
+    return a + b
+}
 </code></pre>
-<h2 id="publish-your-libraries">Publish your libraries</h2>
-<p>Todo</p>
+
+
+- `@no_mm` decorator for manual memory management
+- `@extern_c` decorator defines a function or variable in an `extern "C"` block 
+
+- dictionaries :
+
+<pre><code>var names_age = dict(string,int,{
+   &quot;john&quot; : 25,
+   &quot;nickolas&quot; : 38
+})
+
+# or :
+var foo = {
+   &quot;X&quot; : 1,
+   &quot;Y&quot; : 2
+}
+</code></pre>
+
+
+- namespace based library import
+e.g:
+`foo.has` :
+
+<pre><code>function bar(): string {
+    return &quot;bar&quot;
+}
+</code></pre>
+
+
+`main.has` :
+
+<pre><code>use foo
+
+function main () : int {
+    print(foo.bar())
+    return 0
+}
+</code></pre>
+
+### Standard Library
+- `json`, `sqlite`, `thread` library
+- `qt` wrapper
+
+### Library Manager
+- unistall library option
+
+</details>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="../interfacing/" class="btn btn-neutral" title="Interfacing to C\C++"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -165,8 +221,6 @@
           <a href="https://github.com/hascal/hascal/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
         </span>
     
-    
-      <span><a href="../interfacing/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
   </span>

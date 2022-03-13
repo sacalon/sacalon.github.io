@@ -109,23 +109,11 @@
 ### Base
 - signals
 - null safety
-- use `std::array` for fixed sized array instead of `std::vector`
 - redesign logo
 - js backend(`hascal2js`)
+- static variables
 
 ### Language
-- multi library import :
-
-<pre><code>use http, random
-</code></pre>
-
-
-- inline assembly
-
-<pre><code>asm(&quot;mov e1, bx&quot;)
-</code></pre>
-
-
 - lambdas :
 
 <pre><code>var mythread = thread(@(1000,true){
@@ -134,56 +122,8 @@
 </code></pre>
 
 
-- function decorators :
-
-<pre><code>@static
-function add(a:int,b:int) : int {
-    return a + b
-}
-</code></pre>
-
-
-- `@no_mm` decorator for manual memory management
-- `@extern_c` decorator defines a function or variable in an `extern "C"` block 
-
-- dictionaries :
-
-<pre><code>var names_age = dict(string,int,{
-   &quot;john&quot; : 25,
-   &quot;nickolas&quot; : 38
-})
-
-# or :
-var foo = {
-   &quot;X&quot; : 1,
-   &quot;Y&quot; : 2
-}
-</code></pre>
-
-
-- namespace based library import
-e.g:
-`foo.has` :
-
-<pre><code>function bar(): string {
-    return &quot;bar&quot;
-}
-</code></pre>
-
-
-`main.has` :
-
-<pre><code>use foo
-
-function main () : int {
-    print(foo.bar())
-    return 0
-}
-</code></pre>
-
 ### Standard Library
-- `json`, `sqlite`, `thread` library
-- `qt` wrapper
+- `json`, `thread` library
 
 ### Library Manager
 - unistall library option

@@ -108,32 +108,28 @@
 <p>You can use C and C++ in Hascal.
 For example, we want to write a function for print abs of a value in c++ and use it in hascal, first create a folder with <code>cpp</code> name and create <code>absprint.cc</code> and <code>absprint.hpp</code> in created folder.</p>
 <p><code>absprint.cc</code> :</p>
-<pre><code class="c++">void absprint(int a){
+<pre><code class="language-c++">void absprint(int a){
    std::cout &lt;&lt; abs(a);
 }
 </code></pre>
-
 <p>For use <code>abs()</code> function we should import it from c++ stdlib, for this purpose import it in <code>absprint.hpp</code> :
 <code>absprint.hpp</code></p>
-<pre><code class="c++">#include &lt;cmath&gt;
+<pre><code class="language-c++">#include &lt;cmath&gt;
 </code></pre>
-
 <p>Now can import this code in hascal, write this code in root folder of your project:</p>
-<pre><code class="typescript">local use cpp.absprint
+<pre><code class="language-typescript">local use cpp.absprint
 function absprint(a:int) : int
 
 function main() : int {
    absprint(-68) # output : 68
 }
 </code></pre>
-
 <p>You can write inline function,structs,... defines, in an external hascal file and import it in main file :
 <code>absprint.has</code> :</p>
-<pre><code class="typescript">local use cpp.absprint
+<pre><code class="language-typescript">local use cpp.absprint
 
 function absprint(a:int) : int
 </code></pre>
-
 <p><code>main.has</code> :</p>
 <pre><code>local use absprint
 

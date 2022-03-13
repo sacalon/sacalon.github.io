@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://hascal.github.io/libmanager/">
+  <link rel="canonical" href="https://hascal.github.io/interfacing/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Library Mangaer - Hascal Documentation</title>
+  <title>Interfacing to C\C++ - Hascal Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Library Mangaer";
-    var mkdocs_page_input_path = "libmanager.md";
-    var mkdocs_page_url = "/libmanager/";
+    var mkdocs_page_name = "Interfacing to C\\C++";
+    var mkdocs_page_input_path = "interfacing.md";
+    var mkdocs_page_url = "/interfacing/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -58,20 +58,14 @@
                     <li class="toctree-l1"><a class="reference internal" href="../stdlib/">Standard Library</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../interfacing/">Interfacing to C\C++</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Interfacing to C\C++</a>
+    <ul class="current">
+    </ul>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Library Mangaer</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#install-a-library">Install a library</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#uninstall-a-library">Uninstall a library</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#publish-your-libraries">Publish your libraries</a>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../libmanager/">Library Mangaer</a>
                     </li>
                 </ul>
       </div>
@@ -95,10 +89,10 @@
     
       
     
-    <li>Library Mangaer</li>
+    <li>Interfacing to C\C++</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/hascal/hascal/edit/main/docs/libmanager.md"
+        <a href="https://github.com/hascal/hascal/edit/main/docs/interfacing.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -110,22 +104,43 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="hascal-library-managerhlm">Hascal Library Manager(HLM)</h1>
-<p><strong>HLM</strong> is default and builtin Hascal's library manager.</p>
-<h2 id="install-a-library">Install a library</h2>
-<pre><code>$ hascal install &lt;library name&gt;
+                <h1 id="interfacing-to-cc">Interfacing to C/C++</h1>
+<p>You can use C and C++ in Hascal.
+For example, we want to write a function for print abs of a value in c++ and use it in hascal, first create a folder with <code>cpp</code> name and create <code>absprint.cc</code> and <code>absprint.hpp</code> in created folder.</p>
+<p><code>absprint.cc</code> :</p>
+<pre><code class="c++">void absprint(int a){
+   std::cout &lt;&lt; abs(a);
+}
 </code></pre>
-<p>example :</p>
-<pre><code>$ hascal install log
+
+<p>For use <code>abs()</code> function we should import it from c++ stdlib, for this purpose import it in <code>absprint.hpp</code> :
+<code>absprint.hpp</code></p>
+<pre><code class="c++">#include &lt;cmath&gt;
 </code></pre>
-<h2 id="uninstall-a-library">Uninstall a library</h2>
-<pre><code>$ hascal uninstall &lt;library name&gt;
+
+<p>Now can import this code in hascal, write this code in root folder of your project:</p>
+<pre><code class="typescript">local use cpp.absprint
+function absprint(a:int) : int
+
+function main() : int {
+   absprint(-68) # output : 68
+}
 </code></pre>
-<p>example :</p>
-<pre><code>$ hascal uninstall log
+
+<p>You can write inline function,structs,... defines, in an external hascal file and import it in main file :
+<code>absprint.has</code> :</p>
+<pre><code class="typescript">local use cpp.absprint
+
+function absprint(a:int) : int
 </code></pre>
-<h2 id="publish-your-libraries">Publish your libraries</h2>
-<p>Todo</p>
+
+<p><code>main.has</code> :</p>
+<pre><code>local use absprint
+
+function main() : int {
+   absprint(-68) # output : 68
+}
+</code></pre>
               
             </div>
           </div>
@@ -133,8 +148,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../libmanager/" class="btn btn-neutral float-right" title="Library Mangaer">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../interfacing/" class="btn btn-neutral" title="Interfacing to C\C++"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../stdlib/" class="btn btn-neutral" title="Standard Library"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -166,8 +183,10 @@
         </span>
     
     
-      <span><a href="../interfacing/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../stdlib/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../libmanager/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
