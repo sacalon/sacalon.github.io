@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  <link rel="canonical" href="https://hascal.github.io/">
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Hascal Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Hascal Documentation";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/";
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> Hascal Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="" href="https://hascal.github.io">Home Page</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Hascal Documentation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hello-world">Hello World</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configjson">config.json :</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#comments">Comments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pointers">Pointers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hascal-types">Hascal Types</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#primitive-types">Primitive types</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#strings">Strings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#string-operators">String operators</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#numbers">Numbers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#arrays">Arrays</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#basic-array-concepts">Basic Array Concepts</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#array-initialization">Array Initialization</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#array-size">Array Size</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#array-append">Array append</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#importing-libraries">Importing Libraries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#if">If</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#for-loop">For Loop</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#while-loop">While Loop</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#manual-memory-management">Manual memory management</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inline-c-code">Inline C++ Code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#include-c-code">Include C++ Code</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="stdlib/">Standard Library</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="interfacing/">Interfacing to C\C++</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="libmanager/">Library Mangaer</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">Hascal Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Hascal Documentation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/hascal/hascal/edit/main/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="introduction">Introduction</h1>
+<p><a href="https://hascal.github.io">Hascal</a> is a general-purpose open source programming language that makes it easy to build simple,optimal, reliable, and efficient software. </p>
+<h2 id="installation">Installation</h2>
+<p>Prequistes :</p>
+<ul>
+<li>python v3.8 or higher</li>
+<li>pyinstaller </li>
+<li>GCC/G++&gt;=8.0.0 on your <code>$PATH</code></li>
+</ul>
+<p>First clone Hascal's source :</p>
+<pre><code>$ git clone https://github.com/hascal/hascal
+</code></pre>
+<p>Install prequistes(not gcc only python libs,if you already installed prequistes, skip this part):</p>
+<pre><code>$ make deps
+</code></pre>
+<p>Build hascal excutable file :</p>
+<ul>
+<li>On POSIX(Linux,MacOS,BSDs) :
+  <code>$ make</code></li>
+<li>On Windows :
+  <code>$ make windows</code></li>
+</ul>
+<p><strong><em>Now your Hascal compiler is ready to use in <code>src/dist</code> folder!!!</em></strong>
+NOTE: But you can add Hascal to <code>$PATH</code> for easily use.</p>
+<h2 id="hello-world">Hello World</h2>
+<pre><code class="language-typescript">function main() : int {
+    print(&quot;Hello World&quot;)
+    return 0
+}
+</code></pre>
+<p>Save this snippet into a file named <code>hello.has</code>. Now do: <code>hascal hello.has</code>.</p>
+<p>Congratulations - you just wrote and executed your first Hascal program!</p>
+<p>As in many other languages (such as C++ and Rust), <code>main</code> is the entry point of your program.</p>
+<p><code>print</code> is one of the few built-in functions. It prints the value passed to it to standard output.</p>
+<h2 id="configjson"><code>config.json</code> :</h2>
+<p>You can use <code>config.json</code> to configure your Hascal compiler.</p>
+<ul>
+<li><code>compiler</code> : your c++ compiler name(e.g : <code>g++</code>,<code>clang++</code>)</li>
+<li><code>optimize</code> : optimize level(0,1,2,3)(default : no optimize)</li>
+<li><code>flags</code> : flags list for your compiler(e.g:<code>["-pthread"]</code>)</li>
+<li><code>no_check_g++</code> : if you don't use g++, set this to <code>1</code></li>
+<li><code>c++_version</code> : your c++ standard(e.g:<code>c++17</code> or <code>c++20</code>).note: c++ version must be greater than or equal to c++17</li>
+<li><code>g++_out</code> : if you want to see g++ output, set this to <code>1</code></li>
+<li><code>c++_out</code> : if you want to see generated c++ code, set this to <code>1</code></li>
+</ul>
+<p>example :</p>
+<pre><code class="language-json">
+{
+    &quot;compiler&quot;:&quot;g++&quot;,
+    &quot;optimize&quot;:&quot;-O2&quot;,
+    &quot;flags&quot;:[&quot;-pthread&quot;],
+    &quot;no_check_g++&quot;:1,
+    &quot;c++_version&quot;:&quot;c++17&quot;,
+    &quot;g++_out&quot;:1,
+    &quot;c++_out&quot;:1
+}
+</code></pre>
+<h2 id="comments">Comments</h2>
+<pre><code class="language-typescript">// This is a single line comment
+</code></pre>
+<h2 id="variables">Variables</h2>
+<pre><code class="language-typescript">var foo : int
+var foobar : int = 1
+
+var bar = 1
+function main() : int {
+    print(foo,foobar)
+    return 0
+}
+</code></pre>
+<h2 id="pointers">Pointers</h2>
+<pre><code class="language-typescript">var foo : int*
+var foobar : int = *foo
+var bar : int = 2
+foo = &amp;bar
+</code></pre>
+<h2 id="functions">Functions</h2>
+<pre><code class="language-typescript">function add(x:int,y:int): int {
+    return x + y
+}
+
+// overloading function
+function add(x:int,y:int,z:int): int {
+    return x + y + z
+}
+
+function add2(x:int,y:int){
+    print(x + y)
+}
+
+function main(): int {
+    print(add(1,2))
+    print(add(1,2,3))
+}
+</code></pre>
+<p>Again, the type comes after <code>:</code> and <code>:</code> comes after the argument's name.</p>
+<h2 id="hascal-types">Hascal Types</h2>
+<h3 id="primitive-types">Primitive types</h3>
+<pre><code class="language-typescript">bool // boolean value
+
+string // string literal
+
+int8 uint8 // 8-bit integer
+int16 uint16 // 16-bit integer
+int int32 uint32 // 32-bit integer
+int64 uint64 // 64-bit integer
+
+float // floating point 
+double // double floating point
+</code></pre>
+<h3 id="strings">Strings</h3>
+<pre><code class="language-typescript">function main() : int {
+    var text = &quot;Hello World&quot;
+    print(text[0]) // output : H 
+
+    var text2 = &quot;Hello\tWorld&quot;
+    print(text2) // output : Hello   World
+    return 0
+}
+</code></pre>
+<h3 id="string-operators">String operators</h3>
+<pre><code class="language-typescript">function main() : int {
+    var text = &quot;Hello &quot;
+    print(text + &quot;World&quot;) // output : Hello World 
+    return 0
+}
+</code></pre>
+<p>All operators in Hascal must have values of the same type on both sides. You cannot concatenate an integer to a string:</p>
+<pre><code class="language-typescript">function main() : int {
+    var text = &quot;age = &quot;
+    var age = 23
+    print(text + age) // error : Mismatched type 'string' and 'int' :2 
+    return 0
+}
+</code></pre>
+<p>We have to either convert age to a string:</p>
+<pre><code class="language-typescript">function main() : int {
+    var text = &quot;age = &quot;
+    var age = 23
+    print(text + to_string(age)) // error : Mismatched type 'string' and 'int' :3
+    return 0
+}
+</code></pre>
+<h3 id="numbers">Numbers</h3>
+<pre><code class="language-typescript">function main() : int {
+    var a : int = 123 // or : var a = 123
+    var b : float = 1.23 // or : var b = 1.24
+    var c : double = b // type compatibility
+    var cc : int8 = c // type conversion
+
+    return 0
+}
+</code></pre>
+<p>This will assign the value of <code>123</code> to <code>a</code> and <code>1.23</code> to <code>b</code> and <code>1.23</code> to <code>c</code> and <code>1</code> to <code>cc</code>.</p>
+<h3 id="arrays">Arrays</h3>
+<h4 id="basic-array-concepts">Basic Array Concepts</h4>
+<p>Arrays are collections of data elements of the same type. They can be represented by a list of elements surrounded by brackets. The elements can be accessed by appending an index (starting with 0) in brackets to the array variable:</p>
+<pre><code class="language-typescript">function main() : int {
+    var a = [1,2,3] // int array with length 3
+    var b = [1.0,2.0,3.0] // float array with length 3
+    print(a[0])
+    a[0] = 4
+    print(a[0])
+    return 0
+}
+</code></pre>
+<h4 id="array-initialization">Array Initialization</h4>
+<p>The basic initialization syntax is as described above. The type of an array is determined by the first element:</p>
+<ul>
+<li><code>[1, 2, 3]</code> is an array of ints (<code>[int]</code>).</li>
+<li><code>["a", "b"]</code> is an array of strings (<code>[string]</code>).</li>
+</ul>
+<h4 id="array-size">Array Size</h4>
+<p>You can get length of array's elements with <code>len</code> function :</p>
+<pre><code class="language-typescript">function main() : int {
+   var a = [1,2,3]
+   print(len(a)) // output : 3
+}
+</code></pre>
+<h4 id="array-append">Array append</h4>
+<p>You can append elements to array with <code>append</code> function :</p>
+<pre><code class="language-typescript">function main() : int {
+   var a = [1,2,3]
+   append(a,4)
+   for e in a {
+       print(e)
+   }
+   return 0
+}
+</code></pre>
+<h2 id="importing-libraries">Importing Libraries</h2>
+<p>Libraries can imported with <code>use</code> keyword :</p>
+<pre><code class="language-typescript">use os
+// multiple import :
+use os,file
+
+function main() : int {
+   system(&quot;gcc --version&quot;)
+   return 0
+}
+</code></pre>
+<h2 id="if">If</h2>
+<pre><code class="language-typescript">var x = 1
+var y = 2
+function main() : int {
+   if x == y {
+       // something
+   } else if not x != y {
+       // something
+   } else if x == y and x != 2 {
+       // something
+   } else if x != y or x == 10 {
+       // something
+   } else {
+       // something
+   }
+   return 0
+}
+</code></pre>
+<p><code>if</code> statements are pretty straightforward and similar to most other languages. Unlike other C-like languages, there are no parentheses surrounding the condition and the braces are always required.</p>
+<blockquote>
+<p>You can see Hascal's conditional operators, <a href="cond_op/index.html">here</a></p>
+</blockquote>
+<h2 id="for-loop">For Loop</h2>
+<pre><code class="language-typescript">function main() : int {
+   var a = [1,2,3]
+   for i in a {
+       print(i) // prints elements of `a` variable
+   }
+   return 0
+}
+</code></pre>
+<h2 id="while-loop">While Loop</h2>
+<pre><code class="language-typescript">function main() : int {
+   var a = 1
+   while a &lt;= 100 {
+       print(a)
+       a = a + 1
+   }
+   return 0
+}
+</code></pre>
+<h2 id="structs">Structs</h2>
+<pre><code class="language-typescript">struct Color {
+    var r : int
+    var g : int
+    var b : int
+    var name = &quot;Transparent&quot; // optional value
+}
+
+struct RGB : Color {
+    // struct inheritance
+}
+
+function main() : int {
+    var a : Color
+    a.r = 1
+    a.g = 110
+    a.b = 255
+    print(a.r,a.g,a.b)
+
+    var b = Color(34,156,255,&quot;AColor&quot;)
+
+    var c = RGB(255,0,0,&quot;AColor&quot;)
+    return 0
+}
+</code></pre>
+<h2 id="manual-memory-management">Manual memory management</h2>
+<p>You can use <code>new</code> and <code>delete</code> keywords for manual memory management :</p>
+<pre><code class="language-typescript">struct point {
+    var x : int
+    var y : int
+}
+
+function main() : int {
+    var a : int* = new int(10)
+    var b = new float(10.0)
+    var c = new string(&quot;hello&quot;)
+    var d : point* = new point(point(10,10))
+
+    print(*a)
+    print(*b)
+    print(*c)
+    print(*d)
+
+    a = new int(20)
+    print(*a)
+
+    c = new string(*c + &quot; world&quot;)
+    print(*c)
+
+    delete a
+    delete b
+    delete c
+    delete d
+
+    return 0
+}
+</code></pre>
+<h2 id="inline-c-code">Inline C++ Code</h2>
+<p>You can use inline c++ code in hascal with <code>cuse</code> keyword :</p>
+<pre><code class="language-typescript">cuse '#include &lt;cstdio&gt;'
+cuse 'int main(){printf(&quot;%d&quot;,1);return 0;}'
+// output : 1
+</code></pre>
+<h2 id="include-c-code">Include C++ Code</h2>
+<p>You can include C++ code in your Hascal file with <code>cuse</code> keyword :</p>
+<p><code>add.cc</code> :</p>
+<pre><code class="language-cpp">int add(int x, int y) {
+    return x + y;
+}
+</code></pre>
+<p><code>add.hpp</code> :</p>
+<pre><code class="language-cpp">// nothing but should be exist
+// if you want to include a c++ header file, you should include it in this file and not in `xxx.cc`
+// e.g :
+// #include &lt;cmath&gt;
+</code></pre>
+<p><code>main.has</code> :</p>
+<pre><code class="language-typescript">// if you want to include a local c file, use `local` keyword befor `use` keyword
+// but if you want to include a file in hascal standard library folder don't use `local` keyword
+local cuse add 
+
+function add(a:int,b:int): int
+
+function main() : int {
+    print(add(1,2))
+    return 0
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="stdlib/" class="btn btn-neutral float-right" title="Standard Library">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019 - 2022 Hascal Foundation</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/hascal/hascal/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+      <span><a href="stdlib/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.2.3
+Build Date UTC : 2022-03-13 07:30:19.662907+00:00
+-->

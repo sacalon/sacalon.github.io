@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://hascal.github.io/CHANGELOG/">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Hascal's Changelog - Hascal Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Hascal's Changelog";
+    var mkdocs_page_input_path = "CHANGELOG.md";
+    var mkdocs_page_url = "/CHANGELOG/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Hascal Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="" href="https://hascal.github.io">Home Page</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Hascal Documentation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../stdlib/">Standard Library</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../interfacing/">Interfacing to C\C++</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../libmanager/">Library Mangaer</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Hascal Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Hascal's Changelog</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/hascal/hascal/edit/main/docs/CHANGELOG.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="hascals-changelog">Hascal's Changelog</h1>
+<details>
+<summary>v1.3.8</summary>
+
+#### New features
+
+#### Changes
+
+#### Bug fixes
+
+#### Removed
+
+</details>
+
+<details>
+<summary>v1.3.7</summary>
+
+#### New features
+- manual memory management with `new` and `delete` keyword
+- functional programming paradigm
+- speed up compilation time
+- add `typeof` function
+- now can print arrays and structures
+- function decorators
+- `static` and `extern` decorator
+- multiple library import
+- improve importing system
+- improve stdlib architecture
+
+#### Bug fixes
+- fix scoping bug
+- fix `conv` library bug
+- fix conditions bug
+
+#### Removed
+- `export` library removed
+- `local use` statement removed
+
+</details>
+
+<details>
+<summary>v1.3.6</summary>
+
+#### New features
+- more data types : `int8`,`uint8`,`int16`,`uint16`,`int32`,`uint32`,`int64`,`uint64`,`double`
+- type compatibility
+- multi line string
+- pointers and references
+
+<pre><code class="language-typescript">var x : *int = 20
+var y : int = 10
+x = &amp;y
+var z = *x // type : int
+
+// Pointers fix incomplete types on struct defination
+struct bar {
+    var self : *bar
+}
+</code></pre>
+
+- add `sizeof` function
+
+#### Bug fixes
+- fix lexer bugs
+- check if function returns a value at end of string else show error
+- `main` function should returns int
+- fix `termcolor` library bugs
+- fix enum bugs
+
+#### Standart library
+- add `sdl2` wrapper
+- add `export` library for exporting to C(see : [haspy](https://github.com/bistcuite/haspy))
+- add `crypto.sha256` for sha256 hashing
+
+#### Removed
+- `libcinfo` library removed
+
+</details>
+
+<details>
+<summary>v1.3.5</summary>
+
+#### Standard library
+##### Updated
+`os` :
+- add `compiler_name` function to get the name of the compiler
+- add `arch` function to get the architecture of the system
+- add `is_x86` function to check if the architecture is x86
+- add `is_x64` function to check if the architecture is x64
+- add `getenv` function to get an environment variable
+##### Added
+- add `libcinfo` library to get information about the libc
+- add `termcolor` library to colorize the output
+
+![assets/termcolor.png](assets/termcolor.png)
+
+#### Bug fixes
+- Fix incomplete type defination bug
+
+</details>
+
+<details>
+<summary>v1.3.4</summary>
+
+#### New features
+- compiler option : now can generate c++ code from hascal code with `c++_code : 1` in `config.json` file
+- use `cuse` keyword to include c++ files.
+
+#### Bug fixes
+- Fix semantic analyser bugs
+- Fix standard library bug
+
+</details>
+
+<details>
+<summary>v1.3.3</summary>
+
+#### New features
+- struct inheritance
+- can use `cuse` statement on struct declaration
+
+#### Bug fixes
+- Fix variable scope bug
+- Fix variable declaration bug
+- Fix semantic analyser bug
+
+</details>
+
+<details>
+<summary>v1.3.2</summary>
+
+#### New features
+- `for in` statement
+- library manager
+- flag option
+- `cuse` statement
+
+#### Bug fixes
+- Fix semantic analyser bugs
+- Fix nested struct bug
+
+#### Removed
+- `for to` and `for downto` statement removed
+
+</details>
+
+<details>
+<summary>v1.3.1</summary>
+
+#### New features
+- Basic Semantic Anaslyser
+
+#### Removed
+- remove semicolon from syntax
+
+</details>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2019 - 2022 Hascal Foundation</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/hascal/hascal/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
