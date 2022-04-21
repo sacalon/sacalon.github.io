@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://hascal.github.io/CHANGELOG/">
+  <link rel="canonical" href="https://hascal.github.io/ide/">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Hascal's Changelog - Hascal Documentation</title>
+  <title>IDE Integration - Hascal Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Hascal's Changelog";
-    var mkdocs_page_input_path = "CHANGELOG.md";
-    var mkdocs_page_url = "/CHANGELOG/";
+    var mkdocs_page_name = "IDE Integration";
+    var mkdocs_page_input_path = "ide.md";
+    var mkdocs_page_url = "/ide/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -87,10 +87,10 @@
     
       
     
-    <li>Hascal's Changelog</li>
+    <li>IDE Integration</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/hascal/hascal/edit/main/docs/CHANGELOG.md"
+        <a href="https://github.com/hascal/hascal/edit/main/docs/ide.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -102,181 +102,19 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="hascals-changelog">Hascal's Changelog</h1>
-<details>
-<summary>v1.3.9</summary>
-
-#### New features
-
-#### Changes
-
-#### Bug fixes
-
-#### Removed
-
-</details>
-
-<details>
-<summary>v1.3.8</summary>
-
-#### New features
-- non-nullable and nullable variables
-
-#### Changes
-- change pointer unary from `*` to `^`
-- improve importing system
-
-#### Bug fixes
-- fix repetitious imports bug
-- fix #29 bug(by [@mmdbalkhi](https://github.com/mmdbalkhi))
-
-#### Removed
-- remove `token` library
-
-</details>
-
-<details>
-<summary>v1.3.7</summary>
-
-#### New features
-- manual memory management with `new` and `delete` keyword
-- functional programming paradigm
-- speed up compilation time
-- add `typeof` function
-- now can print arrays and structures
-- function decorators
-- `static` and `extern` decorator
-- multiple library import
-- improve importing system
-- improve stdlib architecture
-
-#### Bug fixes
-- fix scoping bug
-- fix `conv` library bug
-- fix conditions bug
-
-#### Removed
-- `export` library removed
-- `local use` statement removed
-
-</details>
-
-<details>
-<summary>v1.3.6</summary>
-
-#### New features
-- more data types : `int8`,`uint8`,`int16`,`uint16`,`int32`,`uint32`,`int64`,`uint64`,`double`
-- type compatibility
-- multi line string
-- pointers and references
-
-<pre><code class="language-typescript">var x : *int = 20
-var y : int = 10
-x = &amp;y
-var z = *x // type : int
-
-// Pointers fix incomplete types on struct defination
-struct bar {
-    var self : *bar
-}
-</code></pre>
-
-- add `sizeof` function
-
-#### Bug fixes
-- fix lexer bugs
-- check if function returns a value at end of string else show error
-- `main` function should returns int
-- fix `termcolor` library bugs
-- fix enum bugs
-
-#### Standart library
-- add `sdl2` wrapper
-- add `export` library for exporting to C(see : [haspy](https://github.com/bistcuite/haspy))
-- add `crypto.sha256` for sha256 hashing
-
-#### Removed
-- `libcinfo` library removed
-
-</details>
-
-<details>
-<summary>v1.3.5</summary>
-
-#### Standard library
-##### Updated
-`os` :
-- add `compiler_name` function to get the name of the compiler
-- add `arch` function to get the architecture of the system
-- add `is_x86` function to check if the architecture is x86
-- add `is_x64` function to check if the architecture is x64
-- add `getenv` function to get an environment variable
-##### Added
-- add `libcinfo` library to get information about the libc
-- add `termcolor` library to colorize the output
-
-![assets/termcolor.png](assets/termcolor.png)
-
-#### Bug fixes
-- Fix incomplete type defination bug
-
-</details>
-
-<details>
-<summary>v1.3.4</summary>
-
-#### New features
-- compiler option : now can generate c++ code from hascal code with `c++_code : 1` in `config.json` file
-- use `cuse` keyword to include c++ files.
-
-#### Bug fixes
-- Fix semantic analyser bugs
-- Fix standard library bug
-
-</details>
-
-<details>
-<summary>v1.3.3</summary>
-
-#### New features
-- struct inheritance
-- can use `cuse` statement on struct declaration
-
-#### Bug fixes
-- Fix variable scope bug
-- Fix variable declaration bug
-- Fix semantic analyser bug
-
-</details>
-
-<details>
-<summary>v1.3.2</summary>
-
-#### New features
-- `for in` statement
-- library manager
-- flag option
-- `cuse` statement
-
-#### Bug fixes
-- Fix semantic analyser bugs
-- Fix nested struct bug
-
-#### Removed
-- `for to` and `for downto` statement removed
-
-</details>
-
-<details>
-<summary>v1.3.1</summary>
-
-#### New features
-- Basic Semantic Anaslyser
-
-#### Removed
-- remove semicolon from syntax
-
-</details>
+                <h1 id="ide-integration">IDE Integration</h1>
+<ul>
+<li><a href="https://github.com/hascal/vscode">Vscode Extension</a></li>
+</ul>
+<h2 id="todo">Todo</h2>
+<ul>
+<li>Vim extension</li>
+<li>Emacs extension</li>
+<li>Nano extension</li>
+<li>Atom plugin</li>
+<li>Notepad++ Extension</li>
+<li>Intellij Idea plugin</li>
+</ul>
               
             </div>
           </div>

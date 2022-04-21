@@ -62,10 +62,6 @@
     <li class="toctree-l2"><a class="reference internal" href="#comments">Comments</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#non-nullable-and-nullable">Non nullable and nullable</a>
-    </li>
-        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#pointers">Pointers</a>
     </li>
@@ -165,8 +161,25 @@
                 <h1 id="introduction">Introduction</h1>
 <p><a href="https://hascal.github.io">Hascal</a> is a general-purpose open source programming language that makes it easy to build simple,optimal, reliable, and efficient software. </p>
 <h2 id="installation">Installation</h2>
-<pre><code class="language-bash">python setup.py install
+<p>Prequistes :</p>
+<ul>
+<li>python v3.8 or higher</li>
+<li>pyinstaller </li>
+<li>GCC/G++&gt;=8.0.0 on your <code>$PATH</code></li>
+</ul>
+<p>First clone Hascal's source :</p>
+<pre><code>$ git clone https://github.com/hascal/hascal
 </code></pre>
+<p>Install prequistes(not gcc only python libs,if you already installed prequistes, skip this part):</p>
+<pre><code>$ make deps
+</code></pre>
+<p>Build hascal excutable file :</p>
+<ul>
+<li>On POSIX(Linux,MacOS,BSDs) :
+  <code>$ make</code></li>
+<li>On Windows :
+  <code>$ make windows</code></li>
+</ul>
 <p><strong><em>Now your Hascal compiler is ready to use in <code>src/dist</code> folder!!!</em></strong>
 NOTE: But you can add Hascal to <code>$PATH</code> for easily use.</p>
 <h2 id="hello-world">Hello World</h2>
@@ -215,28 +228,11 @@ function main() : int {
     return 0
 }
 </code></pre>
-<h3 id="non-nullable-and-nullable">Non nullable and nullable</h3>
-<p>Hascal's variables and constants are non-nullable by default(i.e. they can't be <code>NULL</code>), but you can make them nullable by using <code>?</code> at the end of the type :</p>
-<pre><code class="language-typescript">var foo : int = 1 // non-nullable
-var bar : int? = 1 // nullable
-</code></pre>
-<p>so you can use <code>NULL</code> to set a variable to <code>NULL</code> :</p>
-<pre><code class="language-typescript">foo = NULL // error
-bar = NULL // ok
-</code></pre>
-<p>Also, you can make pointers to nullable variables :</p>
-<pre><code class="language-typescript">var foo : int^ = NULL // error
-var bar : int^? = NULL // ok
-</code></pre>
 <h2 id="pointers">Pointers</h2>
-<pre><code class="language-typescript">var foo : int^
-var foobar : int = ^foo
+<pre><code class="language-typescript">var foo : int*
+var foobar : int = *foo
 var bar : int = 2
 foo = &amp;bar
-</code></pre>
-<p><strong><em>NOTE:</em></strong> pointers are non-nullable by default, use <code>?</code> to make it nullable:</p>
-<pre><code class="language-typescript">var foo : int?
-foo = NULL
 </code></pre>
 <h2 id="functions">Functions</h2>
 <pre><code class="language-typescript">function add(x:int,y:int): int {
@@ -476,7 +472,7 @@ cuse 'int main(){printf(&quot;%d&quot;,1);return 0;}'
 </code></pre>
 <p><code>add.hpp</code> :</p>
 <pre><code class="language-cpp">// nothing but should be exist
-// if you want to include a c++ header file, you should include it in this file and not in `add.cc`
+// if you want to include a c++ header file, you should include it in this file and not in `xxx.cc`
 // e.g :
 // #include &lt;cmath&gt;
 </code></pre>
@@ -552,5 +548,5 @@ function main() : int {
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-04-21 13:26:03.153106+00:00
+Build Date UTC : 2022-03-13 07:30:19.662907+00:00
 -->
