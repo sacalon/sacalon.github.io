@@ -195,50 +195,64 @@ print(listdir("C:\\"));
 <li><code>get_second():int</code> : Get current second</li>
 </ul>
 <h2 id="math"><code>math</code></h2>
-<p>Math Functions
-- <code>sin(val:float):float</code> : Returns sine of x
-- <code>cos(val:float):float</code> : Returns cosine of x
-- <code>tan(val:float):float</code> : Returns tangent of x
-- <code>PI : float</code> : PI number
-- <code>fmax(x:float,y:float):float</code> : Returns the larger of x and y(floating point). 
-- <code>fmin(x:float,y:float):float</code> : Returns the smaller of x and y(floating point). 
-- <code>max(x:int,y:int):int</code> : Returns the larger of x and y. 
-- <code>min(x:int,y:int):int</code> : Returns the smaller of x and y. 
-- <code>abs(x:float):float</code> : Calculates the absolute value of a number. </p>
+<p>Math Functions</p>
+<ul>
+<li><code>sin(val:float):float</code> : Returns sine of x</li>
+<li><code>cos(val:float):float</code> : Returns cosine of x</li>
+<li><code>tan(val:float):float</code> : Returns tangent of x</li>
+<li><code>PI : float</code> : PI number</li>
+<li><code>fmax(x:float,y:float):float</code> : Returns the larger of x and y(floating point). </li>
+<li><code>fmin(x:float,y:float):float</code> : Returns the smaller of x and y(floating point). </li>
+<li><code>max(x:int,y:int):int</code> : Returns the larger of x and y. </li>
+<li><code>min(x:int,y:int):int</code> : Returns the smaller of x and y. </li>
+<li><code>abs(x:float):float</code> : Calculates the absolute value of a number. </li>
+</ul>
 <h2 id="strings"><code>strings</code></h2>
-<p>Work with strings
-- <code>is_alpha(c:char): bool</code> : check if char is alphabetic
-- <code>is_alphanum(c:char): bool</code> : check if char is alphanumeric
-- <code>is_number(c:char): bool</code> : check if char is number
-- <code>is_space(c:char): bool</code> : check if char is space
-- <code>is_lower(c:char): bool</code> : check if char is lowercase
-- <code>is_upper(c:char): bool</code> : check if char is uppercase</p>
+<p>Work with strings</p>
+<ul>
+<li><code>is_alpha(c:char): bool</code> : check if char is alphabetic</li>
+<li><code>is_alphanum(c:char): bool</code> : check if char is alphanumeric</li>
+<li><code>is_number(c:char): bool</code> : check if char is number</li>
+<li><code>is_space(c:char): bool</code> : check if char is space</li>
+<li><code>is_lower(c:char): bool</code> : check if char is lowercase</li>
+<li><code>is_upper(c:char): bool</code> : check if char is uppercase</li>
+</ul>
 <h2 id="http"><code>http</code></h2>
-<p>HTTP client-server library
-- <code>get(url:string) : string</code> : get content from given url
-- <code>post(url:string,post_data:string):string</code> : post content to given url
-- <code>download(url:string,path:string):bool</code> : download and save a url to storage
-- <code>upload(url:string,path:string):bool</code> : upload a file to a url
-<a href="https://github.com/hascal/hascal/blob/main/examples/net.has">See Example for http library</a></p>
+<p>HTTP client-server library</p>
+<ul>
+<li><code>get(url:string) : string</code> : get content from given url</li>
+<li><code>post(url:string,post_data:string):string</code> : post content to given url</li>
+<li><code>download(url:string,path:string):bool</code> : download and save a url to storage</li>
+<li><code>upload(url:string,path:string):bool</code> : upload a file to a url
+<a href="https://github.com/hascal/hascal/blob/main/examples/net.has">See Example for http library</a></li>
+</ul>
 <h2 id="random"><code>random</code></h2>
-<p>Random number generator
-- <code>random_int(max:int):int</code> : Returns a random integer between 0 and max</p>
+<p>Random number generator</p>
+<ul>
+<li><code>random_int(max:int):int</code> : Returns a random integer between 0 and max</li>
+</ul>
 <h2 id="libcinfo"><code>libcinfo</code></h2>
-<p>Get information about libc
-- <code>libc_name() : string</code> : get name of libc</p>
+<p>Get information about libc</p>
+<ul>
+<li><code>libc_name() : string</code> : get name of libc</li>
+</ul>
 <h2 id="termcolor"><code>termcolor</code></h2>
-<p>Colorize text
-- <code>cprint(txt:string,color:string)</code> : print text in color
-- <code>reset_color()</code> : reset color</p>
-<p>Colors :
-- <code>red</code>
-- <code>green</code>
-- <code>yellow</code>
-- <code>blue</code>
-- <code>magenta</code>
-- <code>cyan</code>
-- <code>white</code>
-- <code>black</code></p>
+<p>Colorize text</p>
+<ul>
+<li><code>cprint(txt:string,color:string)</code> : print text in color</li>
+<li><code>reset_color()</code> : reset color</li>
+</ul>
+<p>Colors :</p>
+<ul>
+<li><code>red</code></li>
+<li><code>green</code></li>
+<li><code>yellow</code></li>
+<li><code>blue</code></li>
+<li><code>magenta</code></li>
+<li><code>cyan</code></li>
+<li><code>white</code></li>
+<li><code>black</code></li>
+</ul>
 <h2 id="windows"><code>windows</code></h2>
 <h2 id="browser"><code>browser</code></h2>
 <p>NOTE : Only supports windwos!</p>
@@ -246,8 +260,10 @@ print(listdir("C:\\"));
 <li><code>open_newtab(url:string)</code> : open urls in new tab with default browser</li>
 </ul>
 <h2 id="cryptosha256"><code>crypto.sha256</code></h2>
-<p>SHA256 hash
-- <code>generate_sha256(data:string) : string</code> : return sha256 hash of string</p>
+<p>SHA256 hash</p>
+<ul>
+<li><code>generate_sha256(data:string) : string</code> : return sha256 hash of string</li>
+</ul>
               
             </div>
           </div>
