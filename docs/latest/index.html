@@ -165,10 +165,23 @@
                 <h1 id="introduction">Introduction</h1>
 <p><a href="https://hascal.github.io">Hascal</a> is a general-purpose open source programming language that makes it easy to build simple,optimal, reliable, and efficient software. </p>
 <h2 id="installation">Installation</h2>
-<pre><code class="language-bash">python setup.py install
+<p>Requirments :
+- python&gt;=3.7
+- gcc&gt;=8(or any c++ compiler that supports c++17)
+- <code>libcurl</code>,<code>libssl</code>,<code>libcrypt</code></p>
+<p>*Nix :</p>
+<pre><code class="language-bash">git clone https://github.com/hascal/hascal.git
+cd hascal
+make deps
+make build
 </code></pre>
-<p><strong><em>Now your Hascal compiler is ready to use in <code>src/dist</code> folder!!!</em></strong>
-NOTE: But you can add Hascal to <code>$PATH</code> for easily use.</p>
+<p>Windows : </p>
+<pre><code>git clone https://github.com/hascal/hascal.git
+cd hascal
+make deps-windows
+make windows
+</code></pre>
+<p><strong><em>Now your Hascal compiler is ready to use in <code>src/dist</code> folder, you can add it to <code>$PATH</code>.</em></strong></p>
 <h2 id="hello-world">Hello World</h2>
 <pre><code class="language-typescript">function main() : int {
     print(&quot;Hello World&quot;)
@@ -177,7 +190,7 @@ NOTE: But you can add Hascal to <code>$PATH</code> for easily use.</p>
 </code></pre>
 <p>Save this snippet into a file named <code>hello.has</code>. Now do: <code>hascal hello.has</code>.</p>
 <p>Congratulations - you just wrote and executed your first Hascal program!</p>
-<p>As in many other languages (such as C++ and Rust), <code>main</code> is the entry point of your program.</p>
+<p>As in many other languages (such as C++ and Rust), <code>main</code> is the entry point of your program and it should return <code>int</code>.</p>
 <p><code>print</code> is one of the few built-in functions. It prints the value passed to it to standard output.</p>
 <h2 id="configjson"><code>config.json</code> :</h2>
 <p>You can use <code>config.json</code> to configure your Hascal compiler.</p>
@@ -552,5 +565,5 @@ function main() : int {
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-04-28 12:37:16.393646+00:00
+Build Date UTC : 2022-04-28 12:50:31.058098+00:00
 -->
