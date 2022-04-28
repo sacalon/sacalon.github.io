@@ -77,6 +77,10 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#termcolor">termcolor</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#windows">windows</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#browser">browser</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#cryptosha256">crypto.sha256</a>
     </li>
     </ul>
@@ -209,7 +213,11 @@ print(listdir("C:\\"));
 - <code>is_upper(c:char): bool</code> : check if char is uppercase</p>
 <h2 id="http"><code>http</code></h2>
 <p>HTTP client-server library
-- <code>get(url:string) : string</code> : get content from url(only support http)</p>
+- <code>get(url:string) : string</code> : get content from given url
+- <code>post(url:string,post_data:string):string</code> : post content to given url
+- <code>download(url:string,path:string):bool</code> : download and save a url to storage
+- <code>upload(url:string,path:string):bool</code> : upload a file to a url
+<a href="https://github.com/hascal/hascal/blob/main/examples/net.has">See Example for http library</a></p>
 <h2 id="random"><code>random</code></h2>
 <p>Random number generator
 - <code>random_int(max:int):int</code> : Returns a random integer between 0 and max</p>
@@ -229,6 +237,12 @@ print(listdir("C:\\"));
 - <code>cyan</code>
 - <code>white</code>
 - <code>black</code></p>
+<h2 id="windows"><code>windows</code></h2>
+<h2 id="browser"><code>browser</code></h2>
+<p>NOTE : Only supports windwos!</p>
+<ul>
+<li><code>open_newtab(url:string)</code> : open urls in new tab with default browser</li>
+</ul>
 <h2 id="cryptosha256"><code>crypto.sha256</code></h2>
 <p>SHA256 hash
 - <code>generate_sha256(data:string) : string</code> : return sha256 hash of string</p>
