@@ -70,6 +70,10 @@
     <li class="toctree-l2"><a class="reference internal" href="#pointers">Pointers</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#passing-function-as-argument">Passing function as argument</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#hascal-types">Hascal Types</a>
         <ul>
@@ -197,13 +201,14 @@ make windows
 <ul>
 <li><code>compiler</code> : your c++ compiler name(e.g : <code>g++</code>,<code>clang++</code>)</li>
 <li><code>optimize</code> : optimize level(0,1,2,3)(default : no optimize)</li>
-<li><code>flags</code> : flags list for your compiler(e.g:<code>["-pthread"]</code>)</li>
-<li><code>no_check_g++</code> : if you don't use g++, set this to <code>1</code></li>
-<li><code>c++_version</code> : your c++ standard(e.g:<code>c++17</code> or <code>c++20</code>).note: c++ version must be greater than or equal to c++17</li>
-<li><code>g++_out</code> : if you want to see g++ output, set this to <code>1</code></li>
-<li><code>c++_out</code> : if you want to see generated c++ code, set this to <code>1</code></li>
+<li><code>flags</code> : custom flags(e.g:<code>["-pthread"]</code>)</li>
+<li><code>no_check_g++</code> : if you don't use g++, set this to <code>true</code></li>
+<li><code>c++_version</code> : your c++ standard(e.g:<code>c++17</code> or <code>c++20</code>),<strong>note: c++ version must be greater than or equal to c++17</strong></li>
+<li><code>g++_out</code> : if you want to see g++ output, set this to <code>true</code></li>
+<li><code>c++_out</code> : if you want to see generated c++ code, set this to <code>true</code></li>
+<li><code>only_compile</code> if you want to only compile and not link program, set this to <code>true</code>
+example :</li>
 </ul>
-<p>example :</p>
 <pre><code class="language-json">
 {
     &quot;compiler&quot;:&quot;g++&quot;,
@@ -271,6 +276,21 @@ function main(): int {
 }
 </code></pre>
 <p>Again, the type comes after <code>:</code> and <code>:</code> comes after the argument's name.</p>
+<h3 id="passing-function-as-argument">Passing function as argument</h3>
+<p>You can pass a function as an argument to another function.</p>
+<pre><code class="language-typescript">function runner(func: Function[int, int]int) : int{
+    return func(1,2)
+}
+
+function add(a:int, b:int) : int {
+    return a+b
+}
+
+function main():int {
+    print(runner(add))
+    return 0
+}
+</code></pre>
 <h2 id="hascal-types">Hascal Types</h2>
 <h3 id="primitive-types">Primitive types</h3>
 <pre><code class="language-typescript">bool // boolean value
@@ -565,5 +585,5 @@ function main() : int {
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-04-28 12:50:31.058098+00:00
+Build Date UTC : 2022-04-29 10:53:01.248198+00:00
 -->

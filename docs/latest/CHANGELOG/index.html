@@ -107,9 +107,33 @@
 <summary>v1.3.9</summary>
 
 <details>
-<summary>v1.3.9-alpha.1</summary>
+<summary>v1.3.9-alpha.2</summary>
 
 #### New features
+- passing functions as arguments
+
+<pre><code class="language-typescript">function f(x: int): int {
+    return x + 1
+}
+
+function g(func:Function[int]int): int {
+    return func(1)
+}
+</code></pre>
+
+
+- add `only_compile` config option
+
+#### Changes
+
+#### Bug fixes
+
+#### Removed
+
+</details>
+
+<details>
+<summary>v1.3.9-alpha.1</summary>
 
 #### Changes
 - add `download`,`upload`,`post` functions to `http` library
@@ -119,8 +143,6 @@
 
 #### Bug fixes
 - fix linker flag import bug in `cuse` statement
-
-#### Removed
 
 </details>
 
