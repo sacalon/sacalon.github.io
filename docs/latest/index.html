@@ -57,7 +57,7 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#hello-world">Hello World</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#configjson">config.json :</a>
+    <li class="toctree-l2"><a class="reference internal" href="#configure-the-compiler">Configure the compiler</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#comments">Comments</a>
     </li>
@@ -69,51 +69,81 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#pointers">Pointers</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#passing-function-as-argument">Passing function as argument</a>
-    </li>
-        </ul>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#hascal-types">Hascal Types</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#primitive-types">Primitive types</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#strings">Strings</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#escape-sequences">Escape sequences</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#string-operators">String operators</a>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#numbers">Numbers</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#type-compatibility">Type compatibility</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#arrays">Arrays</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#basic-array-concepts">Basic Array Concepts</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#array-initialization">Array Initialization</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#array-size">Array Size</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#array-append">Array append</a>
     </li>
         </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#importing-libraries">Importing Libraries</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#if">If</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#else">Else</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#for-loop">For Loop</a>
+    <li class="toctree-l3"><a class="reference internal" href="#else-if">Else if</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#while-loop">While Loop</a>
+    <li class="toctree-l3"><a class="reference internal" href="#and-and-or-and-not">and and or and not</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+        </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#manual-memory-management">Manual memory management</a>
+    <li class="toctree-l2"><a class="reference internal" href="#loops">Loops</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#inline-c-code">Inline C++ Code</a>
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#calling-a-function">Calling a function</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#include-c-code">Include C++ Code</a>
+    <li class="toctree-l3"><a class="reference internal" href="#function-overloading">Function overloading</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#passing-function-as-argument">Passing function as argument</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#importing-modules">Importing modules</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#importing-multiple-modules">Importing multiple modules</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-a-module">Creating a module</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#creating-foldered-modules">Creating foldered modules</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structures">Structures</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#structures-as-return-values">Structures as return values</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#structures-as-arguments">Structures as arguments</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#structure-inheritance">Structure inheritance</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#memory-management">Memory management</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#allocation">Allocation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reallocation">Reallocation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#deallocation">Deallocation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accessing-memory">Accessing memory</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#critical-notes">Critical notes</a>
+    </li>
+        </ul>
     </li>
     </ul>
                     </li>
@@ -195,25 +225,30 @@ make windows
     return 0
 }
 </code></pre>
-<p>Save this snippet into a file named <code>hello.has</code>. Now do: <code>hascal hello.has</code>.</p>
+<p>Save this snippet into a file named <code>hello.has</code>. Now do: </p>
+<pre><code>hascal hello.has
+</code></pre>
 <p>Congratulations - you just wrote and executed your first Hascal program!</p>
-<p>As in many other languages (such as C++ and Rust), <code>main</code> is the entry point of your program and it should return <code>int</code>.</p>
-<p><code>print</code> is one of the few built-in functions. It prints the value passed to it to standard output.</p>
-<h2 id="configjson"><code>config.json</code> :</h2>
-<p>You can use <code>config.json</code> to configure your Hascal compiler.</p>
-<ul>
-<li><code>compiler</code> : your c++ compiler name(e.g : <code>g++</code>,<code>clang++</code>)</li>
-<li><code>optimize</code> : optimize level(0,1,2,3)(default : no optimize)</li>
-<li><code>flags</code> : custom flags(e.g:<code>["-pthread"]</code>)</li>
-<li><code>no_check_g++</code> : if you don't use g++, set this to <code>true</code></li>
-<li><code>c++_version</code> : your c++ standard(e.g:<code>c++17</code> or <code>c++20</code>),<strong>note: c++ version must be greater than or equal to c++17</strong></li>
-<li><code>g++_out</code> : if you want to see g++ output, set this to <code>true</code></li>
-<li><code>c++_out</code> : if you want to see generated c++ code, set this to <code>true</code></li>
-<li><code>only_compile</code> if you want to only compile and not link program, set this to <code>true</code>
-example :</li>
-</ul>
-<pre><code class="language-json">
-{
+<p>As in many other languages (such as C++ and Rust), <code>main</code> is the entry point of your program and it should return <code>int</code> (an integer).</p>
+<p><code>print</code> is one of the few built-in functions. It prints the value passed to it to standard output and can be used to print multiple values:</p>
+<pre><code class="language-typescript">function main():int {
+    print(&quot;Hello World&quot;, 42, true)
+    return 0
+}
+</code></pre>
+<h2 id="configure-the-compiler">Configure the compiler</h2>
+<p>You can use <code>config.json</code> file to configure your Hascal compiler.</p>
+<p>The following configuration options are available:
+- <code>compiler</code> : your c++ compiler name(e.g : <code>g++</code>,<code>clang++</code>)
+- <code>optimize</code> : optimize level(0,1,2,3)(default : no optimize)
+- <code>flags</code> : custom flags(e.g:<code>["-pthread"]</code>)
+- <code>no_check_g++</code> : if you don't use g++, set this to <code>true</code>
+- <code>c++_version</code> : your c++ standard(e.g:<code>c++17</code> or <code>c++20</code>),<strong>note: c++ version must be greater than or equal to c++17 and compiler must support c++17</strong>
+- <code>g++_out</code> : if you want to see g++ output, set this to <code>true</code>
+- <code>c++_out</code> : if you want to see generated c++ code, set this to <code>true</code>
+- <code>only_compile</code> if you want to only compile and not link program, set this to <code>true</code></p>
+<p>example :</p>
+<pre><code class="language-json">{
     &quot;compiler&quot;:&quot;g++&quot;,
     &quot;optimize&quot;:&quot;-O2&quot;,
     &quot;flags&quot;:[&quot;-pthread&quot;],
@@ -226,74 +261,39 @@ example :</li>
 <h2 id="comments">Comments</h2>
 <pre><code class="language-typescript">// This is a single line comment
 </code></pre>
+<p>NOTE: Multiline comments are not supported yet(TODO).</p>
 <h2 id="variables">Variables</h2>
-<pre><code class="language-typescript">var foo : int
-var foobar : int = 1
-
-var bar = 1
-function main() : int {
-    print(foo,foobar)
-    return 0
-}
+<p>A variable is a named storage for a value. Variables are declared using the <code>var</code> keyword :</p>
+<pre><code class="language-typescript">var foo : int = 1
+</code></pre>
+<p>Also you can declare a variable without type, in this case, the type will be inferred by the value assigned to it:</p>
+<pre><code class="language-typescript">var foo = 1
 </code></pre>
 <h3 id="non-nullable-and-nullable">Non nullable and nullable</h3>
-<p>Hascal's variables and constants are non-nullable by default(i.e. they can't be <code>NULL</code>), but you can make them nullable by using <code>?</code> at the end of the type :</p>
+<p>Null safety is a feature that allows you to declare that a variable can be null or not null, and Hascal uses this feature to make sure that your code is safe.</p>
+<p>Hascal's variables and constants are non-nullable by default that means that they cannot be null(<code>NULL</code>) and you can't assign <code>NULL</code> to them and <strong>you should assign a value to them when you declare them</strong>.</p>
 <pre><code class="language-typescript">var foo : int = 1 // non-nullable
-var bar : int? = 1 // nullable
+var foo_error : int // error : nullable variable must be assigned a value
 </code></pre>
-<p>so you can use <code>NULL</code> to set a variable to <code>NULL</code> :</p>
-<pre><code class="language-typescript">foo = NULL // error
-bar = NULL // ok
+<p>But you can make variables and constants nullable by adding <code>?</code> to their type:</p>
+<pre><code class="language-typescript">var bar : int? = 1 // nullable
 </code></pre>
-<p>Also, you can make pointers to nullable variables :</p>
-<pre><code class="language-typescript">var foo : int^ = NULL // error
-var bar : int^? = NULL // ok
+<p>so you can use <code>NULL</code> to set a variable to null :</p>
+<pre><code class="language-typescript">bar = NULL // ok
 </code></pre>
 <h2 id="pointers">Pointers</h2>
-<pre><code class="language-typescript">var foo : int^
-var foobar : int = ^foo
-var bar : int = 2
-foo = &amp;bar
+<p>Pointers are a way to access the memory address of a variable. You can declare a pointer using the <code>^</code> operator after the type:</p>
+<pre><code class="language-typescript">var foo : int^?
 </code></pre>
 <p><strong><em>NOTE:</em></strong> pointers are non-nullable by default, use <code>?</code> to make it nullable:</p>
-<pre><code class="language-typescript">var foo : int?
-foo = NULL
+<p>You use cast to assign a value to a pointer:</p>
+<pre><code class="language-typescript">foo = (int^)1
 </code></pre>
-<h2 id="functions">Functions</h2>
-<pre><code class="language-typescript">function add(x:int,y:int): int {
-    return x + y
-}
-
-// overloading function
-function add(x:int,y:int,z:int): int {
-    return x + y + z
-}
-
-function add2(x:int,y:int){
-    print(x + y)
-}
-
-function main(): int {
-    print(add(1,2))
-    print(add(1,2,3))
-}
+<p>Finally, you can use the <code>^</code> operator to access the value stored in a pointer:</p>
+<pre><code class="language-typescript">var foo : int^ = (int^)1
+print(^foo) // 1
 </code></pre>
-<p>Again, the type comes after <code>:</code> and <code>:</code> comes after the argument's name.</p>
-<h3 id="passing-function-as-argument">Passing function as argument</h3>
-<p>You can pass a function as an argument to another function.</p>
-<pre><code class="language-typescript">function runner(func: Function[int, int]int) : int{
-    return func(1,2)
-}
-
-function add(a:int, b:int) : int {
-    return a+b
-}
-
-function main():int {
-    print(runner(add))
-    return 0
-}
-</code></pre>
+<p>NOTE: Currently only one level of pointers are supported.</p>
 <h2 id="hascal-types">Hascal Types</h2>
 <h3 id="primitive-types">Primitive types</h3>
 <pre><code class="language-typescript">bool // boolean value
@@ -309,224 +309,356 @@ float // floating point
 double // double floating point
 </code></pre>
 <h3 id="strings">Strings</h3>
-<pre><code class="language-typescript">function main() : int {
-    var text = &quot;Hello World&quot;
-    print(text[0]) // output : H 
-
-    var text2 = &quot;Hello\tWorld&quot;
-    print(text2) // output : Hello   World
-    return 0
-}
+<p>Strings are a sequence of characters. You can declare a string using the <code>string</code> keyword:</p>
+<pre><code class="language-typescript">var foo : string = &quot;Hello World&quot;
 </code></pre>
-<h3 id="string-operators">String operators</h3>
-<pre><code class="language-typescript">function main() : int {
-    var text = &quot;Hello &quot;
-    print(text + &quot;World&quot;) // output : Hello World 
-    return 0
-}
+<p>You can use the <code>+</code> operator to concatenate strings:</p>
+<pre><code class="language-typescript">var foo : string = &quot;Hello&quot; + &quot; World&quot;
 </code></pre>
-<p>All operators in Hascal must have values of the same type on both sides. You cannot concatenate an integer to a string:</p>
-<pre><code class="language-typescript">function main() : int {
-    var text = &quot;age = &quot;
-    var age = 23
-    print(text + age) // error : Mismatched type 'string' and 'int' :2 
-    return 0
-}
+<p>And you can use the <code>[]</code> operator to access a character in a string:</p>
+<pre><code class="language-typescript">var foo : string = &quot;Hello&quot;
+print(foo[1]) // 'e'
 </code></pre>
-<p>We have to either convert age to a string:</p>
-<pre><code class="language-typescript">function main() : int {
-    var text = &quot;age = &quot;
-    var age = 23
-    print(text + to_string(age)) // error : Mismatched type 'string' and 'int' :3
-    return 0
-}
+<blockquote>
+<p>Note: type of accessed character is <code>char</code>
+Note: the first character in a string is at index 0.</p>
+</blockquote>
+<p>With <code>len</code> function you can get the length of a string:</p>
+<pre><code class="language-typescript">var foo : string = &quot;Hello&quot;
+print(len(foo)) // 5
 </code></pre>
+<blockquote>
+<p>Note: <code>len</code> function is a built-in function.</p>
+</blockquote>
+<h4 id="escape-sequences">Escape sequences</h4>
+<p>You can use escape sequences to print special characters:</p>
+<pre><code class="language-typescript">var foo : string = &quot;Hello\tWorld&quot;
+print(foo) // Hello    World
+</code></pre>
+<p>The following escape sequences are supported:
+- <code>\n</code> : newline
+- <code>\t</code> : tab
+- <code>\r</code> : carriage return
+- <code>\\</code> : backslash
+- <code>\'</code> : single quote
+- <code>\"</code> : double quote
+- <code>\?</code> : question mark
+- <code>\a</code> : bell
+- <code>\b</code> : backspace
+- <code>\f</code> : form feed
+- <code>\v</code> : vertical tab
+- <code>\0</code> : null character
+- <code>\x____</code> : hexadecimal character
+- <code>\u____</code> : unicode character
+- <code>\U____</code> : unicode character
+- <code>\_____</code> : arbitrary octal value </p>
+<p>Note: <code>_____</code> means you should specify the id of the character you want to print.</p>
 <h3 id="numbers">Numbers</h3>
-<pre><code class="language-typescript">function main() : int {
-    var a : int = 123 // or : var a = 123
-    var b : float = 1.23 // or : var b = 1.24
-    var c : double = b // type compatibility
-    var cc : int8 = c // type conversion
+<p>Numbers are either integers or floating point numbers. You can declare a number using the following types:</p>
+<pre><code class="language-typescript">int8 uint8 // 8-bit integer
+int16 uint16 // 16-bit integer
+int int32 uint32 // 32-bit integer
+int64 uint64 // 64-bit integer
 
-    return 0
-}
+float // floating point 
+double // double floating point
 </code></pre>
-<p>This will assign the value of <code>123</code> to <code>a</code> and <code>1.23</code> to <code>b</code> and <code>1.23</code> to <code>c</code> and <code>1</code> to <code>cc</code>.</p>
+<p>So you can use the following operators to perform arithmetic operations:
+- <code>+</code> : addition
+- <code>-</code> : subtraction
+- <code>*</code> : multiplication
+- <code>/</code> : division</p>
+<p>See the following example:</p>
+<pre><code class="language-typescript">var a : int = 123
+var b : float = 1.23
+var c : double = 1.2313213215648789798
+</code></pre>
+<h3 id="type-compatibility">Type compatibility</h3>
+<p>Type compatibility is very close to automatic or implicit type conversion. The type compatibility is being able to use two types together without modification and being able to subsititute one for the other without modification.</p>
+<p>Compatible types are:
+- <code>int</code> and <code>float</code>
+- <code>int</code> and <code>double</code>
+- <code>float</code> and <code>double</code></p>
+<p>Note: strings are not compatible with characters.</p>
 <h3 id="arrays">Arrays</h3>
-<h4 id="basic-array-concepts">Basic Array Concepts</h4>
 <p>Arrays are collections of data elements of the same type. They can be represented by a list of elements surrounded by brackets. The elements can be accessed by appending an index (starting with 0) in brackets to the array variable:</p>
-<pre><code class="language-typescript">function main() : int {
-    var a = [1,2,3] // int array with length 3
-    var b = [1.0,2.0,3.0] // float array with length 3
-    print(a[0])
-    a[0] = 4
-    print(a[0])
-    return 0
-}
+<p>Arrays declare like following:</p>
+<pre><code class="language-typescript">var foo : [int] = [1,2,3]
+var bar : [string] = [&quot;Hello&quot;, &quot;World&quot;]
 </code></pre>
-<h4 id="array-initialization">Array Initialization</h4>
-<p>The basic initialization syntax is as described above. The type of an array is determined by the first element:</p>
-<ul>
-<li><code>[1, 2, 3]</code> is an array of ints (<code>[int]</code>).</li>
-<li><code>["a", "b"]</code> is an array of strings (<code>[string]</code>).</li>
-</ul>
-<h4 id="array-size">Array Size</h4>
-<p>You can get length of array's elements with <code>len</code> function :</p>
-<pre><code class="language-typescript">function main() : int {
-   var a = [1,2,3]
-   print(len(a)) // output : 3
-}
+<p>You can use the <code>[]</code> operator to access an element in an array:</p>
+<pre><code class="language-typescript">var foo : [int] = [1,2,3]
+print(foo[1]) // 2
 </code></pre>
-<h4 id="array-append">Array append</h4>
-<p>You can append elements to array with <code>append</code> function :</p>
-<pre><code class="language-typescript">function main() : int {
-   var a = [1,2,3]
-   append(a,4)
-   for e in a {
-       print(e)
-   }
-   return 0
-}
+<p>And you can assign a value to an array element:</p>
+<pre><code class="language-typescript">var foo : [int] = [1,2,3]
+foo[1] = 4
+print(foo[1]) // 4
 </code></pre>
-<h2 id="importing-libraries">Importing Libraries</h2>
-<p>Libraries can imported with <code>use</code> keyword :</p>
-<pre><code class="language-typescript">use os
-// multiple import :
-use os,file
-
-function main() : int {
-   system(&quot;gcc --version&quot;)
-   return 0
-}
+<p>With <code>append</code> built-in function you can append an element to an array:</p>
+<pre><code class="language-typescript">var foo : [int] = [1,2,3]
+foo.append(4)
+print(foo[3]) // 4
+</code></pre>
+<p>And you can get the length of an array with the <code>len</code> built-in function:</p>
+<pre><code class="language-typescript">var foo : [int] = [1,2,3]
+print(len(foo)) // 3
 </code></pre>
 <h2 id="if">If</h2>
-<pre><code class="language-typescript">var x = 1
-var y = 2
-function main() : int {
-   if x == y {
-       // something
-   } else if not x != y {
-       // something
-   } else if x == y and x != 2 {
-       // something
-   } else if x != y or x == 10 {
-       // something
-   } else {
-       // something
-   }
-   return 0
+<p>You can use the <code>if</code> keyword to execute a block of code, if a condition is true:</p>
+<pre><code class="language-typescript">var foo : int = 1
+if foo == 1 {
+    print(&quot;foo is 1&quot;)
 }
 </code></pre>
-<p><code>if</code> statements are pretty straightforward and similar to most other languages. Unlike other C-like languages, there are no parentheses surrounding the condition and the braces are always required.</p>
+<h3 id="else">Else</h3>
+<p>You can use the <code>else</code> keyword to execute a block of code, if a condition is false:</p>
+<pre><code class="language-typescript">var foo : int = 1
+if foo == 1 {
+    print(&quot;foo is 1&quot;)
+} else {
+    print(&quot;foo is not 1&quot;)
+}
+</code></pre>
+<h3 id="else-if">Else if</h3>
+<p>You can use the <code>else if</code> statement to execute a block of code, if <code>else if</code> a condition is true:</p>
+<pre><code class="language-typescript">var foo : int = 1
+if foo == 1 {
+    print(&quot;foo is 1&quot;)
+} else if foo == 2 {
+    print(&quot;foo is 2&quot;)
+} else {
+    print(&quot;foo is not 1 or 2&quot;)
+}
+</code></pre>
+<h3 id="and-and-or-and-not"><code>and</code> and <code>or</code> and <code>not</code></h3>
+<p>You can use the <code>and</code> keyword to execute a block of code, if all conditions are true:</p>
+<pre><code class="language-typescript">var foo : int = 1
+var bar : int = 2
+if foo == 1 and bar == 2 {
+    print(&quot;foo is 1 and bar is 2&quot;)
+}
+</code></pre>
+<p>You can use the <code>or</code> keyword to execute a block of code, if at least one condition is true:</p>
+<pre><code class="language-typescript">var foo : int = 1
+var bar : int = 2
+if foo == 1 or bar == 2 {
+    print(&quot;foo is 1 or bar is 2&quot;)
+}
+</code></pre>
+<p>You can use the <code>not</code> keyword to execute a block of code, if a condition is false:</p>
+<pre><code class="language-typescript">var foo : int = 1
+if not foo == 1 {
+    print(&quot;foo is not 1&quot;)
+}
+</code></pre>
+<p><strong>You can see Hascal's conditional operators, <a href="cond_op/index.html">here</a></strong></p>
+<h2 id="loops">Loops</h2>
+<p>You can use the <code>while</code> keyword to execute a block of code, if a condition is true:</p>
+<pre><code class="language-typescript">var foo : int = 1
+while foo == 1 {
+    print(&quot;foo is 1&quot;)
+    foo = 2
+}
+</code></pre>
+<p>The <code>for</code> keyword is used to execute a block of code for a number of times:</p>
+<pre><code class="language-typescript">for i in range(0, 10) {
+    print(i)
+}
+</code></pre>
+<p>Also you can use the <code>for</code> keyword for iterating over an array:</p>
+<pre><code class="language-typescript">var foo : [int] = [1,2,3]
+for i in foo {
+    print(i)
+}
+</code></pre>
+<h2 id="functions">Functions</h2>
+<p>Functions are a way to group code that can be called to perform a specific task. You can declare a function using the <code>function</code> keyword:</p>
+<pre><code class="language-typescript">function foo() {
+    print(&quot;Hello World&quot;)
+}
+</code></pre>
+<p>Also your function block should be outside of a function.</p>
+<p>Your function can have parameters and return a value. You can declare parameters and return type, like variable declarations:</p>
+<pre><code class="language-typescript">function add(x:int,y:int): int {
+    return x + y
+}
+</code></pre>
+<p>In the example above, <code>x</code> and <code>y</code> are parameters and thire type(<code>int</code>) is your return type.</p>
 <blockquote>
-<p>You can see Hascal's conditional operators, <a href="cond_op/index.html">here</a></p>
+<p>Note: you can use <code>?</code> to make a parameter nullable.</p>
 </blockquote>
-<h2 id="for-loop">For Loop</h2>
-<pre><code class="language-typescript">function main() : int {
-   var a = [1,2,3]
-   for i in a {
-       print(i) // prints elements of `a` variable
-   }
-   return 0
+<h3 id="calling-a-function">Calling a function</h3>
+<p>You can call a function by using the function name followed by parentheses:</p>
+<pre><code class="language-typescript">foo()
+</code></pre>
+<p>If you want to pass some parameters to your function, you can use them in the parentheses:</p>
+<pre><code class="language-typescript">foo(1,2,3)
+</code></pre>
+<p>Also you can assign the return value of a function to a variable:</p>
+<pre><code class="language-typescript">var foo : int = add(1,2)
+</code></pre>
+<h3 id="function-overloading">Function overloading</h3>
+<p>You can overload functions by changing the number of parameters or the type of parameters :</p>
+<pre><code class="language-typescript">// overloading function
+function add(x:int,y:int,z:int): int {
+    return x + y + z
+}
+
+function add2(x:int,y:int){
+    print(x + y)
+}
+
+function main(): int {
+    print(add(1,2))
+    print(add(1,2,3))
 }
 </code></pre>
-<h2 id="while-loop">While Loop</h2>
-<pre><code class="language-typescript">function main() : int {
-   var a = 1
-   while a &lt;= 100 {
-       print(a)
-       a = a + 1
-   }
-   return 0
-}
-</code></pre>
-<h2 id="structs">Structs</h2>
-<pre><code class="language-typescript">struct Color {
-    var r : int
-    var g : int
-    var b : int
-    var name = &quot;Transparent&quot; // optional value
+<h3 id="passing-function-as-argument">Passing function as argument</h3>
+<p>You can pass a function as an argument to another function:</p>
+<pre><code class="language-typescript">function runner(func: Function[int, int]int) : int{
+    return func(1,2)
 }
 
-struct RGB : Color {
-    // struct inheritance
+function add(a:int, b:int) : int {
+    return a+b
 }
 
-function main() : int {
-    var a : Color
-    a.r = 1
-    a.g = 110
-    a.b = 255
-    print(a.r,a.g,a.b)
-
-    var b = Color(34,156,255,&quot;AColor&quot;)
-
-    var c = RGB(255,0,0,&quot;AColor&quot;)
+function main():int {
+    print(runner(add))
     return 0
 }
 </code></pre>
-<h2 id="manual-memory-management">Manual memory management</h2>
-<p>You can use <code>new</code> and <code>delete</code> keywords for manual memory management :</p>
-<pre><code class="language-typescript">struct point {
-    var x : int
-    var y : int
-}
+<p>In the example above, <code>runner</code> is a function that takes a function as an argument and returns the return value of the given function.</p>
+<h2 id="importing-modules">Importing modules</h2>
+<p>You can use other modules by importing them. You can import a module by using the <code>use</code> keyword:</p>
+<pre><code class="language-typescript">use os
 
 function main() : int {
-    var a : int* = new int(10)
-    var b = new float(10.0)
-    var c = new string(&quot;hello&quot;)
-    var d : point* = new point(point(10,10))
-
-    print(*a)
-    print(*b)
-    print(*c)
-    print(*d)
-
-    a = new int(20)
-    print(*a)
-
-    c = new string(*c + &quot; world&quot;)
-    print(*c)
-
-    delete a
-    delete b
-    delete c
-    delete d
-
-    return 0
+   system(&quot;start http://www.google.com&quot;)
+   return 0
 }
 </code></pre>
-<h2 id="inline-c-code">Inline C++ Code</h2>
-<p>You can use inline c++ code in hascal with <code>cuse</code> keyword :</p>
-<pre><code class="language-typescript">cuse '#include &lt;cstdio&gt;'
-cuse 'int main(){printf(&quot;%d&quot;,1);return 0;}'
-// output : 1
+<h3 id="importing-multiple-modules">Importing multiple modules</h3>
+<p>You can import multiple modules by using the <code>use</code> keyword and separating the module names with a comma:</p>
+<pre><code class="language-typescript">use os, math, conv
 </code></pre>
-<h2 id="include-c-code">Include C++ Code</h2>
-<p>You can include C++ code in your Hascal file with <code>cuse</code> keyword :</p>
-<p><code>add.cc</code> :</p>
-<pre><code class="language-cpp">int add(int x, int y) {
-    return x + y;
+<p>For importing a submodule of a module, you can use the <code>.</code> operator:</p>
+<pre><code class="language-typescript">use crypto.sha256
+</code></pre>
+<h3 id="creating-a-module">Creating a module</h3>
+<p>For creating a module, you can create a file with the same name as the module and with the extension <code>.has</code> and put the module code inside it:</p>
+<p><code>add.has</code>:</p>
+<pre><code class="language-typescript">function add(x:int, y:int) : int {
+    return x + y
 }
 </code></pre>
-<p><code>add.hpp</code> :</p>
-<pre><code class="language-cpp">// nothing but should be exist
-// if you want to include a c++ header file, you should include it in this file and not in `add.cc`
-// e.g :
-// #include &lt;cmath&gt;
-</code></pre>
-<p><code>main.has</code> :</p>
-<pre><code class="language-typescript">// if you want to include a local c file, use `local` keyword befor `use` keyword
-// but if you want to include a file in hascal standard library folder don't use `local` keyword
-local cuse add 
-
-function add(a:int,b:int): int
+<p><code>main.has</code>:</p>
+<pre><code class="language-typescript">use add
 
 function main() : int {
     print(add(1,2))
     return 0
 }
+</code></pre>
+<h4 id="creating-foldered-modules">Creating foldered modules</h4>
+<p>Module files can be placed in a folder, for creating a foldered module you should first create the folder and then create the <code>_.has</code> file inside it.
+The <code>_.has</code> file is the main file of the module and compiler will look for it.
+You can also import submodules in <code>_.has</code> file.</p>
+<blockquote>
+<p>Note: Any submodule that is not imported in <code>_.has</code> file will be ignored.
+Note: Any submodule can have other submodules.</p>
+</blockquote>
+<h2 id="structures">Structures</h2>
+<p>Structures are a way to group data together. You can declare a structure using the <code>struct</code> keyword:</p>
+<pre><code class="language-typescript">struct Color {
+    var r : int
+    var g : int
+    var b : int
+    var name = &quot;Anything...&quot; // optional
+}
+</code></pre>
+<blockquote>
+<p>Note: Declaring a structure member without a type will make it optional.</p>
+</blockquote>
+<p>After declaring a structure, you can create an instance of it:</p>
+<pre><code class="language-typescript">var red = Color(255,0,0)
+</code></pre>
+<p>For accessing the fields of a structure, you should use the <code>.</code> operator:</p>
+<pre><code class="language-typescript">var red = Color(255,0,0)
+print(red.r)
+print(red.g)
+print(red.b)
+print(red.name)
+</code></pre>
+<h3 id="structures-as-return-values">Structures as return values</h3>
+<p>You can return a structure from a function:</p>
+<pre><code class="language-typescript">function foo() : Color {
+    return Color(1,2,3)
+}
+</code></pre>
+<h3 id="structures-as-arguments">Structures as arguments</h3>
+<p>You can pass a structure as an argument to a function:</p>
+<pre><code class="language-typescript">function foo(c:Color) {
+    print(c.r)
+    print(c.g)
+    print(c.b)
+    print(c.name)
+}
+</code></pre>
+<h3 id="structure-inheritance">Structure inheritance</h3>
+<p>You can inherit a structure from another structure with <code>:</code> operator after the structure name:</p>
+<pre><code class="language-typescript">struct RGB : Color {
+
+}
+</code></pre>
+<p>And you can access the fields of the inherited structure:</p>
+<pre><code class="language-typescript">var foo : RGB = RGB(1,2,3)
+print(foo.r,foo.g,foo.b)
+
+var bar = RGB(255,0,0,&quot;AColor&quot;)
+</code></pre>
+<h2 id="memory-management">Memory management</h2>
+<p>Memory management is a way to manage the memory of your program. Hascall use manual memory management because this manual memory management is used in most performance-critical applications like games,OSes, embedded systems, etc.</p>
+<p>Hascal uses <code>new</code> and <code>delete</code> keywords to manage memory, manually.</p>
+<h3 id="allocation">Allocation</h3>
+<p>For allocating memory, you should use the <code>new</code> keyword. Note that type of the allocated memory should be pointer or reference type :</p>
+<pre><code class="language-typescript">var foo : int^ = new int(1)
+</code></pre>
+<p>For easily declaring and allocating memory, use <code>var &lt;name&gt; = new &lt;type&gt;(&lt;args...&gt;)</code> statement, like this:</p>
+<pre><code class="language-typescript">var foo = new int(1)
+</code></pre>
+<h3 id="reallocation">Reallocation</h3>
+<p>For reallocating memory and assigning the new value to the pointer, use <code>&lt;pointer&gt; = new &lt;type&gt;(&lt;args...&gt;)</code> statement, like this:</p>
+<pre><code class="language-typescript">var foo : int^ = new int(1) // allocate memory
+foo = new int(2) // reallocate memory and assign new value
+</code></pre>
+<h3 id="deallocation">Deallocation</h3>
+<p>For deallocating memory, you should use the <code>delete</code> keyword and pass the pointer to the memory that you want to deallocate:</p>
+<pre><code class="language-typescript">delete foo
+</code></pre>
+<h3 id="accessing-memory">Accessing memory</h3>
+<p>Like pointers, you can access the allocated memory value with the <code>^</code> operator:</p>
+<pre><code class="language-typescript">var foo : int^ = new int(1)
+print(^foo)
+</code></pre>
+<h3 id="critical-notes">Critical notes</h3>
+<ul>
+<li>
+<p><span style="color:red">Don't forget to use the <code>delete</code> keyword at end of scope and before the end of the program.</span>.</p>
+<blockquote>
+<p>In future, we will add a feature to show warnings when you forget to use the <code>delete</code> keyword.</p>
+</blockquote>
+</li>
+<li>
+<p><strong>You can't deallocate memory that you haven't allocated it without <code>new</code> keyword.</strong></p>
+</li>
+<li>
+<p><strong>You can allocate, not allocated pointers</strong>:</p>
+</li>
+</ul>
+<pre><code class="language-typescript">var foo : int^?
+foo = new int(1)
 </code></pre>
               
             </div>
@@ -588,5 +720,5 @@ function main() : int {
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2022-05-04 08:39:07.073636+00:00
+Build Date UTC : 2022-05-07 17:34:20.501522+00:00
 -->
