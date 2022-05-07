@@ -3,7 +3,8 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Language Documentation - Hascal Documentation</title>
+        <title>Hascal Documentation</title>
+        <meta name="robots" content="noindex" />
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html" class="active"><strong aria-hidden="true">1.</strong> Language Documentation</a></li><li class="chapter-item expanded "><a href="cond_op.html"><strong aria-hidden="true">2.</strong> Conditional Operators</a></li><li class="chapter-item expanded "><a href="interfacing.html"><strong aria-hidden="true">3.</strong> Interfacing with C++</a></li><li class="chapter-item expanded "><a href="stdlib.html"><strong aria-hidden="true">4.</strong> Standard Documentation</a></li><li class="chapter-item expanded "><a href="libmanager.html"><strong aria-hidden="true">5.</strong> Library Manager Documentation</a></li><li class="chapter-item expanded "><a href="ide.html"><strong aria-hidden="true">6.</strong> IDE Integration</a></li><li class="chapter-item expanded "><a href="ROADMAP.html"><strong aria-hidden="true">7.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="CHANGELOG.html"><strong aria-hidden="true">8.</strong> Change Log</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Language Documentation</a></li><li class="chapter-item expanded "><a href="cond_op.html"><strong aria-hidden="true">2.</strong> Conditional Operators</a></li><li class="chapter-item expanded "><a href="interfacing.html"><strong aria-hidden="true">3.</strong> Interfacing with C++</a></li><li class="chapter-item expanded "><a href="stdlib.html"><strong aria-hidden="true">4.</strong> Standard Documentation</a></li><li class="chapter-item expanded "><a href="libmanager.html"><strong aria-hidden="true">5.</strong> Library Manager Documentation</a></li><li class="chapter-item expanded "><a href="ide.html"><strong aria-hidden="true">6.</strong> IDE Integration</a></li><li class="chapter-item expanded "><a href="ROADMAP.html"><strong aria-hidden="true">7.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="CHANGELOG.html"><strong aria-hidden="true">8.</strong> Change Log</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -608,23 +609,468 @@ print(^foo)
 <pre><code class="language-typescript">var foo : int^?
 foo = new int(1)
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="conditional-operators"><a class="header" href="#conditional-operators">Conditional Operators</a></h1>
+<table><thead><tr><th style="text-align: left">Operator</th><th style="text-align: center">Description</th><th style="text-align: center">Example</th></tr></thead><tbody>
+<tr><td style="text-align: left">==</td><td style="text-align: center">Returns true if the operands are equal.</td><td style="text-align: center">var1 == var2</td></tr>
+<tr><td style="text-align: left">!=</td><td style="text-align: center">Returns true if the operands are not equal.</td><td style="text-align: center">var1 != var2</td></tr>
+<tr><td style="text-align: left">&gt;</td><td style="text-align: center">Returns true if the left operand is greater than the right operand.</td><td style="text-align: center">var1 &gt; var2</td></tr>
+<tr><td style="text-align: left">&gt;=</td><td style="text-align: center">Returns true if the left operand is greater than or equal to the right operand.</td><td style="text-align: center">var1 &gt;= var2</td></tr>
+<tr><td style="text-align: left">&lt;</td><td style="text-align: center">Returns true if the left operand is less than the right operand.</td><td style="text-align: center">var1 &lt; var2</td></tr>
+<tr><td style="text-align: left">&lt;=</td><td style="text-align: center">Returns true if the left operand is less than or equal to the right operand.</td><td style="text-align: center">var1 &lt;= var2</td></tr>
+<tr><td style="text-align: left"><code>and</code></td><td style="text-align: center">Returns true if the left operand and right operand are true</td><td style="text-align: center">var1 == 1 and var2 == 2</td></tr>
+<tr><td style="text-align: left"><code>or</code></td><td style="text-align: center">Returns true if the left operand or right operand are true</td><td style="text-align: center">var1 == 1 or var2 == 2</td></tr>
+<tr><td style="text-align: left"><code>not</code></td><td style="text-align: center">Returns true if the operand are false or if the operand is true returns false</td><td style="text-align: center">not true</td></tr>
+</tbody></table>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="interfacing-with-c"><a class="header" href="#interfacing-with-c">Interfacing with C++</a></h1>
+<p>Hascal is based on C++, so you can use C++ functions and classes in your program.</p>
+<h2 id="inline-c-code"><a class="header" href="#inline-c-code">Inline C++ Code</a></h2>
+<p>You can use inline c++ code in Hascal with <code>cuse</code> keyword :</p>
+<pre><code class="language-typescript">cuse '#include &lt;cstdio&gt;'
+cuse 'int main(){printf(&quot;%d&quot;,1);return 0;}'
+// output : 1
+</code></pre>
+<p>Or you can use multiline c++ code, like following:</p>
+<pre><code class="language-typescript">cuse &quot;&quot;&quot;
+#include &lt;cstdio&gt;
+
+int main(){
+    printf(&quot;%d&quot;,1);
+    return 0;
+}
+&quot;&quot;&quot;
+</code></pre>
+<h2 id="externing-functions"><a class="header" href="#externing-functions">Externing functions</a></h2>
+<p>For using C++ functions in your program, you should at first declare them with following syntax:</p>
+<pre><code class="language-typescript">function &lt;name&gt;(&lt;args...&gt;) : &lt;return type&gt;
+</code></pre>
+<h2 id="include-c-headers"><a class="header" href="#include-c-headers">Include C++ headers</a></h2>
+<p>Also Hascal can include C++ headers in your program.
+We need two files, one for including macros and one for main part of the header. You should put including macros in <code>your_cpp_lib.hpp</code> and main part in <code>your_cpp_lib.cc</code>. The specified files should exist in the same folder.</p>
+<p>See the example below:</p>
+<p><code>add.cc</code> :</p>
+<pre><code class="language-cpp">void cpp_print(int x){
+    printf(&quot;%d&quot;,x);
+}
+</code></pre>
+<p><code>add.hpp</code> :</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+</code></pre>
+<p><code>main.has</code> :</p>
+<pre><code class="language-typescript">cuse add 
+
+function cpp_print(x:int)
+
+function main() : int {
+    cpp_print(12)
+    return 0
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hascal-standard-library"><a class="header" href="#hascal-standard-library">Hascal Standard Library</a></h1>
+<ul>
+<li><a href="stdlib.html#built-in-functions">Built-in Functions</a></li>
+<li><a href="stdlib.html#file"><code>file</code></a></li>
+<li><a href="stdlib.html#os"><code>os</code></a></li>
+<li><a href="stdlib.html#time"><code>time</code></a></li>
+<li><a href="stdlib.html#math"><code>math</code></a></li>
+<li><a href="stdlib.html#strings"><code>strings</code></a></li>
+<li><a href="stdlib.html#http"><code>http</code></a></li>
+<li><a href="stdlib.html#random"><code>random</code></a></li>
+<li><a href="stdlib.html#libcinfo"><code>libcinfo</code></a></li>
+<li><a href="stdlib.html#termcolor"><code>termcolor</code></a></li>
+<li><a href="stdlib.html#crypto-sha256"><code>crypto.sha256</code></a></li>
+</ul>
+<h2 id="built-in-functions"><a class="header" href="#built-in-functions">Built-in functions</a></h2>
+<ul>
+<li><code>print(...)</code> : Standard Hascal's print function</li>
+<li><code>ReadStr()</code> : Standard Hascal's read string function</li>
+<li><code>ReadInt()</code> : Standard Hascal's read integer function</li>
+<li><code>ReadFloat()</code> : Standard Hascal's read float function</li>
+<li><code>ReadBool()</code> : Standard Hascal's read boolean function</li>
+<li><code>ReadChar()</code> : Standard Hascal's read character function</li>
+<li><code>to_int(val:T)</code> : Standard Hascal's convert to integer function</li>
+<li><code>to_float(val:T)</code> : Standard Hascal's convert to float function</li>
+<li><code>to_bool(val:T)</code> : Standard Hascal's convert to boolean function</li>
+<li><code>to_char(val:T)</code> : Standard Hascal's convert to character function</li>
+<li><code>to_string(val:T)</code> : Standard Hascal's convert to string function</li>
+<li><code>exit(exit_code:int)</code> : Standard Hascal's exit function</li>
+<li><code>sizeof(T)</code> : Standard Hascal's sizeof function</li>
+<li><code>typeof(T)</code> : Standard Hascal's typeof function</li>
+</ul>
+<h2 id="file"><a class="header" href="#file"><code>file</code></a></h2>
+<ul>
+<li><code>read_file(file_name:string) : string</code> : Read a file and return its content</li>
+<li><code>write_file(file_name:string,content:string)</code> : Write a file</li>
+</ul>
+<!-- ### listdir(path:string) : [string]
+Lists dirs,files on a path
+
+example :
+```
+print(listdir("C:\\"));
+``` -->
+<h2 id="os"><a class="header" href="#os"><code>os</code></a></h2>
+<ul>
+<li><code>os_name() : string</code> : Return OS name</li>
+<li><code>system()</code> : Execute a command</li>
+<li><code>compiler_name() : string</code> : Return compiler name</li>
+<li><code>arch() : string</code> : Return architecture</li>
+<li><code>is_x86() : bool</code> : Return true if architecture is x86</li>
+<li><code>is_x64() : bool</code> : Return true if architecture is x64</li>
+<li><code>getenv(name:string) : string</code> : Return environment variable</li>
+</ul>
+<h2 id="time"><a class="header" href="#time"><code>time</code></a></h2>
+<p>Work with time/date</p>
+<ul>
+<li><code>get_year():int</code> : Get current year</li>
+<li><code>get_month():int</code> : Get current month</li>
+<li><code>get_day():int</code> : Get current day</li>
+<li><code>get_hour():int</code> : Get current hour</li>
+<li><code>get_minute():int</code> : Get current minute</li>
+<li><code>get_second():int</code> : Get current second</li>
+</ul>
+<h2 id="math"><a class="header" href="#math"><code>math</code></a></h2>
+<p>Math Functions</p>
+<ul>
+<li><code>sin(val:float):float</code> : Returns sine of x</li>
+<li><code>cos(val:float):float</code> : Returns cosine of x</li>
+<li><code>tan(val:float):float</code> : Returns tangent of x</li>
+<li><code>PI : float</code> : PI number</li>
+<li><code>fmax(x:float,y:float):float</code> : Returns the larger of x and y(floating point). </li>
+<li><code>fmin(x:float,y:float):float</code> : Returns the smaller of x and y(floating point). </li>
+<li><code>max(x:int,y:int):int</code> : Returns the larger of x and y. </li>
+<li><code>min(x:int,y:int):int</code> : Returns the smaller of x and y. </li>
+<li><code>abs(x:float):float</code> : Calculates the absolute value of a number. </li>
+</ul>
+<h2 id="strings-1"><a class="header" href="#strings-1"><code>strings</code></a></h2>
+<p>Work with strings</p>
+<ul>
+<li><code>is_alpha(c:char): bool</code> : check if char is alphabetic</li>
+<li><code>is_alphanum(c:char): bool</code> : check if char is alphanumeric</li>
+<li><code>is_number(c:char): bool</code> : check if char is number</li>
+<li><code>is_space(c:char): bool</code> : check if char is space</li>
+<li><code>is_lower(c:char): bool</code> : check if char is lowercase</li>
+<li><code>is_upper(c:char): bool</code> : check if char is uppercase</li>
+</ul>
+<h2 id="http"><a class="header" href="#http"><code>http</code></a></h2>
+<p>HTTP client-server library</p>
+<ul>
+<li><code>get(url:string) : string</code> : get content from given url</li>
+<li><code>post(url:string,post_data:string):string</code> : post content to given url</li>
+<li><code>download(url:string,path:string):bool</code> : download and save a url to storage</li>
+<li><code>upload(url:string,path:string):bool</code> : upload a file to a url
+<a href="https://github.com/hascal/hascal/blob/main/examples/net.has">See Example for http library</a></li>
+</ul>
+<h2 id="random"><a class="header" href="#random"><code>random</code></a></h2>
+<p>Random number generator</p>
+<ul>
+<li><code>random_int(max:int):int</code> : Returns a random integer between 0 and max</li>
+</ul>
+<h2 id="termcolor"><a class="header" href="#termcolor"><code>termcolor</code></a></h2>
+<p>Colorize text</p>
+<ul>
+<li><code>cprint(txt:string,color:string)</code> : print text in color</li>
+<li><code>reset_color()</code> : reset color</li>
+</ul>
+<p>Colors :</p>
+<ul>
+<li><code>red</code></li>
+<li><code>green</code></li>
+<li><code>yellow</code></li>
+<li><code>blue</code></li>
+<li><code>magenta</code></li>
+<li><code>cyan</code></li>
+<li><code>white</code></li>
+<li><code>black</code></li>
+</ul>
+<h2 id="windows"><a class="header" href="#windows"><code>windows</code></a></h2>
+<h2 id="browser"><a class="header" href="#browser"><code>browser</code></a></h2>
+<p>NOTE : Only supports windwos!</p>
+<ul>
+<li><code>open_newtab(url:string)</code> : open urls in new tab with default browser</li>
+</ul>
+<h2 id="cryptosha256"><a class="header" href="#cryptosha256"><code>crypto.sha256</code></a></h2>
+<p>SHA256 hash</p>
+<ul>
+<li><code>generate_sha256(data:string) : string</code> : return sha256 hash of string</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hascal-library-managerhlm"><a class="header" href="#hascal-library-managerhlm">Hascal Library Manager(HLM)</a></h1>
+<p><strong>HLM</strong> is default and builtin Hascal's library manager.</p>
+<h2 id="install-a-library"><a class="header" href="#install-a-library">Install a library</a></h2>
+<pre><code>$ hascal install &lt;library name&gt;
+</code></pre>
+<p>example :</p>
+<pre><code>$ hascal install log
+</code></pre>
+<h2 id="uninstall-a-library"><a class="header" href="#uninstall-a-library">Uninstall a library</a></h2>
+<pre><code>$ hascal uninstall &lt;library name&gt;
+</code></pre>
+<p>example :</p>
+<pre><code>$ hascal uninstall log
+</code></pre>
+<h2 id="publish-your-libraries"><a class="header" href="#publish-your-libraries">Publish your libraries</a></h2>
+<p>Todo</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ide-integration"><a class="header" href="#ide-integration">IDE Integration</a></h1>
+<ul>
+<li><a href="https://github.com/hascal/vscode">Vscode Extension</a></li>
+</ul>
+<h2 id="todo"><a class="header" href="#todo">Todo</a></h2>
+<ul>
+<li>Vim extension</li>
+<li>Emacs extension</li>
+<li>Nano extension</li>
+<li>Atom plugin</li>
+<li>Notepad++ Extension</li>
+<li>Intellij Idea plugin</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hascals-roadmap"><a class="header" href="#hascals-roadmap">Hascal's Roadmap</a></h1>
+<details>
+<summary>v1.3.x</summary>
+<h3 id="base"><a class="header" href="#base">Base</a></h3>
+<ul>
+<li>redesign logo</li>
+<li>js backend(<code>hascal2js</code>)</li>
+<li>static variables</li>
+<li>use <code>mdbook</code> instead of <code>mkdocs</code> for documentation generation</li>
+</ul>
+<h3 id="language"><a class="header" href="#language">Language</a></h3>
+<ul>
+<li>lambdas :</li>
+</ul>
+<pre><code>var mythread = thread(@(1000,true){
+    print(&quot;hi&quot;)
+})
+</code></pre>
+<h3 id="standard-library"><a class="header" href="#standard-library">Standard Library</a></h3>
+<ul>
+<li><code>thread</code> library</li>
+</ul>
+<h3 id="library-manager"><a class="header" href="#library-manager">Library Manager</a></h3>
+<ul>
+<li>unistall library option</li>
+</ul>
+</details><div style="break-before: page; page-break-before: always;"></div><h1 id="hascals-changelog"><a class="header" href="#hascals-changelog">Hascal's Changelog</a></h1>
+<details>
+<summary>v1.3.9</summary>
+<details>
+<summary>v1.3.9-beta</summary>
+<h4 id="new-features"><a class="header" href="#new-features">New features</a></h4>
+<ul>
+<li>passing functions as arguments</li>
+</ul>
+<pre><code class="language-typescript">function f(x: int): int {
+    return x + 1
+}
+
+function g(func:Function[int]int): int {
+    return func(1)
+}
+</code></pre>
+<ul>
+<li>add static variables, <a href="https://github.com/hascal/hascal/blob/main/tests/static.has">See this example</a></li>
+<li>add <code>only_compile</code> config option</li>
+</ul>
+<h4 id="changes"><a class="header" href="#changes">Changes</a></h4>
+<ul>
+<li>upgrade importing system</li>
+</ul>
+<h4 id="bug-fixes"><a class="header" href="#bug-fixes">Bug fixes</a></h4>
+<h4 id="removed"><a class="header" href="#removed">Removed</a></h4>
+</details>
+<details>
+<summary>v1.3.9-alpha.1</summary>
+<h4 id="changes-1"><a class="header" href="#changes-1">Changes</a></h4>
+<ul>
+<li>add <code>download</code>,<code>upload</code>,<code>post</code> functions to <code>http</code> library</li>
+<li><code>https</code> support for <code>http</code> library</li>
+<li>add <code>windows</code> library(that includes <code>windows.h</code>)</li>
+<li>add <code>browser</code> library to open urls in default browser(now only supports windows)</li>
+</ul>
+<h4 id="bug-fixes-1"><a class="header" href="#bug-fixes-1">Bug fixes</a></h4>
+<ul>
+<li>fix linker flag import bug in <code>cuse</code> statement</li>
+</ul>
+</details>
+</details>
+<details>
+<summary>v1.3.8</summary>
+<h4 id="new-features-1"><a class="header" href="#new-features-1">New features</a></h4>
+<ul>
+<li>non-nullable and nullable variables</li>
+</ul>
+<h4 id="changes-2"><a class="header" href="#changes-2">Changes</a></h4>
+<ul>
+<li>change pointer unary from <code>*</code> to <code>^</code></li>
+<li>improve importing system</li>
+</ul>
+<h4 id="bug-fixes-2"><a class="header" href="#bug-fixes-2">Bug fixes</a></h4>
+<ul>
+<li>fix repetitious imports bug</li>
+<li>fix #29 bug(by <a href="https://github.com/mmdbalkhi">@mmdbalkhi</a>)</li>
+</ul>
+<h4 id="removed-1"><a class="header" href="#removed-1">Removed</a></h4>
+<ul>
+<li>remove <code>token</code> library</li>
+</ul>
+</details>
+<details>
+<summary>v1.3.7</summary>
+<h4 id="new-features-2"><a class="header" href="#new-features-2">New features</a></h4>
+<ul>
+<li>manual memory management with <code>new</code> and <code>delete</code> keyword</li>
+<li>functional programming paradigm</li>
+<li>speed up compilation time</li>
+<li>add <code>typeof</code> function</li>
+<li>now can print arrays and structures</li>
+<li>function decorators</li>
+<li><code>static</code> and <code>extern</code> decorator</li>
+<li>multiple library import</li>
+<li>improve importing system</li>
+<li>improve stdlib architecture</li>
+</ul>
+<h4 id="bug-fixes-3"><a class="header" href="#bug-fixes-3">Bug fixes</a></h4>
+<ul>
+<li>fix scoping bug</li>
+<li>fix <code>conv</code> library bug</li>
+<li>fix conditions bug</li>
+</ul>
+<h4 id="removed-2"><a class="header" href="#removed-2">Removed</a></h4>
+<ul>
+<li><code>export</code> library removed</li>
+<li><code>local use</code> statement removed</li>
+</ul>
+</details>
+<details>
+<summary>v1.3.6</summary>
+<h4 id="new-features-3"><a class="header" href="#new-features-3">New features</a></h4>
+<ul>
+<li>more data types : <code>int8</code>,<code>uint8</code>,<code>int16</code>,<code>uint16</code>,<code>int32</code>,<code>uint32</code>,<code>int64</code>,<code>uint64</code>,<code>double</code></li>
+<li>type compatibility</li>
+<li>multi line string</li>
+<li>pointers and references</li>
+</ul>
+<pre><code class="language-typescript">var x : *int = 20
+var y : int = 10
+x = &amp;y
+var z = *x // type : int
+
+// Pointers fix incomplete types on struct defination
+struct bar {
+    var self : *bar
+}
+</code></pre>
+<ul>
+<li>add <code>sizeof</code> function</li>
+</ul>
+<h4 id="bug-fixes-4"><a class="header" href="#bug-fixes-4">Bug fixes</a></h4>
+<ul>
+<li>fix lexer bugs</li>
+<li>check if function returns a value at end of string else show error</li>
+<li><code>main</code> function should returns int</li>
+<li>fix <code>termcolor</code> library bugs</li>
+<li>fix enum bugs</li>
+</ul>
+<h4 id="standart-library"><a class="header" href="#standart-library">Standart library</a></h4>
+<ul>
+<li>add <code>sdl2</code> wrapper</li>
+<li>add <code>export</code> library for exporting to C(see : <a href="https://github.com/bistcuite/haspy">haspy</a>)</li>
+<li>add <code>crypto.sha256</code> for sha256 hashing</li>
+</ul>
+<h4 id="removed-3"><a class="header" href="#removed-3">Removed</a></h4>
+<ul>
+<li><code>libcinfo</code> library removed</li>
+</ul>
+</details>
+<details>
+<summary>v1.3.5</summary>
+<h4 id="standard-library-1"><a class="header" href="#standard-library-1">Standard library</a></h4>
+<h5 id="updated"><a class="header" href="#updated">Updated</a></h5>
+<p><code>os</code> :</p>
+<ul>
+<li>add <code>compiler_name</code> function to get the name of the compiler</li>
+<li>add <code>arch</code> function to get the architecture of the system</li>
+<li>add <code>is_x86</code> function to check if the architecture is x86</li>
+<li>add <code>is_x64</code> function to check if the architecture is x64</li>
+<li>add <code>getenv</code> function to get an environment variable</li>
+</ul>
+<h5 id="added"><a class="header" href="#added">Added</a></h5>
+<ul>
+<li>add <code>libcinfo</code> library to get information about the libc</li>
+<li>add <code>termcolor</code> library to colorize the output</li>
+</ul>
+<p><img src="assets/termcolor.png" alt="assets/termcolor.png" /></p>
+<h4 id="bug-fixes-5"><a class="header" href="#bug-fixes-5">Bug fixes</a></h4>
+<ul>
+<li>Fix incomplete type defination bug</li>
+</ul>
+</details>
+<details>
+<summary>v1.3.4</summary>
+<h4 id="new-features-4"><a class="header" href="#new-features-4">New features</a></h4>
+<ul>
+<li>compiler option : now can generate c++ code from hascal code with <code>c++_code : 1</code> in <code>config.json</code> file</li>
+<li>use <code>cuse</code> keyword to include c++ files.</li>
+</ul>
+<h4 id="bug-fixes-6"><a class="header" href="#bug-fixes-6">Bug fixes</a></h4>
+<ul>
+<li>Fix semantic analyser bugs</li>
+<li>Fix standard library bug</li>
+</ul>
+</details>
+<details>
+<summary>v1.3.3</summary>
+<h4 id="new-features-5"><a class="header" href="#new-features-5">New features</a></h4>
+<ul>
+<li>struct inheritance</li>
+<li>can use <code>cuse</code> statement on struct declaration</li>
+</ul>
+<h4 id="bug-fixes-7"><a class="header" href="#bug-fixes-7">Bug fixes</a></h4>
+<ul>
+<li>Fix variable scope bug</li>
+<li>Fix variable declaration bug</li>
+<li>Fix semantic analyser bug</li>
+</ul>
+</details>
+<details>
+<summary>v1.3.2</summary>
+<h4 id="new-features-6"><a class="header" href="#new-features-6">New features</a></h4>
+<ul>
+<li><code>for in</code> statement</li>
+<li>library manager</li>
+<li>flag option</li>
+<li><code>cuse</code> statement</li>
+</ul>
+<h4 id="bug-fixes-8"><a class="header" href="#bug-fixes-8">Bug fixes</a></h4>
+<ul>
+<li>Fix semantic analyser bugs</li>
+<li>Fix nested struct bug</li>
+</ul>
+<h4 id="removed-4"><a class="header" href="#removed-4">Removed</a></h4>
+<ul>
+<li><code>for to</code> and <code>for downto</code> statement removed</li>
+</ul>
+</details>
+<details>
+<summary>v1.3.1</summary>
+<h4 id="new-features-7"><a class="header" href="#new-features-7">New features</a></h4>
+<ul>
+<li>Basic Semantic Anaslyser</li>
+</ul>
+<h4 id="removed-5"><a class="header" href="#removed-5">Removed</a></h4>
+<ul>
+<li>remove semicolon from syntax</li>
+</ul>
+</details>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="next" href="cond_op.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="next" href="cond_op.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>
@@ -640,5 +1086,10 @@ foo = new int(1)
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
     </body>
 </html>

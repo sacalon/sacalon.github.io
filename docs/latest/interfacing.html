@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Page not found - Hascal Documentation</title>
-        <base href="/">
+        <title>Interfacing with C++ - Hascal Documentation</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -76,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Language Documentation</a></li><li class="chapter-item expanded "><a href="cond_op.html"><strong aria-hidden="true">2.</strong> Conditional Operators</a></li><li class="chapter-item expanded "><a href="interfacing.html"><strong aria-hidden="true">3.</strong> Interfacing with C++</a></li><li class="chapter-item expanded "><a href="stdlib.html"><strong aria-hidden="true">4.</strong> Standard Documentation</a></li><li class="chapter-item expanded "><a href="libmanager.html"><strong aria-hidden="true">5.</strong> Library Manager Documentation</a></li><li class="chapter-item expanded "><a href="ide.html"><strong aria-hidden="true">6.</strong> IDE Integration</a></li><li class="chapter-item expanded "><a href="ROADMAP.html"><strong aria-hidden="true">7.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="CHANGELOG.html"><strong aria-hidden="true">8.</strong> Change Log</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Language Documentation</a></li><li class="chapter-item expanded "><a href="cond_op.html"><strong aria-hidden="true">2.</strong> Conditional Operators</a></li><li class="chapter-item expanded "><a href="interfacing.html" class="active"><strong aria-hidden="true">3.</strong> Interfacing with C++</a></li><li class="chapter-item expanded "><a href="stdlib.html"><strong aria-hidden="true">4.</strong> Standard Documentation</a></li><li class="chapter-item expanded "><a href="libmanager.html"><strong aria-hidden="true">5.</strong> Library Manager Documentation</a></li><li class="chapter-item expanded "><a href="ide.html"><strong aria-hidden="true">6.</strong> IDE Integration</a></li><li class="chapter-item expanded "><a href="ROADMAP.html"><strong aria-hidden="true">7.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="CHANGELOG.html"><strong aria-hidden="true">8.</strong> Change Log</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -135,19 +134,73 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <h1 id="interfacing-with-c"><a class="header" href="#interfacing-with-c">Interfacing with C++</a></h1>
+<p>Hascal is based on C++, so you can use C++ functions and classes in your program.</p>
+<h2 id="inline-c-code"><a class="header" href="#inline-c-code">Inline C++ Code</a></h2>
+<p>You can use inline c++ code in Hascal with <code>cuse</code> keyword :</p>
+<pre><code class="language-typescript">cuse '#include &lt;cstdio&gt;'
+cuse 'int main(){printf(&quot;%d&quot;,1);return 0;}'
+// output : 1
+</code></pre>
+<p>Or you can use multiline c++ code, like following:</p>
+<pre><code class="language-typescript">cuse &quot;&quot;&quot;
+#include &lt;cstdio&gt;
+
+int main(){
+    printf(&quot;%d&quot;,1);
+    return 0;
+}
+&quot;&quot;&quot;
+</code></pre>
+<h2 id="externing-functions"><a class="header" href="#externing-functions">Externing functions</a></h2>
+<p>For using C++ functions in your program, you should at first declare them with following syntax:</p>
+<pre><code class="language-typescript">function &lt;name&gt;(&lt;args...&gt;) : &lt;return type&gt;
+</code></pre>
+<h2 id="include-c-headers"><a class="header" href="#include-c-headers">Include C++ headers</a></h2>
+<p>Also Hascal can include C++ headers in your program.
+We need two files, one for including macros and one for main part of the header. You should put including macros in <code>your_cpp_lib.hpp</code> and main part in <code>your_cpp_lib.cc</code>. The specified files should exist in the same folder.</p>
+<p>See the example below:</p>
+<p><code>add.cc</code> :</p>
+<pre><code class="language-cpp">void cpp_print(int x){
+    printf(&quot;%d&quot;,x);
+}
+</code></pre>
+<p><code>add.hpp</code> :</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+</code></pre>
+<p><code>main.has</code> :</p>
+<pre><code class="language-typescript">cuse add 
+
+function cpp_print(x:int)
+
+function main() : int {
+    cpp_print(12)
+    return 0
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="cond_op.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="stdlib.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="cond_op.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="stdlib.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
