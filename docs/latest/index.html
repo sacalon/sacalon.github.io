@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Language Documentation - Hascal Documentation</title>
+        <title>Overview - Hascal Documentation</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html" class="active"><strong aria-hidden="true">1.</strong> Language Documentation</a></li><li class="chapter-item expanded "><a href="cond_op.html"><strong aria-hidden="true">2.</strong> Conditional Operators</a></li><li class="chapter-item expanded "><a href="interfacing.html"><strong aria-hidden="true">3.</strong> Interfacing with C++</a></li><li class="chapter-item expanded "><a href="stdlib.html"><strong aria-hidden="true">4.</strong> Standard Documentation</a></li><li class="chapter-item expanded "><a href="libmanager.html"><strong aria-hidden="true">5.</strong> Library Manager Documentation</a></li><li class="chapter-item expanded "><a href="ide.html"><strong aria-hidden="true">6.</strong> IDE Integration</a></li><li class="chapter-item expanded "><a href="ROADMAP.html"><strong aria-hidden="true">7.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="CHANGELOG.html"><strong aria-hidden="true">8.</strong> Change Log</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html" class="active"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lang/0_lang_doc.html"><strong aria-hidden="true">2.</strong> Language Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="lang/1_install.html"><strong aria-hidden="true">2.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="lang/2_config.html"><strong aria-hidden="true">2.2.</strong> Configure the compiler</a></li><li class="chapter-item expanded "><a href="lang/3_hello_world.html"><strong aria-hidden="true">2.3.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="lang/4_guessing_game.html"><strong aria-hidden="true">2.4.</strong> Build a guessing game</a></li><li class="chapter-item expanded "><a href="lang/5_comments.html"><strong aria-hidden="true">2.5.</strong> Comments</a></li><li class="chapter-item expanded "><a href="lang/6_types.html"><strong aria-hidden="true">2.6.</strong> Types</a></li><li class="chapter-item expanded "><a href="lang/7_00_variables.html"><strong aria-hidden="true">2.7.</strong> Variables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="lang/7_01_numbers.html"><strong aria-hidden="true">2.7.1.</strong> Numbers</a></li><li class="chapter-item expanded "><a href="lang/7_02_strings.html"><strong aria-hidden="true">2.7.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="lang/7_03_arrays.html"><strong aria-hidden="true">2.7.3.</strong> Arrays</a></li><li class="chapter-item expanded "><a href="lang/7_04_type_compatibility.html"><strong aria-hidden="true">2.7.4.</strong> Type compatibility</a></li></ol></li><li class="chapter-item expanded "><a href="lang/8_conditional_statements.html"><strong aria-hidden="true">2.8.</strong> Conditional statements</a></li><li class="chapter-item expanded "><a href="lang/9_loops.html"><strong aria-hidden="true">2.9.</strong> Loops</a></li><li class="chapter-item expanded "><a href="lang/10_functions.html"><strong aria-hidden="true">2.10.</strong> Functions</a></li><li class="chapter-item expanded "><a href="lang/11_importing.html"><strong aria-hidden="true">2.11.</strong> Importing &amp; Creating modules</a></li><li class="chapter-item expanded "><a href="lang/12_structures.html"><strong aria-hidden="true">2.12.</strong> Structures</a></li><li class="chapter-item expanded "><a href="lang/13_memory_management.html"><strong aria-hidden="true">2.13.</strong> Memory management</a></li><li class="chapter-item expanded "><a href="lang/14_interfacing_with_cpp.html"><strong aria-hidden="true">2.14.</strong> Interfacing with C++</a></li></ol></li><li class="chapter-item expanded "><a href="stdlib.html"><strong aria-hidden="true">3.</strong> Standard Documentation</a></li><li class="chapter-item expanded "><a href="libmanager.html"><strong aria-hidden="true">4.</strong> Library Manager Documentation</a></li><li class="chapter-item expanded "><a href="ide.html"><strong aria-hidden="true">5.</strong> IDE Integration</a></li><li class="chapter-item expanded "><a href="ROADMAP.html"><strong aria-hidden="true">6.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="CHANGELOG.html"><strong aria-hidden="true">7.</strong> Change Log</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,486 +134,28 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p><a href="https://hascal.github.io">Hascal</a> is a general-purpose open source programming language that makes it easy to build simple,optimal, reliable, and efficient software. </p>
-<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
-<p>Requirments :</p>
+                        <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p><a href="https://hascal.github.io">Hascal</a> is a general-purpose open source programming language that makes it easy to build simple,optimal, reliable, and efficient software. More features of Hascal :</p>
 <ul>
-<li>python&gt;=3.7</li>
-<li>gcc&gt;=8(or any c++ compiler that supports c++17)</li>
-<li><code>libcurl</code>,<code>libssl</code>,<code>libcrypt</code></li>
+<li>Easy to use and easy to learn</li>
+<li>Multi-paradigm</li>
+<li>Null safety by default</li>
+<li>Fast and powerful</li>
+<li>Inspired by Swift, Pascal and a bit Haskell</li>
+<li>C++ on backend</li>
+<li>Compatible with any language that can interoperate with C++</li>
 </ul>
-<p>*Nix :</p>
-<pre><code class="language-bash">git clone https://github.com/hascal/hascal.git
-cd hascal
-make deps
-make build
-</code></pre>
-<p>Arch Users :</p>
-<pre><code class="language-bash">pacman -S hascal-git
-</code></pre>
-<p>Windows : </p>
-<pre><code>git clone https://github.com/hascal/hascal.git
-cd hascal
-make deps-windows
-make windows
-</code></pre>
-<p><em><strong>Now your Hascal compiler is ready to use in <code>src/dist</code> folder, you can add it to <code>$PATH</code>.</strong></em></p>
-<h2 id="hello-world"><a class="header" href="#hello-world">Hello World</a></h2>
-<pre><code class="language-typescript">function main() : int {
-    print(&quot;Hello World&quot;)
-    return 0
-}
-</code></pre>
-<p>Save this snippet into a file named <code>hello.has</code>. Now do: </p>
-<pre><code>hascal hello.has
-</code></pre>
-<p>Congratulations - you just wrote and executed your first Hascal program!</p>
-<p>As in many other languages (such as C++ and Rust), <code>main</code> is the entry point of your program and it should return <code>int</code> (an integer).</p>
-<p><code>print</code> is one of the few built-in functions. It prints the value passed to it to standard output and can be used to print multiple values:</p>
-<pre><code class="language-typescript">function main():int {
-    print(&quot;Hello World&quot;, 42, true)
-    return 0
-}
-</code></pre>
-<h2 id="configure-the-compiler"><a class="header" href="#configure-the-compiler">Configure the compiler</a></h2>
-<p>You can use <code>config.json</code> file to configure your Hascal compiler.</p>
-<p>The following configuration options are available:</p>
-<ul>
-<li><code>compiler</code> : your c++ compiler name(e.g : <code>g++</code>,<code>clang++</code>)</li>
-<li><code>optimize</code> : optimize level(0,1,2,3)(default : no optimize)</li>
-<li><code>flags</code> : custom flags(e.g:<code>[&quot;-pthread&quot;]</code>)</li>
-<li><code>no_check_g++</code> : if you don't use g++, set this to <code>true</code></li>
-<li><code>c++_version</code> : your c++ standard(e.g:<code>c++17</code> or <code>c++20</code>),<strong>note: c++ version must be greater than or equal to c++17 and compiler must support c++17</strong></li>
-<li><code>g++_out</code> : if you want to see g++ output, set this to <code>true</code></li>
-<li><code>c++_out</code> : if you want to see generated c++ code, set this to <code>true</code></li>
-<li><code>only_compile</code> if you want to only compile and not link program, set this to <code>true</code></li>
-</ul>
-<p>example :</p>
-<pre><code class="language-json">{
-    &quot;compiler&quot;:&quot;g++&quot;,
-    &quot;optimize&quot;:&quot;-O2&quot;,
-    &quot;flags&quot;:[&quot;-pthread&quot;],
-    &quot;no_check_g++&quot;:1,
-    &quot;c++_version&quot;:&quot;c++17&quot;,
-    &quot;g++_out&quot;:1,
-    &quot;c++_out&quot;:1
-}
-</code></pre>
-<h2 id="comments"><a class="header" href="#comments">Comments</a></h2>
-<pre><code class="language-typescript">// This is a single line comment
-</code></pre>
-<p>NOTE: Multiline comments are not supported yet(TODO).</p>
-<h2 id="variables"><a class="header" href="#variables">Variables</a></h2>
-<p>A variable is a named storage for a value. Variables are declared using the <code>var</code> keyword :</p>
-<pre><code class="language-typescript">var foo : int = 1
-</code></pre>
-<p>Also you can declare a variable without type, in this case, the type will be inferred by the value assigned to it:</p>
-<pre><code class="language-typescript">var foo = 1
-</code></pre>
-<h3 id="non-nullable-and-nullable"><a class="header" href="#non-nullable-and-nullable">Non nullable and nullable</a></h3>
-<p>Null safety is a feature that allows you to declare that a variable can be null or not null, and Hascal uses this feature to make sure that your code is safe.</p>
-<p>Hascal's variables and constants are non-nullable by default that means that they cannot be null(<code>NULL</code>) and you can't assign <code>NULL</code> to them and <strong>you should assign a value to them when you declare them</strong>.</p>
-<pre><code class="language-typescript">var foo : int = 1 // non-nullable
-var foo_error : int // error : nullable variable must be assigned a value
-</code></pre>
-<p>But you can make variables and constants nullable by adding <code>?</code> to their type:</p>
-<pre><code class="language-typescript">var bar : int? = 1 // nullable
-</code></pre>
-<p>so you can use <code>NULL</code> to set a variable to null :</p>
-<pre><code class="language-typescript">bar = NULL // ok
-</code></pre>
-<h2 id="pointers"><a class="header" href="#pointers">Pointers</a></h2>
-<p>Pointers are a way to access the memory address of a variable. You can declare a pointer using the <code>^</code> operator after the type:</p>
-<pre><code class="language-typescript">var foo : int^?
-</code></pre>
-<p><em><strong>NOTE:</strong></em> pointers are non-nullable by default, use <code>?</code> to make it nullable:</p>
-<p>You use cast to assign a value to a pointer:</p>
-<pre><code class="language-typescript">foo = (int^)1
-</code></pre>
-<p>Finally, you can use the <code>^</code> operator to access the value stored in a pointer:</p>
-<pre><code class="language-typescript">var foo : int^ = (int^)1
-print(^foo) // 1
-</code></pre>
-<p>NOTE: Currently only one level of pointers are supported.</p>
-<h2 id="hascal-types"><a class="header" href="#hascal-types">Hascal Types</a></h2>
-<h3 id="primitive-types"><a class="header" href="#primitive-types">Primitive types</a></h3>
-<pre><code class="language-typescript">bool // boolean value
-
-string // string literal
-
-int8 uint8 // 8-bit integer
-int16 uint16 // 16-bit integer
-int int32 uint32 // 32-bit integer
-int64 uint64 // 64-bit integer
-
-float // floating point 
-double // double floating point
-</code></pre>
-<h3 id="strings"><a class="header" href="#strings">Strings</a></h3>
-<p>Strings are a sequence of characters. You can declare a string using the <code>string</code> keyword:</p>
-<pre><code class="language-typescript">var foo : string = &quot;Hello World&quot;
-</code></pre>
-<p>You can use the <code>+</code> operator to concatenate strings:</p>
-<pre><code class="language-typescript">var foo : string = &quot;Hello&quot; + &quot; World&quot;
-</code></pre>
-<p>And you can use the <code>[]</code> operator to access a character in a string:</p>
-<pre><code class="language-typescript">var foo : string = &quot;Hello&quot;
-print(foo[1]) // 'e'
-</code></pre>
-<blockquote>
-<p>Note: type of accessed character is <code>char</code>
-Note: the first character in a string is at index 0.</p>
-</blockquote>
-<p>With <code>len</code> function you can get the length of a string:</p>
-<pre><code class="language-typescript">var foo : string = &quot;Hello&quot;
-print(len(foo)) // 5
-</code></pre>
-<blockquote>
-<p>Note: <code>len</code> function is a built-in function.</p>
-</blockquote>
-<h4 id="escape-sequences"><a class="header" href="#escape-sequences">Escape sequences</a></h4>
-<p>You can use escape sequences to print special characters:</p>
-<pre><code class="language-typescript">var foo : string = &quot;Hello\tWorld&quot;
-print(foo) // Hello    World
-</code></pre>
-<p>The following escape sequences are supported:</p>
-<ul>
-<li><code>\n</code> : newline</li>
-<li><code>\t</code> : tab</li>
-<li><code>\r</code> : carriage return</li>
-<li><code>\\</code> : backslash</li>
-<li><code>\'</code> : single quote</li>
-<li><code>\&quot;</code> : double quote</li>
-<li><code>\?</code> : question mark</li>
-<li><code>\a</code> : bell</li>
-<li><code>\b</code> : backspace</li>
-<li><code>\f</code> : form feed</li>
-<li><code>\v</code> : vertical tab</li>
-<li><code>\0</code> : null character</li>
-<li><code>\x____</code> : hexadecimal character</li>
-<li><code>\u____</code> : unicode character</li>
-<li><code>\U____</code> : unicode character</li>
-<li><code>\_____</code> : arbitrary octal value </li>
-</ul>
-<p>Note: <code>_____</code> means you should specify the id of the character you want to print.</p>
-<h3 id="numbers"><a class="header" href="#numbers">Numbers</a></h3>
-<p>Numbers are either integers or floating point numbers. You can declare a number using the following types:</p>
-<pre><code class="language-typescript">int8 uint8 // 8-bit integer
-int16 uint16 // 16-bit integer
-int int32 uint32 // 32-bit integer
-int64 uint64 // 64-bit integer
-
-float // floating point 
-double // double floating point
-</code></pre>
-<p>So you can use the following operators to perform arithmetic operations:</p>
-<ul>
-<li><code>+</code> : addition</li>
-<li><code>-</code> : subtraction</li>
-<li><code>*</code> : multiplication</li>
-<li><code>/</code> : division</li>
-</ul>
-<p>See the following example:</p>
-<pre><code class="language-typescript">var a : int = 123
-var b : float = 1.23
-var c : double = 1.2313213215648789798
-</code></pre>
-<h3 id="type-compatibility"><a class="header" href="#type-compatibility">Type compatibility</a></h3>
-<p>Type compatibility is very close to automatic or implicit type conversion. The type compatibility is being able to use two types together without modification and being able to subsititute one for the other without modification.</p>
-<p>Compatible types are:</p>
-<ul>
-<li><code>int</code> and <code>float</code></li>
-<li><code>int</code> and <code>double</code></li>
-<li><code>float</code> and <code>double</code></li>
-</ul>
-<p>Note: strings are not compatible with characters.</p>
-<h3 id="arrays"><a class="header" href="#arrays">Arrays</a></h3>
-<p>Arrays are collections of data elements of the same type. They can be represented by a list of elements surrounded by brackets. The elements can be accessed by appending an index (starting with 0) in brackets to the array variable:</p>
-<p>Arrays declare like following:</p>
-<pre><code class="language-typescript">var foo : [int] = [1,2,3]
-var bar : [string] = [&quot;Hello&quot;, &quot;World&quot;]
-</code></pre>
-<p>You can use the <code>[]</code> operator to access an element in an array:</p>
-<pre><code class="language-typescript">var foo : [int] = [1,2,3]
-print(foo[1]) // 2
-</code></pre>
-<p>And you can assign a value to an array element:</p>
-<pre><code class="language-typescript">var foo : [int] = [1,2,3]
-foo[1] = 4
-print(foo[1]) // 4
-</code></pre>
-<p>With <code>append</code> built-in function you can append an element to an array:</p>
-<pre><code class="language-typescript">var foo : [int] = [1,2,3]
-foo.append(4)
-print(foo[3]) // 4
-</code></pre>
-<p>And you can get the length of an array with the <code>len</code> built-in function:</p>
-<pre><code class="language-typescript">var foo : [int] = [1,2,3]
-print(len(foo)) // 3
-</code></pre>
-<h2 id="if"><a class="header" href="#if">If</a></h2>
-<p>You can use the <code>if</code> keyword to execute a block of code, if a condition is true:</p>
-<pre><code class="language-typescript">var foo : int = 1
-if foo == 1 {
-    print(&quot;foo is 1&quot;)
-}
-</code></pre>
-<h3 id="else"><a class="header" href="#else">Else</a></h3>
-<p>You can use the <code>else</code> keyword to execute a block of code, if a condition is false:</p>
-<pre><code class="language-typescript">var foo : int = 1
-if foo == 1 {
-    print(&quot;foo is 1&quot;)
-} else {
-    print(&quot;foo is not 1&quot;)
-}
-</code></pre>
-<h3 id="else-if"><a class="header" href="#else-if">Else if</a></h3>
-<p>You can use the <code>else if</code> statement to execute a block of code, if <code>else if</code> a condition is true:</p>
-<pre><code class="language-typescript">var foo : int = 1
-if foo == 1 {
-    print(&quot;foo is 1&quot;)
-} else if foo == 2 {
-    print(&quot;foo is 2&quot;)
-} else {
-    print(&quot;foo is not 1 or 2&quot;)
-}
-</code></pre>
-<h3 id="and-and-or-and-not"><a class="header" href="#and-and-or-and-not"><code>and</code> and <code>or</code> and <code>not</code></a></h3>
-<p>You can use the <code>and</code> keyword to execute a block of code, if all conditions are true:</p>
-<pre><code class="language-typescript">var foo : int = 1
-var bar : int = 2
-if foo == 1 and bar == 2 {
-    print(&quot;foo is 1 and bar is 2&quot;)
-}
-</code></pre>
-<p>You can use the <code>or</code> keyword to execute a block of code, if at least one condition is true:</p>
-<pre><code class="language-typescript">var foo : int = 1
-var bar : int = 2
-if foo == 1 or bar == 2 {
-    print(&quot;foo is 1 or bar is 2&quot;)
-}
-</code></pre>
-<p>You can use the <code>not</code> keyword to execute a block of code, if a condition is false:</p>
-<pre><code class="language-typescript">var foo : int = 1
-if not foo == 1 {
-    print(&quot;foo is not 1&quot;)
-}
-</code></pre>
-<p><strong>You can see Hascal's conditional operators, <a href="cond_op/index.html">here</a></strong></p>
-<h2 id="loops"><a class="header" href="#loops">Loops</a></h2>
-<p>You can use the <code>while</code> keyword to execute a block of code, if a condition is true:</p>
-<pre><code class="language-typescript">var foo : int = 1
-while foo == 1 {
-    print(&quot;foo is 1&quot;)
-    foo = 2
-}
-</code></pre>
-<p>The <code>for</code> keyword is used to execute a block of code for a number of times:</p>
-<pre><code class="language-typescript">for i in range(0, 10) {
-    print(i)
-}
-</code></pre>
-<p>Also you can use the <code>for</code> keyword for iterating over an array:</p>
-<pre><code class="language-typescript">var foo : [int] = [1,2,3]
-for i in foo {
-    print(i)
-}
-</code></pre>
-<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
-<p>Functions are a way to group code that can be called to perform a specific task. You can declare a function using the <code>function</code> keyword:</p>
-<pre><code class="language-typescript">function foo() {
-    print(&quot;Hello World&quot;)
-}
-</code></pre>
-<p>Also your function block should be outside of a function.</p>
-<p>Your function can have parameters and return a value. You can declare parameters and return type, like variable declarations:</p>
-<pre><code class="language-typescript">function add(x:int,y:int): int {
-    return x + y
-}
-</code></pre>
-<p>In the example above, <code>x</code> and <code>y</code> are parameters and thire type(<code>int</code>) is your return type.</p>
-<blockquote>
-<p>Note: you can use <code>?</code> to make a parameter nullable.</p>
-</blockquote>
-<h3 id="calling-a-function"><a class="header" href="#calling-a-function">Calling a function</a></h3>
-<p>You can call a function by using the function name followed by parentheses:</p>
-<pre><code class="language-typescript">foo()
-</code></pre>
-<p>If you want to pass some parameters to your function, you can use them in the parentheses:</p>
-<pre><code class="language-typescript">foo(1,2,3)
-</code></pre>
-<p>Also you can assign the return value of a function to a variable:</p>
-<pre><code class="language-typescript">var foo : int = add(1,2)
-</code></pre>
-<h3 id="function-overloading"><a class="header" href="#function-overloading">Function overloading</a></h3>
-<p>You can overload functions by changing the number of parameters or the type of parameters :</p>
-<pre><code class="language-typescript">// overloading function
-function add(x:int,y:int,z:int): int {
-    return x + y + z
-}
-
-function add2(x:int,y:int){
-    print(x + y)
-}
-
-function main(): int {
-    print(add(1,2))
-    print(add(1,2,3))
-}
-</code></pre>
-<h3 id="passing-function-as-argument"><a class="header" href="#passing-function-as-argument">Passing function as argument</a></h3>
-<p>You can pass a function as an argument to another function:</p>
-<pre><code class="language-typescript">function runner(func: Function[int, int]int) : int{
-    return func(1,2)
-}
-
-function add(a:int, b:int) : int {
-    return a+b
-}
-
-function main():int {
-    print(runner(add))
-    return 0
-}
-</code></pre>
-<p>In the example above, <code>runner</code> is a function that takes a function as an argument and returns the return value of the given function.</p>
-<h2 id="importing-modules"><a class="header" href="#importing-modules">Importing modules</a></h2>
-<p>You can use other modules by importing them. You can import a module by using the <code>use</code> keyword:</p>
-<pre><code class="language-typescript">use os
-
-function main() : int {
-   system(&quot;start http://www.google.com&quot;)
-   return 0
-}
-</code></pre>
-<h3 id="importing-multiple-modules"><a class="header" href="#importing-multiple-modules">Importing multiple modules</a></h3>
-<p>You can import multiple modules by using the <code>use</code> keyword and separating the module names with a comma:</p>
-<pre><code class="language-typescript">use os, math, conv
-</code></pre>
-<p>For importing a submodule of a module, you can use the <code>.</code> operator:</p>
-<pre><code class="language-typescript">use crypto.sha256
-</code></pre>
-<h3 id="creating-a-module"><a class="header" href="#creating-a-module">Creating a module</a></h3>
-<p>For creating a module, you can create a file with the same name as the module and with the extension <code>.has</code> and put the module code inside it:</p>
-<p><code>add.has</code>:</p>
-<pre><code class="language-typescript">function add(x:int, y:int) : int {
-    return x + y
-}
-</code></pre>
-<p><code>main.has</code>:</p>
-<pre><code class="language-typescript">use add
-
-function main() : int {
-    print(add(1,2))
-    return 0
-}
-</code></pre>
-<h4 id="creating-foldered-modules"><a class="header" href="#creating-foldered-modules">Creating foldered modules</a></h4>
-<p>Module files can be placed in a folder, for creating a foldered module you should first create the folder and then create the <code>_.has</code> file inside it.
-The <code>_.has</code> file is the main file of the module and compiler will look for it.
-You can also import submodules in <code>_.has</code> file.</p>
-<blockquote>
-<p>Note: Any submodule that is not imported in <code>_.has</code> file will be ignored.
-Note: Any submodule can have other submodules.</p>
-</blockquote>
-<h2 id="structures"><a class="header" href="#structures">Structures</a></h2>
-<p>Structures are a way to group data together. You can declare a structure using the <code>struct</code> keyword:</p>
-<pre><code class="language-typescript">struct Color {
-    var r : int
-    var g : int
-    var b : int
-    var name = &quot;Anything...&quot; // optional
-}
-</code></pre>
-<blockquote>
-<p>Note: Declaring a structure member without a type will make it optional.</p>
-</blockquote>
-<p>After declaring a structure, you can create an instance of it:</p>
-<pre><code class="language-typescript">var red = Color(255,0,0)
-</code></pre>
-<p>For accessing the fields of a structure, you should use the <code>.</code> operator:</p>
-<pre><code class="language-typescript">var red = Color(255,0,0)
-print(red.r)
-print(red.g)
-print(red.b)
-print(red.name)
-</code></pre>
-<h3 id="structures-as-return-values"><a class="header" href="#structures-as-return-values">Structures as return values</a></h3>
-<p>You can return a structure from a function:</p>
-<pre><code class="language-typescript">function foo() : Color {
-    return Color(1,2,3)
-}
-</code></pre>
-<h3 id="structures-as-arguments"><a class="header" href="#structures-as-arguments">Structures as arguments</a></h3>
-<p>You can pass a structure as an argument to a function:</p>
-<pre><code class="language-typescript">function foo(c:Color) {
-    print(c.r)
-    print(c.g)
-    print(c.b)
-    print(c.name)
-}
-</code></pre>
-<h3 id="structure-inheritance"><a class="header" href="#structure-inheritance">Structure inheritance</a></h3>
-<p>You can inherit a structure from another structure with <code>:</code> operator after the structure name:</p>
-<pre><code class="language-typescript">struct RGB : Color {
-    
-}
-</code></pre>
-<p>And you can access the fields of the inherited structure:</p>
-<pre><code class="language-typescript">var foo : RGB = RGB(1,2,3)
-print(foo.r,foo.g,foo.b)
-   
-var bar = RGB(255,0,0,&quot;AColor&quot;)
-</code></pre>
-<h2 id="memory-management"><a class="header" href="#memory-management">Memory management</a></h2>
-<p>Memory management is a way to manage the memory of your program. Hascall use manual memory management because this manual memory management is used in most performance-critical applications like games,OSes, embedded systems, etc.</p>
-<p>Hascal uses <code>new</code> and <code>delete</code> keywords to manage memory, manually.</p>
-<h3 id="allocation"><a class="header" href="#allocation">Allocation</a></h3>
-<p>For allocating memory, you should use the <code>new</code> keyword. Note that type of the allocated memory should be pointer or reference type :</p>
-<pre><code class="language-typescript">var foo : int^ = new int(1)
-</code></pre>
-<p>For easily declaring and allocating memory, use <code>var &lt;name&gt; = new &lt;type&gt;(&lt;args...&gt;)</code> statement, like this:</p>
-<pre><code class="language-typescript">var foo = new int(1)
-</code></pre>
-<h3 id="reallocation"><a class="header" href="#reallocation">Reallocation</a></h3>
-<p>For reallocating memory and assigning the new value to the pointer, use <code>&lt;pointer&gt; = new &lt;type&gt;(&lt;args...&gt;)</code> statement, like this:</p>
-<pre><code class="language-typescript">var foo : int^ = new int(1) // allocate memory
-foo = new int(2) // reallocate memory and assign new value
-</code></pre>
-<h3 id="deallocation"><a class="header" href="#deallocation">Deallocation</a></h3>
-<p>For deallocating memory, you should use the <code>delete</code> keyword and pass the pointer to the memory that you want to deallocate:</p>
-<pre><code class="language-typescript">delete foo
-</code></pre>
-<h3 id="accessing-memory"><a class="header" href="#accessing-memory">Accessing memory</a></h3>
-<p>Like pointers, you can access the allocated memory value with the <code>^</code> operator:</p>
-<pre><code class="language-typescript">var foo : int^ = new int(1)
-print(^foo)
-</code></pre>
-<h3 id="critical-notes"><a class="header" href="#critical-notes">Critical notes</a></h3>
-<ul>
-<li><span style="color:red">Don't forget to use the <code>delete</code> keyword at end of scope and before the end of the program.</span>.</li>
-</ul>
-<blockquote>
-<p>In future, we will add a feature to show warnings when you forget to use the <code>delete</code> keyword.</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>You can't deallocate memory that you haven't allocated it without <code>new</code> keyword.</strong></p>
-</li>
-<li>
-<p><strong>You can allocate, not allocated pointers</strong>:</p>
-</li>
-</ul>
-<pre><code class="language-typescript">var foo : int^?
-foo = new int(1)
-</code></pre>
+<h2 id="contributing"><a class="header" href="#contributing">Contributing</a></h2>
+<p>We welcome contributions of all kinds.</p>
+<p>You can contribute to this book by <a href="https://github.com/hascal/hascal/issues/new/choose">opening an issue</a> or <a href="https://github.com/hascal/hascal/fork">forking</a> and <a href="https://github.com/hascal/hascal/compare">sending a pull request</a> to the main Hascal repository.
+Knowing what people use this book for the most helps direct our attention to making those sections the best that they can be. We also want the reference to be as normative as possible, so if you see anything that is wrong, please also file an issue.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="next" href="cond_op.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="lang/0_lang_doc.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -622,7 +164,7 @@ foo = new int(1)
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="next" href="cond_op.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="lang/0_lang_doc.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
