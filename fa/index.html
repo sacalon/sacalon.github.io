@@ -42,9 +42,9 @@
                         <a class="nav-link" href="news/index.html">اخبار</a>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="use-cases.html">موارد استفاده</a>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item active">
                         <a class="nav-link" href="foundation.html">بنیاد هاسکال</a>
@@ -77,13 +77,10 @@
                             <div class="card-body">
                                 <h2>زبانی ساده و آسان</h2>
                                 <p>
-                                    هاسکال دارای یک نحو ساده و آسان و کتابخانه استاندارد کوچک است، شما می توانید هاسکال را در 15 دقیقه یاد بگیرید!
+                                    هاسکال دارای یک نحو ساده و آسان و کتابخانه استاندارد کوچک است، شما می توانید هاسکال را در کمتر از یک ساعت یاد بگیرید! 
                                     <br>
                                     <br>
-                                    هاسکال بسیار شبیه به تایپ اسکریپت و سوئیفت است و بر اساس ایده های خوب زبان پاسکال در ابتدا پایه گذاری شد.
-                                    <br>
-                                    <br>
-                                    اگر شما با سوئیفت آشنایی داشته باشید، حدود 60 درصد از سینتکس هاسکال را نیز میدانید!
+                                    هاسکال بسیار شبیه به سوئیفت است و بر اساس ایده های خوب زبان پاسکال در ابتدا پایه گذاری شده است. 
                                 </p>
                             </div>
                         </div>
@@ -91,9 +88,23 @@
                       
                         <div class="card">
                             <div class="card-body">
-                                <h2>سریع و قدرتمند</h2>
+                                <h2>ایمن و قابل اطمینان</h2>
                                 <p>
-                                    هاسکال به ++C کامپایل می‌شود و مانند ++C بسیار سریع است.                                </p>
+                                    هاسکال از یک سیستم Null safety برای جلوگیری از خطاهای مربوط به داده NULL  استفاده میکند تا موجب افزایش امنیت و پایداری برنامه ها شود.
+                                    <br>
+                                    <br>
+                                    هاسکال به صورت پیشفرض شما را ملزم میکند تا مقداری را برای متغییر و ثوابت خود(هنگام تعریف) انتخاب کنید تا مطمئن شود هیچ گونه داده NULLی در برنامه وجود نخواهد داشت.                                    
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>مدیریت حافظه دستی</h2>
+                                <p>
+                                    هاسکال از مدیریت حافظه به صورت دستی استفاده میکند و به شما آزادی عمل در برابر حافظه را میدهد اما هنگام کامپایل شما را در مدیریت حافظه به صورت دستی راهنمایی میکند(WIP).
+                                </p>
                             </div>
                         </div>
                         <br>
@@ -102,7 +113,10 @@
                             <div class="card-body">
                                 <h2>در هرجایی از هاسکال استفاده کنید</h2>
                                 <p>
-                                    می‌توانید از C\C++ برای توسعه برنامه هاسکال خود استفاده کنید، و می‌توانید از توابع و ساختارهای هاسکال در زبان‌های دیگر مانند C\C++\D\Objective-C و غیره استفاده کنید.                                
+                                    هاسکال، چندسکویی است، به این معنی که در هر پلتفرمی میتواند اجرا شود، از لینوکس و ویندوز گرفته تا سیستم های نهفته!
+                                    <br>
+                                    <br>
+                                    هاسکال می تواند کد ++C را فراخوانی کند و فراخوانی کد هاسکال در هر زبانی که بتواند با ++C  قابلیت همکاری داشته باشد امکان پذیر است.
                                 </p>
                             </div>
                         </div>
@@ -122,13 +136,21 @@
                         <br>
                         <div class="card">
                             <div class="card-body">
-                                اسم شما چیه ?
-                                <pre><code class="language-hascal">function main(argv:[string]) : int {
-    print("What's your name ?")
-    var name = ReadStr()
-    print("Hello,",name)    
+                                رنگی کردن ترمینال:
+                                <pre><code class="language-hascal">use termcolor
+function main(): int {
+    cprint("Hello, world!", "green")
+    cprint("Hello, world!", "blue")
+    cprint("Hello, world!", "red")
+    cprint("Hello, world!", "yellow")
+    cprint("Hello, world!", "magenta")
+    cprint("Hello, world!", "cyan")
     return 0
 }                               </code></pre>
+                                <br>
+                                نتیجه :
+                                <br>
+                                <img src="https://github.com/hascal/hascal/blob/main/docs/assets/termcolor.png?raw=true" alt="termcolor" class="img-fluid">
                             </div>
                         </div>
                         <br>
@@ -137,7 +159,7 @@
                                 درخواست های HTTP :
                                 <pre><code class="language-hascal">use http
 function main(argv:[string]) : int {
-    print(get("google.com"))
+    print(get("https://www.google.com"))
     return 0   
 }                               </code></pre>
                             </div>
