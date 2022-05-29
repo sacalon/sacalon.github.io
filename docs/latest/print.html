@@ -166,7 +166,7 @@ make deps
 make build
 </code></pre>
 <p>Arch Users :</p>
-<pre><code class="language-bash">pacman -S hascal-git
+<pre><code class="language-bash">yay -S hascal-git
 </code></pre>
 <p>Windows : </p>
 <pre><code>git clone https://github.com/hascal/hascal.git
@@ -764,31 +764,80 @@ print(listdir("C:\\"));
 <h3 id="language"><a class="header" href="#language">Language</a></h3>
 <ul>
 <li>
-<p>js backend(<code>hascal2js</code>)</p>
+<p>js backend</p>
 </li>
 <li>
 <p>lambdas :</p>
 </li>
 </ul>
-<pre><code>var mythread = thread(@(1000,true){
-    print(&quot;hi&quot;)
+<pre><code class="language-typescript">var mythread = thread(@(x:int,y:int){
+    print(x*y)
 })
 </code></pre>
 <ul>
 <li>generate html doc from a code</li>
 </ul>
 <h3 id="standard-library"><a class="header" href="#standard-library">Standard Library</a></h3>
+<h3 id="package-manager-1"><a class="header" href="#package-manager-1">Package Manager</a></h3>
+<h3 id="other"><a class="header" href="#other">Other</a></h3>
+<ul>
+<li>rebranding</li>
+</ul>
+</details>
+<details>
+<summary>v1.4.x</summary>
+<h3 id="language-1"><a class="header" href="#language-1">Language</a></h3>
+<ul>
+<li>rewrite compiler in hascal </li>
+<li>generics</li>
+</ul>
+<pre><code class="language-typescript">function f&lt;T&gt;(x: T): T {
+    return x
+}
+</code></pre>
+<h3 id="standard-library-1"><a class="header" href="#standard-library-1">Standard Library</a></h3>
 <ul>
 <li><code>thread</code> library</li>
 </ul>
-<h3 id="library-manager"><a class="header" href="#library-manager">Library Manager</a></h3>
+<h3 id="package-manager-2"><a class="header" href="#package-manager-2">Package Manager</a></h3>
+<h3 id="other-1"><a class="header" href="#other-1">Other</a></h3>
+</details>
+<details>
+<summary>v1.5.x</summary>
+<h3 id="language-2"><a class="header" href="#language-2">Language</a></h3>
 <ul>
-<li>unistall library option</li>
+<li>classes</li>
 </ul>
-<h3 id="other"><a class="header" href="#other">Other</a></h3>
-<ul>
-<li>redesign logo</li>
-</ul>
+<pre><code class="language-typescript">class C : T {
+    var foo : string
+    var bar = 1
+
+    // constructor
+    C(foo: string){
+        this.foo = foo
+    }
+
+    public f(x: string): string {
+        return x
+    }
+
+    private f2(x: string): string {
+        return x
+    }
+
+    new(foo: string): C {
+        return new C(foo)
+    }
+
+    delete(foo: string): C {
+        delete this.foo
+        delete this.bar
+    }
+}
+</code></pre>
+<h3 id="standard-library-2"><a class="header" href="#standard-library-2">Standard Library</a></h3>
+<h3 id="package-manager-3"><a class="header" href="#package-manager-3">Package Manager</a></h3>
+<h3 id="other-2"><a class="header" href="#other-2">Other</a></h3>
 </details>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="hascals-changelog"><a class="header" href="#hascals-changelog">Hascal's Changelog</a></h1>
 <details>
@@ -939,7 +988,7 @@ struct bar {
 </details>
 <details>
 <summary>v1.3.5</summary>
-<h4 id="standard-library-1"><a class="header" href="#standard-library-1">Standard library</a></h4>
+<h4 id="standard-library-3"><a class="header" href="#standard-library-3">Standard library</a></h4>
 <h5 id="updated"><a class="header" href="#updated">Updated</a></h5>
 <p><code>os</code> :</p>
 <ul>
