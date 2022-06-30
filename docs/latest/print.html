@@ -789,7 +789,7 @@ print(listdir("C:\\"));
 <h2 id="random"><a class="header" href="#random"><code>random</code></a></h2>
 <p>Random number generator</p>
 <ul>
-<li><code>random_int(max:int):int</code> : Returns a random integer between 0 and max</li>
+<li><code>random_int(min:int ,sadsdfddfmax:int):int</code> : Returns a random integer between 0 and max</li>
 </ul>
 <h2 id="termcolor"><a class="header" href="#termcolor"><code>termcolor</code></a></h2>
 <p>Colorize text</p>
@@ -808,7 +808,6 @@ print(listdir("C:\\"));
 <li><code>white</code></li>
 <li><code>black</code></li>
 </ul>
-<h2 id="windows"><a class="header" href="#windows"><code>windows</code></a></h2>
 <h2 id="browser"><a class="header" href="#browser"><code>browser</code></a></h2>
 <p>NOTE : Only supports windwos!</p>
 <ul>
@@ -954,6 +953,11 @@ list of all subpackages in crypto :
 <li>fix assigning <code>NULL</code> to arrays and pointers bug, #36.</li>
 <li>fix <code>check_g++</code> config option bugs</li>
 <li>fix not defined consts when importing packages</li>
+<li>fix <code>random</code> library bug</li>
+</ul>
+<h4 id="removed"><a class="header" href="#removed">Removed</a></h4>
+<ul>
+<li>remove <code>winodws</code> library</li>
 </ul>
 </details>
 <details>
@@ -1014,7 +1018,7 @@ function g(func:Function[int]int): int {
 <ul>
 <li>fix pyinstaller build issue</li>
 </ul>
-<h4 id="removed"><a class="header" href="#removed">Removed</a></h4>
+<h4 id="removed-1"><a class="header" href="#removed-1">Removed</a></h4>
 </details>
 <details>
 <summary>v1.3.9-alpha.1</summary>
@@ -1048,7 +1052,7 @@ function g(func:Function[int]int): int {
 <li>fix repetitious imports bug</li>
 <li>fix #29 bug(by <a href="https://github.com/mmdbalkhi">@mmdbalkhi</a>)</li>
 </ul>
-<h4 id="removed-1"><a class="header" href="#removed-1">Removed</a></h4>
+<h4 id="removed-2"><a class="header" href="#removed-2">Removed</a></h4>
 <ul>
 <li>remove <code>token</code> library</li>
 </ul>
@@ -1075,7 +1079,7 @@ function g(func:Function[int]int): int {
 <li>fix <code>conv</code> library bug</li>
 <li>fix conditions bug</li>
 </ul>
-<h4 id="removed-2"><a class="header" href="#removed-2">Removed</a></h4>
+<h4 id="removed-3"><a class="header" href="#removed-3">Removed</a></h4>
 <ul>
 <li><code>export</code> library removed</li>
 <li><code>local use</code> statement removed</li>
@@ -1118,7 +1122,7 @@ struct bar {
 <li>add <code>export</code> library for exporting to C(see : <a href="https://github.com/bistcuite/haspy">haspy</a>)</li>
 <li>add <code>crypto.sha256</code> for sha256 hashing</li>
 </ul>
-<h4 id="removed-3"><a class="header" href="#removed-3">Removed</a></h4>
+<h4 id="removed-4"><a class="header" href="#removed-4">Removed</a></h4>
 <ul>
 <li><code>libcinfo</code> library removed</li>
 </ul>
@@ -1191,7 +1195,7 @@ struct bar {
 <li>Fix semantic analyser bugs</li>
 <li>Fix nested struct bug</li>
 </ul>
-<h4 id="removed-4"><a class="header" href="#removed-4">Removed</a></h4>
+<h4 id="removed-5"><a class="header" href="#removed-5">Removed</a></h4>
 <ul>
 <li><code>for to</code> and <code>for downto</code> statement removed</li>
 </ul>
@@ -1203,7 +1207,7 @@ struct bar {
 <ul>
 <li>Basic Semantic Anaslyser</li>
 </ul>
-<h4 id="removed-5"><a class="header" href="#removed-5">Removed</a></h4>
+<h4 id="removed-6"><a class="header" href="#removed-6">Removed</a></h4>
 <ul>
 <li>remove semicolon from syntax</li>
 </ul>
