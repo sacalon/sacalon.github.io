@@ -165,10 +165,12 @@
         return x
     }
 
+    // allocator
     __new__(foo: string): C {
         return new C(foo)
     }
 
+    // deallocator
     __delete__(foo: string): C {
         delete this.foo
         delete this.bar
@@ -176,21 +178,8 @@
 }
 </code></pre>
 <ul>
-<li>generics <a href="https://github.com/hascal/hascal/issues/26">#26</a></li>
-</ul>
-<pre><code class="language-typescript">function f&lt;T&gt;(x: T): T {
-    return x
-}
-</code></pre>
-<ul>
+<li>generics <a href="https://github.com/hascal/hascal/issues/26">#26</a>s</li>
 <li>rewrite compiler in hascal </li>
-<li>generics</li>
-</ul>
-<pre><code class="language-typescript">function f&lt;T&gt;(x: T): T {
-    return x
-}
-</code></pre>
-<ul>
 <li>const correctness</li>
 </ul>
 <h3 id="standard-library"><a class="header" href="#standard-library">Standard Library</a></h3>

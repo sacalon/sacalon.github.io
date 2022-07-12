@@ -809,13 +809,13 @@ print(listdir("C:\\"));
 ``` -->
 <h2 id="os"><a class="header" href="#os"><code>os</code></a></h2>
 <ul>
-<li><code>os_name() : string</code> : Return OS name</li>
-<li><code>system()</code> : Execute a command</li>
-<li><code>compiler_name() : string</code> : Return compiler name</li>
-<li><code>arch() : string</code> : Return architecture</li>
-<li><code>is_x86() : bool</code> : Return true if architecture is x86</li>
-<li><code>is_x64() : bool</code> : Return true if architecture is x64</li>
-<li><code>getenv(name:string) : string</code> : Return environment variable</li>
+<li><code>os_name() : string</code> : Returns OS name</li>
+<li><code>system()</code> : Executes a command</li>
+<li><code>compiler_name() : string</code> : Returns compiler name</li>
+<li><code>arch() : string</code> : Returns architecture</li>
+<li><code>is_x86() : bool</code> : Returns true if architecture is x86</li>
+<li><code>is_x64() : bool</code> : Returns true if architecture is x64</li>
+<li><code>getenv(name:string) : string</code> : Returns environment variable</li>
 </ul>
 <h2 id="time"><a class="header" href="#time"><code>time</code></a></h2>
 <p>Work with time/date</p>
@@ -881,11 +881,6 @@ print(listdir("C:\\"));
 <li><code>cyan</code></li>
 <li><code>white</code></li>
 <li><code>black</code></li>
-</ul>
-<h2 id="browser"><a class="header" href="#browser"><code>browser</code></a></h2>
-<p>NOTE : Only supports windwos!</p>
-<ul>
-<li><code>open_newtab(url:string)</code> : open urls in new tab with default browser</li>
 </ul>
 <h2 id="cryptosha256"><a class="header" href="#cryptosha256"><code>crypto.sha256</code></a></h2>
 <p>SHA256 hash</p>
@@ -959,10 +954,12 @@ list of all subpackages in crypto :
         return x
     }
 
+    // allocator
     __new__(foo: string): C {
         return new C(foo)
     }
 
+    // deallocator
     __delete__(foo: string): C {
         delete this.foo
         delete this.bar
@@ -970,21 +967,8 @@ list of all subpackages in crypto :
 }
 </code></pre>
 <ul>
-<li>generics <a href="https://github.com/hascal/hascal/issues/26">#26</a></li>
-</ul>
-<pre><code class="language-typescript">function f&lt;T&gt;(x: T): T {
-    return x
-}
-</code></pre>
-<ul>
+<li>generics <a href="https://github.com/hascal/hascal/issues/26">#26</a>s</li>
 <li>rewrite compiler in hascal </li>
-<li>generics</li>
-</ul>
-<pre><code class="language-typescript">function f&lt;T&gt;(x: T): T {
-    return x
-}
-</code></pre>
-<ul>
 <li>const correctness</li>
 </ul>
 <h3 id="standard-library"><a class="header" href="#standard-library">Standard Library</a></h3>
@@ -994,10 +978,27 @@ list of all subpackages in crypto :
 <h3 id="package-manager-1"><a class="header" href="#package-manager-1">Package Manager</a></h3>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="hascals-changelog"><a class="header" href="#hascals-changelog">Hascal's Changelog</a></h1>
 <details>
+<summary>v1.3.10x</summary>
+<details>
+<summary>v1.3.10-alpha</summary>
+<h4 id="new-features"><a class="header" href="#new-features">New features</a></h4>
+<ul>
+<li>show error for undeleted variables from heap</li>
+</ul>
+<h4 id="changes"><a class="header" href="#changes">Changes</a></h4>
+<ul>
+<li>improve <code>math</code>,<code>os</code> library</li>
+<li>in <code>functional</code> library : change <code>lessThanOrEqual</code> to <code>lessThanEqual</code>, <code>greaterThanOrEqual</code> to <code>greaterThanEqual</code></li>
+</ul>
+<h4 id="bug-fixes"><a class="header" href="#bug-fixes">Bug fixes</a></h4>
+<h4 id="removed"><a class="header" href="#removed">Removed</a></h4>
+</details>
+</details>
+<details>
 <summary>v1.3.9x</summary>
 <details>
 <summary>v1.3.9</summary>
-<h4 id="new-features"><a class="header" href="#new-features">New features</a></h4>
+<h4 id="new-features-1"><a class="header" href="#new-features-1">New features</a></h4>
 <ul>
 <li>add <code>hascal list</code> command to list all available packages</li>
 <li>add <code>hascal init</code> command to create a new project, that generates <code>config.json</code>, <code>.gitignore</code> and <code>src/app.has</code> files</li>
@@ -1008,7 +1009,7 @@ list of all subpackages in crypto :
 <li>add <code>no_std</code> compiler option</li>
 <li>add <code>filename</code> config option</li>
 </ul>
-<h4 id="changes"><a class="header" href="#changes">Changes</a></h4>
+<h4 id="changes-1"><a class="header" href="#changes-1">Changes</a></h4>
 <ul>
 <li>change emitting <code>std::string</code> for strings to <code>string</code>(because in showing assertion errors, <code>std::string</code> is illusory).</li>
 <li>use <code>sys.exit</code> instead of <code>exit</code> in <code>src/core/h_help.py</code>(@mmdbalkhi)</li>
@@ -1016,7 +1017,7 @@ list of all subpackages in crypto :
 <li>improve <code>typeof</code> builtin function</li>
 </ul>
 <!-- - remove file extension (`.has`) checking #42 -->
-<h4 id="bug-fixes"><a class="header" href="#bug-fixes">Bug fixes</a></h4>
+<h4 id="bug-fixes-1"><a class="header" href="#bug-fixes-1">Bug fixes</a></h4>
 <ul>
 <li>fix assigning <code>NULL</code> to arrays and pointers bug, #36.</li>
 <li>fix <code>check_g++</code> config option bugs</li>
@@ -1024,26 +1025,26 @@ list of all subpackages in crypto :
 <li>fix <code>random</code> library bug</li>
 <li>fix <code>browser</code> library bug</li>
 </ul>
-<h4 id="removed"><a class="header" href="#removed">Removed</a></h4>
+<h4 id="removed-1"><a class="header" href="#removed-1">Removed</a></h4>
 <ul>
 <li>remove <code>windows</code>,<code>browser</code> libraries</li>
 </ul>
 </details>
 <details>
 <summary>v1.3.9-rc.2</summary>
-<h4 id="bug-fixes-1"><a class="header" href="#bug-fixes-1">Bug fixes</a></h4>
+<h4 id="bug-fixes-2"><a class="header" href="#bug-fixes-2">Bug fixes</a></h4>
 <ul>
 <li>fix a critical bug in importing system</li>
 </ul>
 </details>
 <details>
 <summary>v1.3.9-rc.1</summary>
-<h4 id="changes-1"><a class="header" href="#changes-1">Changes</a></h4>
+<h4 id="changes-2"><a class="header" href="#changes-2">Changes</a></h4>
 <ul>
 <li>upgrade importing system</li>
 <li>some changes in self hosted compiler(NOTE: self hosted compiler is not ready yet)</li>
 </ul>
-<h4 id="bug-fixes-2"><a class="header" href="#bug-fixes-2">Bug fixes</a></h4>
+<h4 id="bug-fixes-3"><a class="header" href="#bug-fixes-3">Bug fixes</a></h4>
 <ul>
 <li>fix import bug when importing one package in multiple files</li>
 <li>fix self hosted bugs</li>
@@ -1051,11 +1052,11 @@ list of all subpackages in crypto :
 </details>
 <details>
 <summary>v1.3.9-rc</summary>
-<h4 id="changes-2"><a class="header" href="#changes-2">Changes</a></h4>
+<h4 id="changes-3"><a class="header" href="#changes-3">Changes</a></h4>
 <ul>
 <li>Rewrite package manager</li>
 </ul>
-<h4 id="bug-fixes-3"><a class="header" href="#bug-fixes-3">Bug fixes</a></h4>
+<h4 id="bug-fixes-4"><a class="header" href="#bug-fixes-4">Bug fixes</a></h4>
 <ul>
 <li>fix <code>http</code> library bug</li>
 <li>fix cpp importing bug</li>
@@ -1063,7 +1064,7 @@ list of all subpackages in crypto :
 </details>
 <details>
 <summary>v1.3.9-beta</summary>
-<h4 id="new-features-1"><a class="header" href="#new-features-1">New features</a></h4>
+<h4 id="new-features-2"><a class="header" href="#new-features-2">New features</a></h4>
 <ul>
 <li>passing functions as arguments</li>
 </ul>
@@ -1079,26 +1080,26 @@ function g(func:Function[int]int): int {
 <li>add static variables, <a href="https://github.com/hascal/hascal/blob/main/tests/static.has">See this example</a></li>
 <li>add <code>only_compile</code> config option</li>
 </ul>
-<h4 id="changes-3"><a class="header" href="#changes-3">Changes</a></h4>
+<h4 id="changes-4"><a class="header" href="#changes-4">Changes</a></h4>
 <ul>
 <li>upgrade importing system</li>
 </ul>
-<h4 id="bug-fixes-4"><a class="header" href="#bug-fixes-4">Bug fixes</a></h4>
+<h4 id="bug-fixes-5"><a class="header" href="#bug-fixes-5">Bug fixes</a></h4>
 <ul>
 <li>fix pyinstaller build issue</li>
 </ul>
-<h4 id="removed-1"><a class="header" href="#removed-1">Removed</a></h4>
+<h4 id="removed-2"><a class="header" href="#removed-2">Removed</a></h4>
 </details>
 <details>
 <summary>v1.3.9-alpha.1</summary>
-<h4 id="changes-4"><a class="header" href="#changes-4">Changes</a></h4>
+<h4 id="changes-5"><a class="header" href="#changes-5">Changes</a></h4>
 <ul>
 <li>add <code>download</code>,<code>upload</code>,<code>post</code> functions to <code>http</code> library</li>
 <li><code>https</code> support for <code>http</code> library</li>
 <li>add <code>windows</code> library(that includes <code>windows.h</code>)</li>
 <li>add <code>browser</code> library to open urls in default browser(now only supports windows)</li>
 </ul>
-<h4 id="bug-fixes-5"><a class="header" href="#bug-fixes-5">Bug fixes</a></h4>
+<h4 id="bug-fixes-6"><a class="header" href="#bug-fixes-6">Bug fixes</a></h4>
 <ul>
 <li>fix linker flag import bug in <code>cuse</code> statement</li>
 </ul>
@@ -1107,21 +1108,21 @@ function g(func:Function[int]int): int {
 <hr>
 <details>
 <summary>v1.3.8</summary>
-<h4 id="new-features-2"><a class="header" href="#new-features-2">New features</a></h4>
+<h4 id="new-features-3"><a class="header" href="#new-features-3">New features</a></h4>
 <ul>
 <li>non-nullable and nullable variables</li>
 </ul>
-<h4 id="changes-5"><a class="header" href="#changes-5">Changes</a></h4>
+<h4 id="changes-6"><a class="header" href="#changes-6">Changes</a></h4>
 <ul>
 <li>change pointer unary from <code>*</code> to <code>^</code></li>
 <li>improve importing system</li>
 </ul>
-<h4 id="bug-fixes-6"><a class="header" href="#bug-fixes-6">Bug fixes</a></h4>
+<h4 id="bug-fixes-7"><a class="header" href="#bug-fixes-7">Bug fixes</a></h4>
 <ul>
 <li>fix repetitious imports bug</li>
 <li>fix #29 bug(by <a href="https://github.com/mmdbalkhi">@mmdbalkhi</a>)</li>
 </ul>
-<h4 id="removed-2"><a class="header" href="#removed-2">Removed</a></h4>
+<h4 id="removed-3"><a class="header" href="#removed-3">Removed</a></h4>
 <ul>
 <li>remove <code>token</code> library</li>
 </ul>
@@ -1129,7 +1130,7 @@ function g(func:Function[int]int): int {
 <hr>
 <details>
 <summary>v1.3.7</summary>
-<h4 id="new-features-3"><a class="header" href="#new-features-3">New features</a></h4>
+<h4 id="new-features-4"><a class="header" href="#new-features-4">New features</a></h4>
 <ul>
 <li>manual memory management with <code>new</code> and <code>delete</code> keyword</li>
 <li>functional programming paradigm</li>
@@ -1142,13 +1143,13 @@ function g(func:Function[int]int): int {
 <li>improve importing system</li>
 <li>improve stdlib architecture</li>
 </ul>
-<h4 id="bug-fixes-7"><a class="header" href="#bug-fixes-7">Bug fixes</a></h4>
+<h4 id="bug-fixes-8"><a class="header" href="#bug-fixes-8">Bug fixes</a></h4>
 <ul>
 <li>fix scoping bug</li>
 <li>fix <code>conv</code> library bug</li>
 <li>fix conditions bug</li>
 </ul>
-<h4 id="removed-3"><a class="header" href="#removed-3">Removed</a></h4>
+<h4 id="removed-4"><a class="header" href="#removed-4">Removed</a></h4>
 <ul>
 <li><code>export</code> library removed</li>
 <li><code>local use</code> statement removed</li>
@@ -1157,7 +1158,7 @@ function g(func:Function[int]int): int {
 <hr>
 <details>
 <summary>v1.3.6</summary>
-<h4 id="new-features-4"><a class="header" href="#new-features-4">New features</a></h4>
+<h4 id="new-features-5"><a class="header" href="#new-features-5">New features</a></h4>
 <ul>
 <li>more data types : <code>int8</code>,<code>uint8</code>,<code>int16</code>,<code>uint16</code>,<code>int32</code>,<code>uint32</code>,<code>int64</code>,<code>uint64</code>,<code>double</code></li>
 <li>type compatibility</li>
@@ -1177,7 +1178,7 @@ struct bar {
 <ul>
 <li>add <code>sizeof</code> function</li>
 </ul>
-<h4 id="bug-fixes-8"><a class="header" href="#bug-fixes-8">Bug fixes</a></h4>
+<h4 id="bug-fixes-9"><a class="header" href="#bug-fixes-9">Bug fixes</a></h4>
 <ul>
 <li>fix lexer bugs</li>
 <li>check if function returns a value at end of string else show error</li>
@@ -1191,7 +1192,7 @@ struct bar {
 <li>add <code>export</code> library for exporting to C(see : <a href="https://github.com/bistcuite/haspy">haspy</a>)</li>
 <li>add <code>crypto.sha256</code> for sha256 hashing</li>
 </ul>
-<h4 id="removed-4"><a class="header" href="#removed-4">Removed</a></h4>
+<h4 id="removed-5"><a class="header" href="#removed-5">Removed</a></h4>
 <ul>
 <li><code>libcinfo</code> library removed</li>
 </ul>
@@ -1215,7 +1216,7 @@ struct bar {
 <li>add <code>termcolor</code> library to colorize the output</li>
 </ul>
 <p><img src="assets/termcolor.png" alt="assets/termcolor.png" /></p>
-<h4 id="bug-fixes-9"><a class="header" href="#bug-fixes-9">Bug fixes</a></h4>
+<h4 id="bug-fixes-10"><a class="header" href="#bug-fixes-10">Bug fixes</a></h4>
 <ul>
 <li>Fix incomplete type defination bug</li>
 </ul>
@@ -1223,12 +1224,12 @@ struct bar {
 <hr>
 <details>
 <summary>v1.3.4</summary>
-<h4 id="new-features-5"><a class="header" href="#new-features-5">New features</a></h4>
+<h4 id="new-features-6"><a class="header" href="#new-features-6">New features</a></h4>
 <ul>
 <li>compiler option : now can generate c++ code from hascal code with <code>c++_code : 1</code> in <code>config.json</code> file</li>
 <li>use <code>cuse</code> keyword to include c++ files.</li>
 </ul>
-<h4 id="bug-fixes-10"><a class="header" href="#bug-fixes-10">Bug fixes</a></h4>
+<h4 id="bug-fixes-11"><a class="header" href="#bug-fixes-11">Bug fixes</a></h4>
 <ul>
 <li>Fix semantic analyser bugs</li>
 <li>Fix standard library bug</li>
@@ -1237,12 +1238,12 @@ struct bar {
 <hr>
 <details>
 <summary>v1.3.3</summary>
-<h4 id="new-features-6"><a class="header" href="#new-features-6">New features</a></h4>
+<h4 id="new-features-7"><a class="header" href="#new-features-7">New features</a></h4>
 <ul>
 <li>struct inheritance</li>
 <li>can use <code>cuse</code> statement on struct declaration</li>
 </ul>
-<h4 id="bug-fixes-11"><a class="header" href="#bug-fixes-11">Bug fixes</a></h4>
+<h4 id="bug-fixes-12"><a class="header" href="#bug-fixes-12">Bug fixes</a></h4>
 <ul>
 <li>Fix variable scope bug</li>
 <li>Fix variable declaration bug</li>
@@ -1252,19 +1253,19 @@ struct bar {
 <hr>
 <details>
 <summary>v1.3.2</summary>
-<h4 id="new-features-7"><a class="header" href="#new-features-7">New features</a></h4>
+<h4 id="new-features-8"><a class="header" href="#new-features-8">New features</a></h4>
 <ul>
 <li><code>for in</code> statement</li>
 <li>library manager</li>
 <li>flag option</li>
 <li><code>cuse</code> statement</li>
 </ul>
-<h4 id="bug-fixes-12"><a class="header" href="#bug-fixes-12">Bug fixes</a></h4>
+<h4 id="bug-fixes-13"><a class="header" href="#bug-fixes-13">Bug fixes</a></h4>
 <ul>
 <li>Fix semantic analyser bugs</li>
 <li>Fix nested struct bug</li>
 </ul>
-<h4 id="removed-5"><a class="header" href="#removed-5">Removed</a></h4>
+<h4 id="removed-6"><a class="header" href="#removed-6">Removed</a></h4>
 <ul>
 <li><code>for to</code> and <code>for downto</code> statement removed</li>
 </ul>
@@ -1272,11 +1273,11 @@ struct bar {
 <hr>
 <details>
 <summary>v1.3.1</summary>
-<h4 id="new-features-8"><a class="header" href="#new-features-8">New features</a></h4>
+<h4 id="new-features-9"><a class="header" href="#new-features-9">New features</a></h4>
 <ul>
 <li>Basic Semantic Anaslyser</li>
 </ul>
-<h4 id="removed-6"><a class="header" href="#removed-6">Removed</a></h4>
+<h4 id="removed-7"><a class="header" href="#removed-7">Removed</a></h4>
 <ul>
 <li>remove semicolon from syntax</li>
 </ul>
