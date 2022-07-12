@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Hascal Style</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/prism.css">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/prism.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>*{max-width:100%;}</style>
+        <link rel="icon" type="image/x-icon" href="images/hascal-logo.png">
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/hascal-logo.png" width="40" alt="Hascal Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="download.html">Download</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/hascal/hascal/tree/main/docs">Documentation</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="news/index.html">News</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="foundation.html">Hascal Foundation</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="style.html">Hascal Style</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/hascal/hascal">Source Code</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main">
+            <br/>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col" style="font-size: large;">
+                        <h1>The Hascal Style</h1>
+                        <br/>
+                        
+                        <br/>
+                        <a href="#Whitespace">
+                            <h2>
+                                Whitespace
+                            </h2>
+                        </a>
+                        <ul>    
+                            <li>One statement per line.</li>
+                            <li>Use spaces instead of hardware tabs.</li>
+                            <li>Each indentation level will be four columns.</li>
+                        </ul>
+                        <br/>
+                        <a href="#Naming_Conventions">
+                            <h2>
+                                Naming Conventions
+                            </h2>
+                        </a>
+                        <p>    
+                            Unless listed otherwise below, names should be camelCased (this includes all variables). So, names formed by joining multiple words have each word other than the first word capitalized.
+                            <pre><code class="language-hascal">function myFunc()
+var myLocalVar : int?</code></pre>
+                        </p>
+                        <p>
+                            Module and package names should be all lowercase, and only contain the characters [a..z][0..9][_]. This avoids problems when dealing with case-insensitive file systems. 
+                            <pre><code class="language-hascal">use ctypto.sha256</code></pre>
+                        </p>
+                        <p>
+                            The names of user-defined types should be PascalCased, which is the same as camelCased except that the first letter is uppercase. 
+                            <pre><code class="language-hascal">struct FooAndBar {
+    var x = 0
+}
+enum Colors{
+    red,
+    blue,
+    green
+}</code></pre>
+                        </p>
+                        <p>
+                            The names of constants should be CAPITALCASED.
+                            <pre><code class="language-hascal">const PI : float = 3.14</code></pre>
+                        </p>
+                        <p>
+                            If a name would conflict with a keyword, and it is desirable to use the keyword rather than pick a different name, a single underscore ‘_’ should be appended to it. Names should not be capitalized differently in order to avoid conflicting with keywords.
+                            <pre><code class="language-hascal">enum Types{
+    string_,
+    int_,
+    float_
+}</code></pre>
+                        </p>
+                        <br>
+                        <a href="#Variable_Declaration">
+                            <h2>
+                                Variable Declaration
+                            </h2>
+                        </a>
+                        <p>
+                            Always assign a value to variables when you declare they and <b>decrease using nullable variable in your program</b>.
+                            <pre><code class="language-hascal">var localVar : int = 12 // good
+var localVar2 : int? // bad
+localVar2 = 12
+</code></pre>
+                        </p>
+                        <br/>
+                        <a href="#Imports">
+                            <h2>
+                                Imports
+                            </h2>
+                        </a>
+                        <ul>
+                            <li>Local imports should be preferred over global imports.</li>
+                            <li>Imports should be sorted lexicographically.</li>
+                        </ul>
+                        <br/>
+                        <p>
+                            We are not necessarily recommending that all code follow these rules but sent PRs to Hascal standard library should should use these rules. 
+                            <br/>
+                            Do you have a suggestion to improve these rules or an idea for new rules? <a href="https://github.com/hascal/hascal/issues/new/">open an issue on Hascal's github repository.</a>
+                        </p>
+                    </div>
+                </div>
+              <hr>
+            </div>
+          </main>
+      
+            <footer class="container">
+                <p>&copy; Hascal Foundation 2019-2022</p>
+            </footer>
+    </body>
+</html>
