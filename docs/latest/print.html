@@ -326,7 +326,7 @@ var foo_error : int // error : nullable variable must be assigned a value
 <pre><code class="language-typescript">var foo : int^ = (int^)1
 print(^foo) // 1
 </code></pre>
-<p><strong>NOTE</strong>: We we recommend you to always allocate pointers with <code>new</code> keyword and deallocate with <code>delete</code> keyword, for more information go to <a href="lang/13_memory_management.html">Memory management chapter</a>.</p>
+<p><strong>NOTE</strong>: We recommend you to always allocate pointers with <code>new</code> keyword and deallocate with <code>delete</code> keyword, for more information go to <a href="lang/13_memory_management.html">Memory management chapter</a>.</p>
 <p>NOTE: Currently only one level of pointers are supported.</p>
 <h2 id="static-variables"><a class="header" href="#static-variables">Static variables</a></h2>
 <p>Static variables are variables that are declared outside of a function and are accessible from anywhere in the program.</p>
@@ -991,7 +991,15 @@ list of all subpackages in crypto :
 <li>in <code>functional</code> library : change <code>lessThanOrEqual</code> to <code>lessThanEqual</code>, <code>greaterThanOrEqual</code> to <code>greaterThanEqual</code></li>
 </ul>
 <h4 id="bug-fixes"><a class="header" href="#bug-fixes">Bug fixes</a></h4>
+<ul>
+<li>fix <code>math</code> library bug</li>
+<li>fix import package bug with <code>_.*</code> name</li>
+<li>fix <code>crypto.sha256</code> library bug</li>
+</ul>
 <h4 id="removed"><a class="header" href="#removed">Removed</a></h4>
+<ul>
+<li>remove <code>libtcc</code> from stdlib</li>
+</ul>
 </details>
 </details>
 <details>
