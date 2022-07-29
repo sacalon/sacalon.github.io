@@ -65,25 +65,53 @@
 
             <div class="jumbotron">
               <div class="container">
-                <h1 style="text-align: center;" class="display-3" id="header">هاسکال</h1>
-                <p>
-                    هاسکال یک زبان برنامه نویسی همه منظوره و متن باز است که برای ساخت نرم افزار بهینه، قابل نگهداری، قابل اعتماد و کارآمد طراحی شده است.                </p>
-                <a id="get-started" class="btn btn-primary btn-lg" href="../docs/latest/index.html">شروع کنید &raquo;</a>
+                <div class="row">
+                    
+                    <div class="col-sm-6">
+                        <h1 style="text-align: right;" class="display-3" id="header">هاسکال</h1>
+                        <p>
+                            هاسکال یک زبان برنامه نویسی همه منظوره و متن باز است که برای ساخت نرم افزار بهینه، قابل نگهداری، قابل اعتماد و کارآمد طراحی شده است.                </p>
+                        <a id="get-started" class="btn btn-primary btn-lg" href="../docs/latest/index.html">شروع کنید &raquo;</a>
+        
+                        <a id="download" class="btn btn-success btn-lg" href="../docs/latest/lang/1_install.html">هاسکال را نصب کنید</a>
+                        <br>
+                        <p>
+                            آخرین نسخه :
+                            <a href="https://github.com/hascal/hascal/releases/v1.3.10">v1.3.10</a>
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
 
-                <a id="download" class="btn btn-success btn-lg" href="../docs/latest/lang/1_install.html">هاسکال را نصب کنید</a>
+                        <pre><code class="language-hascal">function main() : int {
+    var texts : [string] = [
+        "Hello, world!",
+        "سلام دنیا!",
+        "¡Hola Mundo!",
+        "Γειά σου Κόσμε!",
+        "Привет, мир!",
+        "こんにちは世界！"
+    ]
+    for text in texts {
+        print(text)
+    }
+    return 0
+}
+                        </code></pre>
+                        <a href="https://github.com/hascal/hascal/tree/main/examples">مثال های بیشتر...</a>    
+                    </div>
+                </div> 
               </div>
             </div>
       
             <div class="container">
 
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h2>زبانی ساده و آسان</h2>
+                    <div> <!-- style="display:flex;"-->
+                        <div class="col-sm">
+                            <div>
+                                <h4 style="color:brown">زبانی ساده و آسان</h4>
                                 <p>
                                     هاسکال دارای یک نحو ساده و آسان و کتابخانه استاندارد کوچک است، شما می توانید هاسکال را در کمتر از یک ساعت یاد بگیرید! 
-                                    <br>
                                     <br>
                                     هاسکال بسیار شبیه به سوئیفت است و بر اساس ایده های خوب زبان پاسکال در ابتدا پایه گذاری شده است. 
                                 </p>
@@ -91,12 +119,11 @@
                         </div>
                         <br>
                       
-                        <div class="card">
-                            <div class="card-body">
-                                <h2>ایمن و قابل اطمینان</h2>
+                        <div class="col-sm">
+                            <div>
+                                <h4 style="color:brown">ایمن و قابل اطمینان</h4>
                                 <p>
                                     هاسکال از یک سیستم Null safety برای جلوگیری از خطاهای مربوط به داده NULL  استفاده میکند تا موجب افزایش امنیت و پایداری برنامه ها شود.
-                                    <br>
                                     <br>
                                     هاسکال به صورت پیشفرض شما را ملزم میکند تا مقداری را برای متغییر و ثوابت خود(هنگام تعریف) انتخاب کنید تا مطمئن شود هیچ گونه داده NULLی در برنامه وجود نخواهد داشت.                                    
                                 </p>
@@ -104,9 +131,9 @@
                         </div>
                         <br>
                         
-                        <div class="card">
-                            <div class="card-body">
-                                <h2>مدیریت حافظه دستی</h2>
+                        <div class="col-sm">
+                            <div>
+                                <h4 style="color:brown">مدیریت حافظه دستی</h4>
                                 <p>
                                     هاسکال از مدیریت حافظه به صورت دستی استفاده میکند و به شما آزادی عمل در برابر حافظه را میدهد اما هنگام کامپایل شما را در مدیریت حافظه به صورت دستی راهنمایی میکند(WIP).
                                 </p>
@@ -114,64 +141,16 @@
                         </div>
                         <br>
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h2>در هرجایی از هاسکال استفاده کنید</h2>
+                        <div class="col-sm">
+                            <div>
+                                <h4 style="color:brown">در هرجایی از هاسکال استفاده کنید</h4>
                                 <p>
                                     هاسکال، چندسکویی است، به این معنی که در هر پلتفرمی میتواند اجرا شود، از لینوکس و ویندوز گرفته تا سیستم های نهفته!
-                                    <br>
                                     <br>
                                     هاسکال می تواند کد ++C را فراخوانی کند و فراخوانی کد هاسکال در هر زبانی که بتواند با ++C  قابلیت همکاری داشته باشد امکان پذیر است.
                                 </p>
                             </div>
                         </div>
-                    </div>
-					
-                    <div class="col-md-8">
-                        <h3>مثال ها</h3>
-                        <hr>
-						<br>
-                        <div class="card">
-                            <div class="card-body">
-                                سلام دنیا! :
-                                <pre><code class="language-hascal">function main(argv:[string]) : int {
-    print("Hello World!")
-    return 0   
-}                               </code></pre>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="card">
-                            <div class="card-body">
-                                رنگی کردن ترمینال:
-                                <pre><code class="language-hascal">use termcolor
-function main(): int {
-    cprint("Hello, world!", "green")
-    cprint("Hello, world!", "blue")
-    cprint("Hello, world!", "red")
-    cprint("Hello, world!", "yellow")
-    cprint("Hello, world!", "magenta")
-    cprint("Hello, world!", "cyan")
-    return 0
-}                               </code></pre>
-                                <br>
-                                نتیجه :
-                                <br>
-                                <img src="https://github.com/hascal/hascal/blob/main/docs/assets/termcolor.png?raw=true" alt="termcolor" class="img-fluid">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="card">
-                            <div class="card-body">
-                                درخواست های HTTP :
-                                <pre><code class="language-hascal">use http
-function main(argv:[string]) : int {
-    print(get("https://www.google.com"))
-    return 0   
-}                               </code></pre>
-                            </div>
-                        </div>
-                        <br>
                     </div>
                 </div>
             </div>

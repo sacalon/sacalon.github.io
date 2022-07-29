@@ -62,117 +62,94 @@
         <main role="main">
 
             <div class="jumbotron">
-              <div class="container">
-                <h1 style="text-align: center;" class="display-3" id="header">Hascal</h1>
-                <p>
-                    Hascal is a general purpose and open source programming language designed to build optimal, maintainable, reliable and efficient software.
-                </p>
-                <a class="btn btn-primary btn-lg" href="docs/latest/index.html">Getting Started &raquo;</a>
-                <a class="btn btn-success btn-lg" href="docs/latest/lang/0_install.html">Install Hascal</a>
-              </div>
-            </div>
-      
-            <div class="container">
+                <div class="container">
+                    <div class="row">
+                    
+					    <div class="col-sm-6">
+                            <h1 style="text-align: left;" class="display-3" id="header">Hascal</h1>
+                            <p>
+                                Hascal is a general purpose and open source programming language designed to build optimal, maintainable, reliable and efficient software.
+                            </p>
+                            <a class="btn btn-primary btn-lg" href="docs/latest/index.html">Getting Started &raquo;</a>
+                            <a class="btn btn-success btn-lg" href="docs/latest/lang/0_install.html">Install Hascal</a>
+                            <br>
+                            <p>
+                                Latest release :
+                                <a href="https://github.com/hascal/hascal/releases/v1.3.10">v1.3.10</a>
+                            </p>
+                            
+                        </div>
 
+                        <div class="col-sm-6">
+
+                        <pre><code class="language-hascal">function main() : int {
+    var texts : [string] = [
+        "Hello, world!",
+        "سلام دنیا!",
+        "¡Hola Mundo!",
+        "Γειά σου Κόσμε!",
+        "Привет, мир!",
+        "こんにちは世界！"
+    ]
+    for text in texts {
+        print(text)
+    }
+    return 0
+}
+                        </code></pre>  
+                        <a href="https://github.com/hascal/hascal/tree/main/examples">More examples...</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h2>Simple and Easy Language</h2>
+                    <div>
+                        <div class="col-sm">
+                            <div>
+                                <h4 style="color:brown">Simple and Easy Language</h4>
                                 <p>
                                     Hascal has a simple and easy syntax and a small standard library, you can learn Hascal in less than an hour!
-                                    <br>
                                     <br>
                                     Hascal is very similar to Swift and was originally based on the good ideas of the Pascal language.
                                 </p>
                             </div>
                         </div>
-                        <br>
+
                       
-                        <div class="card">
-                            <div class="card-body">
-                                <h2>Safe and reliable</h2>
+                        <div class="col-sm">
+                            <div>
+                                <h4 style="color:brown">Safe and reliable</h4>
                                 <p>
                                     Hascal uses a Null safety system to prevent NULL data errors to increase the security and stability of applications.
-                                    <br>
                                     <br>
                                     By default, Hascal requires you to select a value for your variable and constants (at declaration) to ensure that there is no NULL data in the program.
                                 </p>
                             </div>
                         </div>
-                        <br>
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h2>Manual memory management</h2>
+                        <div class="col-sm">
+                            <div>
+                                <h4 style="color:brown">Manual memory management</h4>
                                 <p>
                                     Hascal uses manual memory management and gives you the freedom to act against memory but guides you in manual memory management when compiling(WIP).
                                 </p>
                             </div>
                         </div>
-                        <br>
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h2>Use Hascal every where!</h2>
+                        <div class="col-sm">
+                            <div>
+                                <h4 style="color:brown">Use Hascal every where!</h4>
                                 <p>
                                     Hascal is cross platform, meaning it can run on any platform, from Linux and Windows to embedded systems!
-                                    <br>
                                     <br>
                                     The Hascal can call C++ code, and it is possible to call Hascal code in any language that can be able to cooperate with C++ code.
                                 </p>
                             </div>
                         </div>
                     </div>
-					
-                    <div class="col-md-8">
-                        <h3>Example Codes</h3>
-                        <hr>
-						<br>
-                        <div class="card">
-                            <div class="card-body">
-                                Hello World :
-                                <pre><code class="language-hascal">function main(argv:[string]) : int {
-    print("Hello World!")
-    return 0   
-}                               </code></pre>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="card">
-                            <div class="card-body">
-                                Colorizing terminal :
-                                <pre><code class="language-hascal">use termcolor
-function main(): int {
-    cprint("Hello, world!", "green")
-    cprint("Hello, world!", "blue")
-    cprint("Hello, world!", "red")
-    cprint("Hello, world!", "yellow")
-    cprint("Hello, world!", "magenta")
-    cprint("Hello, world!", "cyan")
-    return 0
-}                               </code></pre>
-                                Result :
-                                <br>
-                                <img src="https://github.com/hascal/hascal/blob/main/docs/assets/termcolor.png?raw=true" alt="termcolor" class="img-fluid">
-
-                            </div>
-                        </div>
-                        <br>
-                        <div class="card">
-                            <div class="card-body">
-                                HTTP Response :
-                                <pre><code class="language-hascal">use http
-function main(argv:[string]) : int {
-    print(get("google.com"))
-    return 0   
-}                               </code></pre>
-                            </div>
-                        </div>
-                        <br>
-                    </div>
                 </div>
-
             </div>
             <br/>
             <div class="jumbotron">
@@ -206,7 +183,7 @@ function main(argv:[string]) : int {
                 window.next_letter = function() {
                     if (index <= type_this.length) {
                         header.innerText = type_this.substr(0, index++);
-                        setTimeout("next_letter()", 50);
+                        setTimeout("next_letter()", 60);
                     }
                 }
 
@@ -220,6 +197,47 @@ function main(argv:[string]) : int {
                         window.location.href = "";
                     })
                 })
+
+                const dropdown = document.querySelector('select');
+
+                dropdown.onchange = function() {
+                
+                const example1 = document.querySelector('#hello-world-example');
+                const example2 = document.querySelector('#colorizing-terminal');
+                const example3 = document.querySelector('#http-response');
+                const example4 = document.querySelector('#regex-example');
+
+                
+                if (dropdown.selectedIndex === 0) {
+                    example1.style.display = "block";
+                    example2.style.display = "none";
+                    example3.style.display = "none";
+                    example4.style.display = "none";
+                    example5.style.display = "none";
+                }
+                else if (dropdown.selectedIndex === 1) {
+                    example1.style.display = "none";
+                    example2.style.display = "block";
+                    example3.style.display = "none";
+                    example4.style.display = "none";
+                    example5.style.display = "none";
+                }
+                else if (dropdown.selectedIndex === 2) {
+                    example1.style.display = "none";
+                    example2.style.display = "none";
+                    example3.style.display = "block";
+                    example4.style.display = "none";
+                    example5.style.display = "none";
+                }
+                else if (dropdown.selectedIndex === 3) {
+                    example1.style.display = "none";
+                    example2.style.display = "none";
+                    example3.style.display = "none";
+                    example4.style.display = "block";
+                    example5.style.display = "none";
+                }
+                
+                }
             </script>
     </body>
 </html>
