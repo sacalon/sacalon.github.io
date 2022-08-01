@@ -547,7 +547,7 @@ for i in foo {
     return x + y
 }
 </code></pre>
-<p>In the example above, <code>x</code> and <code>y</code> are parameters and thire type(<code>int</code>) is your return type.</p>
+<p>In the example above, <code>x</code> and <code>y</code> are parameters and their type(<code>int</code>) is your return type.</p>
 <blockquote>
 <p>Note: you can use <code>?</code> to make a parameter nullable.</p>
 </blockquote>
@@ -555,20 +555,20 @@ for i in foo {
 <p>You can call a function by using the function name followed by parentheses:</p>
 <pre><code class="language-typescript">foo()
 </code></pre>
-<p>If you want to pass some parameters to your function, you can use them in the parentheses:</p>
+<p>If you want to pass some arguments to your function, you can use them in the parentheses(separate with <code>,</code>):</p>
 <pre><code class="language-typescript">foo(1,2,3)
 </code></pre>
 <p>Also you can assign the return value of a function to a variable:</p>
 <pre><code class="language-typescript">var foo : int = add(1,2)
 </code></pre>
 <h2 id="function-overloading"><a class="header" href="#function-overloading">Function overloading</a></h2>
-<p>You can overload functions by changing the number of parameters or the type of parameters :</p>
-<pre><code class="language-typescript">// overloading function
-function add(x:int,y:int,z:int): int {
+<p>You can overload functions by defining a new function and changing the number of parameters or the type of parameters or return type of function :</p>
+<pre><code class="language-typescript">function add(x:int,y:int,z:int): int {
     return x + y + z
 }
 
-function add2(x:int,y:int){
+// overloading function `add`
+function add(x:int,y:int){
     print(x + y)
 }
 
@@ -577,22 +577,41 @@ function main(): int {
     print(add(1,2,3))
 }
 </code></pre>
-<h2 id="passing-function-as-argument"><a class="header" href="#passing-function-as-argument">Passing function as argument</a></h2>
-<p>You can pass a function as an argument to another function:</p>
-<pre><code class="language-typescript">function runner(func: Function[int, int]int) : int{
-    return func(1,2)
-}
-
-function add(a:int, b:int) : int {
-    return a+b
-}
-
-function main():int {
-    print(runner(add))
-    return 0
+<h2 id="passing-function-as-parameter"><a class="header" href="#passing-function-as-parameter">Passing function as parameter</a></h2>
+<p>To passing a function as parameter you should define a parameter in with <code>Function</code> type with following syntax :</p>
+<pre><code>Function[&lt;function_parameter1_type&gt;,&lt;function_parameter2_type&gt;,...]&lt;return_type&gt;
+</code></pre>
+<p>For example :</p>
+<pre><code class="language-typescript">function foo(func: Function[float, int]int) : int{
+    
 }
 </code></pre>
-<p>In the example above, <code>runner</code> is a function that takes a function as an argument and returns the return value of the given function.</p>
+<p>At above we defined a function with name <code>foo</code> that takes a function as its parameter and given function should has  two parameters with types <code>float</code> and <code>int</code>(respectively) and it should returns <code>int</code>.</p>
+<p>Also we can call given function like other functions, change the <code>foo</code> function code to following code :</p>
+<pre><code class="language-typescript">function foo(func: Function[float, int]int){
+    print(func(1.0,2))
+}
+</code></pre>
+<p>Now we define a function to pass to <code>foo</code> func and must have the properties specified in the foo function(two parameters with types <code>int</code> and <code>float</code> and <code>int</code> as return type):</p>
+<pre><code class="language-typescript">function bar(a:float, b:int) : int {
+    print(&quot;Hello from bar function!&quot;)
+    return a + b
+}
+</code></pre>
+<p>Now we can pass <code>bar</code> function to <code>foo</code> function as parameter :</p>
+<pre><code class="language-typescript">foo(bar)
+</code></pre>
+<p>Output :</p>
+<pre><code>Hello from bar function!
+3
+</code></pre>
+<h2 id="function-decorators"><a class="header" href="#function-decorators">Function decorators</a></h2>
+<p>Decorator is a way to add some properties to a function and it is used with <code>@</code> character + decorator name before function declaration.</p>
+<p>List of available decorators in Hascal :
+| Decorator       | Description  |
+| :------------- | :----------: |
+|  <code>@static_function</code> | Makes function <code>static</code>  | 
+| <code>@extern</code>  | Externs function(<a href="https://en.cppreference.com/w/cpp/keyword/extern">like <code>extern</code> in C++</a>) |</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="importing--creating-modules"><a class="header" href="#importing--creating-modules">Importing &amp; Creating modules</a></h1>
 <p>A module is a package of code that can be imported into another module to use its code.</p>
 <h2 id="importing-a-module"><a class="header" href="#importing-a-module">Importing a module</a></h2>
@@ -1003,6 +1022,7 @@ list of all subpackages in crypto :
 <li>improve error handler for conditions</li>
 <li><code>pytest</code> based test runner(@mmdbalkhi)</li>
 <li>fix conflicting with C\C++\Obj-C in FFI features</li>
+<li>change <code>static</code> decorator name to <code>static_function</code> name</li>
 </ul>
 <h4 id="bug-fixes"><a class="header" href="#bug-fixes">Bug fixes</a></h4>
 <ul>
