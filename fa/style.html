@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>سبک هاسکال</title>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap-rtl.min.css">
+        <link rel="stylesheet" href="../css/prism.css">
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/prism.js"></script>
+        <script src="../js/popper.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>*{max-width:100%;}</style>
+        <link rel="icon" type="image/x-icon" href="../images/hascal-logo.png">
+        <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+        <style>body {font-family: Vazirmatn, sans-serif;}</style>
+
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="../images/logo.svg" width="40" alt="Hascal Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">خانه</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="download.html">دانلود</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="../docs/latest/index.html">مستندات</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="news/index.html">اخبار</a>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="use-cases.html">موارد استفاده</a>
+                    </li> -->
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="foundation.html">بنیاد هاسکال</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../style.html">سبک هاسکال</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/hascal/hascal">سورس کد</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main">
+            <br/>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col" style="font-size: large;">
+                        <h1>سبک هاسکال</h1>
+                        <br/>
+                        
+                        <br/>
+                        <a href="#Whitespace">
+                            <h2>
+                                فضای خالی
+                            </h2>
+                        </a>
+                        <ul>    
+                            <li>یک عبارت و دستور به ازای هر خط.</li>
+                            <li>استفاده از فضای خالی به جای تب سخت افزاری.</li>
+                            <li>هر تو رفتگی شامل 4 ستون شود.</li>
+                        </ul>
+                        <br/>
+                        <a href="#Naming_Conventions">
+                            <h2>
+                                قراردادهای نامگذاری
+                            </h2>
+                        </a>
+                        <p>    
+                            نام ها باید camelCased باشند (این شامل همه متغیرها می شود). بنابراین، نام هایی که از به هم پیوستن چند کلمه تشکیل می شوند، هر کلمه ای غیر از کلمه اول را با حروف بزرگ نوشته می شود:
+                            <pre><code class="language-hascal">function myFunc()
+var myLocalVar : int?</code></pre>
+                        </p>
+                        <p>
+                            نام ماژول ها و بسته ها باید همه با حروف کوچک باشد و فقط شامل کاراکترهای [a..z][0..9][_] باشد. این امر هنگام برخورد با سیستم های فایل حساس به حروف کوچک و بزرگ از مشکلات جلوگیری می کند:
+                            <pre><code class="language-hascal">use ctypto.sha256</code></pre>
+                        </p>
+                        <p>
+                            نام انواع تعریف شده توسط کاربر باید PascalCased باشد که همان camelCased است با این تفاوت که حرف اول آن بزرگ است:
+                            <pre><code class="language-hascal">struct FooAndBar {
+    var x = 0
+}
+enum Colors{
+    red,
+    blue,
+    green
+}</code></pre>
+                        </p>
+                        <p>
+                            نام ثابت ها باید CAPITALCASED باشد:
+                            <pre><code class="language-hascal">const PI : float = 3.14</code></pre>
+                        </p>
+                        <p>
+                            اگر نامی با یک کلمه کلیدی مغایرت داشته باشد و بهتر است از کلمه کلیدی به جای انتخاب نام دیگری استفاده شود، یک زیرخط «_» باید به آن اضافه شود. برای جلوگیری از تضاد با کلمات کلیدی، نام ها نباید با حروف بزرگ نوشته شوند:
+                            <pre><code class="language-hascal">enum Types{
+    string_,
+    int_,
+    float_
+}</code></pre>
+                        </p>
+                        <br>
+                        <a href="#Variable_Declaration">
+                            <h2>
+                                تعریف متغییر
+                            </h2>
+                        </a>
+                        <p>
+                            زمانی که متغیرها را تعریف می کنید، همیشه یک مقدار به آنها اختصاص دهید <b>استفاده از متغیر nullable در برنامه‌تان را کاهش دهید.</b>.
+                            <pre><code class="language-hascal">var localVar : int = 12 // good
+var localVar2 : int? // bad
+localVar2 = 12
+</code></pre>
+                        </p>
+                        <br/>
+                        <a href="#Imports">
+                            <h2>
+                                واردات
+                            </h2>
+                        </a>
+                        <ul>
+                            <li>واردات محلی باید بر واردات عمومی ترجیح داده شود.</li>
+                            <li>واردات باید از نظر لغوی مرتب شده باشند.</li>
+                        </ul>
+                        <br/>
+                        <p>
+                            ما لزوماً توصیه نمی کنیم که همه کدها از این قوانین پیروی کنند، اما Pull Request های ارسال شده به کتابخانه استاندارد هاسکال باید از این قوانین پیروی کنند.
+                            <br/>
+                            آیا پیشنهادی برای بهبود این قوانین دارید یا ایده ای برای قوانین جدید؟ <a href="https://github.com/hascal/hascal/issues/new/">یک موضوع را در مخزن گیت هاب هاسکال باز کنید.</a>
+                        </p>
+                    </div>
+                </div>
+              <hr>
+            </div>
+          </main>
+      
+            <footer class="container">
+                <p>&copy; Hascal Foundation 2019-2022</p>
+            </footer>
+    </body>
+</html>
