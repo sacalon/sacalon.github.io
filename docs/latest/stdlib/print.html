@@ -279,26 +279,103 @@ assert(foo == bar)
 <p>Returns current second.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="math"><a class="header" href="#math"><code>math</code></a></h1>
 <p>Math library has properties and methods for mathematical constants and functions</p>
-<h2 id="sinxfloatfloat"><a class="header" href="#sinxfloatfloat"><code>sin(x:float):float</code></a></h2>
+<h2 id="noteall-functions-that-return-and-give-double-type-also-can-return-and-give-float-type"><a class="header" href="#noteall-functions-that-return-and-give-double-type-also-can-return-and-give-float-type"><strong>NOTE</strong>:<strong>All functions that return and give <code>double</code> type, also can return and give <code>float</code> type</strong></a></h2>
+<h2 id="trigonometric-ratios"><a class="header" href="#trigonometric-ratios">Trigonometric ratios</a></h2>
+<h2 id="sinxdoubledouble"><a class="header" href="#sinxdoubledouble"><code>sin(x:double):double</code></a></h2>
 <p>Returns sine of x.</p>
-<h2 id="cosxfloatfloat"><a class="header" href="#cosxfloatfloat"><code>cos(x:float):float</code></a></h2>
+<h2 id="cosxdoubledouble"><a class="header" href="#cosxdoubledouble"><code>cos(x:double):double</code></a></h2>
 <p>Returns cosine of x.</p>
-<h2 id="tanxfloatfloat"><a class="header" href="#tanxfloatfloat"><code>tan(x:float):float</code></a></h2>
+<h2 id="tanxdoubledouble"><a class="header" href="#tanxdoubledouble"><code>tan(x:double):double</code></a></h2>
 <p>Returns tangent of x.</p>
-<h2 id="const-pi--float"><a class="header" href="#const-pi--float"><code>const PI : float</code></a></h2>
-<p>PI number.</p>
-<h2 id="fmaxafloatbfloatfloat"><a class="header" href="#fmaxafloatbfloatfloat"><code>fmax(a:float,b:float):float</code></a></h2>
-<p>Returns the larger of <code>a</code> and <code>b</code>(floating point).</p>
-<h2 id="fminxfloatyfloatfloat"><a class="header" href="#fminxfloatyfloatfloat"><code>fmin(x:float,y:float):float</code></a></h2>
-<p>Returns the smaller of <code>a</code> and <code>b</code>(floating point).</p>
+<h2 id="asinxdoubledouble"><a class="header" href="#asinxdoubledouble"><code>asin(x:double):double</code></a></h2>
+<p>Returns arc sine of x.</p>
+<h2 id="acosxdoubledouble"><a class="header" href="#acosxdoubledouble"><code>acos(x:double):double</code></a></h2>
+<p>Returns arx cosine of x.</p>
+<h2 id="atanxdoubledouble"><a class="header" href="#atanxdoubledouble"><code>atan(x:double):double</code></a></h2>
+<p>Returns arc tangent of x.</p>
+<h2 id="asinxdoubledouble-1"><a class="header" href="#asinxdoubledouble-1"><code>asin(x:double):double</code></a></h2>
+<p>Returns arc sine of x.</p>
+<h2 id="acosxdoubledouble-1"><a class="header" href="#acosxdoubledouble-1"><code>acos(x:double):double</code></a></h2>
+<p>Returns arc cosine of x.</p>
+<h2 id="atanxdoubledouble-1"><a class="header" href="#atanxdoubledouble-1"><code>atan(x:double):double</code></a></h2>
+<p>Returns arc tangent of x.</p>
+<h2 id="atan2ydoublexdoubledouble"><a class="header" href="#atan2ydoublexdoubledouble"><code>atan2(y:double,x:double):double</code></a></h2>
+<p>Returns the principal value of the arc tangent of y/x, expressed in radians.</p>
+<h2 id="sinhxdoubledouble"><a class="header" href="#sinhxdoubledouble"><code>sinh(x:double):double</code></a></h2>
+<p>Returns hyperbolic sine of x.</p>
+<h2 id="acosxdoubledouble-2"><a class="header" href="#acosxdoubledouble-2"><code>acos(x:double):double</code></a></h2>
+<p>Returns hyperbolic cosine of x.</p>
+<h2 id="tanxdoubledouble-1"><a class="header" href="#tanxdoubledouble-1"><code>tan(x:double):double</code></a></h2>
+<p>Returns hyperbolic tangent of x.</p>
+<h2 id="atanxdoubledouble-2"><a class="header" href="#atanxdoubledouble-2"><code>atan(x:double):double</code></a></h2>
+<p>Returns area hyperbolic tangent of x.</p>
+<h2 id="asinxdoubledouble-2"><a class="header" href="#asinxdoubledouble-2"><code>asin(x:double):double</code></a></h2>
+<p>Returns area hyperbolic sine of x.</p>
+<h2 id="acosxdoubledouble-3"><a class="header" href="#acosxdoubledouble-3"><code>acos(x:double):double</code></a></h2>
+<p>Returns area hyperbolic cosine of x.</p>
+<h2 id="atanxdoubledouble-3"><a class="header" href="#atanxdoubledouble-3"><code>atan(x:double):double</code></a></h2>
+<p>Returns arc tangent of x.</p>
+<hr />
+<h2 id="exponential-and-logarithmic-functions"><a class="header" href="#exponential-and-logarithmic-functions">Exponential and logarithmic functions</a></h2>
+<h2 id="expxdoubledouble"><a class="header" href="#expxdoubledouble"><code>exp(x:double):double</code></a></h2>
+<p>Returns the base-e exponential function of x, which is e raised to the power x: e^x.</p>
+<h2 id="exp2xdoubledouble"><a class="header" href="#exp2xdoubledouble"><code>exp2(x:double):double</code></a></h2>
+<p>Returns the base-2 exponential function of x, which is 2 raised to the power x: 2^x.</p>
+<h2 id="frexpxdoubleexpint-double"><a class="header" href="#frexpxdoubleexpint-double"><code>frexp(x:double,exp:int^): double</code></a></h2>
+<p>Breaks the floating point number x into its binary significand (a floating point with an absolute value between 0.5(included) and 1.0(excluded)) and an integral exponent for 2, such that:</p>
+<pre><code>x = significand * (2  ^ exponent)
+</code></pre>
+<p>The exponent is stored in the location pointed by exp, and the significand is the value returned by the function.</p>
+<p>If x is zero, both parts (significand and exponent) are zero.
+If x is negative, the significand returned by this function is negative.</p>
+<h2 id="ldexpxfloatdobuleexpint-floatdobule"><a class="header" href="#ldexpxfloatdobuleexpint-floatdobule"><code>ldexp(x:float|dobule,exp:int): float|dobule</code></a></h2>
+<p>Returns the result of multiplying x (the significand) by 2 raised to the power of exp (the exponent).</p>
+<h2 id="logxfloatdobulefloatdobule"><a class="header" href="#logxfloatdobulefloatdobule"><code>log(x:float|dobule):float|dobule</code></a></h2>
+<p>Returns the natural logarithm of x.</p>
+<h2 id="log10xfloatdobulefloatdobule"><a class="header" href="#log10xfloatdobulefloatdobule"><code>log10(x:float|dobule):float|dobule</code></a></h2>
+<p>Returns the common (base-10) logarithm of x.</p>
+<h2 id="log2xfloatdobulefloatdobule"><a class="header" href="#log2xfloatdobulefloatdobule"><code>log2(x:float|dobule):float|dobule</code></a></h2>
+<p>Returns the binary (base-2) logarithm of x.</p>
+<hr />
+<h2 id="power-functions"><a class="header" href="#power-functions">Power functions</a></h2>
+<h2 id="powbasedoubleexponentdouble-double"><a class="header" href="#powbasedoubleexponentdouble-double"><code>pow(base:double,exponent:double): double</code></a></h2>
+<p>Returns base raised to the power exponent.</p>
+<h2 id="sqrtxdoubledouble"><a class="header" href="#sqrtxdoubledouble"><code>sqrt(x:double):double</code></a></h2>
+<p>Returns the square root of x.</p>
+<hr />
+<h2 id="rounding-and-remainder-functions"><a class="header" href="#rounding-and-remainder-functions">Rounding and remainder functions</a></h2>
+<h2 id="ceilxdoubledouble"><a class="header" href="#ceilxdoubledouble"><code>ceil(x:double):double</code></a></h2>
+<p>Rounds x upward, returning the smallest integral value that is not less than x.</p>
+<h2 id="floorxdoubledouble"><a class="header" href="#floorxdoubledouble"><code>floor(x:double):double</code></a></h2>
+<p>Rounds x downward, returning the largest integral value that is not greater than x.</p>
+<h2 id="fmodxdoubledouble"><a class="header" href="#fmodxdoubledouble"><code>fmod(x:double):double</code></a></h2>
+<p>Returns the floating-point remainder of numer/denom (rounded towards zero):</p>
+<p>fmod = numer - tquot * denom</p>
+<p>Where tquot is the truncated (i.e., rounded towards zero) result of: numer/denom.</p>
+<h2 id="roundxdoubledouble"><a class="header" href="#roundxdoubledouble"><code>round(x:double):double</code></a></h2>
+<p>Roundes x to nearest ineger value</p>
+<hr />
+<h2 id="minimum-maximum-difference-functions"><a class="header" href="#minimum-maximum-difference-functions">Minimum, maximum, difference functions</a></h2>
+<h2 id="fmaxxdoubleydoubledouble"><a class="header" href="#fmaxxdoubleydoubledouble"><code>fmax(x:double,y:double):double</code></a></h2>
+<p>Returns the larger of its arguments: either x or y(floating point).</p>
+<h2 id="fminxdoubleydoubledouble"><a class="header" href="#fminxdoubleydoubledouble"><code>fmin(x:double,y:double):double</code></a></h2>
+<p>Returns the smaller of its arguments: either x or y(floating point).</p>
 <h2 id="maxxintyintint"><a class="header" href="#maxxintyintint"><code>max(x:int,y:int):int</code></a></h2>
-<p>Returns the larger of x and y. </p>
+<p>Returns the larger of x and y.</p>
 <h2 id="minxintyintint"><a class="header" href="#minxintyintint"><code>min(x:int,y:int):int</code></a></h2>
 <p>Returns the smaller of x and y. </p>
-<h2 id="absxfloatfloat"><a class="header" href="#absxfloatfloat"><code>abs(x:float):float</code></a></h2>
-<p>Calculates the absolute value of a number. </p>
-<h2 id="roundargfloatdoublefloatdobule"><a class="header" href="#roundargfloatdoublefloatdobule"><code>round(arg:float|double):float|dobule</code></a></h2>
-<p>Roundes input value(supports <code>float</code> and <code>double</code> types).</p>
+<h2 id="fdimxdoubleydouble"><a class="header" href="#fdimxdoubleydouble"><code>fdim(x:double,y:double)</code></a></h2>
+<p>Returns the positive difference between x and y.</p>
+<hr />
+<h2 id="other-functions-and-constants"><a class="header" href="#other-functions-and-constants">Other functions and constants</a></h2>
+<h2 id="const-pi--double"><a class="header" href="#const-pi--double"><code>const PI : double</code></a></h2>
+<p>PI number.</p>
+<h2 id="nandouble"><a class="header" href="#nandouble"><code>NaN():double</code></a></h2>
+<p>Returns generic NaN(Not-A-Number) value.</p>
+<h2 id="fabsxdoubledouble"><a class="header" href="#fabsxdoubledouble"><code>fabs(x:double):double</code></a></h2>
+<p>Calculates the absolute value of x(floating point).</p>
+<h2 id="absxintint"><a class="header" href="#absxintint"><code>abs(x:int):int</code></a></h2>
+<p>Calculates the absolute value of x(ineger).</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="strings"><a class="header" href="#strings"><code>strings</code></a></h1>
 <p>Utility library for working with <code>string</code> data types.</p>
 <h2 id="is_alphacchar-bool"><a class="header" href="#is_alphacchar-bool"><code>is_alpha(c:char): bool</code></a></h2>
