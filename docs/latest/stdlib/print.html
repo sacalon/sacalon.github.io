@@ -198,6 +198,73 @@ var bar = 2
 
 assert(foo == bar)
 </code></pre>
+<h2 id="range-function"><a class="header" href="#range-function"><code>range</code> function</a></h2>
+<p>The <code>range()</code> function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default), and stops before a specified number.
+<code>range</code> has 3 overloaded functions:</p>
+<h3 id="rangestopint-int"><a class="header" href="#rangestopint-int"><code>range(stop:int): [int]</code></a></h3>
+<p>returns a sequence of numbers from 0 to <code>stop</code>(not included).</p>
+<p>Example:</p>
+<pre><code class="language-typescript">function main(): int {
+	for i in range(10){
+		print(i)
+	}
+    return 0
+}
+
+/* Output :
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+*/
+</code></pre>
+<h3 id="rangestartint-stopint-int"><a class="header" href="#rangestartint-stopint-int"><code>range(start:int, stop:int): [int]</code></a></h3>
+<p>returns a sequence of numbers from <code>start</code>(included) to <code>stop</code>(not included).</p>
+<p>Example:</p>
+<pre><code class="language-typescript">function main(): int {
+    for i in range(1,11){
+        print(i)
+    }
+    return 0
+}
+
+/* Output:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+*/
+</code></pre>
+<h3 id="rangestartint-stopint-stepint-int"><a class="header" href="#rangestartint-stopint-stepint-int"><code>range(start:int, stop:int, step:int): [int]</code></a></h3>
+<p>returns a sequence of numbers from <code>start</code>(included) to <code>stop</code>(not included), <code>stop</code> is specifying the incrementation(in other overloads is 1).</p>
+<p>Example:</p>
+<pre><code class="language-typescript">function main(): int {
+	for i in range(0,10,2){
+		print(i)
+	}
+    return 0
+}
+
+/* Output:
+0
+2
+4
+6
+8
+*/
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="conv"><a class="header" href="#conv"><code>conv</code></a></h1>
 <p>Converting types together.</p>
 <h2 id="to_intvaltint"><a class="header" href="#to_intvaltint"><code>to_int(val:T):int</code></a></h2>

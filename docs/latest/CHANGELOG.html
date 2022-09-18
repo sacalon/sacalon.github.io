@@ -139,6 +139,17 @@
 <summary>v1.4.0</summary>
 <h4 id="new-features"><a class="header" href="#new-features">New features</a></h4>
 <ul>
+<li>add builtin range function</li>
+</ul>
+<pre><code class="language-typescript">function main(): int {
+    // prints 1 to 10
+    for i in range(1,11){
+        print(i)
+    }
+    return 0
+}
+</code></pre>
+<ul>
 <li>add <code>asin</code>, <code>acos</code>, <code>asinh</code>, <code>acosh</code>, <code>exp</code>, <code>frexpr</code>, <code>ldexp</code>, <code>log</code>, <code>log10</code>, <code>fdim</code>, <code>sqrt</code>, <code>ceil</code>, <code>floor</code>, <code>NaN</code>, <code>max</code>, <code>min</code> functions to <code>math</code> library, <a href="https://hascal.github.io/docs/latest/stdlib/math.html">see documentation</a>.</li>
 <li>Showing error for overloading function's return type.</li>
 </ul>
@@ -147,6 +158,9 @@
 <li>Speedup parsing and compiling</li>
 </ul>
 <h4 id="bug-fixes"><a class="header" href="#bug-fixes">Bug fixes</a></h4>
+<ul>
+<li>fix passing list to <code>for in</code> statement</li>
+</ul>
 <h4 id="removed"><a class="header" href="#removed">Removed</a></h4>
 </details>
 <hr />
