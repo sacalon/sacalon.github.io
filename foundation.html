@@ -9,7 +9,21 @@
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>*{max-width:100%;}</style>
+        <style>
+        *{max-width:100%;}
+        /* Gray Scale */
+.hover08 figure img {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hover08 figure:hover img {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+}
+        
+        </style>
         <link rel="icon" type="image/x-icon" href="images/hascal-logo.png">
 
     </head>
@@ -144,6 +158,18 @@
                                 </figcaption>
                             </figure>
                         </p>
+                        <br/>
+                        <h2>
+                            Our partners
+                        </h2>
+                        <br/>
+                        <div class="hover08 column">
+                            <div>
+                                <a href="https://pyabr.ir" title="PyAbr OS">
+                                    <figure><img width="100" height="100" class="img-thumbnail" src="https://pyabr.ir/wp-content/uploads/2022/04/breeze-cloud.svg" /></figure>
+                                </a>
+                            </div>
+                        </div>
                         <br/>
                         <p>
                             You can contact us by this email : <a href="mailto:dev.hascal@gmail.com">dev.hascal@gmail.com</a>
