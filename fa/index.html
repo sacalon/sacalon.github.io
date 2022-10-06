@@ -87,18 +87,26 @@
                     </div>
                     <div class="col-sm-6">
 
-                        <pre><code class="language-hascal">function main() : int {
-    var texts : [string] = [
-        "Hello, world!",
-        "سلام دنیا!",
-        "¡Hola Mundo!",
-        "Γειά σου Κόσμε!",
-        "Привет, мир!",
-        "こんにちは世界！"
-    ]
-    for text in texts {
-        print(text)
-    }
+                        <pre><code class="language-hascal">// مثال مدیریت دستی حافظه در هاسکال
+struct point {
+    var x : int?
+    var y : int?
+}
+
+function main() : int {
+    // تعریف و تخصیص حافظه متغیر در حافظه هیپ
+    var foo : point^ = new point(point(10,10))
+    
+    // چاپ محتویات متغیر
+    print(^foo) // Output: point(x:10,y:10)
+    
+    // بازتخصیص حافظه به متغیر
+    foo = new point(point(20,20))
+    print(^a)
+    
+    // حدف حافظه اختصاص داده شده به متغیر در پایان تابع
+    delete foo
+
     return 0
 }
                         </code></pre>

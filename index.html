@@ -84,18 +84,26 @@
 
                         <div class="col-sm-6">
 
-                        <pre><code class="language-hascal">function main() : int {
-    var texts : [string] = [
-        "Hello, world!",
-        "سلام دنیا!",
-        "¡Hola Mundo!",
-        "Γειά σου Κόσμε!",
-        "Привет, мир!",
-        "こんにちは世界！"
-    ]
-    for text in texts {
-        print(text)
-    }
+                        <pre><code class="language-hascal">// manual memory management example in Hascal
+struct point {
+    var x : int?
+    var y : int?
+}
+
+function main() : int {
+    // declaring and allocating `foo` in heap
+    var foo : point^ = new point(point(10,10))
+    
+    // printing `foo` contents
+    print(^foo) // Output: point(x:10,y:10)
+    
+    // reallocate `foo`
+    foo = new point(point(20,20))
+    print(^a)
+    
+    // deallocate `foo` from heap at end of function scope
+    delete foo
+
     return 0
 }
                         </code></pre>  
