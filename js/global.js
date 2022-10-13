@@ -2,32 +2,73 @@ if (!location.href.replace(location.origin, "").includes("htm")) {
   location.replace("index.html");
 }
 
+function getPageName() {
+  if (location.href.match(/index.html$/) != null) {
+    return "index";
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  const doc = $("#header-section");
-  doc.on("load", function () {
-    doc
+  function goto(elements) {
+    elements.each(function () {
+      let href = $(this).attr("data-href");
+
+      href=href.replace(/\[name\]/g, getPageName());
+
+      $(this).attr("href", "../" + href);
+
+      $(this).on("click", (e) => {
+        e.preventDefault();
+        location.assign(href);
+      });
+    });
+  }
+
+  const header = $("#header-section");
+  header.on("load", function () {
+    header
       .contents()
       .find(".navbar-toggler")
       .on("click", function () {
         if ($(this).attr("aria-expanded") == "false") {
-          doc.css(
+          header.css(
             "height",
-            "+=" + doc.contents().find(".navbar-collapse").height()
+            "+=" + header.contents().find(".navbar-collapse").height()
           );
 
           $("#header-section + *").css(
             "margin-top",
-            "+=" + doc.contents().find(".navbar-collapse").height()
+            "+=" + header.contents().find(".navbar-collapse").height()
           );
         } else {
-          doc.removeAttr("style")
+          header.removeAttr("style");
           $("#header-section + *").removeAttr("style");
         }
       });
 
     let active = null;
-    if (location.href.match(/index.html$/) != null) active = 0;
+    switch (getPageName()) {
+      case "index":
+        active = 0;
 
-    doc.contents().find(`.navbar-collapse .nav-item:nth-of-type(${active+1})`).addClass("active");
+        break;
+
+      default:
+        break;
+    }
+
+    header
+      .contents()
+      .find(`.navbar-collapse .nav-item:nth-of-type(${active + 1})`)
+      .addClass("active");
+
+    //add link's href
+    goto(header.contents().find("a[data-href]"));
+  });
+
+  const footer = $("#footer-section");
+  footer.on("load", () => {
+    //add link's href
+    goto(footer.contents().find("a"));
   });
 });
