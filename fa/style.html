@@ -7,9 +7,6 @@
         <link rel="stylesheet" href="../css/prism.css">
         <script src="../js/jquery.min.js"></script>
         <script src="../js/prism.js"></script>
-        <script src="../js/popper.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>*{max-width:100%;}</style>
@@ -17,54 +14,12 @@
         <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
         <style>body {font-family: Vazirmatn, sans-serif;}</style>
 
+        <link rel="stylesheet" href="../css/global.css" />
 
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">
-                <img src="../images/logo.svg" width="40" alt="Hascal Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-    
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">خانه</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="download.html">دانلود</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="../docs/latest/index.html">مستندات</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="news/index.html">اخبار</a>
-                    </li>
-
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="use-cases.html">موارد استفاده</a>
-                    </li> -->
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="foundation.html">بنیاد هاسکال</a>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a class="nav-link" href="../style.html">سبک هاسکال</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/hascal/hascal">سورس کد</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <iframe src="./components/header.html" frameborder="0" id="header-section"></iframe>
 
         <main role="main">
             <br/>
@@ -156,16 +111,11 @@ localVar2 = 12
                 </div>
               <hr>
             </div>
-          </main>
+        </main>
       
-          <footer class="container">
-            <p>&copy; بنیاد هاسکال 2019-2022</p>
-            <br>
-            <p align="center">
-                این صفحه در زبان های زیر نیز قابل دسترسی است
-                <br>
-                <a href="../style.html">English</a>
-            </p>
-        </footer>
+        <iframe src="./components/footer.html" frameborder="0" id="footer-section"></iframe>
+
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/global.js"></script>
     </body>
 </html>
