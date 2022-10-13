@@ -13,3 +13,7 @@
 #header-section + * {
   margin-top: 1.5rem;
 }
+
+#footer-section{
+  width: 100%;
+}
