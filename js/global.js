@@ -5,6 +5,12 @@ if (!location.href.replace(location.origin, "").includes("htm")) {
 function getPageName() {
   if (location.href.match(/index.html$/) != null) {
     return "index";
+  } else if (location.href.match(/style.html$/) != null) {
+    return "style";
+  } else if (location.href.match(/foundation.html$/) != null) {
+    return "foundation";
+  } else if (location.href.match(/news.html$/) != null) {
+    return "news";
   }
 }
 
@@ -13,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     elements.each(function () {
       let href = $(this).attr("data-href");
 
-      href=href.replace(/\[name\]/g, getPageName());
+      href = href.replace(/\[name\]/g, getPageName());
 
       $(this).attr("href", "../" + href);
 
@@ -50,7 +56,18 @@ document.addEventListener("DOMContentLoaded", () => {
     switch (getPageName()) {
       case "index":
         active = 0;
+        break;
 
+      case "style":
+        active = 5;
+        break;
+
+      case "news":
+        active = 3;
+        break;
+
+      case "foundation":
+        active = 4;
         break;
 
       default:
