@@ -164,10 +164,13 @@ int main(){
 We need two files, one for headers and one for main part of the library. You should put <code>#include</code>,... in <code>your_cpp_lib.hpp</code> and main part of library in <code>your_cpp_lib.cc</code>. The specified files should exist in the same folder.</p>
 <p>See the example below:</p>
 <p><code>add.cc</code> :</p>
-<pre><code class="language-cpp">void cpp_print(int x){
+<pre><code class="language-cpp">void __hascal__cpp_print(int x){
     printf(&quot;%d&quot;,x);
 }
 </code></pre>
+<blockquote>
+<p>add <code>__hascal__</code> to your C++ functions, structs name. Hascal transpiles to C++ and it adds <code>__hascal__</code> prefix to your C++ names.</p>
+</blockquote>
 <p><code>add.hpp</code> :</p>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
 </code></pre>
@@ -182,7 +185,24 @@ function main() : int {
 }
 </code></pre>
 <p>Also you can put the C++ files in a folder and rename they to <code>_.cc</code> and <code>_.hpp</code>.</p>
-<p><strong>Note that do'nt include local headers in <code>*.hpp</code> file.</strong></p>
+<p><strong>Note that don't include local headers in <code>*.hpp</code> file.</strong></p>
+<h2 id="accessing-to-values-and-types-in-inline-c-code"><a class="header" href="#accessing-to-values-and-types-in-inline-c-code">Accessing to values and types in inline C++ code</a></h2>
+<p>You can access to Hascal's variable and types in inline C++ codes in Hascal by adding <code>__hascal__</code> prefix to a name, for example:
+<code>main.has</code>:</p>
+<pre><code class="language-typescript">function add(a:int,b:int){
+    cuse &quot;&quot;&quot;
+        std::cout &lt;&lt; a + b;
+    &quot;&quot;&quot;
+}
+</code></pre>
+<p>you can return a value in inline C++ codes by returning a meaningless value with same type as return type of the function(it may be ridiculous, we are currently working to improve it):</p>
+<pre><code class="language-typescript">function add(a:int,b:int){
+    cuse &quot;&quot;&quot;
+        return a + b;
+    &quot;&quot;&quot;
+    return 0 // return a value with same type as return type of the function
+}
+</code></pre>
 
                     </main>
 

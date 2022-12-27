@@ -171,7 +171,14 @@ Knowing what people use this book for the most helps direct our attention to mak
 <li>gcc&gt;=8(or any c++ compiler that supports c++17)</li>
 <li><code>libcurl</code>,<code>libssl</code>,<code>libcrypt</code></li>
 </ul>
-<p>*Nix :</p>
+<p>*Nix :
+You can use the <code>hascal.sh</code> script to automate the process of installing and adding hascal to path:</p>
+<pre><code class="language-bash">git clone https://github.com/hascal/hascal.git
+cd hascal/
+chmod +x ./hascal.sh
+bash ./hascal.sh
+</code></pre>
+<p>Alternatively:</p>
 <pre><code class="language-bash">$ git clone https://github.com/hascal/hascal.git
 $ cd hascal
 $ make deps
@@ -187,7 +194,7 @@ $ make build
 &gt; make windows
 </code></pre>
 <p><strong>NOTE</strong>: <strong>Always use latest release, older versions have bugs in running binary version of Hascal.</strong></p>
-<p><em><strong>Now your Hascal compiler is ready to use in <code>src/dist</code> folder, you can add it to <code>$PATH</code>.</strong></em></p>
+<p><em><strong>Now your Hascal compiler is ready to use in <code>./dist</code> folder, you can add it to <code>$PATH</code>.</strong></em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="hello-world"><a class="header" href="#hello-world">Hello World!</a></h1>
 <p>Now that you have successfully installed Haskall, let's write our first program with it. You will write a program that prints <code>Hello World!</code> on the terminal.</p>
 <h2 id="creating-a-project-directory"><a class="header" href="#creating-a-project-directory">Creating a project directory</a></h2>
@@ -781,10 +788,13 @@ int main(){
 We need two files, one for headers and one for main part of the library. You should put <code>#include</code>,... in <code>your_cpp_lib.hpp</code> and main part of library in <code>your_cpp_lib.cc</code>. The specified files should exist in the same folder.</p>
 <p>See the example below:</p>
 <p><code>add.cc</code> :</p>
-<pre><code class="language-cpp">void cpp_print(int x){
+<pre><code class="language-cpp">void __hascal__cpp_print(int x){
     printf(&quot;%d&quot;,x);
 }
 </code></pre>
+<blockquote>
+<p>add <code>__hascal__</code> to your C++ functions, structs name. Hascal transpiles to C++ and it adds <code>__hascal__</code> prefix to your C++ names.</p>
+</blockquote>
 <p><code>add.hpp</code> :</p>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
 </code></pre>
@@ -799,7 +809,24 @@ function main() : int {
 }
 </code></pre>
 <p>Also you can put the C++ files in a folder and rename they to <code>_.cc</code> and <code>_.hpp</code>.</p>
-<p><strong>Note that do'nt include local headers in <code>*.hpp</code> file.</strong></p>
+<p><strong>Note that don't include local headers in <code>*.hpp</code> file.</strong></p>
+<h2 id="accessing-to-values-and-types-in-inline-c-code"><a class="header" href="#accessing-to-values-and-types-in-inline-c-code">Accessing to values and types in inline C++ code</a></h2>
+<p>You can access to Hascal's variable and types in inline C++ codes in Hascal by adding <code>__hascal__</code> prefix to a name, for example:
+<code>main.has</code>:</p>
+<pre><code class="language-typescript">function add(a:int,b:int){
+    cuse &quot;&quot;&quot;
+        std::cout &lt;&lt; a + b;
+    &quot;&quot;&quot;
+}
+</code></pre>
+<p>you can return a value in inline C++ codes by returning a meaningless value with same type as return type of the function(it may be ridiculous, we are currently working to improve it):</p>
+<pre><code class="language-typescript">function add(a:int,b:int){
+    cuse &quot;&quot;&quot;
+        return a + b;
+    &quot;&quot;&quot;
+    return 0 // return a value with same type as return type of the function
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="package-manager"><a class="header" href="#package-manager">Package Manager</a></h1>
 <p>Hascal has a built-in package manager that allows you to install packages from the a git repository.</p>
 <h2 id="installing-a-package"><a class="header" href="#installing-a-package">Installing a package</a></h2>
@@ -842,7 +869,7 @@ list of all subpackages in crypto :
 <li>js backend</li>
 <li>lambdas :</li>
 </ul>
-<pre><code class="language-typescript">var mythread = thread(@(x:int,y:int){
+<pre><code class="language-typescript">var mythread = thread(function(x:int,y:int){
     print(x*y)
 })
 </code></pre>

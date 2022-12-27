@@ -141,7 +141,14 @@
 <li>gcc&gt;=8(or any c++ compiler that supports c++17)</li>
 <li><code>libcurl</code>,<code>libssl</code>,<code>libcrypt</code></li>
 </ul>
-<p>*Nix :</p>
+<p>*Nix :
+You can use the <code>hascal.sh</code> script to automate the process of installing and adding hascal to path:</p>
+<pre><code class="language-bash">git clone https://github.com/hascal/hascal.git
+cd hascal/
+chmod +x ./hascal.sh
+bash ./hascal.sh
+</code></pre>
+<p>Alternatively:</p>
 <pre><code class="language-bash">$ git clone https://github.com/hascal/hascal.git
 $ cd hascal
 $ make deps
@@ -157,7 +164,7 @@ $ make build
 &gt; make windows
 </code></pre>
 <p><strong>NOTE</strong>: <strong>Always use latest release, older versions have bugs in running binary version of Hascal.</strong></p>
-<p><em><strong>Now your Hascal compiler is ready to use in <code>src/dist</code> folder, you can add it to <code>$PATH</code>.</strong></em></p>
+<p><em><strong>Now your Hascal compiler is ready to use in <code>./dist</code> folder, you can add it to <code>$PATH</code>.</strong></em></p>
 
                     </main>
 
