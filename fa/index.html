@@ -1,76 +1,93 @@
 <!DOCTYPE html>
-<html lang="fa">
-  <head>
-    <title>زبان برنامه نویسی هاسکال --- خانه</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/bootstrap-rtl.min.css" />
-    <link rel="stylesheet" href="../css/prism.css" />
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/prism.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      * {
-        max-width: 100%;
-      }
-    </style>
-    <link rel="icon" type="image/x-icon" href="../images/hascal-logo.png" />
-    <link
-      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <style>
-      body {
-        font-family: Vazirmatn, sans-serif;
-      }
-    </style>
-    <link rel="stylesheet" href="../css/global.css" />
-  </head>
+<html>
+    <head>
+        <title>زبان برنامه نویسی هاسکال --- خانه</title>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap-rtl.min.css">
+        <link rel="stylesheet" href="../css/prism.css">
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/prism.js"></script>
+        <script src="../js/popper.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>*{max-width:100%;}</style>
+        <link rel="icon" type="image/x-icon" href="../images/hascal-logo.png">
+        <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+        <style>body {font-family: Vazirmatn, sans-serif;}</style>
 
-  <body dir="rtl">
 
-    <iframe src="./components/header.html" frameborder="0" id="header-section"></iframe>
+    </head>
 
-    <main role="main">
-      <div class="jumbotron">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6">
-              <h1 style="text-align: right" class="display-3" id="header">
-                هاسکال
-              </h1>
-              <p>
-                هاسکال یک زبان برنامه نویسی همه منظوره و متن باز است که برای
-                ساخت نرم افزار بهینه، قابل نگهداری، قابل اعتماد و کارآمد طراحی
-                شده است.
-              </p>
-              <a
-                id="get-started"
-                class="btn btn-primary btn-lg"
-                href="../docs/latest/index.html"
-                >شروع کنید &raquo;</a
-              >
+    <body dir="rtl">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="../images/logo.svg" width="40" alt="Hascal Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">خانه</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="download.html">دانلود</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="../docs/latest/index.html">مستندات</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="news/index.html">اخبار</a>
+                    </li>
 
-              <a
-                id="download"
-                class="btn btn-success btn-lg mt-lg-0 mt-1"
-                href="../docs/latest/lang/1_install.html"
-                >هاسکال را نصب کنید</a
-              >
-              <br />
-              <p>
-                آخرین نسخه :
-                <a href="https://github.com/hascal/hascal/releases/v1.4.0"
-                  >v1.4.0</a
-                >
-              </p>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="use-cases.html">موارد استفاده</a>
+                    </li> -->
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="foundation.html">بنیاد هاسکال</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="style.html">سبک هاسکال</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/hascal/hascal">سورس کد</a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-sm-6">
-              <pre><code class="language-hascal">// مثال مدیریت دستی حافظه در هاسکال
+        </nav>
+
+        <main role="main">
+
+            <div class="jumbotron">
+              <div class="container">
+                <div class="row">
+                    
+                    <div class="col-sm-6">
+                        <h1 style="text-align: right;" class="display-3" id="header">هاسکال</h1>
+                        <p>
+                            هاسکال یک زبان برنامه نویسی همه منظوره و متن باز است که برای ساخت نرم افزار بهینه، قابل نگهداری، قابل اعتماد و کارآمد طراحی شده است.                </p>
+                        <a id="get-started" class="btn btn-primary btn-lg" href="../docs/latest/index.html">شروع کنید &raquo;</a>
+        
+                        <a id="download" class="btn btn-success btn-lg" href="../docs/latest/lang/1_install.html">هاسکال را نصب کنید</a>
+                        <br>
+                        <p>
+                            آخرین نسخه :
+                            <a href="https://github.com/hascal/hascal/releases/v1.4.0">v1.4.0</a>
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+
+                        <pre><code class="language-hascal">// مثال مدیریت دستی حافظه در هاسکال
 struct point {
     var x : int?
     var y : int?
@@ -93,163 +110,144 @@ function main() : int {
     return 0
 }
                         </code></pre>
-              <a href="https://github.com/hascal/hascal/tree/main/examples"
-                >مثال های بیشتر...</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div>
-            <!-- style="display:flex;"-->
-            <div class="col-sm">
-              <div>
-                <h4 style="color: brown">زبانی ساده و آسان</h4>
-                <p>
-                  هاسکال دارای یک نحو ساده و آسان و کتابخانه استاندارد کوچک است،
-                  شما می توانید هاسکال را در کمتر از یک ساعت یاد بگیرید!
-                  <br />
-                  هاسکال بسیار شبیه به سوئیفت است و بر اساس ایده های خوب زبان
-                  پاسکال در ابتدا پایه گذاری شده است.
-                </p>
+                        <a href="https://github.com/hascal/hascal/tree/main/examples">مثال های بیشتر...</a>    
+                    </div>
+                </div> 
               </div>
             </div>
-            <br />
+      
+            <div class="container">
 
-            <div class="col-sm">
-              <div>
-                <h4 style="color: brown">ایمن و قابل اطمینان</h4>
-                <p>
-                  هاسکال از یک سیستم Null safety برای جلوگیری از خطاهای مربوط به
-                  داده NULL استفاده میکند تا موجب افزایش امنیت و پایداری برنامه
-                  ها شود.
-                  <br />
-                  هاسکال به صورت پیشفرض شما را ملزم میکند تا مقداری را برای
-                  متغییر و ثوابت خود(هنگام تعریف) انتخاب کنید تا مطمئن شود هیچ
-                  گونه داده NULLی در برنامه وجود نخواهد داشت.
+                <div class="row">
+                    <div> <!-- style="display:flex;"-->
+                        <div class="col-sm">
+                            <div>
+                                <h4 style="color:brown">زبانی ساده و آسان</h4>
+                                <p>
+                                    هاسکال دارای یک نحو ساده و آسان و کتابخانه استاندارد کوچک است، شما می توانید هاسکال را در کمتر از یک ساعت یاد بگیرید! 
+                                    <br>
+                                    هاسکال بسیار شبیه به سوئیفت است و بر اساس ایده های خوب زبان پاسکال در ابتدا پایه گذاری شده است. 
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                      
+                        <div class="col-sm">
+                            <div>
+                                <h4 style="color:brown">ایمن و قابل اطمینان</h4>
+                                <p>
+                                    هاسکال از یک سیستم Null safety برای جلوگیری از خطاهای مربوط به داده NULL  استفاده میکند تا موجب افزایش امنیت و پایداری برنامه ها شود.
+                                    <br>
+                                    هاسکال به صورت پیشفرض شما را ملزم میکند تا مقداری را برای متغییر و ثوابت خود(هنگام تعریف) انتخاب کنید تا مطمئن شود هیچ گونه داده NULLی در برنامه وجود نخواهد داشت.                                    
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        
+                        <div class="col-sm">
+                            <div>
+                                <h4 style="color:brown">مدیریت حافظه دستی</h4>
+                                <p>
+                                    هاسکال از مدیریت حافظه به صورت دستی استفاده میکند و به شما آزادی عمل در برابر حافظه را میدهد اما هنگام کامپایل شما را در مدیریت حافظه به صورت دستی راهنمایی میکند(WIP).
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="col-sm">
+                            <div>
+                                <h4 style="color:brown">در هرجایی از هاسکال استفاده کنید</h4>
+                                <p>
+                                    هاسکال، چندسکویی است، به این معنی که در هر پلتفرمی میتواند اجرا شود، از لینوکس و ویندوز گرفته تا سیستم های نهفته!
+                                    <br>
+                                    هاسکال می تواند کد ++C را فراخوانی کند و فراخوانی کد هاسکال در هر زبانی که بتواند با ++C  قابلیت همکاری داشته باشد امکان پذیر است.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="jumbotron">
+                <div class="container">
+                    <h1 style="text-align: center;" class="display-4" id="header">جامعه</h1>
+                        <div class="row">
+                            <div class="col">
+                                <a href="https://github.com/hascal/hascal" style="display:flex;color:brown;text-decoration-line: none;">
+                                    <p class="fa fa-github" style="font-size:48px;"></p>
+                                    <p style="font-size:30px;">گیت هاب</p>
+                                </a>
+                            </div>
+                            
+                            <div class="col">
+                                <a href="https://github.com/hascal/hascal/discussions" style="display:flex;color:brown;text-decoration-line: none;">
+                                    <p class="fa fa-comments-o" style="font-size:48px;"></p>
+                                    <p style="font-size:30px;">انجمن</p>
+                                </a>
+                            </div>
+
+                            <div class="col">
+                                <a href="https://discord.gg/yjv8QqPR" style="display:flex;color:brown;text-decoration-line: none;">
+                                    <p class="fab fa-discord" style="font-size:48px;"></p>
+                                    <p style="font-size:30px;">دیسکورد</p>
+                                </a>
+                            </div>
+
+                            <div class="col">
+                                <a href="https://discord.gg/yjv8QqPR" style="display:flex;color:brown;text-decoration-line: none;">
+                                    <p class="fab fa-gitter" style="font-size:48px;"></p>
+                                    <p style="font-size:30px;">گیتر</p>
+                                </a>
+                            </div>
+                        </div>
+                  
+                </div>
+            </div>
+            <br/>
+            <div class="">
+                <div class="container">
+                  <h1 style="text-align: center;" class="display-4" id="header">بنیاد هاسکال</h1>
+                 
+                  <div align="center">
+                    <p>
+                        بنیاد هاسکال یک بنیاد متن باز است که در سال 2021 برای تأمین مالی توسعه بلندمدت هاسکال ایجاد شد.
+                    </p>
+                    <a href="foundation.html" class="btn btn-success btn-lg">بیشتر بدانید</a>
+                  </div>
+                </div>
+            </div>
+          </main>
+          <hr>
+            <footer class="container">
+                <p>&copy; بنیاد هاسکال 2019-2022</p>
+                <br>
+                <p align="center">
+                    این صفحه در زبان های زیر نیز قابل دسترسی است
+                    <br>
+                    <a href="../index.html">English</a>
                 </p>
-              </div>
-            </div>
-            <br />
+            </footer>
+            <script type="text/javascript">
+                var header = document.getElementById('header');
+                var type_this = "هاسکال";
+                var index = 0;
 
-            <div class="col-sm">
-              <div>
-                <h4 style="color: brown">مدیریت حافظه دستی</h4>
-                <p>
-                  هاسکال از مدیریت حافظه به صورت دستی استفاده میکند و به شما
-                  آزادی عمل در برابر حافظه را میدهد اما هنگام کامپایل شما را در
-                  مدیریت حافظه به صورت دستی راهنمایی میکند(WIP).
-                </p>
-              </div>
-            </div>
-            <br />
+                window.next_letter = function() {
+                    if (index <= type_this.length) {
+                        header.innerText = type_this.substr(0, index++);
+                        setTimeout("next_letter()", 50);
+                    }
+                }
 
-            <div class="col-sm">
-              <div>
-                <h4 style="color: brown">در هرجایی از هاسکال استفاده کنید</h4>
-                <p>
-                  هاسکال، چندسکویی است، به این معنی که در هر پلتفرمی میتواند
-                  اجرا شود، از لینوکس و ویندوز گرفته تا سیستم های نهفته!
-                  <br />
-                  هاسکال می تواند کد ++C را فراخوانی کند و فراخوانی کد هاسکال در
-                  هر زبانی که بتواند با ++C قابلیت همکاری داشته باشد امکان پذیر
-                  است.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="jumbotron">
-        <div class="container">
-          <h1 style="text-align: center" class="display-4" id="header">
-            جامعه
-          </h1>
-          <div class="row">
-            <div class="col">
-              <a
-                href="https://github.com/hascal/hascal"
-                style="display: flex; color: brown; text-decoration-line: none"
-              >
-                <p class="fa fa-github" style="font-size: 48px"></p>
-                <p style="font-size: 30px">گیت هاب</p>
-              </a>
-            </div>
+                next_letter();
+                $(document).ready(function(){
+                    $('#get-started').click(function(){
+                        window.location.href = "https://github.com/hascal/hascal/wiki";
+                    })
 
-            <div class="col">
-              <a
-                href="https://github.com/hascal/hascal/discussions"
-                style="display: flex; color: brown; text-decoration-line: none"
-              >
-                <p class="fa fa-comments-o" style="font-size: 48px"></p>
-                <p style="font-size: 30px">انجمن</p>
-              </a>
-            </div>
-
-            <div class="col">
-              <a
-                href="https://discord.gg/yjv8QqPR"
-                style="display: flex; color: brown; text-decoration-line: none"
-              >
-                <p class="fab fa-discord" style="font-size: 48px"></p>
-                <p style="font-size: 30px">دیسکورد</p>
-              </a>
-            </div>
-
-            <div class="col">
-              <a
-                href="https://discord.gg/yjv8QqPR"
-                style="display: flex; color: brown; text-decoration-line: none"
-              >
-                <p class="fab fa-gitter" style="font-size: 48px"></p>
-                <p style="font-size: 30px">گیتر</p>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
-      <div class="">
-        <div class="container">
-          <h1 style="text-align: center" class="display-4" id="header">
-            بنیاد هاسکال
-          </h1>
-
-          <div align="center">
-            <p>
-              بنیاد هاسکال یک بنیاد متن باز است که در سال 2021 برای تأمین مالی
-              توسعه بلندمدت هاسکال ایجاد شد.
-            </p>
-            <a href="foundation.html" class="btn btn-success btn-lg"
-              >بیشتر بدانید</a
-            >
-          </div>
-        </div>
-      </div>
-    </main>
-    <hr />
-
-    <iframe src="./components/footer.html" frameborder="0" id="footer-section"></iframe>
-
-    <script type="text/javascript">
-      var header = document.getElementById("header");
-      var type_this = "هاسکال";
-      var index = 0;
-
-      window.next_letter = function () {
-        if (index <= type_this.length) {
-          header.innerText = type_this.substr(0, index++);
-          setTimeout("next_letter()", 60);
-        }
-      };
-
-      document.addEventListener("DOMContentLoaded", () => {
-        next_letter();
-      });
-    </script>
-    <script src="../js/global.js"></script>
-  </body>
+                    $('#download').click(function(){
+                        window.location.href = "";
+                    })
+                })
+            </script>
+    </body>
 </html>
