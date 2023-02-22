@@ -4,8 +4,10 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Numbers - Hascal Documentation</title>
+
+
         <!-- Custom HTML head -->
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
@@ -16,25 +18,29 @@
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
         <link rel="stylesheet" href="../css/print.css" media="print">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
         <link rel="stylesheet" href="../fonts/fonts.css">
+
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
         <link rel="stylesheet" href="../tomorrow-night.css">
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -50,7 +56,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -62,7 +68,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -75,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../lang/0_install.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../lang/1_hello_world.html"><strong aria-hidden="true">3.</strong> Hello World!</a></li><li class="chapter-item expanded "><a href="../lang/2_project_manager.html"><strong aria-hidden="true">4.</strong> Project Manager</a></li><li class="chapter-item expanded "><a href="../lang/3_config.html"><strong aria-hidden="true">5.</strong> Configure the compiler</a></li><li class="chapter-item expanded "><a href="../lang/4_guessing_game.html"><strong aria-hidden="true">6.</strong> Write a guessing game</a></li><li class="chapter-item expanded "><a href="../lang/5_comments.html"><strong aria-hidden="true">7.</strong> Comments</a></li><li class="chapter-item expanded "><a href="../lang/6_types.html"><strong aria-hidden="true">8.</strong> Types</a></li><li class="chapter-item expanded "><a href="../lang/7_00_variables.html"><strong aria-hidden="true">9.</strong> Variables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../lang/7_01_numbers.html" class="active"><strong aria-hidden="true">9.1.</strong> Numbers</a></li><li class="chapter-item expanded "><a href="../lang/7_02_strings.html"><strong aria-hidden="true">9.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../lang/7_03_arrays.html"><strong aria-hidden="true">9.3.</strong> Arrays</a></li><li class="chapter-item expanded "><a href="../lang/7_04_type_compatibility.html"><strong aria-hidden="true">9.4.</strong> Type compatibility</a></li></ol></li><li class="chapter-item expanded "><a href="../lang/8_conditional_statements.html"><strong aria-hidden="true">10.</strong> Conditional statements</a></li><li class="chapter-item expanded "><a href="../lang/9_loops.html"><strong aria-hidden="true">11.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../lang/10_functions.html"><strong aria-hidden="true">12.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../lang/11_importing.html"><strong aria-hidden="true">13.</strong> Importing &amp; Creating modules</a></li><li class="chapter-item expanded "><a href="../lang/12_structs.html"><strong aria-hidden="true">14.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../lang/13_memory_management.html"><strong aria-hidden="true">15.</strong> Memory management</a></li><li class="chapter-item expanded "><a href="../lang/14_interfacing_with_cpp.html"><strong aria-hidden="true">16.</strong> Interfacing with C++</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../hpm.html"><strong aria-hidden="true">17.</strong> Package Manager Documentation</a></li><li class="chapter-item expanded "><a href="../ide.html"><strong aria-hidden="true">18.</strong> IDE Integration</a></li><li class="chapter-item expanded "><a href="../ROADMAP.html"><strong aria-hidden="true">19.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="../CHANGELOG.html"><strong aria-hidden="true">20.</strong> Change Log</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../lang/0_install.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../lang/1_hello_world.html"><strong aria-hidden="true">3.</strong> Hello World!</a></li><li class="chapter-item expanded "><a href="../lang/2_project_manager.html"><strong aria-hidden="true">4.</strong> Project Manager</a></li><li class="chapter-item expanded "><a href="../lang/3_config.html"><strong aria-hidden="true">5.</strong> Configure the compiler</a></li><li class="chapter-item expanded "><a href="../lang/4_guessing_game.html"><strong aria-hidden="true">6.</strong> Write a guessing game</a></li><li class="chapter-item expanded "><a href="../lang/5_comments.html"><strong aria-hidden="true">7.</strong> Comments</a></li><li class="chapter-item expanded "><a href="../lang/6_types.html"><strong aria-hidden="true">8.</strong> Types</a></li><li class="chapter-item expanded "><a href="../lang/7_00_variables.html"><strong aria-hidden="true">9.</strong> Variables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../lang/7_01_numbers.html" class="active"><strong aria-hidden="true">9.1.</strong> Numbers</a></li><li class="chapter-item expanded "><a href="../lang/7_02_strings.html"><strong aria-hidden="true">9.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="../lang/7_03_arrays.html"><strong aria-hidden="true">9.3.</strong> Arrays</a></li><li class="chapter-item expanded "><a href="../lang/7_04_type_compatibility.html"><strong aria-hidden="true">9.4.</strong> Type compatibility</a></li></ol></li><li class="chapter-item expanded "><a href="../lang/8_conditional_statements.html"><strong aria-hidden="true">10.</strong> Conditional statements</a></li><li class="chapter-item expanded "><a href="../lang/9_loops.html"><strong aria-hidden="true">11.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../lang/10_functions.html"><strong aria-hidden="true">12.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../lang/11_importing.html"><strong aria-hidden="true">13.</strong> Importing & Creating modules</a></li><li class="chapter-item expanded "><a href="../lang/12_structs.html"><strong aria-hidden="true">14.</strong> Structures</a></li><li class="chapter-item expanded "><a href="../lang/13_memory_management.html"><strong aria-hidden="true">15.</strong> Memory management</a></li><li class="chapter-item expanded "><a href="../lang/14_interfacing_with_cpp.html"><strong aria-hidden="true">16.</strong> Interfacing with C++</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../hpm.html"><strong aria-hidden="true">17.</strong> Package Manager Documentation</a></li><li class="chapter-item expanded "><a href="../ide.html"><strong aria-hidden="true">18.</strong> IDE Integration</a></li><li class="chapter-item expanded "><a href="../ROADMAP.html"><strong aria-hidden="true">19.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="../CHANGELOG.html"><strong aria-hidden="true">20.</strong> Change Log</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -83,7 +89,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -93,7 +99,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
@@ -110,6 +116,7 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+
                     </div>
                 </div>
 
@@ -123,8 +130,9 @@
                         </ul>
                     </div>
                 </div>
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -164,9 +172,11 @@ var c : double = 1.2313213215648789798
                             <a rel="prev" href="../lang/7_00_variables.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
+
                             <a rel="next" href="../lang/7_02_strings.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
@@ -176,6 +186,7 @@ var c : double = 1.2313213215648789798
                     <a rel="prev" href="../lang/7_00_variables.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
+
                     <a rel="next" href="../lang/7_02_strings.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
@@ -183,16 +194,25 @@ var c : double = 1.2313213215648789798
 
         </div>
 
-        <script type="text/javascript">
+
+
+
+        <script>
             window.playground_copyable = true;
         </script>
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
+
+
+    </div>
     </body>
 </html>

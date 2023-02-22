@@ -4,8 +4,10 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>os - Standard Library Documentation</title>
+
+
         <!-- Custom HTML head -->
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
@@ -16,25 +18,29 @@
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
         <link rel="stylesheet" href="css/print.css" media="print">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
         <link rel="stylesheet" href="fonts/fonts.css">
+
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -50,7 +56,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -62,7 +68,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -83,7 +89,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -93,7 +99,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
@@ -110,6 +116,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+
                     </div>
                 </div>
 
@@ -123,8 +130,9 @@
                         </ul>
                     </div>
                 </div>
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -138,7 +146,7 @@
 <p>Interaction with OS.</p>
 <h2 id="os_name--string"><a class="header" href="#os_name--string"><code>os_name() : string</code></a></h2>
 <p>Returns OS name</p>
-<table><thead><tr><th style="text-align: left">OS(Platfrom)</th><th style="text-align: center"><code>os_name()</code> output</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">OS(Platfrom)</th><th style="text-align: center"><code>os_name()</code> output</th></tr></thead><tbody>
 <tr><td style="text-align: left">Windows 32-Bit</td><td style="text-align: center"><code>win32</code></td></tr>
 <tr><td style="text-align: left">Windows 64-Bit</td><td style="text-align: center"><code>win64</code></td></tr>
 <tr><td style="text-align: left">Mac OS</td><td style="text-align: center"><code>macos</code></td></tr>
@@ -153,6 +161,7 @@
 <tr><td style="text-align: left">Symbian</td><td style="text-align: center"><code>symbian</code></td></tr>
 <tr><td style="text-align: left">z/VM</td><td style="text-align: center"><code>zvm</code></td></tr>
 </tbody></table>
+</div>
 <p>For other OSs, <code>os_name</code> will return <code>unknown</code>.</p>
 <h2 id="systemcommandstring--int"><a class="header" href="#systemcommandstring--int"><code>system(command:string) : int</code></a></h2>
 <p>Executes a command and returns command's exit code.</p>
@@ -161,17 +170,18 @@
 </code></pre>
 <h2 id="compiler_name--string"><a class="header" href="#compiler_name--string"><code>compiler_name() : string</code></a></h2>
 <p>Returns Hascal C\C++ compiler name.</p>
-<table><thead><tr><th style="text-align: left">Compiler</th><th style="text-align: center"><code>compiler_name()</code> output</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Compiler</th><th style="text-align: center"><code>compiler_name()</code> output</th></tr></thead><tbody>
 <tr><td style="text-align: left">GCC\G++</td><td style="text-align: center"><code>gcc</code></td></tr>
 <tr><td style="text-align: left">Clang(LLVM)</td><td style="text-align: center"><code>clang</code></td></tr>
 <tr><td style="text-align: left">Microsoft Visual C++</td><td style="text-align: center"><code>msvc</code></td></tr>
 <tr><td style="text-align: left">Digital Mars C\C++</td><td style="text-align: center"><code>dmc</code></td></tr>
 <tr><td style="text-align: left">Intel C\C++</td><td style="text-align: center"><code>icc</code></td></tr>
 </tbody></table>
+</div>
 <p>For other compilers, <code>compiler_name</code> will return <code>unknown</code>.</p>
 <h2 id="arch--string"><a class="header" href="#arch--string"><code>arch() : string</code></a></h2>
 <p>Returns CPU architecture.</p>
-<table><thead><tr><th style="text-align: left">Architecture</th><th style="text-align: center"><code>arch()</code> output</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Architecture</th><th style="text-align: center"><code>arch()</code> output</th></tr></thead><tbody>
 <tr><td style="text-align: left">x86</td><td style="text-align: center"><code>intel32</code></td></tr>
 <tr><td style="text-align: left">x86_64</td><td style="text-align: center"><code>amd64</code></td></tr>
 <tr><td style="text-align: left">Arm</td><td style="text-align: center"><code>arm</code></td></tr>
@@ -179,6 +189,7 @@
 <tr><td style="text-align: left">Mips</td><td style="text-align: center"><code>mips</code></td></tr>
 <tr><td style="text-align: left">PowerPC</td><td style="text-align: center"><code>powerpc</code></td></tr>
 </tbody></table>
+</div>
 <h2 id="is_x86--bool"><a class="header" href="#is_x86--bool"><code>is_x86() : bool</code></a></h2>
 <p>Returns true if CPU architecture is x86.</p>
 <h2 id="is_x64--bool"><a class="header" href="#is_x64--bool"><code>is_x64() : bool</code></a></h2>
@@ -191,9 +202,11 @@
                             <a rel="prev" href="file.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
+
                             <a rel="next" href="datetime.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
@@ -203,6 +216,7 @@
                     <a rel="prev" href="file.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
+
                     <a rel="next" href="datetime.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
@@ -210,16 +224,25 @@
 
         </div>
 
-        <script type="text/javascript">
+
+
+
+        <script>
             window.playground_copyable = true;
         </script>
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
+
+
+    </div>
     </body>
 </html>
