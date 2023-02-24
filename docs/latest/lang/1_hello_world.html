@@ -143,22 +143,22 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="hello-world"><a class="header" href="#hello-world">Hello World!</a></h1>
-<p>Now that you have successfully installed Haskall, let's write our first program with it. You will write a program that prints <code>Hello World!</code> on the terminal.</p>
+<p>Now that you have successfully installed Hascal, let's write our first program with it. You will write a program that prints <code>Hello World!</code> on the terminal.</p>
 <h2 id="creating-a-project-directory"><a class="header" href="#creating-a-project-directory">Creating a project directory</a></h2>
-<p>You can wite your hascal programs every where but We suggest that you create a directory for your project.</p>
-<p>First create a directory in your home directory(or anywhere else):</p>
+<p>You can write your Hascal programs every where but, we suggest that you create a directory for your project.</p>
+<p>At first, create a directory in your home directory(or anywhere else):</p>
 <pre><code>mkdir hello_world
 cd hello_wrold
 </code></pre>
 <h2 id="writing-the-code"><a class="header" href="#writing-the-code">Writing the code</a></h2>
 <p>Next make a new file and name it <code>main.has</code>. Hascal files should end with <code>.has</code> extension.</p>
-<p>Now open your code editor(If you are using <code>vscode</code> install hascal extension for better coding from <a href="https://github.com/hascal/vscode">this link</a>) and write following code in <code>main.has</code> :</p>
+<p>Now open your code editor (If you are using <code>vscode</code> install hascal extension for better coding from <a href="https://github.com/hascal/vscode">this link</a>) and write the following code in <code>main.has</code> :</p>
 <pre><code class="language-typescript">function main() : int {
     print(&quot;Hello World!&quot;)
     return 0
 }
 </code></pre>
-<p>Save the file, and back to terminal and enter following command to build your program :</p>
+<p>Save the file, and return to the terminal and enter the following command to build your program :</p>
 <pre><code>hascal main.has
 </code></pre>
 <p>Now run the generated excutable file :</p>
@@ -171,24 +171,24 @@ Hello World!
 </code></pre>
 <p>Congratulations - you just wrote and executed your first Hascal program!</p>
 <h2 id="reviewing-the-code"><a class="header" href="#reviewing-the-code">Reviewing the code</a></h2>
-<p>Let's review the our simple program. Here's the first piece of the program :</p>
+<p>Let's review our simple program. Here's the first piece of the program:</p>
 <pre><code class="language-typescript">function main() : int {
     
 }
 </code></pre>
-<p>These lines defines a function that returns an integer number. The <code>main</code> function is the entry point of your program and it always should return <code>int</code>(an integer), if there were parameters, they would go inside the parentheses, <code>()</code>.</p>
-<p>Also, note function statements should be in <code>{}</code> and you write function codes inside <code>{}</code>.</p>
+<p>These lines define a function that returns an integer number. The <code>main</code> function is the entry point of your program and it should always return <code>int</code>(an integer). If there were parameters, they would go inside the parentheses, <code>()</code>.</p>
+<p>Also, note that function statements should be in <code>{}</code> and you can write function codes inside <code>{}</code>.</p>
 <p>Inside the <code>main</code> function is the following code :</p>
 <pre><code class="language-typescript">print(&quot;Hello World!&quot;)
 </code></pre>
 <p>This code print the passed arguments, you can pass more parameters :</p>
 <pre><code class="language-typescript">print(&quot;Hello World!&quot;,42,3.14)
 </code></pre>
-<p>After the calling <code>print</code> command is following statemetn :</p>
+<p>After the calling <code>print</code> command, there is the following statement :</p>
 <pre><code class="language-typescript">return 0
 </code></pre>
-<p>It returns <code>0</code> at end of the function, every function that returns a value(declared with <code>:</code> after <code>()</code> in function declaration) should return a value with mentioned type. </p>
-<p>Returning the <code>0</code> value in main function tell the OS that your program executed successfully.</p>
+<p>It returns <code>0</code> at the end of the function, every function that returns a value(declared with <code>:</code> after <code>()</code> in a function declaration) should return a value corresponding to the type.</p>
+<p>Returning the <code>0</code> value in main function tell the OS that your program has executed successfully.</p>
 
                     </main>
 
