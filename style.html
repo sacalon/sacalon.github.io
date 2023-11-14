@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>The Hascal Style</title>
+        <title>The Sacalon Style</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/prism.css">
         <script src="js/jquery.min.js"></script>
@@ -10,14 +10,14 @@
         <script src="js/bootstrap.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>*{max-width:100%;}</style>
-        <link rel="icon" type="image/x-icon" href="images/hascal-logo.png">
+        <link rel="icon" type="image/x-icon" href="images/sacalon-logo.jpeg">
 
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="index.html">
-                <img src="images/hascal-logo.png" width="40" alt="Hascal Logo">
+                <img src="images/sacalon-logo.jpeg" width="40" alt="Sacalon Logo" style="border-radius:50%;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -34,7 +34,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="https://hascal.github.io/docs/latest/index.html">Documentation</a>
+                        <a class="nav-link" href="https://sacalon-lang.github.io/docs/latest/index.html">Documentation</a>
                     </li>
                     
                     <li class="nav-item">
@@ -42,15 +42,15 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="foundation.html">Hascal Foundation</a>
+                        <a class="nav-link" href="foundation.html">Sacalon Foundation</a>
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="style.html">Hascal Style</a>
+                        <a class="nav-link" href="style.html">Sacalon Style</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/hascal/hascal">Source Code</a>
+                        <a class="nav-link" href="https://github.com/sacalon-lang/sacalon">Source Code</a>
                     </li>
                 </ul>
             </div>
@@ -62,7 +62,7 @@
 
                 <div class="row">
                     <div class="col" style="font-size: large;">
-                        <h1>The Hascal Style</h1>
+                        <h1>The Sacalon Style</h1>
                         <br/>
                         
                         <br/>
@@ -84,16 +84,16 @@
                         </a>
                         <p>    
                             Unless listedVariable names should be camelCased. So, names formed by joining multiple words have each word other than the first word capitalized. Also Function names should be split with an underscore(`_`).
-                            <pre><code class="language-hascal">function myFunc()
+                            <pre><code class="language-sacalon">function myFunc()
 var myLocalVar : int?</code></pre>
                         </p>
                         <p>
                             Module and package names should be all lowercase, and only contain the characters [a..z][0..9][_]. This avoids problems when dealing with case-insensitive file systems. 
-                            <pre><code class="language-hascal">use ctypto.sha256</code></pre>
+                            <pre><code class="language-sacalon">use ctypto.sha256</code></pre>
                         </p>
                         <p>
                             The names of user-defined types should be PascalCased, which is the same as camelCased except that the first letter is uppercase. 
-                            <pre><code class="language-hascal">struct FooAndBar {
+                            <pre><code class="language-sacalon">struct FooAndBar {
     var x = 0
 }
 enum Colors{
@@ -104,11 +104,11 @@ enum Colors{
                         </p>
                         <p>
                             The names of constants should be CAPITALCASED.
-                            <pre><code class="language-hascal">const PI : float = 3.14</code></pre>
+                            <pre><code class="language-sacalon">const PI : float = 3.14</code></pre>
                         </p>
                         <p>
                             If a name would conflict with a keyword, and it is desirable to use the keyword rather than pick a different name, a single underscore ‘_’ should be appended to it. Names should not be capitalized differently in order to avoid conflicting with keywords.
-                            <pre><code class="language-hascal">enum Types{
+                            <pre><code class="language-sacalon">enum Types{
     string_,
     int_,
     float_
@@ -122,7 +122,7 @@ enum Colors{
                         </a>
                         <p>
                             Always assign a value to variables when you declare they and <b>decrease using nullable variable in your program</b>.
-                            <pre><code class="language-hascal">var localVar : int = 12 // good
+                            <pre><code class="language-sacalon">var localVar : int = 12 // good
 var localVar2 : int? // bad
 localVar2 = 12
 </code></pre>
@@ -139,9 +139,9 @@ localVar2 = 12
                         </ul>
                         <br/>
                         <p>
-                            We are not necessarily recommending that all code follow these rules but sent PRs to Hascal standard library should should use these rules. 
+                            We are not necessarily recommending that all code follow these rules but sent PRs to Sacalon standard library should should use these rules. 
                             <br/>
-                            Do you have a suggestion to improve these rules or an idea for new rules? <a href="https://github.com/hascal/hascal/issues/new/">open an issue on Hascal's github repository.</a>
+                            Do you have a suggestion to improve these rules or an idea for new rules? <a href="https://github.com/sacalon-lang/sacalon/issues/new/">open an issue on Sacalon's github repository.</a>
                         </p>
                     </div>
                 </div>
@@ -150,7 +150,7 @@ localVar2 = 12
           </main>
       
           <footer class="container">
-            <p>&copy; Hascal Foundation 2019-2023</p>
+            <p>&copy; Sacalon Foundation 2019-2023</p>
             <br>
             <p align="center">
                 This page is also available in the following languages

@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>*{max-width:100%;}</style>
-        <link rel="icon" type="image/x-icon" href="../images/hascal-logo.png">
+        <link rel="icon" type="image/x-icon" href="../images/sacalon-logo.jpeg">
         <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
         <style>body {font-family: Vazirmatn, sans-serif;}</style>
 
@@ -21,9 +21,9 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="index.html">
-                <img src="../images/logo.svg" width="40" alt="Hascal Logo">
+                <img src="../images/logo.svg" width="40" alt="Sacalon Logo" style="border-radius:50%;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,7 +52,7 @@
                     </li> -->
 
                     <li class="nav-item">
-                        <a class="nav-link" href="foundation.html">بنیاد هاسکال</a>
+                        <a class="nav-link" href="foundation.html">بنیاد ساکالون</a>
                     </li>
 
                     <li class="nav-item active">
@@ -60,7 +60,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/hascal/hascal">سورس کد</a>
+                        <a class="nav-link" href="https://github.com/sacalon-lang/sacalon">سورس کد</a>
                     </li>
                 </ul>
             </div>
@@ -93,16 +93,16 @@
                             </h2>
                         </a>
                         <p>    
-                            نام متغیرها باید camelCase باشد. بنابراین، نام هایی که از به هم پیوستن چند کلمه تشکیل می شوند، هر کلمه ای غیر از کلمه اول را با حروف بزرگ نوشته می شود. همچنین نام توابع باید با زیرخط «_» تقسیم شود.                            <pre><code class="language-hascal">function myFunc()
+                            نام متغیرها باید camelCase باشد. بنابراین، نام هایی که از به هم پیوستن چند کلمه تشکیل می شوند، هر کلمه ای غیر از کلمه اول را با حروف بزرگ نوشته می شود. همچنین نام توابع باید با زیرخط «_» تقسیم شود.                            <pre><code class="language-sacalon">function myFunc()
 var myLocalVar : int?</code></pre>
                         </p>
                         <p>
                             نام ماژول ها و بسته ها باید همه با حروف کوچک باشد و فقط شامل کاراکترهای [a..z][0..9][_] باشد. این امر هنگام برخورد با سیستم های فایل حساس به حروف کوچک و بزرگ از مشکلات جلوگیری می کند:
-                            <pre><code class="language-hascal">use ctypto.sha256</code></pre>
+                            <pre><code class="language-sacalon">use ctypto.sha256</code></pre>
                         </p>
                         <p>
                             نام انواع تعریف شده توسط کاربر باید PascalCased باشد که همان camelCased است با این تفاوت که حرف اول آن بزرگ است:
-                            <pre><code class="language-hascal">struct FooAndBar {
+                            <pre><code class="language-sacalon">struct FooAndBar {
     var x = 0
 }
 enum Colors{
@@ -113,11 +113,11 @@ enum Colors{
                         </p>
                         <p>
                             نام ثابت ها باید CAPITALCASED باشد:
-                            <pre><code class="language-hascal">const PI : float = 3.14</code></pre>
+                            <pre><code class="language-sacalon">const PI : float = 3.14</code></pre>
                         </p>
                         <p>
                             اگر نامی با یک کلمه کلیدی مغایرت داشته باشد و بهتر است از کلمه کلیدی به جای انتخاب نام دیگری استفاده شود، یک زیرخط «_» باید به آن اضافه شود. برای جلوگیری از تضاد با کلمات کلیدی، نام ها نباید با حروف بزرگ نوشته شوند:
-                            <pre><code class="language-hascal">enum Types{
+                            <pre><code class="language-sacalon">enum Types{
     string_,
     int_,
     float_
@@ -131,7 +131,7 @@ enum Colors{
                         </a>
                         <p>
                             زمانی که متغیرها را تعریف می کنید، همیشه یک مقدار به آنها اختصاص دهید <b>استفاده از متغیر nullable در برنامه‌تان را کاهش دهید.</b>.
-                            <pre><code class="language-hascal">var localVar : int = 12 // good
+                            <pre><code class="language-sacalon">var localVar : int = 12 // good
 var localVar2 : int? // bad
 localVar2 = 12
 </code></pre>
@@ -148,9 +148,9 @@ localVar2 = 12
                         </ul>
                         <br/>
                         <p>
-                            ما لزوماً توصیه نمی کنیم که همه کدها از این قوانین پیروی کنند، اما Pull Request های ارسال شده به کتابخانه استاندارد هاسکال باید از این قوانین پیروی کنند.
+                            ما لزوماً توصیه نمی کنیم که همه کدها از این قوانین پیروی کنند، اما Pull Request های ارسال شده به کتابخانه استاندارد ساکالون باید از این قوانین پیروی کنند.
                             <br/>
-                            آیا پیشنهادی برای بهبود این قوانین دارید یا ایده ای برای قوانین جدید؟ <a href="https://github.com/hascal/hascal/issues/new/">یک موضوع را در مخزن گیت هاب هاسکال باز کنید.</a>
+                            آیا پیشنهادی برای بهبود این قوانین دارید یا ایده ای برای قوانین جدید؟ <a href="https://github.com/sacalon-lang/sacalon/issues/new/">یک موضوع را در مخزن گیت هاب ساکالون باز کنید.</a>
                         </p>
                     </div>
                 </div>
@@ -159,7 +159,7 @@ localVar2 = 12
           </main>
       
           <footer class="container">
-            <p>&copy; بنیاد هاسکال 2019-2023</p>
+            <p>&copy; بنیاد ساکالون 2019-2023</p>
             <br>
             <p align="center">
                 این صفحه در زبان های زیر نیز قابل دسترسی است
