@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Hascal Documentation</title>
-        <meta name="robots" content="noindex" />
+        <title>Sacalon Documentation</title>
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -32,7 +32,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -62,22 +62,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -87,15 +94,37 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -111,7 +140,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Hascal Documentation</h1>
+                    <h1 class="menu-title">Sacalon Documentation</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -145,7 +174,7 @@
                     <main>
                         <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
-<p><strong><a href="https://hascal.github.io">Hascal</a></strong> is a general purpose and open source programming language designed to build optimal, maintainable, reliable, and efficient software. More features of Hascal :</p>
+<p><strong><a href="https://sacalon-lang.github.io">Sacalon</a></strong> is a general purpose and open source programming language designed to build optimal, maintainable, reliable, and efficient software. More features of Sacalon :</p>
 <ul>
 <li><input disabled="" type="checkbox" checked=""/>
 Easy to use and easy to learn</li>
@@ -170,7 +199,7 @@ Built-in HTTP Library</li>
 <p>Standard Library Documentation available <a href="./stdlib/index.html">here</a>.</p>
 <h2 id="contributing"><a class="header" href="#contributing">Contributing</a></h2>
 <p>We welcome contributions of all kinds.</p>
-<p>You can contribute to this book by <a href="https://github.com/hascal/hascal/issues/new/choose">opening an issue</a> or <a href="https://github.com/hascal/hascal/fork">forking</a> and <a href="https://github.com/hascal/hascal/compare">sending a pull request</a> to the main Hascal repository.
+<p>You can contribute to this book by <a href="https://github.com/sacalon-lang/sacalon/issues/new/choose">opening an issue</a> or <a href="https://github.com/sacalon-lang/sacalon/fork">forking</a> and <a href="https://github.com/sacalon-lang/sacalon/compare">sending a pull request</a> to the main Sacalon repository.
 Knowing what people use this book for the most helps direct our attention to making those sections the best that they can be. We also want the reference to be as normative as possible, so if you see anything that is wrong, please also file an issue.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <p>Requirements :</p>
@@ -178,41 +207,41 @@ Knowing what people use this book for the most helps direct our attention to mak
 <li><code>python</code>&gt;=3.7</li>
 <li><code>gcc</code>&gt;=8(or any c++ compiler that supports c++17)</li>
 <li><code>libcurl</code>,<code>libssl</code>,<code>libcrypt</code></li>
-<li><code>git</code>(to clone Hascal's source code)</li>
+<li><code>git</code>(to clone Sacalon's source code)</li>
 </ul>
 <h2 id="nix-usersrecommended"><a class="header" href="#nix-usersrecommended">*Nix Users(recommended)</a></h2>
-<p>You can use the <code>hascal.sh</code> script to automate the process of installing and adding hascal to <code>PATH</code>:</p>
-<pre><code class="language-bash">git clone https://github.com/hascal/hascal.git
-cd hascal/
-chmod +x ./hascal.sh
-bash ./hascal.sh
+<p>You can use the <code>sacalon.sh</code> script to automate the process of installing and adding sacalon to <code>PATH</code>:</p>
+<pre><code class="language-bash">git clone https://github.com/sacalon-lang/sacalon.git
+cd sacalon/
+chmod +x ./sacalon.sh
+bash ./sacalon.sh
 </code></pre>
 <h2 id="windows-users"><a class="header" href="#windows-users">Windows Users</a></h2>
-<pre><code>&gt; git clone https://github.com/hascal/hascal.git
-&gt; cd hascal
+<pre><code>&gt; git clone https://github.com/sacalon-lang/sacalon.git
+&gt; cd sacalon
 &gt; make deps-windows
 &gt; make windows
 </code></pre>
-<p><em><strong>Now your Hascal compiler is ready to use in <code>dist</code> folder, you can add it to <code>$PATH</code>.</strong></em></p>
-<p><strong>NOTE</strong>: <strong>The latest version of Hascal should always be used. Old versions have bugs when running binary versions of Hascal.</strong></p>
+<p><em><strong>Now your Sacalon compiler is ready to use in <code>dist</code> folder, you can add it to <code>$PATH</code>.</strong></em></p>
+<p><strong>NOTE</strong>: <strong>The latest version of Sacalon should always be used. Old versions have bugs when running binary versions of Sacalon.</strong></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="hello-world"><a class="header" href="#hello-world">Hello World!</a></h1>
-<p>Now that you have successfully installed Hascal, let's write our first program with it. You will write a program that prints <code>Hello World!</code> on the terminal.</p>
+<p>Now that you have successfully installed Sacalon, let's write our first program with it. You will write a program that prints <code>Hello World!</code> on the terminal.</p>
 <h2 id="creating-a-project-directory"><a class="header" href="#creating-a-project-directory">Creating a project directory</a></h2>
-<p>You can write your Hascal programs every where but, we suggest that you create a directory for your project.</p>
+<p>You can write your Sacalon programs every where but, we suggest that you create a directory for your project.</p>
 <p>At first, create a directory in your home directory(or anywhere else):</p>
 <pre><code>mkdir hello_world
 cd hello_wrold
 </code></pre>
 <h2 id="writing-the-code"><a class="header" href="#writing-the-code">Writing the code</a></h2>
-<p>Next make a new file and name it <code>main.has</code>. Hascal files should end with <code>.has</code> extension.</p>
-<p>Now open your code editor (If you are using <code>vscode</code> install hascal extension for better coding from <a href="https://github.com/hascal/vscode">this link</a>) and write the following code in <code>main.has</code> :</p>
+<p>Next make a new file and name it <code>main.has</code>. Sacalon files should end with <code>.has</code> extension.</p>
+<p>Now open your code editor (If you are using <code>vscode</code> install sacalon extension for better coding from <a href="https://github.com/sacalon-lang/vscode">this link</a>) and write the following code in <code>main.has</code> :</p>
 <pre><code class="language-typescript">function main() : int {
     print(&quot;Hello World!&quot;)
     return 0
 }
 </code></pre>
 <p>Save the file, and return to the terminal and enter the following command to build your program :</p>
-<pre><code>hascal main.has
+<pre><code>sacalon main.has
 </code></pre>
 <p>Now run the generated excutable file :</p>
 <pre><code>$ ./main
@@ -222,7 +251,7 @@ Hello World!
 <pre><code>$ .\main.exe
 Hello World!
 </code></pre>
-<p>Congratulations - you just wrote and executed your first Hascal program!</p>
+<p>Congratulations - you just wrote and executed your first Sacalon program!</p>
 <h2 id="reviewing-the-code"><a class="header" href="#reviewing-the-code">Reviewing the code</a></h2>
 <p>Let's review our simple program. Here's the first piece of the program:</p>
 <pre><code class="language-typescript">function main() : int {
@@ -243,7 +272,7 @@ Hello World!
 <p>It returns <code>0</code> at the end of the function, every function that returns a value(declared with <code>:</code> after <code>()</code> in a function declaration) should return a value corresponding to the type.</p>
 <p>Returning the <code>0</code> value in main function tell the OS that your program has executed successfully.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="project-manager"><a class="header" href="#project-manager">Project Manager</a></h1>
-<p>Hascal has a builtin build system and project manager. This tool builds and runs your project, and installs dependencies.</p>
+<p>Sacalon has a builtin build system and project manager. This tool builds and runs your project, and installs dependencies.</p>
 <h2 id="creating-a-new-project"><a class="header" href="#creating-a-new-project">Creating a new project</a></h2>
 <p>Let's create a new project and compare it with the Hello World example in previous chapter.</p>
 <p>To create a project you should create a directory for your project :</p>
@@ -251,9 +280,9 @@ Hello World!
 $ cd hello_world_2
 </code></pre>
 <p>Now we create a new project with following command :</p>
-<pre><code>$ hascal init
+<pre><code>$ sacalon init
 </code></pre>
-<p>After running above command, you’ll see Hascal has generated two files and one directory for us: a <code>config.json</code> file, a <code>.gitignore</code> file and a <code>src</code> directory with a <code>app.has</code> file inside.</p>
+<p>After running above command, you’ll see Sacalon has generated two files and one directory for us: a <code>config.json</code> file, a <code>.gitignore</code> file and a <code>src</code> directory with a <code>app.has</code> file inside.</p>
 <p><code>config.json</code> :</p>
 <pre><code class="language-json">{
 	&quot;filename&quot;: &quot;src/app.has&quot;, 
@@ -267,22 +296,22 @@ $ cd hello_world_2
 	return 0
 }
 </code></pre>
-<p>The generated Hascal file contains <em>Hello World!</em> program, you can edit it.</p>
+<p>The generated Sacalon file contains <em>Hello World!</em> program, you can edit it.</p>
 <h2 id="building-a-project"><a class="header" href="#building-a-project">Building a project</a></h2>
 <p>You can build the project with following command :</p>
-<pre><code>$ hascal build
+<pre><code>$ sacalon build
 </code></pre>
 <p>Excutable file will generate in <code>build</code> directory and you can run it with following command :</p>
 <pre><code>$ ./build/app
 </code></pre>
 <h2 id="running-a-project"><a class="header" href="#running-a-project">Running a project</a></h2>
 <p>To run the project, you can use <code>run</code> command :</p>
-<pre><code>$ hascal run
+<pre><code>$ sacalon run
 Hello World!
 </code></pre>
 <p>That builds excutable file and runs it.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configure-the-compiler"><a class="header" href="#configure-the-compiler">Configure the compiler</a></h1>
-<p>You can use <code>config.json</code> file to configure your Hascal compiler.</p>
+<p>You can use <code>config.json</code> file to configure your Sacalon compiler.</p>
 <p>The following configuration options are available:</p>
 <ul>
 <li><code>filename</code> : your main file name, if you set it, you will no longer need to pass the file name to the compiler.</li>
@@ -328,8 +357,8 @@ double // double floating point
 <pre><code class="language-typescript">var foo = 1
 </code></pre>
 <h3 id="non-nullable-and-nullable"><a class="header" href="#non-nullable-and-nullable">Non nullable and nullable</a></h3>
-<p>Null safety is a feature that allows you to declare that a variable can be null or not null, and Hascal uses this feature to make sure that your code is safe.</p>
-<p>Hascal's variables and constants are non-nullable by default that means that they cannot be null(<code>NULL</code>) and you can't assign <code>NULL</code> to them and <strong>you should assign a value to them when you declare them</strong>.</p>
+<p>Null safety is a feature that allows you to declare that a variable can be null or not null, and Sacalon uses this feature to make sure that your code is safe.</p>
+<p>Sacalon's variables and constants are non-nullable by default that means that they cannot be null(<code>NULL</code>) and you can't assign <code>NULL</code> to them and <strong>you should assign a value to them when you declare them</strong>.</p>
 <pre><code class="language-typescript">var foo : int = 1 // non-nullable
 var foo_error : int // error : nullable variable must be assigned a value
 </code></pre>
@@ -621,7 +650,7 @@ function main(): int {
 </code></pre>
 <h2 id="function-decorators"><a class="header" href="#function-decorators">Function decorators</a></h2>
 <p>Decorator is a way to add some properties to a function and it is used with <code>@</code> character + decorator name before function declaration.</p>
-<p>List of available decorators in Hascal :
+<p>List of available decorators in Sacalon :
 | Decorator       | Description  |
 | :------------- | :----------: |
 |  <code>@static_function</code> | Makes function <code>static</code>  | 
@@ -717,8 +746,8 @@ print(foo.r,foo.g,foo.b)
 var bar = RGB(255,0,0,&quot;AColor&quot;)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="memory-management"><a class="header" href="#memory-management">Memory management</a></h1>
-<p>Memory management is a way to manage the memory of your program. Hascal use manual memory management because it is used in most performance-critical applications like games,OSes, embedded systems, etc.</p>
-<p>Hascal uses <code>new</code> and <code>delete</code> keywords to manage memory manually.</p>
+<p>Memory management is a way to manage the memory of your program. Sacalon use manual memory management because it is used in most performance-critical applications like games,OSes, embedded systems, etc.</p>
+<p>Sacalon uses <code>new</code> and <code>delete</code> keywords to manage memory manually.</p>
 <h2 id="allocation"><a class="header" href="#allocation">Allocation</a></h2>
 <p>For allocating memory, you should use the <code>new</code> keyword. Note that type of the allocated memory should be pointer or reference type and passed type to <code>new</code> keyword should be a </p>
 <pre><code class="language-typescript">var foo : int^ = new int(1) // allocating
@@ -759,9 +788,9 @@ print(^foo)
 foo = new int(1)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="interfacing-with-c"><a class="header" href="#interfacing-with-c">Interfacing with C++</a></h1>
-<p>Hascal is based on C++, so you can use C++ functions and classes in your program.</p>
+<p>Sacalon is based on C++, so you can use C++ functions and classes in your program.</p>
 <h2 id="inline-c-code"><a class="header" href="#inline-c-code">Inline C++ Code</a></h2>
-<p>You can use inline c++ code in Hascal with <code>cuse</code> keyword :</p>
+<p>You can use inline c++ code in Sacalon with <code>cuse</code> keyword :</p>
 <pre><code class="language-typescript">cuse '#include &lt;cstdio&gt;'
 cuse 'int main(){printf(&quot;%d&quot;,1);return 0;}'
 // output : 1
@@ -784,16 +813,16 @@ int main(){
 <pre><code class="language-typescript">function system(command:char^):int
 </code></pre>
 <h2 id="include-c-headers"><a class="header" href="#include-c-headers">Include C++ headers</a></h2>
-<p>Also Hascal can include C++ headers in your program.
+<p>Also Sacalon can include C++ headers in your program.
 We need two files, one for headers and one for main part of the library. You should put <code>#include</code>,... in <code>your_cpp_lib.hpp</code> and main part of library in <code>your_cpp_lib.cc</code>. The specified files should exist in the same folder.</p>
 <p>See the example below:</p>
 <p><code>add.cc</code> :</p>
-<pre><code class="language-cpp">void __hascal__cpp_print(int x){
+<pre><code class="language-cpp">void __sacalon__cpp_print(int x){
     printf(&quot;%d&quot;,x);
 }
 </code></pre>
 <blockquote>
-<p>add <code>__hascal__</code> to your C++ functions, structs name. Hascal transpiles to C++ and it adds <code>__hascal__</code> prefix to your C++ names.</p>
+<p>add <code>__sacalon__</code> to your C++ functions, structs name. Sacalon transpiles to C++ and it adds <code>__sacalon__</code> prefix to your C++ names.</p>
 </blockquote>
 <p><code>add.hpp</code> :</p>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
@@ -811,7 +840,7 @@ function main() : int {
 <p>Also you can put the C++ files in a folder and rename they to <code>_.cc</code> and <code>_.hpp</code>.</p>
 <p><strong>Note that don't include local headers in <code>*.hpp</code> file.</strong></p>
 <h2 id="accessing-to-values-and-types-in-inline-c-code"><a class="header" href="#accessing-to-values-and-types-in-inline-c-code">Accessing to values and types in inline C++ code</a></h2>
-<p>You can access to Hascal's variable and types in inline C++ codes in Hascal by adding <code>__hascal__</code> prefix to a name, for example:
+<p>You can access to Sacalon's variable and types in inline C++ codes in Sacalon by adding <code>__sacalon__</code> prefix to a name, for example:
 <code>main.has</code>:</p>
 <pre><code class="language-typescript">function add(a:int,b:int){
     cuse &quot;&quot;&quot;
@@ -828,12 +857,12 @@ function main() : int {
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="standard-library-documentation-1"><a class="header" href="#standard-library-documentation-1">Standard Library Documentation</a></h1>
-<p>To read Hascal's stdlib go to <a href="https://hascal.github.io/docs/latest/stdlib/index.html">this link</a>.</p>
+<p>To read Sacalon's stdlib go to <a href="https://sacalon-lang.github.io/docs/latest/stdlib/index.html">this link</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="package-manager"><a class="header" href="#package-manager">Package Manager</a></h1>
-<p>Hascal has a built-in package manager that allows you to install packages from the a git repository.</p>
+<p>Sacalon has a built-in package manager that allows you to install packages from the a git repository.</p>
 <h2 id="installing-a-package"><a class="header" href="#installing-a-package">Installing a package</a></h2>
 <p>To get and install a package, you can use the <code>get</code> command :</p>
-<pre><code>hascal get &lt;git url&gt; &lt;package name&gt;
+<pre><code>sacalon get &lt;git url&gt; &lt;package name&gt;
 </code></pre>
 <ul>
 <li><code>&lt;git url&gt;</code> is the url of the git repository</li>
@@ -844,28 +873,28 @@ function main() : int {
 </code></pre>
 <h2 id="updating-a-package"><a class="header" href="#updating-a-package">Updating a package</a></h2>
 <p>To update a package, you can use the <code>update</code> command :</p>
-<pre><code>hascal update &lt;package name ot git url&gt;
+<pre><code>sacalon update &lt;package name ot git url&gt;
 </code></pre>
 <h2 id="listing-packages"><a class="header" href="#listing-packages">Listing packages</a></h2>
 <p>To list all packages, you can use the <code>list</code> command :</p>
-<pre><code>hascal list
+<pre><code>sacalon list
 </code></pre>
 <p>if you want to list all subpackages of a package, you can use the <code>list</code> command with name of the package :</p>
-<pre><code>hascal list &lt;package name&gt;
+<pre><code>sacalon list &lt;package name&gt;
 </code></pre>
 <ul>
 <li><code>&lt;package name&gt;</code> is the name of the package you want to list subpackages</li>
 </ul>
 <p>For example :</p>
-<pre><code>$ hascal list crypto
+<pre><code>$ sacalon list crypto
 list of all subpackages in crypto :
 - sha256
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ide-integration"><a class="header" href="#ide-integration">IDE Integration</a></h1>
 <ul>
-<li><a href="https://github.com/hascal/vscode">Vscode Extension</a></li>
+<li><a href="https://github.com/sacalon-lang/vscode">Vscode Extension</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="hascals-roadmap"><a class="header" href="#hascals-roadmap">Hascal's Roadmap</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sacalons-roadmap"><a class="header" href="#sacalons-roadmap">Sacalon's Roadmap</a></h1>
 <h3 id="language"><a class="header" href="#language">Language</a></h3>
 <ul>
 <li>js backend</li>
@@ -909,8 +938,8 @@ list of all subpackages in crypto :
 }
 </code></pre>
 <ul>
-<li>generics <a href="https://github.com/hascal/hascal/issues/26">#26</a>s</li>
-<li>rewrite compiler in hascal </li>
+<li>generics <a href="https://github.com/sacalon-lang/sacalon/issues/26">#26</a>s</li>
+<li>rewrite compiler in sacalon </li>
 <li>const correctness</li>
 </ul>
 <h3 id="standard-library"><a class="header" href="#standard-library">Standard Library</a></h3>
@@ -918,13 +947,13 @@ list of all subpackages in crypto :
 <li><code>thread</code> library</li>
 </ul>
 <h3 id="package-manager-1"><a class="header" href="#package-manager-1">Package Manager</a></h3>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="hascals-changelog"><a class="header" href="#hascals-changelog">Hascal's Changelog</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sacalons-changelog"><a class="header" href="#sacalons-changelog">Sacalon's Changelog</a></h1>
 <details>
 <summary>v1.4.2</summary>
 <h4 id="new-features"><a class="header" href="#new-features">New features</a></h4>
 <h4 id="changes"><a class="header" href="#changes">Changes</a></h4>
 <ul>
-<li>observe <a href="https://hascal.github.io/style.html">Hasca's coding style</a> in libraries</li>
+<li>observe <a href="https://sacalon-lang.github.io/style.html">Hasca's coding style</a> in libraries</li>
 </ul>
 <h4 id="bug-fixes"><a class="header" href="#bug-fixes">Bug fixes</a></h4>
 <h4 id="removed"><a class="header" href="#removed">Removed</a></h4>
@@ -951,7 +980,7 @@ list of all subpackages in crypto :
 }
 </code></pre>
 <ul>
-<li>add <code>asin</code>, <code>acos</code>, <code>asinh</code>, <code>acosh</code>, <code>exp</code>, <code>frexpr</code>, <code>ldexp</code>, <code>log</code>, <code>log10</code>, <code>fdim</code>, <code>sqrt</code>, <code>ceil</code>, <code>floor</code>, <code>NaN</code>, <code>max</code>, <code>min</code> functions to <code>math</code> library, <a href="https://hascal.github.io/docs/latest/stdlib/math.html">see documentation</a>.</li>
+<li>add <code>asin</code>, <code>acos</code>, <code>asinh</code>, <code>acosh</code>, <code>exp</code>, <code>frexpr</code>, <code>ldexp</code>, <code>log</code>, <code>log10</code>, <code>fdim</code>, <code>sqrt</code>, <code>ceil</code>, <code>floor</code>, <code>NaN</code>, <code>max</code>, <code>min</code> functions to <code>math</code> library, <a href="https://sacalon-lang.github.io/docs/latest/stdlib/math.html">see documentation</a>.</li>
 <li>Showing error for overloading function's return type.</li>
 </ul>
 <h4 id="changes-1"><a class="header" href="#changes-1">Changes</a></h4>
@@ -974,7 +1003,7 @@ list of all subpackages in crypto :
 </ul>
 <h4 id="changes-2"><a class="header" href="#changes-2">Changes</a></h4>
 <ul>
-<li>Hascal relicensed from MIT license to BSD-3-Clause license</li>
+<li>Sacalon relicensed from MIT license to BSD-3-Clause license</li>
 </ul>
 <h4 id="bug-fixes-3"><a class="header" href="#bug-fixes-3">Bug fixes</a></h4>
 <ul>
@@ -1037,10 +1066,10 @@ list of all subpackages in crypto :
 <summary>v1.3.9</summary>
 <h4 id="new-features-5"><a class="header" href="#new-features-5">New features</a></h4>
 <ul>
-<li>add <code>hascal list</code> command to list all available packages</li>
-<li>add <code>hascal init</code> command to create a new project, that generates <code>config.json</code>, <code>.gitignore</code> and <code>src/app.has</code> files</li>
-<li>add <code>hascal build</code> command to build project</li>
-<li>add <code>hascal run</code> command to run project</li>
+<li>add <code>sacalon list</code> command to list all available packages</li>
+<li>add <code>sacalon init</code> command to create a new project, that generates <code>config.json</code>, <code>.gitignore</code> and <code>src/app.has</code> files</li>
+<li>add <code>sacalon build</code> command to build project</li>
+<li>add <code>sacalon run</code> command to run project</li>
 <li>add <code>string_reverse(str:string)</code> function to <code>strings</code> module</li>
 <li>add <code>assert</code> function to runtime library</li>
 <li>add <code>no_std</code> compiler option</li>
@@ -1114,7 +1143,7 @@ function g(func:Function[int]int): int {
 }
 </code></pre>
 <ul>
-<li>add static variables, <a href="https://github.com/hascal/hascal/blob/main/tests/static.has">See this example</a></li>
+<li>add static variables, <a href="https://github.com/sacalon-lang/sacalon/blob/main/tests/static.has">See this example</a></li>
 <li>add <code>only_compile</code> config option</li>
 </ul>
 <h4 id="changes-8"><a class="header" href="#changes-8">Changes</a></h4>
@@ -1263,7 +1292,7 @@ struct bar {
 <summary>v1.3.4</summary>
 <h4 id="new-features-10"><a class="header" href="#new-features-10">New features</a></h4>
 <ul>
-<li>compiler option : now can generate c++ code from hascal code with <code>c++_code : 1</code> in <code>config.json</code> file</li>
+<li>compiler option : now can generate c++ code from sacalon code with <code>c++_code : 1</code> in <code>config.json</code> file</li>
 <li>use <code>cuse</code> keyword to include c++ files.</li>
 </ul>
 <h4 id="bug-fixes-16"><a class="header" href="#bug-fixes-16">Bug fixes</a></h4>

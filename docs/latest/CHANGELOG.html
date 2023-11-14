@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Change Log - Hascal Documentation</title>
+        <title>Change Log - Sacalon Documentation</title>
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,22 +61,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -86,15 +93,37 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -110,7 +139,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Hascal Documentation</h1>
+                    <h1 class="menu-title">Sacalon Documentation</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -142,13 +171,13 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="hascals-changelog"><a class="header" href="#hascals-changelog">Hascal's Changelog</a></h1>
+                        <h1 id="sacalons-changelog"><a class="header" href="#sacalons-changelog">Sacalon's Changelog</a></h1>
 <details>
 <summary>v1.4.2</summary>
 <h4 id="new-features"><a class="header" href="#new-features">New features</a></h4>
 <h4 id="changes"><a class="header" href="#changes">Changes</a></h4>
 <ul>
-<li>observe <a href="https://hascal.github.io/style.html">Hasca's coding style</a> in libraries</li>
+<li>observe <a href="https://sacalon-lang.github.io/style.html">Hasca's coding style</a> in libraries</li>
 </ul>
 <h4 id="bug-fixes"><a class="header" href="#bug-fixes">Bug fixes</a></h4>
 <h4 id="removed"><a class="header" href="#removed">Removed</a></h4>
@@ -175,7 +204,7 @@
 }
 </code></pre>
 <ul>
-<li>add <code>asin</code>, <code>acos</code>, <code>asinh</code>, <code>acosh</code>, <code>exp</code>, <code>frexpr</code>, <code>ldexp</code>, <code>log</code>, <code>log10</code>, <code>fdim</code>, <code>sqrt</code>, <code>ceil</code>, <code>floor</code>, <code>NaN</code>, <code>max</code>, <code>min</code> functions to <code>math</code> library, <a href="https://hascal.github.io/docs/latest/stdlib/math.html">see documentation</a>.</li>
+<li>add <code>asin</code>, <code>acos</code>, <code>asinh</code>, <code>acosh</code>, <code>exp</code>, <code>frexpr</code>, <code>ldexp</code>, <code>log</code>, <code>log10</code>, <code>fdim</code>, <code>sqrt</code>, <code>ceil</code>, <code>floor</code>, <code>NaN</code>, <code>max</code>, <code>min</code> functions to <code>math</code> library, <a href="https://sacalon-lang.github.io/docs/latest/stdlib/math.html">see documentation</a>.</li>
 <li>Showing error for overloading function's return type.</li>
 </ul>
 <h4 id="changes-1"><a class="header" href="#changes-1">Changes</a></h4>
@@ -198,7 +227,7 @@
 </ul>
 <h4 id="changes-2"><a class="header" href="#changes-2">Changes</a></h4>
 <ul>
-<li>Hascal relicensed from MIT license to BSD-3-Clause license</li>
+<li>Sacalon relicensed from MIT license to BSD-3-Clause license</li>
 </ul>
 <h4 id="bug-fixes-3"><a class="header" href="#bug-fixes-3">Bug fixes</a></h4>
 <ul>
@@ -261,10 +290,10 @@
 <summary>v1.3.9</summary>
 <h4 id="new-features-5"><a class="header" href="#new-features-5">New features</a></h4>
 <ul>
-<li>add <code>hascal list</code> command to list all available packages</li>
-<li>add <code>hascal init</code> command to create a new project, that generates <code>config.json</code>, <code>.gitignore</code> and <code>src/app.has</code> files</li>
-<li>add <code>hascal build</code> command to build project</li>
-<li>add <code>hascal run</code> command to run project</li>
+<li>add <code>sacalon list</code> command to list all available packages</li>
+<li>add <code>sacalon init</code> command to create a new project, that generates <code>config.json</code>, <code>.gitignore</code> and <code>src/app.has</code> files</li>
+<li>add <code>sacalon build</code> command to build project</li>
+<li>add <code>sacalon run</code> command to run project</li>
 <li>add <code>string_reverse(str:string)</code> function to <code>strings</code> module</li>
 <li>add <code>assert</code> function to runtime library</li>
 <li>add <code>no_std</code> compiler option</li>
@@ -338,7 +367,7 @@ function g(func:Function[int]int): int {
 }
 </code></pre>
 <ul>
-<li>add static variables, <a href="https://github.com/hascal/hascal/blob/main/tests/static.has">See this example</a></li>
+<li>add static variables, <a href="https://github.com/sacalon-lang/sacalon/blob/main/tests/static.has">See this example</a></li>
 <li>add <code>only_compile</code> config option</li>
 </ul>
 <h4 id="changes-8"><a class="header" href="#changes-8">Changes</a></h4>
@@ -487,7 +516,7 @@ struct bar {
 <summary>v1.3.4</summary>
 <h4 id="new-features-10"><a class="header" href="#new-features-10">New features</a></h4>
 <ul>
-<li>compiler option : now can generate c++ code from hascal code with <code>c++_code : 1</code> in <code>config.json</code> file</li>
+<li>compiler option : now can generate c++ code from sacalon code with <code>c++_code : 1</code> in <code>config.json</code> file</li>
 <li>use <code>cuse</code> keyword to include c++ files.</li>
 </ul>
 <h4 id="bug-fixes-16"><a class="header" href="#bug-fixes-16">Bug fixes</a></h4>

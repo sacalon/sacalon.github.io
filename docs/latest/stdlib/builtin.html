@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,22 +61,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -86,15 +93,37 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -143,32 +172,32 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="builtin-functions"><a class="header" href="#builtin-functions">Builtin Functions</a></h1>
-<p>Hascal builtin functions is a part of Hascal's runtime library that link to any Hascal program.</p>
+<p>Sacalon builtin functions is a part of Sacalon's runtime library that link to any Sacalon program.</p>
 <h2 id="print"><a class="header" href="#print"><code>print(...)</code></a></h2>
-<p>Standard Hascal's print function.</p>
+<p>Standard Sacalon's print function.</p>
 <p>Example :</p>
 <pre><code class="language-typescript">print(&quot;Hello&quot;,1,1.0,'a',[1,2,3,4])
 </code></pre>
 <h2 id="readstr--string"><a class="header" href="#readstr--string"><code>ReadStr() : string</code></a></h2>
-<p>Standard Hascal's read string function</p>
+<p>Standard Sacalon's read string function</p>
 <h2 id="readint--int"><a class="header" href="#readint--int"><code>ReadInt() : int</code></a></h2>
-<p>Standard Hascal's read integer function</p>
+<p>Standard Sacalon's read integer function</p>
 <h2 id="readfloat--float"><a class="header" href="#readfloat--float"><code>ReadFloat() : float</code></a></h2>
-<p>Standard Hascal's read float function</p>
+<p>Standard Sacalon's read float function</p>
 <h2 id="readbool--bool"><a class="header" href="#readbool--bool"><code>ReadBool() : bool</code></a></h2>
-<p>Standard Hascal's read boolean function</p>
+<p>Standard Sacalon's read boolean function</p>
 <h2 id="readchar--char"><a class="header" href="#readchar--char"><code>ReadChar() : char</code></a></h2>
-<p>Standard Hascal's read character function</p>
+<p>Standard Sacalon's read character function</p>
 <h2 id="readstrtextstring--string"><a class="header" href="#readstrtextstring--string"><code>ReadStr(text:string) : string</code></a></h2>
-<p>Standard Hascal's read string function with printing a prompt.</p>
+<p>Standard Sacalon's read string function with printing a prompt.</p>
 <h2 id="readinttextstring--int"><a class="header" href="#readinttextstring--int"><code>ReadInt(text:string) : int</code></a></h2>
-<p>Standard Hascal's read integer function with printing a prompt.</p>
+<p>Standard Sacalon's read integer function with printing a prompt.</p>
 <h2 id="readfloattextstring--float"><a class="header" href="#readfloattextstring--float"><code>ReadFloat(text:string) : float</code></a></h2>
-<p>Standard Hascal's read float function with printing a prompt.</p>
+<p>Standard Sacalon's read float function with printing a prompt.</p>
 <h2 id="readbooltextstring--bool"><a class="header" href="#readbooltextstring--bool"><code>ReadBool(text:string) : bool</code></a></h2>
-<p>Standard Hascal's read boolean function with printing a prompt.</p>
+<p>Standard Sacalon's read boolean function with printing a prompt.</p>
 <h2 id="readchartextstring--char"><a class="header" href="#readchartextstring--char"><code>ReadChar(text:string) : char</code></a></h2>
-<p>Standard Hascal's read character function with printing a prompt.</p>
+<p>Standard Sacalon's read character function with printing a prompt.</p>
 <h2 id="exitexit_codeint"><a class="header" href="#exitexit_codeint"><code>exit(exit_code:int)</code></a></h2>
 <p>Exit program with an <code>exit_code</code>.</p>
 <h2 id="sizeoft--int"><a class="header" href="#sizeoft--int"><code>sizeof(T) : int</code></a></h2>
@@ -265,7 +294,7 @@ assert(foo == bar)
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="conv.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="conv.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -279,7 +308,7 @@ assert(foo == bar)
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="conv.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="conv.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

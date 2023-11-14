@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Package Manager Documentation - Hascal Documentation</title>
+        <title>Package Manager Documentation - Sacalon Documentation</title>
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,22 +61,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -86,15 +93,37 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -110,7 +139,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Hascal Documentation</h1>
+                    <h1 class="menu-title">Sacalon Documentation</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -143,10 +172,10 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="package-manager"><a class="header" href="#package-manager">Package Manager</a></h1>
-<p>Hascal has a built-in package manager that allows you to install packages from the a git repository.</p>
+<p>Sacalon has a built-in package manager that allows you to install packages from the a git repository.</p>
 <h2 id="installing-a-package"><a class="header" href="#installing-a-package">Installing a package</a></h2>
 <p>To get and install a package, you can use the <code>get</code> command :</p>
-<pre><code>hascal get &lt;git url&gt; &lt;package name&gt;
+<pre><code>sacalon get &lt;git url&gt; &lt;package name&gt;
 </code></pre>
 <ul>
 <li><code>&lt;git url&gt;</code> is the url of the git repository</li>
@@ -157,20 +186,20 @@
 </code></pre>
 <h2 id="updating-a-package"><a class="header" href="#updating-a-package">Updating a package</a></h2>
 <p>To update a package, you can use the <code>update</code> command :</p>
-<pre><code>hascal update &lt;package name ot git url&gt;
+<pre><code>sacalon update &lt;package name ot git url&gt;
 </code></pre>
 <h2 id="listing-packages"><a class="header" href="#listing-packages">Listing packages</a></h2>
 <p>To list all packages, you can use the <code>list</code> command :</p>
-<pre><code>hascal list
+<pre><code>sacalon list
 </code></pre>
 <p>if you want to list all subpackages of a package, you can use the <code>list</code> command with name of the package :</p>
-<pre><code>hascal list &lt;package name&gt;
+<pre><code>sacalon list &lt;package name&gt;
 </code></pre>
 <ul>
 <li><code>&lt;package name&gt;</code> is the name of the package you want to list subpackages</li>
 </ul>
 <p>For example :</p>
-<pre><code>$ hascal list crypto
+<pre><code>$ sacalon list crypto
 list of all subpackages in crypto :
 - sha256
 </code></pre>
@@ -183,7 +212,7 @@ list of all subpackages in crypto :
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="ide.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="ide.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -197,7 +226,7 @@ list of all subpackages in crypto :
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="ide.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="ide.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

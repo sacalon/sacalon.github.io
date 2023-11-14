@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Installation - Hascal Documentation</title>
+        <title>Installation - Sacalon Documentation</title>
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,22 +61,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -86,15 +93,37 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -110,7 +139,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Hascal Documentation</h1>
+                    <h1 class="menu-title">Sacalon Documentation</h1>
 
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
@@ -148,23 +177,23 @@
 <li><code>python</code>&gt;=3.7</li>
 <li><code>gcc</code>&gt;=8(or any c++ compiler that supports c++17)</li>
 <li><code>libcurl</code>,<code>libssl</code>,<code>libcrypt</code></li>
-<li><code>git</code>(to clone Hascal's source code)</li>
+<li><code>git</code>(to clone Sacalon's source code)</li>
 </ul>
 <h2 id="nix-usersrecommended"><a class="header" href="#nix-usersrecommended">*Nix Users(recommended)</a></h2>
-<p>You can use the <code>hascal.sh</code> script to automate the process of installing and adding hascal to <code>PATH</code>:</p>
-<pre><code class="language-bash">git clone https://github.com/hascal/hascal.git
-cd hascal/
-chmod +x ./hascal.sh
-bash ./hascal.sh
+<p>You can use the <code>sacalon.sh</code> script to automate the process of installing and adding sacalon to <code>PATH</code>:</p>
+<pre><code class="language-bash">git clone https://github.com/sacalon-lang/sacalon.git
+cd sacalon/
+chmod +x ./sacalon.sh
+bash ./sacalon.sh
 </code></pre>
 <h2 id="windows-users"><a class="header" href="#windows-users">Windows Users</a></h2>
-<pre><code>&gt; git clone https://github.com/hascal/hascal.git
-&gt; cd hascal
+<pre><code>&gt; git clone https://github.com/sacalon-lang/sacalon.git
+&gt; cd sacalon
 &gt; make deps-windows
 &gt; make windows
 </code></pre>
-<p><em><strong>Now your Hascal compiler is ready to use in <code>dist</code> folder, you can add it to <code>$PATH</code>.</strong></em></p>
-<p><strong>NOTE</strong>: <strong>The latest version of Hascal should always be used. Old versions have bugs when running binary versions of Hascal.</strong></p>
+<p><em><strong>Now your Sacalon compiler is ready to use in <code>dist</code> folder, you can add it to <code>$PATH</code>.</strong></em></p>
+<p><strong>NOTE</strong>: <strong>The latest version of Sacalon should always be used. Old versions have bugs when running binary versions of Sacalon.</strong></p>
 
                     </main>
 
@@ -174,7 +203,7 @@ bash ./hascal.sh
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../lang/1_hello_world.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../lang/1_hello_world.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -188,7 +217,7 @@ bash ./hascal.sh
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../lang/1_hello_world.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../lang/1_hello_world.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

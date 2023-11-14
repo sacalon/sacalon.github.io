@@ -1,0 +1,1366 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hascal Documentation</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="lang/0_install.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li class="chapter-item expanded "><a href="lang/1_hello_world.html"><strong aria-hidden="true">3.</strong> Hello World!</a></li><li class="chapter-item expanded "><a href="lang/2_project_manager.html"><strong aria-hidden="true">4.</strong> Project Manager</a></li><li class="chapter-item expanded "><a href="lang/3_config.html"><strong aria-hidden="true">5.</strong> Configure the compiler</a></li><li class="chapter-item expanded "><a href="lang/4_guessing_game.html"><strong aria-hidden="true">6.</strong> Write a guessing game</a></li><li class="chapter-item expanded "><a href="lang/5_comments.html"><strong aria-hidden="true">7.</strong> Comments</a></li><li class="chapter-item expanded "><a href="lang/6_types.html"><strong aria-hidden="true">8.</strong> Types</a></li><li class="chapter-item expanded "><a href="lang/7_00_variables.html"><strong aria-hidden="true">9.</strong> Variables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="lang/7_01_numbers.html"><strong aria-hidden="true">9.1.</strong> Numbers</a></li><li class="chapter-item expanded "><a href="lang/7_02_strings.html"><strong aria-hidden="true">9.2.</strong> Strings</a></li><li class="chapter-item expanded "><a href="lang/7_03_arrays.html"><strong aria-hidden="true">9.3.</strong> Arrays</a></li><li class="chapter-item expanded "><a href="lang/7_04_type_compatibility.html"><strong aria-hidden="true">9.4.</strong> Type compatibility</a></li></ol></li><li class="chapter-item expanded "><a href="lang/8_conditional_statements.html"><strong aria-hidden="true">10.</strong> Conditional statements</a></li><li class="chapter-item expanded "><a href="lang/9_loops.html"><strong aria-hidden="true">11.</strong> Loops</a></li><li class="chapter-item expanded "><a href="lang/10_functions.html"><strong aria-hidden="true">12.</strong> Functions</a></li><li class="chapter-item expanded "><a href="lang/11_importing.html"><strong aria-hidden="true">13.</strong> Importing & Creating modules</a></li><li class="chapter-item expanded "><a href="lang/12_structs.html"><strong aria-hidden="true">14.</strong> Structures</a></li><li class="chapter-item expanded "><a href="lang/13_memory_management.html"><strong aria-hidden="true">15.</strong> Memory management</a></li><li class="chapter-item expanded "><a href="lang/14_interfacing_with_cpp.html"><strong aria-hidden="true">16.</strong> Interfacing with C++</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="stdlib.html"><strong aria-hidden="true">17.</strong> Standard Library Documentation</a></li><li class="chapter-item expanded "><a href="hpm.html"><strong aria-hidden="true">18.</strong> Package Manager Documentation</a></li><li class="chapter-item expanded "><a href="ide.html"><strong aria-hidden="true">19.</strong> IDE Integration</a></li><li class="chapter-item expanded "><a href="ROADMAP.html"><strong aria-hidden="true">20.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="CHANGELOG.html"><strong aria-hidden="true">21.</strong> Change Log</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Hascal Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p><strong><a href="https://hascal.github.io">Hascal</a></strong> is a general purpose and open source programming language designed to build optimal, maintainable, reliable, and efficient software. More features of Hascal :</p>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+Easy to use and easy to learn</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Multi-paradigm</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Null safety by default</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Fast and powerful</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Inspired by Swift, Pascal</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Compiles to C++</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Compatible with C\C++\Obj-C</li>
+<li><input disabled="" type="checkbox" checked=""/>
+<a href="lang/14_interfacing_with_cpp.html">Builtin compile time FFI system</a></li>
+<li><input disabled="" type="checkbox" checked=""/>
+Built-in HTTP Library</li>
+</ul>
+<h2 id="standard-library-documentation"><a class="header" href="#standard-library-documentation">Standard Library Documentation</a></h2>
+<p>Standard Library Documentation available <a href="./stdlib/index.html">here</a>.</p>
+<h2 id="contributing"><a class="header" href="#contributing">Contributing</a></h2>
+<p>We welcome contributions of all kinds.</p>
+<p>You can contribute to this book by <a href="https://github.com/hascal/hascal/issues/new/choose">opening an issue</a> or <a href="https://github.com/hascal/hascal/fork">forking</a> and <a href="https://github.com/hascal/hascal/compare">sending a pull request</a> to the main Hascal repository.
+Knowing what people use this book for the most helps direct our attention to making those sections the best that they can be. We also want the reference to be as normative as possible, so if you see anything that is wrong, please also file an issue.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<p>Requirements :</p>
+<ul>
+<li><code>python</code>&gt;=3.7</li>
+<li><code>gcc</code>&gt;=8(or any c++ compiler that supports c++17)</li>
+<li><code>libcurl</code>,<code>libssl</code>,<code>libcrypt</code></li>
+<li><code>git</code>(to clone Hascal's source code)</li>
+</ul>
+<h2 id="nix-usersrecommended"><a class="header" href="#nix-usersrecommended">*Nix Users(recommended)</a></h2>
+<p>You can use the <code>hascal.sh</code> script to automate the process of installing and adding hascal to <code>PATH</code>:</p>
+<pre><code class="language-bash">git clone https://github.com/hascal/hascal.git
+cd hascal/
+chmod +x ./hascal.sh
+bash ./hascal.sh
+</code></pre>
+<h2 id="windows-users"><a class="header" href="#windows-users">Windows Users</a></h2>
+<pre><code>&gt; git clone https://github.com/hascal/hascal.git
+&gt; cd hascal
+&gt; make deps-windows
+&gt; make windows
+</code></pre>
+<p><em><strong>Now your Hascal compiler is ready to use in <code>dist</code> folder, you can add it to <code>$PATH</code>.</strong></em></p>
+<p><strong>NOTE</strong>: <strong>The latest version of Hascal should always be used. Old versions have bugs when running binary versions of Hascal.</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hello-world"><a class="header" href="#hello-world">Hello World!</a></h1>
+<p>Now that you have successfully installed Hascal, let's write our first program with it. You will write a program that prints <code>Hello World!</code> on the terminal.</p>
+<h2 id="creating-a-project-directory"><a class="header" href="#creating-a-project-directory">Creating a project directory</a></h2>
+<p>You can write your Hascal programs every where but, we suggest that you create a directory for your project.</p>
+<p>At first, create a directory in your home directory(or anywhere else):</p>
+<pre><code>mkdir hello_world
+cd hello_wrold
+</code></pre>
+<h2 id="writing-the-code"><a class="header" href="#writing-the-code">Writing the code</a></h2>
+<p>Next make a new file and name it <code>main.has</code>. Hascal files should end with <code>.has</code> extension.</p>
+<p>Now open your code editor (If you are using <code>vscode</code> install hascal extension for better coding from <a href="https://github.com/hascal/vscode">this link</a>) and write the following code in <code>main.has</code> :</p>
+<pre><code class="language-typescript">function main() : int {
+    print(&quot;Hello World!&quot;)
+    return 0
+}
+</code></pre>
+<p>Save the file, and return to the terminal and enter the following command to build your program :</p>
+<pre><code>hascal main.has
+</code></pre>
+<p>Now run the generated excutable file :</p>
+<pre><code>$ ./main
+Hello World!
+</code></pre>
+<p>On Windows you should use <code>.\main.exe</code> instead of <code>./main</code> :</p>
+<pre><code>$ .\main.exe
+Hello World!
+</code></pre>
+<p>Congratulations - you just wrote and executed your first Hascal program!</p>
+<h2 id="reviewing-the-code"><a class="header" href="#reviewing-the-code">Reviewing the code</a></h2>
+<p>Let's review our simple program. Here's the first piece of the program:</p>
+<pre><code class="language-typescript">function main() : int {
+    
+}
+</code></pre>
+<p>These lines define a function that returns an integer number. The <code>main</code> function is the entry point of your program and it should always return <code>int</code>(an integer). If there were parameters, they would go inside the parentheses, <code>()</code>.</p>
+<p>Also, note that function statements should be in <code>{}</code> and you can write function codes inside <code>{}</code>.</p>
+<p>Inside the <code>main</code> function is the following code :</p>
+<pre><code class="language-typescript">print(&quot;Hello World!&quot;)
+</code></pre>
+<p>This code print the passed arguments, you can pass more parameters :</p>
+<pre><code class="language-typescript">print(&quot;Hello World!&quot;,42,3.14)
+</code></pre>
+<p>After the calling <code>print</code> command, there is the following statement :</p>
+<pre><code class="language-typescript">return 0
+</code></pre>
+<p>It returns <code>0</code> at the end of the function, every function that returns a value(declared with <code>:</code> after <code>()</code> in a function declaration) should return a value corresponding to the type.</p>
+<p>Returning the <code>0</code> value in main function tell the OS that your program has executed successfully.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="project-manager"><a class="header" href="#project-manager">Project Manager</a></h1>
+<p>Hascal has a builtin build system and project manager. This tool builds and runs your project, and installs dependencies.</p>
+<h2 id="creating-a-new-project"><a class="header" href="#creating-a-new-project">Creating a new project</a></h2>
+<p>Let's create a new project and compare it with the Hello World example in previous chapter.</p>
+<p>To create a project you should create a directory for your project :</p>
+<pre><code>$ mkdir hello_world_2
+$ cd hello_world_2
+</code></pre>
+<p>Now we create a new project with following command :</p>
+<pre><code>$ hascal init
+</code></pre>
+<p>After running above command, you’ll see Hascal has generated two files and one directory for us: a <code>config.json</code> file, a <code>.gitignore</code> file and a <code>src</code> directory with a <code>app.has</code> file inside.</p>
+<p><code>config.json</code> :</p>
+<pre><code class="language-json">{
+	&quot;filename&quot;: &quot;src/app.has&quot;, 
+	&quot;outfile&quot;: &quot;build/app&quot;, 
+}
+</code></pre>
+<p>The <code>filename</code> field contains your main file that contains your entry function(<code>main</code>) and <code>outfile</code> field is output path of excutable file.</p>
+<p><code>src/app.has</code> :</p>
+<pre><code class="language-typescript">function main():int{
+	print(&quot;Hello World!&quot;)
+	return 0
+}
+</code></pre>
+<p>The generated Hascal file contains <em>Hello World!</em> program, you can edit it.</p>
+<h2 id="building-a-project"><a class="header" href="#building-a-project">Building a project</a></h2>
+<p>You can build the project with following command :</p>
+<pre><code>$ hascal build
+</code></pre>
+<p>Excutable file will generate in <code>build</code> directory and you can run it with following command :</p>
+<pre><code>$ ./build/app
+</code></pre>
+<h2 id="running-a-project"><a class="header" href="#running-a-project">Running a project</a></h2>
+<p>To run the project, you can use <code>run</code> command :</p>
+<pre><code>$ hascal run
+Hello World!
+</code></pre>
+<p>That builds excutable file and runs it.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configure-the-compiler"><a class="header" href="#configure-the-compiler">Configure the compiler</a></h1>
+<p>You can use <code>config.json</code> file to configure your Hascal compiler.</p>
+<p>The following configuration options are available:</p>
+<ul>
+<li><code>filename</code> : your main file name, if you set it, you will no longer need to pass the file name to the compiler.</li>
+<li><code>compiler</code> : your c++ compiler name(e.g : <code>g++</code>,<code>clang++</code>)</li>
+<li><code>optimize</code> : optimize level(0,1,2,3)(default : no optimize, e.g: <code>-O2</code>)</li>
+<li><code>flags</code> : custom flags(e.g:<code>[&quot;-pthread&quot;]</code>)</li>
+<li><code>c++_version</code> : your c++ standard(e.g:<code>c++17</code> or <code>c++20</code>),<strong>note: c++ version must be greater than or equal to c++17 and compiler must support c++17</strong></li>
+<li><code>compiler_output</code> : if you want to see c++ compiler output, set this to <code>true</code></li>
+<li><code>c++_out</code> : if you want to see generated c++ code, set this to <code>true</code>, the generated c++ code are in <code>your_filename.cc</code> fil.</li>
+<li><code>only_compile</code> if you want only to compile and not link program, set this to <code>true</code>.</li>
+<li><code>no_std</code> : if it is true, the runtime library will not link with your code(you will not be able to use builtin functions).</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="write-a-guessing-game"><a class="header" href="#write-a-guessing-game">Write a guessing game</a></h1>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="comments"><a class="header" href="#comments">Comments</a></h1>
+<p>Comments are used to document code and to explain what the code does, they are not executed.</p>
+<pre><code class="language-typescript">// This is a single line comment
+
+/*
+This is a multi-line comment
+This is a multi-line comment
+*/
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="primitive-types"><a class="header" href="#primitive-types">Primitive types</a></h1>
+<p>The following types are primitive:</p>
+<pre><code class="language-typescript">bool // boolean value
+
+string // string literal
+
+int8 uint8 // 8-bit integer
+int16 uint16 // 16-bit integer
+int int32 uint32 // 32-bit integer
+int64 uint64 // 64-bit integer
+
+float // floating point 
+double // double floating point
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="variables"><a class="header" href="#variables">Variables</a></h1>
+<p>A variable is a named storage for a value. Variables are declared using the <code>var</code> keyword :</p>
+<pre><code class="language-typescript">var foo : int = 1
+</code></pre>
+<p>Also you can declare a variable without type, in this case, the type will be inferred by the value assigned to it:</p>
+<pre><code class="language-typescript">var foo = 1
+</code></pre>
+<h3 id="non-nullable-and-nullable"><a class="header" href="#non-nullable-and-nullable">Non nullable and nullable</a></h3>
+<p>Null safety is a feature that allows you to declare that a variable can be null or not null, and Hascal uses this feature to make sure that your code is safe.</p>
+<p>Hascal's variables and constants are non-nullable by default that means that they cannot be null(<code>NULL</code>) and you can't assign <code>NULL</code> to them and <strong>you should assign a value to them when you declare them</strong>.</p>
+<pre><code class="language-typescript">var foo : int = 1 // non-nullable
+var foo_error : int // error : nullable variable must be assigned a value
+</code></pre>
+<p>But you can make variables and constants nullable by adding <code>?</code> to their type:</p>
+<pre><code class="language-typescript">var bar : int? = 1 // nullable
+</code></pre>
+<p>so you can use <code>NULL</code> to set a variable to null :</p>
+<pre><code class="language-typescript">bar = NULL // ok
+</code></pre>
+<h2 id="pointers"><a class="header" href="#pointers">Pointers</a></h2>
+<p>Pointers are a way to access the memory address of a variable. You can declare a pointer using the <code>^</code> operator after the type:</p>
+<pre><code class="language-typescript">var foo : int^?
+</code></pre>
+<p><em><strong>NOTE:</strong></em> pointers are non-nullable by default, use <code>?</code> to make it nullable:</p>
+<p>You use cast to assign a value to a pointer:</p>
+<pre><code class="language-typescript">foo = (int^)1
+</code></pre>
+<p>Finally, you can use the <code>^</code> operator to access the value stored in a pointer:</p>
+<pre><code class="language-typescript">var foo : int^ = (int^)1
+print(^foo) // 1
+</code></pre>
+<p><strong>NOTE</strong>: We recommend you to always allocate pointers with <code>new</code> keyword and deallocate with <code>delete</code> keyword, for more information go to <a href="lang/13_memory_management.html">Memory management chapter</a>.</p>
+<p>NOTE: Currently only one level of pointers are supported.</p>
+<h2 id="static-variables"><a class="header" href="#static-variables">Static variables</a></h2>
+<p>Static variables are variables that are declared outside of a function and are accessible from anywhere in the program.</p>
+<p>Static variables are declared using the <code>static</code> keyword before the type:</p>
+<pre><code class="language-typescript">var foo : static int = 1
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="numbers"><a class="header" href="#numbers">Numbers</a></h1>
+<p>Numbers are either integers or floating point numbers. You can declare a number using the following types:</p>
+<pre><code class="language-typescript">int8 uint8 // 8-bit integer
+int16 uint16 // 16-bit integer
+int int32 uint32 // 32-bit integer
+int64 uint64 // 64-bit integer
+
+float // floating point 
+double // double floating point
+</code></pre>
+<p>So you can use the following operators to perform arithmetic operations:</p>
+<ul>
+<li><code>+</code> : addition</li>
+<li><code>-</code> : subtraction</li>
+<li><code>*</code> : multiplication</li>
+<li><code>/</code> : division</li>
+</ul>
+<p>See the following example:</p>
+<pre><code class="language-typescript">var a : int = 123
+var b : float = 1.23
+var c : double = 1.2313213215648789798
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
+<p>Strings are a sequence of characters. You can declare a string using the <code>string</code> keyword:</p>
+<pre><code class="language-typescript">var foo : string = &quot;Hello World&quot;
+</code></pre>
+<p>You can use the <code>+</code> operator to concatenate strings:</p>
+<pre><code class="language-typescript">var foo : string = &quot;Hello&quot; + &quot; World&quot;
+</code></pre>
+<p>And you can use the <code>[]</code> operator to access a character in a string:</p>
+<pre><code class="language-typescript">var foo : string = &quot;Hello&quot;
+print(foo[1]) // 'e'
+</code></pre>
+<blockquote>
+<p>Note: type of accessed character is <code>char</code>
+Note: the first character in a string is at index 0.</p>
+</blockquote>
+<p>With <code>len</code> function you can get the length of a string:</p>
+<pre><code class="language-typescript">var foo : string = &quot;Hello&quot;
+print(len(foo)) // 5
+</code></pre>
+<blockquote>
+<p>Note: <code>len</code> function is a built-in function.</p>
+</blockquote>
+<h4 id="escape-sequences"><a class="header" href="#escape-sequences">Escape sequences</a></h4>
+<p>You can use escape sequences to print special characters:</p>
+<pre><code class="language-typescript">var foo : string = &quot;Hello\tWorld&quot;
+print(foo) // Hello    World
+</code></pre>
+<p>The following escape sequences are supported:</p>
+<ul>
+<li><code>\n</code> : newline</li>
+<li><code>\t</code> : tab</li>
+<li><code>\r</code> : carriage return</li>
+<li><code>\\</code> : backslash</li>
+<li><code>\'</code> : single quote</li>
+<li><code>\&quot;</code> : double quote</li>
+<li><code>\?</code> : question mark</li>
+<li><code>\a</code> : bell</li>
+<li><code>\b</code> : backspace</li>
+<li><code>\f</code> : form feed</li>
+<li><code>\v</code> : vertical tab</li>
+<li><code>\0</code> : null character</li>
+<li><code>\x____</code> : hexadecimal character</li>
+<li><code>\u____</code> : unicode character</li>
+<li><code>\U____</code> : unicode character</li>
+<li><code>\_____</code> : arbitrary octal value </li>
+</ul>
+<p>Note: <code>_____</code> means you should specify the id of the character you want to print.</p>
+<h4 id="reverse-a-string"><a class="header" href="#reverse-a-string">Reverse a string</a></h4>
+<p>You can reverse a string by using the <code>string_reverse</code> function in the <code>strings</code> package:</p>
+<pre><code class="language-typescript">use strings
+
+function main() {
+    var foo : string = &quot;Hello World&quot;
+    print(string_reverse(foo)) // dlroW olleH
+}</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="arrays"><a class="header" href="#arrays">Arrays</a></h1>
+<p>Arrays are collections of data elements of the same type. They can be represented by a list of elements surrounded by brackets. The elements can be accessed by appending an index (starting with 0) in brackets to the array variable:</p>
+<p>Arrays declare like following:</p>
+<pre><code class="language-typescript">var foo : [int] = [1,2,3]
+var bar : [string] = [&quot;Hello&quot;, &quot;World&quot;]
+</code></pre>
+<p>You can use the <code>[]</code> operator to access an element in an array:</p>
+<pre><code class="language-typescript">var foo : [int] = [1,2,3]
+print(foo[1]) // 2
+</code></pre>
+<p>And you can assign a value to an array element:</p>
+<pre><code class="language-typescript">var foo : [int] = [1,2,3]
+foo[1] = 4
+print(foo[1]) // 4
+</code></pre>
+<p>With <code>append</code> built-in function you can append an element to an array:</p>
+<pre><code class="language-typescript">var foo : [int] = [1,2,3]
+foo.append(4)
+print(foo[3]) // 4
+</code></pre>
+<p>And you can get the length of an array with the <code>len</code> built-in function:</p>
+<pre><code class="language-typescript">var foo : [int] = [1,2,3]
+print(len(foo)) // 3
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="type-compatibility"><a class="header" href="#type-compatibility">Type compatibility</a></h1>
+<p>Type compatibility is very close to automatic or implicit type conversion. The type compatibility is being able to use two types together without modification and being able to subsititute one for the other without modification.</p>
+<p>Compatible types are:</p>
+<ul>
+<li><code>int</code> (and its subtypes like <code>uint8</code>,etc) and <code>float</code>.</li>
+<li><code>int</code>(and its subtypes like <code>uint8</code>,etc) and <code>double</code>.</li>
+<li><code>float</code> and <code>double</code></li>
+</ul>
+<p><strong>Note: strings are not compatible with characters.</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="conditional-statements"><a class="header" href="#conditional-statements">Conditional statements</a></h1>
+<p>Conditional statements are used to execute a block of code if a condition is true or false.</p>
+<h2 id="if"><a class="header" href="#if">If</a></h2>
+<p>You can use the <code>if</code> keyword to execute a block of code, if a condition is true:</p>
+<pre><code class="language-typescript">var foo : int = 1
+if foo == 1 {
+    print(&quot;foo is 1&quot;)
+}
+</code></pre>
+<h3 id="else"><a class="header" href="#else">Else</a></h3>
+<p>You can use the <code>else</code> keyword to execute a block of code, if a condition is false:</p>
+<pre><code class="language-typescript">var foo : int = 1
+if foo == 1 {
+    print(&quot;foo is 1&quot;)
+} else {
+    print(&quot;foo is not 1&quot;)
+}
+</code></pre>
+<h3 id="else-if"><a class="header" href="#else-if">Else if</a></h3>
+<p>You can use the <code>else if</code> statement to execute a block of code, if <code>else if</code> a condition is true:</p>
+<pre><code class="language-typescript">var foo : int = 1
+if foo == 1 {
+    print(&quot;foo is 1&quot;)
+} else if foo == 2 {
+    print(&quot;foo is 2&quot;)
+} else {
+    print(&quot;foo is not 1 or 2&quot;)
+}
+</code></pre>
+<h3 id="and-and-or-and-not"><a class="header" href="#and-and-or-and-not"><code>and</code> and <code>or</code> and <code>not</code></a></h3>
+<p>You can use the <code>and</code> keyword to execute a block of code, if all conditions are true:</p>
+<pre><code class="language-typescript">var foo : int = 1
+var bar : int = 2
+if foo == 1 and bar == 2 {
+    print(&quot;foo is 1 and bar is 2&quot;)
+}
+</code></pre>
+<p>You can use the <code>or</code> keyword to execute a block of code, if at least one condition is true:</p>
+<pre><code class="language-typescript">var foo : int = 1
+var bar : int = 2
+if foo == 1 or bar == 2 {
+    print(&quot;foo is 1 or bar is 2&quot;)
+}
+</code></pre>
+<p>You can use the <code>not</code> keyword to execute a block of code, if a condition is false:</p>
+<pre><code class="language-typescript">var foo : int = 1
+if not foo == 1 {
+    print(&quot;foo is not 1&quot;)
+}
+</code></pre>
+<h2 id="conditional-operators"><a class="header" href="#conditional-operators">Conditional Operators</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Operator</th><th style="text-align: center">Description</th><th style="text-align: center">Example</th></tr></thead><tbody>
+<tr><td style="text-align: left">==</td><td style="text-align: center">Returns true if the operands are equal.</td><td style="text-align: center">var1 == var2</td></tr>
+<tr><td style="text-align: left">!=</td><td style="text-align: center">Returns true if the operands are not equal.</td><td style="text-align: center">var1 != var2</td></tr>
+<tr><td style="text-align: left">&gt;</td><td style="text-align: center">Returns true if the left operand is greater than the right operand.</td><td style="text-align: center">var1 &gt; var2</td></tr>
+<tr><td style="text-align: left">&gt;=</td><td style="text-align: center">Returns true if the left operand is greater than or equal to the right operand.</td><td style="text-align: center">var1 &gt;= var2</td></tr>
+<tr><td style="text-align: left">&lt;</td><td style="text-align: center">Returns true if the left operand is less than the right operand.</td><td style="text-align: center">var1 &lt; var2</td></tr>
+<tr><td style="text-align: left">&lt;=</td><td style="text-align: center">Returns true if the left operand is less than or equal to the right operand.</td><td style="text-align: center">var1 &lt;= var2</td></tr>
+<tr><td style="text-align: left"><code>and</code></td><td style="text-align: center">Returns true if the left operand and right operand are true</td><td style="text-align: center">var1 == 1 and var2 == 2</td></tr>
+<tr><td style="text-align: left"><code>or</code></td><td style="text-align: center">Returns true if the left operand or right operand are true</td><td style="text-align: center">var1 == 1 or var2 == 2</td></tr>
+<tr><td style="text-align: left"><code>not</code></td><td style="text-align: center">Returns true if the operand are false or if the operand is true returns false</td><td style="text-align: center">not true</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="loops"><a class="header" href="#loops">Loops</a></h1>
+<p>You can use the <code>while</code> keyword to execute a block of code, if a condition is true:</p>
+<pre><code class="language-typescript">var foo : int = 1
+while foo == 1 {
+    print(&quot;foo is 1&quot;)
+    foo = 2
+}
+</code></pre>
+<p>The <code>for</code> keyword is used to execute a block of code for a number of times:</p>
+<pre><code class="language-typescript">for i in range(0, 10) {
+    print(i)
+}
+</code></pre>
+<p>Also you can use the <code>for</code> keyword for iterating over an array:</p>
+<pre><code class="language-typescript">var foo : [int] = [1,2,3]
+for i in foo {
+    print(i)
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<p>Functions are a way to group code that can be called to perform a specific task. You can declare a function using the <code>function</code> keyword:</p>
+<pre><code class="language-typescript">function foo() {
+    print(&quot;Hello World&quot;)
+}
+</code></pre>
+<p>Also your function block should be outside of a function.</p>
+<p>Your function can have parameters and return a value. You can declare parameters and return type, like variable declarations:</p>
+<pre><code class="language-typescript">function add(x:int,y:int): int {
+    return x + y
+}
+</code></pre>
+<p>In the example above, <code>x</code> and <code>y</code> are parameters and their type(<code>int</code>) is your return type.</p>
+<blockquote>
+<p>Note: you can use <code>?</code> to make a parameter nullable.</p>
+</blockquote>
+<h2 id="calling-a-function"><a class="header" href="#calling-a-function">Calling a function</a></h2>
+<p>You can call a function by using the function name followed by parentheses:</p>
+<pre><code class="language-typescript">foo()
+</code></pre>
+<p>If you want to pass some arguments to your function, you can use them in the parentheses(separate with <code>,</code>):</p>
+<pre><code class="language-typescript">foo(1,2,3)
+</code></pre>
+<p>Also you can assign the return value of a function to a variable:</p>
+<pre><code class="language-typescript">var foo : int = add(1,2)
+</code></pre>
+<h2 id="function-overloading"><a class="header" href="#function-overloading">Function overloading</a></h2>
+<p>You can overload functions by defining a new function and changing the number of parameters or the type of parameters or return type of function :</p>
+<pre><code class="language-typescript">function add(x:int,y:int,z:int): int {
+    return x + y + z
+}
+
+// overloading function `add`
+function add(x:int,y:int){
+    print(x + y)
+}
+
+function main(): int {
+    print(add(1,2))
+    print(add(1,2,3))
+}
+</code></pre>
+<h2 id="passing-function-as-parameter"><a class="header" href="#passing-function-as-parameter">Passing function as parameter</a></h2>
+<p>To passing a function as parameter you should define a parameter in with <code>Function</code> type with following syntax :</p>
+<pre><code>Function[&lt;function_parameter1_type&gt;,&lt;function_parameter2_type&gt;,...]&lt;return_type&gt;
+</code></pre>
+<p>For example :</p>
+<pre><code class="language-typescript">function foo(func: Function[float, int]int) : int{
+    
+}
+</code></pre>
+<p>At above we defined a function with name <code>foo</code> that takes a function as its parameter and given function should has  two parameters with types <code>float</code> and <code>int</code>(respectively) and it should returns <code>int</code>.</p>
+<p>Also we can call given function like other functions, change the <code>foo</code> function code to following code :</p>
+<pre><code class="language-typescript">function foo(func: Function[float, int]int){
+    print(func(1.0,2))
+}
+</code></pre>
+<p>Now we define a function to pass to <code>foo</code> func and must have the properties specified in the foo function(two parameters with types <code>int</code> and <code>float</code> and <code>int</code> as return type):</p>
+<pre><code class="language-typescript">function bar(a:float, b:int) : int {
+    print(&quot;Hello from bar function!&quot;)
+    return a + b
+}
+</code></pre>
+<p>Now we can pass <code>bar</code> function to <code>foo</code> function as parameter :</p>
+<pre><code class="language-typescript">foo(bar)
+</code></pre>
+<p>Output :</p>
+<pre><code>Hello from bar function!
+3
+</code></pre>
+<h2 id="function-decorators"><a class="header" href="#function-decorators">Function decorators</a></h2>
+<p>Decorator is a way to add some properties to a function and it is used with <code>@</code> character + decorator name before function declaration.</p>
+<p>List of available decorators in Hascal :
+| Decorator       | Description  |
+| :------------- | :----------: |
+|  <code>@static_function</code> | Makes function <code>static</code>  | 
+| <code>@extern</code>  | Externs function(<a href="https://en.cppreference.com/w/cpp/keyword/extern">like <code>extern</code> in C++</a>) |</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="importing--creating-modules"><a class="header" href="#importing--creating-modules">Importing &amp; Creating modules</a></h1>
+<p>A module is a package of code that can be imported into another module to use its code.</p>
+<h2 id="importing-a-module"><a class="header" href="#importing-a-module">Importing a module</a></h2>
+<p>You can use other modules by importing them. You can import a module by using the <code>use</code> keyword:</p>
+<pre><code class="language-typescript">use os
+
+function main() : int {
+   system(&quot;start http://www.google.com&quot;)
+   return 0
+}
+</code></pre>
+<h3 id="importing-multiple-modules"><a class="header" href="#importing-multiple-modules">Importing multiple modules</a></h3>
+<p>You can import multiple modules by using the <code>use</code> keyword and separating the module names with a comma:</p>
+<pre><code class="language-typescript">use os, math, conv
+</code></pre>
+<p>For importing a submodule of a module, you can use the <code>.</code> operator:</p>
+<pre><code class="language-typescript">use crypto.sha256
+</code></pre>
+<h2 id="creating-a-module"><a class="header" href="#creating-a-module">Creating a module</a></h2>
+<p>For creating a module, you can create a file with the same name as the module and with the extension <code>.has</code> and put the module code inside it:</p>
+<p><code>add.has</code>:</p>
+<pre><code class="language-typescript">function add(x:int, y:int) : int {
+    return x + y
+}
+</code></pre>
+<p><code>main.has</code>:</p>
+<pre><code class="language-typescript">use add
+
+function main() : int {
+    print(add(1,2))
+    return 0
+}
+</code></pre>
+<h4 id="creating-foldered-modules"><a class="header" href="#creating-foldered-modules">Creating foldered modules</a></h4>
+<p>Module files can be placed in a folder, for creating a foldered module you should first create the folder and then create the <code>_.has</code> file inside it.</p>
+<p>The <code>_.has</code> file is the main file of the module and compiler will look for it.
+You can also import submodules in <code>_.has</code> file.</p>
+<blockquote>
+<p>Note: Any submodule that is not imported in <code>_.has</code> file will be ignored.
+Note: Any submodule can have other submodules.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="structures"><a class="header" href="#structures">Structures</a></h1>
+<p>Structures are a way to group data together. You can declare a structure using the <code>struct</code> keyword:</p>
+<pre><code class="language-typescript">struct Color {
+    var r : int
+    var g : int
+    var b : int
+    var name = &quot;Anything...&quot; // optional
+}
+</code></pre>
+<blockquote>
+<p>Note: Declaring a structure member without a type will make it optional.</p>
+</blockquote>
+<p>After declaring a structure, you can create an instance of it:</p>
+<pre><code class="language-typescript">var red = Color(255,0,0)
+</code></pre>
+<p>For accessing the fields of a structure, you should use the <code>.</code> operator:</p>
+<pre><code class="language-typescript">var red = Color(255,0,0)
+print(red.r)
+print(red.g)
+print(red.b)
+print(red.name)
+</code></pre>
+<h2 id="structures-as-return-values"><a class="header" href="#structures-as-return-values">Structures as return values</a></h2>
+<p>You can return a structure from a function:</p>
+<pre><code class="language-typescript">function foo() : Color {
+    return Color(1,2,3)
+}
+</code></pre>
+<h2 id="structures-as-arguments"><a class="header" href="#structures-as-arguments">Structures as arguments</a></h2>
+<p>You can pass a structure as an argument to a function:</p>
+<pre><code class="language-typescript">function foo(c:Color) {
+    print(c.r)
+    print(c.g)
+    print(c.b)
+    print(c.name)
+}
+</code></pre>
+<h2 id="structure-inheritance"><a class="header" href="#structure-inheritance">Structure inheritance</a></h2>
+<p>You can inherit a structure from another structure with <code>:</code> operator after the structure name:</p>
+<pre><code class="language-typescript">struct RGB : Color {
+    
+}
+</code></pre>
+<p>And you can access the fields of the inherited structure:</p>
+<pre><code class="language-typescript">var foo : RGB = RGB(1,2,3)
+print(foo.r,foo.g,foo.b)
+   
+var bar = RGB(255,0,0,&quot;AColor&quot;)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="memory-management"><a class="header" href="#memory-management">Memory management</a></h1>
+<p>Memory management is a way to manage the memory of your program. Hascal use manual memory management because it is used in most performance-critical applications like games,OSes, embedded systems, etc.</p>
+<p>Hascal uses <code>new</code> and <code>delete</code> keywords to manage memory manually.</p>
+<h2 id="allocation"><a class="header" href="#allocation">Allocation</a></h2>
+<p>For allocating memory, you should use the <code>new</code> keyword. Note that type of the allocated memory should be pointer or reference type and passed type to <code>new</code> keyword should be a </p>
+<pre><code class="language-typescript">var foo : int^ = new int(1) // allocating
+</code></pre>
+<p>For easily declaring and allocating memory, use <code>var &lt;name&gt; = new &lt;type&gt;(&lt;args...&gt;)</code> statement, like this:</p>
+<pre><code class="language-typescript">var foo = new int(1)
+</code></pre>
+<h2 id="reallocation"><a class="header" href="#reallocation">Reallocation</a></h2>
+<p>For reallocating memory and assigning the new value to the pointer, use <code>&lt;pointer&gt; = new &lt;type&gt;(&lt;args...&gt;)</code> statement, like this:</p>
+<pre><code class="language-typescript">var foo : int^ = new int(1) // allocate memory
+foo = new int(2) // reallocate memory and assign new value
+</code></pre>
+<h2 id="deallocation"><a class="header" href="#deallocation">Deallocation</a></h2>
+<p>For deallocating memory, you should use the <code>delete</code> keyword and pass the pointer to the memory that you want to deallocate:</p>
+<pre><code class="language-typescript">delete foo
+</code></pre>
+<h2 id="accessing-memory"><a class="header" href="#accessing-memory">Accessing memory</a></h2>
+<p>Like pointer types, you can access the allocated memory value with the <code>^</code> operator:</p>
+<pre><code class="language-typescript">var foo : int^ = new int(1)
+print(^foo)
+</code></pre>
+<h2 id="critical-notes"><a class="header" href="#critical-notes">Critical notes</a></h2>
+<ul>
+<li><span style="color:red">Don't forget to use the <code>delete</code> keyword at end of scope and before the end of the program.</span>.</li>
+</ul>
+<blockquote>
+<p>In future, we will add a feature to show warnings when you forget to use the <code>delete</code> keyword.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>You can't deallocate memory that you haven't allocated it without <code>new</code> keyword.</strong></p>
+</li>
+<li>
+<p><strong>You can allocate, not allocated pointers</strong>:</p>
+</li>
+</ul>
+<pre><code class="language-typescript">var foo : int^?
+foo = new int(1)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="interfacing-with-c"><a class="header" href="#interfacing-with-c">Interfacing with C++</a></h1>
+<p>Hascal is based on C++, so you can use C++ functions and classes in your program.</p>
+<h2 id="inline-c-code"><a class="header" href="#inline-c-code">Inline C++ Code</a></h2>
+<p>You can use inline c++ code in Hascal with <code>cuse</code> keyword :</p>
+<pre><code class="language-typescript">cuse '#include &lt;cstdio&gt;'
+cuse 'int main(){printf(&quot;%d&quot;,1);return 0;}'
+// output : 1
+</code></pre>
+<p>Or you can use multiline c++ code, like following example:</p>
+<pre><code class="language-typescript">cuse &quot;&quot;&quot;
+#include &lt;cstdio&gt;
+
+int main(){
+    printf(&quot;%d&quot;,1);
+    return 0;
+}
+&quot;&quot;&quot;
+</code></pre>
+<h2 id="externing-functions"><a class="header" href="#externing-functions">Externing functions</a></h2>
+<p>For using C++ functions in your program, you should at first declare them with following syntax:</p>
+<pre><code class="language-typescript">function &lt;name&gt;(&lt;args...&gt;) : &lt;return type&gt;
+</code></pre>
+<p>Example :</p>
+<pre><code class="language-typescript">function system(command:char^):int
+</code></pre>
+<h2 id="include-c-headers"><a class="header" href="#include-c-headers">Include C++ headers</a></h2>
+<p>Also Hascal can include C++ headers in your program.
+We need two files, one for headers and one for main part of the library. You should put <code>#include</code>,... in <code>your_cpp_lib.hpp</code> and main part of library in <code>your_cpp_lib.cc</code>. The specified files should exist in the same folder.</p>
+<p>See the example below:</p>
+<p><code>add.cc</code> :</p>
+<pre><code class="language-cpp">void __hascal__cpp_print(int x){
+    printf(&quot;%d&quot;,x);
+}
+</code></pre>
+<blockquote>
+<p>add <code>__hascal__</code> to your C++ functions, structs name. Hascal transpiles to C++ and it adds <code>__hascal__</code> prefix to your C++ names.</p>
+</blockquote>
+<p><code>add.hpp</code> :</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+</code></pre>
+<p><code>main.has</code> :</p>
+<pre><code class="language-typescript">cuse add 
+
+function cpp_print(x:int)
+
+function main() : int {
+    cpp_print(12)
+    return 0
+}
+</code></pre>
+<p>Also you can put the C++ files in a folder and rename they to <code>_.cc</code> and <code>_.hpp</code>.</p>
+<p><strong>Note that don't include local headers in <code>*.hpp</code> file.</strong></p>
+<h2 id="accessing-to-values-and-types-in-inline-c-code"><a class="header" href="#accessing-to-values-and-types-in-inline-c-code">Accessing to values and types in inline C++ code</a></h2>
+<p>You can access to Hascal's variable and types in inline C++ codes in Hascal by adding <code>__hascal__</code> prefix to a name, for example:
+<code>main.has</code>:</p>
+<pre><code class="language-typescript">function add(a:int,b:int){
+    cuse &quot;&quot;&quot;
+        std::cout &lt;&lt; a + b;
+    &quot;&quot;&quot;
+}
+</code></pre>
+<p>you can return a value in inline C++ codes by returning a meaningless value with same type as return type of the function(it may be ridiculous, we are currently working to improve it):</p>
+<pre><code class="language-typescript">function add(a:int,b:int){
+    cuse &quot;&quot;&quot;
+        return a + b;
+    &quot;&quot;&quot;
+    return 0 // return a value with same type as return type of the function
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="standard-library-documentation-1"><a class="header" href="#standard-library-documentation-1">Standard Library Documentation</a></h1>
+<p>To read Hascal's stdlib go to <a href="https://hascal.github.io/docs/latest/stdlib/index.html">this link</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="package-manager"><a class="header" href="#package-manager">Package Manager</a></h1>
+<p>Hascal has a built-in package manager that allows you to install packages from the a git repository.</p>
+<h2 id="installing-a-package"><a class="header" href="#installing-a-package">Installing a package</a></h2>
+<p>To get and install a package, you can use the <code>get</code> command :</p>
+<pre><code>hascal get &lt;git url&gt; &lt;package name&gt;
+</code></pre>
+<ul>
+<li><code>&lt;git url&gt;</code> is the url of the git repository</li>
+<li><code>&lt;package name&gt;</code> is the name of the package(optional, recommended, default is the url)</li>
+</ul>
+<p>Note: If you don't specify the package name, you should import it like this :</p>
+<pre><code class="language-typescript">use github.com.foo.bar
+</code></pre>
+<h2 id="updating-a-package"><a class="header" href="#updating-a-package">Updating a package</a></h2>
+<p>To update a package, you can use the <code>update</code> command :</p>
+<pre><code>hascal update &lt;package name ot git url&gt;
+</code></pre>
+<h2 id="listing-packages"><a class="header" href="#listing-packages">Listing packages</a></h2>
+<p>To list all packages, you can use the <code>list</code> command :</p>
+<pre><code>hascal list
+</code></pre>
+<p>if you want to list all subpackages of a package, you can use the <code>list</code> command with name of the package :</p>
+<pre><code>hascal list &lt;package name&gt;
+</code></pre>
+<ul>
+<li><code>&lt;package name&gt;</code> is the name of the package you want to list subpackages</li>
+</ul>
+<p>For example :</p>
+<pre><code>$ hascal list crypto
+list of all subpackages in crypto :
+- sha256
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ide-integration"><a class="header" href="#ide-integration">IDE Integration</a></h1>
+<ul>
+<li><a href="https://github.com/hascal/vscode">Vscode Extension</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hascals-roadmap"><a class="header" href="#hascals-roadmap">Hascal's Roadmap</a></h1>
+<h3 id="language"><a class="header" href="#language">Language</a></h3>
+<ul>
+<li>js backend</li>
+<li>lambdas :</li>
+</ul>
+<pre><code class="language-typescript">var mythread = thread(function(x:int,y:int){
+    print(x*y)
+})
+</code></pre>
+<ul>
+<li>generate html doc from a code</li>
+<li>classes</li>
+</ul>
+<pre><code class="language-typescript">class C : T {
+    var foo : string
+    var bar = 1
+
+    // constructor
+    C(foo: string){
+        this.foo = foo
+    }
+
+    public f(x: string): string {
+        return x
+    }
+
+    private f2(x: string): string {
+        return x
+    }
+
+    // allocator
+    __new__(foo: string): C {
+        return new C(foo)
+    }
+
+    // deallocator
+    __delete__(foo: string): C {
+        delete this.foo
+        delete this.bar
+    }
+}
+</code></pre>
+<ul>
+<li>generics <a href="https://github.com/hascal/hascal/issues/26">#26</a>s</li>
+<li>rewrite compiler in hascal </li>
+<li>const correctness</li>
+</ul>
+<h3 id="standard-library"><a class="header" href="#standard-library">Standard Library</a></h3>
+<ul>
+<li><code>thread</code> library</li>
+</ul>
+<h3 id="package-manager-1"><a class="header" href="#package-manager-1">Package Manager</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hascals-changelog"><a class="header" href="#hascals-changelog">Hascal's Changelog</a></h1>
+<details>
+<summary>v1.4.2</summary>
+<h4 id="new-features"><a class="header" href="#new-features">New features</a></h4>
+<h4 id="changes"><a class="header" href="#changes">Changes</a></h4>
+<ul>
+<li>observe <a href="https://hascal.github.io/style.html">Hasca's coding style</a> in libraries</li>
+</ul>
+<h4 id="bug-fixes"><a class="header" href="#bug-fixes">Bug fixes</a></h4>
+<h4 id="removed"><a class="header" href="#removed">Removed</a></h4>
+</details>
+<details>
+<summary>v1.4.1</summary>
+<h4 id="bug-fixes-1"><a class="header" href="#bug-fixes-1">Bug fixes</a></h4>
+<ul>
+<li>No errors when main doesn't return anything #67 (by @mehanalavimajd )</li>
+</ul>
+</details>
+<details>
+<summary>v1.4.0</summary>
+<h4 id="new-features-1"><a class="header" href="#new-features-1">New features</a></h4>
+<ul>
+<li>add builtin range function</li>
+</ul>
+<pre><code class="language-typescript">function main(): int {
+    // prints 1 to 10
+    for i in range(1,11){
+        print(i)
+    }
+    return 0
+}
+</code></pre>
+<ul>
+<li>add <code>asin</code>, <code>acos</code>, <code>asinh</code>, <code>acosh</code>, <code>exp</code>, <code>frexpr</code>, <code>ldexp</code>, <code>log</code>, <code>log10</code>, <code>fdim</code>, <code>sqrt</code>, <code>ceil</code>, <code>floor</code>, <code>NaN</code>, <code>max</code>, <code>min</code> functions to <code>math</code> library, <a href="https://hascal.github.io/docs/latest/stdlib/math.html">see documentation</a>.</li>
+<li>Showing error for overloading function's return type.</li>
+</ul>
+<h4 id="changes-1"><a class="header" href="#changes-1">Changes</a></h4>
+<ul>
+<li>Speedup parsing and compiling</li>
+</ul>
+<h4 id="bug-fixes-2"><a class="header" href="#bug-fixes-2">Bug fixes</a></h4>
+<ul>
+<li>fix passing list to <code>for in</code> statement</li>
+</ul>
+<h4 id="removed-1"><a class="header" href="#removed-1">Removed</a></h4>
+</details>
+<hr />
+<details>
+<summary>v1.3.12</summary>
+<h4 id="new-features-2"><a class="header" href="#new-features-2">New features</a></h4>
+<ul>
+<li>add support for multiline C-style comment</li>
+<li>add <code>round</code> function to <code>math</code> library</li>
+</ul>
+<h4 id="changes-2"><a class="header" href="#changes-2">Changes</a></h4>
+<ul>
+<li>Hascal relicensed from MIT license to BSD-3-Clause license</li>
+</ul>
+<h4 id="bug-fixes-3"><a class="header" href="#bug-fixes-3">Bug fixes</a></h4>
+<ul>
+<li>fix string subscripting bug</li>
+<li>fix empty list parsing bug</li>
+<li>fix random library bugs</li>
+</ul>
+<h4 id="removed-2"><a class="header" href="#removed-2">Removed</a></h4>
+</details>
+<hr />
+<details>
+<summary>v1.3.11</summary>
+<h4 id="new-features-3"><a class="header" href="#new-features-3">New features</a></h4>
+<ul>
+<li>add uniform distribution based random number generator called <code>uniform</code> in <code>random</code> library</li>
+</ul>
+<h4 id="changes-3"><a class="header" href="#changes-3">Changes</a></h4>
+<ul>
+<li>change <code>static</code> decorator name to <code>static_function</code> name</li>
+<li>rename <code>times</code> function to <code>multiplies</code> in <code>functional</code> library</li>
+<li>rename <code>if_and</code>, <code>if_or</code>, <code>if_not</code> functions to <code>_and</code>, <code>_or</code>, <code>_not</code> in <code>functional</code> library</li>
+</ul>
+<h4 id="bug-fixes-4"><a class="header" href="#bug-fixes-4">Bug fixes</a></h4>
+<ul>
+<li>fix package manager bug</li>
+</ul>
+<h4 id="removed-3"><a class="header" href="#removed-3">Removed</a></h4>
+</details>
+<hr />
+<details>
+<summary>v1.3.10</summary>
+<h4 id="new-features-4"><a class="header" href="#new-features-4">New features</a></h4>
+<ul>
+<li>show error for undeleted variables from heap</li>
+</ul>
+<h4 id="changes-4"><a class="header" href="#changes-4">Changes</a></h4>
+<ul>
+<li>improve <code>math</code>,<code>os</code> library</li>
+<li>in <code>functional</code> library : change <code>lessThanOrEqual</code> to <code>lessThanEqual</code>, <code>greaterThanOrEqual</code> to <code>greaterThanEqual</code></li>
+<li>improve error handler for conditions</li>
+<li><code>pytest</code> based test runner(@mmdbalkhi)</li>
+<li>fix conflicting with C\C++\Obj-C in FFI features</li>
+<li>change <code>static</code> decorator name to <code>static_function</code> name</li>
+</ul>
+<h4 id="bug-fixes-5"><a class="header" href="#bug-fixes-5">Bug fixes</a></h4>
+<ul>
+<li>fix <code>math</code> library bug</li>
+<li>fix import package bug with <code>_.*</code> name</li>
+<li>fix <code>crypto.sha256</code> library bug</li>
+</ul>
+<h4 id="removed-4"><a class="header" href="#removed-4">Removed</a></h4>
+<ul>
+<li>remove <code>libtcc</code> from stdlib</li>
+</ul>
+</details>
+<hr />
+<details>
+<summary>v1.3.9x</summary>
+<details>
+<summary>v1.3.9</summary>
+<h4 id="new-features-5"><a class="header" href="#new-features-5">New features</a></h4>
+<ul>
+<li>add <code>hascal list</code> command to list all available packages</li>
+<li>add <code>hascal init</code> command to create a new project, that generates <code>config.json</code>, <code>.gitignore</code> and <code>src/app.has</code> files</li>
+<li>add <code>hascal build</code> command to build project</li>
+<li>add <code>hascal run</code> command to run project</li>
+<li>add <code>string_reverse(str:string)</code> function to <code>strings</code> module</li>
+<li>add <code>assert</code> function to runtime library</li>
+<li>add <code>no_std</code> compiler option</li>
+<li>add <code>filename</code> config option</li>
+</ul>
+<h4 id="changes-5"><a class="header" href="#changes-5">Changes</a></h4>
+<ul>
+<li>change emitting <code>std::string</code> for strings to <code>string</code>(because in showing assertion errors, <code>std::string</code> is illusory).</li>
+<li>use <code>sys.exit</code> instead of <code>exit</code> in <code>src/core/h_help.py</code>(@mmdbalkhi)</li>
+<li>fix importing system bugs</li>
+<li>improve <code>typeof</code> builtin function</li>
+</ul>
+<!-- - remove file extension (`.has`) checking #42 -->
+<h4 id="bug-fixes-6"><a class="header" href="#bug-fixes-6">Bug fixes</a></h4>
+<ul>
+<li>fix assigning <code>NULL</code> to arrays and pointers bug, #36.</li>
+<li>fix <code>check_g++</code> config option bugs</li>
+<li>fix not defined consts when importing packages</li>
+<li>fix <code>random</code> library bug</li>
+<li>fix <code>browser</code> library bug</li>
+</ul>
+<h4 id="removed-5"><a class="header" href="#removed-5">Removed</a></h4>
+<ul>
+<li>remove <code>windows</code>,<code>browser</code> libraries</li>
+</ul>
+</details>
+<details>
+<summary>v1.3.9-rc.2</summary>
+<h4 id="bug-fixes-7"><a class="header" href="#bug-fixes-7">Bug fixes</a></h4>
+<ul>
+<li>fix a critical bug in importing system</li>
+</ul>
+</details>
+<details>
+<summary>v1.3.9-rc.1</summary>
+<h4 id="changes-6"><a class="header" href="#changes-6">Changes</a></h4>
+<ul>
+<li>upgrade importing system</li>
+<li>some changes in self hosted compiler(NOTE: self hosted compiler is not ready yet)</li>
+</ul>
+<h4 id="bug-fixes-8"><a class="header" href="#bug-fixes-8">Bug fixes</a></h4>
+<ul>
+<li>fix import bug when importing one package in multiple files</li>
+<li>fix self hosted bugs</li>
+</ul>
+</details>
+<details>
+<summary>v1.3.9-rc</summary>
+<h4 id="changes-7"><a class="header" href="#changes-7">Changes</a></h4>
+<ul>
+<li>Rewrite package manager</li>
+</ul>
+<h4 id="bug-fixes-9"><a class="header" href="#bug-fixes-9">Bug fixes</a></h4>
+<ul>
+<li>fix <code>http</code> library bug</li>
+<li>fix cpp importing bug</li>
+</ul>
+</details>
+<details>
+<summary>v1.3.9-beta</summary>
+<h4 id="new-features-6"><a class="header" href="#new-features-6">New features</a></h4>
+<ul>
+<li>passing functions as arguments</li>
+</ul>
+<pre><code class="language-typescript">function f(x: int): int {
+    return x + 1
+}
+
+function g(func:Function[int]int): int {
+    return func(1)
+}
+</code></pre>
+<ul>
+<li>add static variables, <a href="https://github.com/hascal/hascal/blob/main/tests/static.has">See this example</a></li>
+<li>add <code>only_compile</code> config option</li>
+</ul>
+<h4 id="changes-8"><a class="header" href="#changes-8">Changes</a></h4>
+<ul>
+<li>upgrade importing system</li>
+</ul>
+<h4 id="bug-fixes-10"><a class="header" href="#bug-fixes-10">Bug fixes</a></h4>
+<ul>
+<li>fix pyinstaller build issue</li>
+</ul>
+<h4 id="removed-6"><a class="header" href="#removed-6">Removed</a></h4>
+</details>
+<details>
+<summary>v1.3.9-alpha.1</summary>
+<h4 id="changes-9"><a class="header" href="#changes-9">Changes</a></h4>
+<ul>
+<li>add <code>download</code>,<code>upload</code>,<code>post</code> functions to <code>http</code> library</li>
+<li><code>https</code> support for <code>http</code> library</li>
+<li>add <code>windows</code> library(that includes <code>windows.h</code>)</li>
+<li>add <code>browser</code> library to open urls in default browser(now only supports windows)</li>
+</ul>
+<h4 id="bug-fixes-11"><a class="header" href="#bug-fixes-11">Bug fixes</a></h4>
+<ul>
+<li>fix linker flag import bug in <code>cuse</code> statement</li>
+</ul>
+</details>
+</details>
+<hr>
+<details>
+<summary>v1.3.8</summary>
+<h4 id="new-features-7"><a class="header" href="#new-features-7">New features</a></h4>
+<ul>
+<li>non-nullable and nullable variables</li>
+</ul>
+<h4 id="changes-10"><a class="header" href="#changes-10">Changes</a></h4>
+<ul>
+<li>change pointer unary from <code>*</code> to <code>^</code></li>
+<li>improve importing system</li>
+</ul>
+<h4 id="bug-fixes-12"><a class="header" href="#bug-fixes-12">Bug fixes</a></h4>
+<ul>
+<li>fix repetitious imports bug</li>
+<li>fix #29 bug(by <a href="https://github.com/mmdbalkhi">@mmdbalkhi</a>)</li>
+</ul>
+<h4 id="removed-7"><a class="header" href="#removed-7">Removed</a></h4>
+<ul>
+<li>remove <code>token</code> library</li>
+</ul>
+</details>
+<hr>
+<details>
+<summary>v1.3.7</summary>
+<h4 id="new-features-8"><a class="header" href="#new-features-8">New features</a></h4>
+<ul>
+<li>manual memory management with <code>new</code> and <code>delete</code> keyword</li>
+<li>functional programming paradigm</li>
+<li>speed up compilation time</li>
+<li>add <code>typeof</code> function</li>
+<li>now can print arrays and structures</li>
+<li>function decorators</li>
+<li><code>static</code> and <code>extern</code> decorator</li>
+<li>multiple library import</li>
+<li>improve importing system</li>
+<li>improve stdlib architecture</li>
+</ul>
+<h4 id="bug-fixes-13"><a class="header" href="#bug-fixes-13">Bug fixes</a></h4>
+<ul>
+<li>fix scoping bug</li>
+<li>fix <code>conv</code> library bug</li>
+<li>fix conditions bug</li>
+</ul>
+<h4 id="removed-8"><a class="header" href="#removed-8">Removed</a></h4>
+<ul>
+<li><code>export</code> library removed</li>
+<li><code>local use</code> statement removed</li>
+</ul>
+</details>
+<hr>
+<details>
+<summary>v1.3.6</summary>
+<h4 id="new-features-9"><a class="header" href="#new-features-9">New features</a></h4>
+<ul>
+<li>more data types : <code>int8</code>,<code>uint8</code>,<code>int16</code>,<code>uint16</code>,<code>int32</code>,<code>uint32</code>,<code>int64</code>,<code>uint64</code>,<code>double</code></li>
+<li>type compatibility</li>
+<li>multi line string</li>
+<li>pointers and references</li>
+</ul>
+<pre><code class="language-typescript">var x : *int = 20
+var y : int = 10
+x = &amp;y
+var z = *x // type : int
+
+// Pointers fix incomplete types on struct defination
+struct bar {
+    var self : *bar
+}
+</code></pre>
+<ul>
+<li>add <code>sizeof</code> function</li>
+</ul>
+<h4 id="bug-fixes-14"><a class="header" href="#bug-fixes-14">Bug fixes</a></h4>
+<ul>
+<li>fix lexer bugs</li>
+<li>check if function returns a value at end of string else show error</li>
+<li><code>main</code> function should returns int</li>
+<li>fix <code>termcolor</code> library bugs</li>
+<li>fix enum bugs</li>
+</ul>
+<h4 id="standart-library"><a class="header" href="#standart-library">Standart library</a></h4>
+<ul>
+<li>add <code>sdl2</code> wrapper</li>
+<li>add <code>export</code> library for exporting to C(see : <a href="https://github.com/bistcuite/haspy">haspy</a>)</li>
+<li>add <code>crypto.sha256</code> for sha256 hashing</li>
+</ul>
+<h4 id="removed-9"><a class="header" href="#removed-9">Removed</a></h4>
+<ul>
+<li><code>libcinfo</code> library removed</li>
+</ul>
+</details>
+<hr>
+<details>
+<summary>v1.3.5</summary>
+<h4 id="standard-library-1"><a class="header" href="#standard-library-1">Standard library</a></h4>
+<h5 id="updated"><a class="header" href="#updated">Updated</a></h5>
+<p><code>os</code> :</p>
+<ul>
+<li>add <code>compiler_name</code> function to get the name of the compiler</li>
+<li>add <code>arch</code> function to get the architecture of the system</li>
+<li>add <code>is_x86</code> function to check if the architecture is x86</li>
+<li>add <code>is_x64</code> function to check if the architecture is x64</li>
+<li>add <code>getenv</code> function to get an environment variable</li>
+</ul>
+<h5 id="added"><a class="header" href="#added">Added</a></h5>
+<ul>
+<li>add <code>libcinfo</code> library to get information about the libc</li>
+<li>add <code>termcolor</code> library to colorize the output</li>
+</ul>
+<p><img src="assets/termcolor.png" alt="assets/termcolor.png" /></p>
+<h4 id="bug-fixes-15"><a class="header" href="#bug-fixes-15">Bug fixes</a></h4>
+<ul>
+<li>Fix incomplete type defination bug</li>
+</ul>
+</details>
+<hr>
+<details>
+<summary>v1.3.4</summary>
+<h4 id="new-features-10"><a class="header" href="#new-features-10">New features</a></h4>
+<ul>
+<li>compiler option : now can generate c++ code from hascal code with <code>c++_code : 1</code> in <code>config.json</code> file</li>
+<li>use <code>cuse</code> keyword to include c++ files.</li>
+</ul>
+<h4 id="bug-fixes-16"><a class="header" href="#bug-fixes-16">Bug fixes</a></h4>
+<ul>
+<li>Fix semantic analyser bugs</li>
+<li>Fix standard library bug</li>
+</ul>
+</details>
+<hr>
+<details>
+<summary>v1.3.3</summary>
+<h4 id="new-features-11"><a class="header" href="#new-features-11">New features</a></h4>
+<ul>
+<li>struct inheritance</li>
+<li>can use <code>cuse</code> statement on struct declaration</li>
+</ul>
+<h4 id="bug-fixes-17"><a class="header" href="#bug-fixes-17">Bug fixes</a></h4>
+<ul>
+<li>Fix variable scope bug</li>
+<li>Fix variable declaration bug</li>
+<li>Fix semantic analyser bug</li>
+</ul>
+</details>
+<hr>
+<details>
+<summary>v1.3.2</summary>
+<h4 id="new-features-12"><a class="header" href="#new-features-12">New features</a></h4>
+<ul>
+<li><code>for in</code> statement</li>
+<li>library manager</li>
+<li>flag option</li>
+<li><code>cuse</code> statement</li>
+</ul>
+<h4 id="bug-fixes-18"><a class="header" href="#bug-fixes-18">Bug fixes</a></h4>
+<ul>
+<li>Fix semantic analyser bugs</li>
+<li>Fix nested struct bug</li>
+</ul>
+<h4 id="removed-10"><a class="header" href="#removed-10">Removed</a></h4>
+<ul>
+<li><code>for to</code> and <code>for downto</code> statement removed</li>
+</ul>
+</details>
+<hr>
+<details>
+<summary>v1.3.1</summary>
+<h4 id="new-features-13"><a class="header" href="#new-features-13">New features</a></h4>
+<ul>
+<li>Basic Semantic Anaslyser</li>
+</ul>
+<h4 id="removed-11"><a class="header" href="#removed-11">Removed</a></h4>
+<ul>
+<li>remove semicolon from syntax</li>
+</ul>
+</details>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Interfacing with C++ - Hascal Documentation</title>
+        <title>Interfacing with C++ - Sacalon Documentation</title>
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,22 +61,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -86,15 +93,37 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -110,7 +139,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Hascal Documentation</h1>
+                    <h1 class="menu-title">Sacalon Documentation</h1>
 
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
@@ -143,9 +172,9 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="interfacing-with-c"><a class="header" href="#interfacing-with-c">Interfacing with C++</a></h1>
-<p>Hascal is based on C++, so you can use C++ functions and classes in your program.</p>
+<p>Sacalon is based on C++, so you can use C++ functions and classes in your program.</p>
 <h2 id="inline-c-code"><a class="header" href="#inline-c-code">Inline C++ Code</a></h2>
-<p>You can use inline c++ code in Hascal with <code>cuse</code> keyword :</p>
+<p>You can use inline c++ code in Sacalon with <code>cuse</code> keyword :</p>
 <pre><code class="language-typescript">cuse '#include &lt;cstdio&gt;'
 cuse 'int main(){printf(&quot;%d&quot;,1);return 0;}'
 // output : 1
@@ -168,16 +197,16 @@ int main(){
 <pre><code class="language-typescript">function system(command:char^):int
 </code></pre>
 <h2 id="include-c-headers"><a class="header" href="#include-c-headers">Include C++ headers</a></h2>
-<p>Also Hascal can include C++ headers in your program.
+<p>Also Sacalon can include C++ headers in your program.
 We need two files, one for headers and one for main part of the library. You should put <code>#include</code>,... in <code>your_cpp_lib.hpp</code> and main part of library in <code>your_cpp_lib.cc</code>. The specified files should exist in the same folder.</p>
 <p>See the example below:</p>
 <p><code>add.cc</code> :</p>
-<pre><code class="language-cpp">void __hascal__cpp_print(int x){
+<pre><code class="language-cpp">void __sacalon__cpp_print(int x){
     printf(&quot;%d&quot;,x);
 }
 </code></pre>
 <blockquote>
-<p>add <code>__hascal__</code> to your C++ functions, structs name. Hascal transpiles to C++ and it adds <code>__hascal__</code> prefix to your C++ names.</p>
+<p>add <code>__sacalon__</code> to your C++ functions, structs name. Sacalon transpiles to C++ and it adds <code>__sacalon__</code> prefix to your C++ names.</p>
 </blockquote>
 <p><code>add.hpp</code> :</p>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
@@ -195,7 +224,7 @@ function main() : int {
 <p>Also you can put the C++ files in a folder and rename they to <code>_.cc</code> and <code>_.hpp</code>.</p>
 <p><strong>Note that don't include local headers in <code>*.hpp</code> file.</strong></p>
 <h2 id="accessing-to-values-and-types-in-inline-c-code"><a class="header" href="#accessing-to-values-and-types-in-inline-c-code">Accessing to values and types in inline C++ code</a></h2>
-<p>You can access to Hascal's variable and types in inline C++ codes in Hascal by adding <code>__hascal__</code> prefix to a name, for example:
+<p>You can access to Sacalon's variable and types in inline C++ codes in Sacalon by adding <code>__sacalon__</code> prefix to a name, for example:
 <code>main.has</code>:</p>
 <pre><code class="language-typescript">function add(a:int,b:int){
     cuse &quot;&quot;&quot;
@@ -220,7 +249,7 @@ function main() : int {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../stdlib.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../stdlib.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -234,7 +263,7 @@ function main() : int {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../stdlib.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../stdlib.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
