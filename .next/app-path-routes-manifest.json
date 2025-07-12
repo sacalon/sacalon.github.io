@@ -1,0 +1,9 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/donate/page": "/donate",
+  "/download/page": "/download",
+  "/news/page": "/news",
+  "/foundation/page": "/foundation",
+  "/news/[slug]/page": "/news/[slug]",
+  "/page": "/"
+}

@@ -1,0 +1,616 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" as="image" href="/sacalon-logo.jpeg"/><link rel="stylesheet" href="/_next/static/css/7dff6f8d89147752.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-57f139aa5b5fb95e.js"/><script src="/_next/static/chunks/4bd1b696-5b6c0ccbd3c0c9ab.js" async=""></script><script src="/_next/static/chunks/684-91835b1cd9d457e6.js" async=""></script><script src="/_next/static/chunks/main-app-131f11c04dda51b2.js" async=""></script><script src="/_next/static/chunks/874-db6e9370384cd204.js" async=""></script><script src="/_next/static/chunks/app/news/%5Bslug%5D/page-29ff450de32e7b28.js" async=""></script><title>Memory Management Best Practices Guide - Sacalon News</title><meta name="description" content="A comprehensive guide to manual memory management in Sacalon, covering patterns, pitfalls, and performance optimization techniques."/><meta name="generator" content="v0.dev"/><meta property="og:title" content="Memory Management Best Practices Guide"/><meta property="og:description" content="A comprehensive guide to manual memory management in Sacalon, covering patterns, pitfalls, and performance optimization techniques."/><meta property="og:type" content="article"/><meta property="article:published_time" content="January 28, 2023"/><meta property="article:author" content="Core Team"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Memory Management Best Practices Guide"/><meta name="twitter:description" content="A comprehensive guide to manual memory management in Sacalon, covering patterns, pitfalls, and performance optimization techniques."/><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body class="__className_e8ce0c"><!--$--><div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"><nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50"><div class="container mx-auto px-4 py-4"><div class="flex items-center justify-between"><div class="flex items-center space-x-2"><img src="/sacalon-logo.jpeg" alt="Sacalon Logo" class="w-8 h-8 rounded-lg"/><span class="text-xl font-bold text-gray-900">Sacalon</span></div><div class="hidden md:flex items-center space-x-6"><a class="text-gray-700 hover:text-blue-600 transition-colors" href="/">Home</a><a class="text-gray-700 hover:text-blue-600 transition-colors" href="/foundation">Foundation</a><a class="text-gray-700 hover:text-blue-600 transition-colors" href="/download">Download</a><a class="text-blue-600 font-medium" href="/news">News</a><a target="_blank" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3" href="https://github.com/sacalon/sacalon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github w-4 h-4 mr-2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>GitHub</a></div></div></div></nav><div class="container mx-auto px-4 py-12"><div class="max-w-4xl mx-auto"><a class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 mb-6" href="/news"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left w-4 h-4 mr-2"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back to News</a><div class="mb-8"><div class="flex items-center gap-2 mb-4"><div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-orange-100 text-orange-800">Tutorial</div><div class="flex items-center text-sm text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-4 h-4 mr-1"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>15 min read</div></div><h1 class="text-4xl font-bold text-gray-900 mb-4">Memory Management Best Practices Guide</h1><p class="text-xl text-gray-600 mb-6">A comprehensive guide to manual memory management in Sacalon, covering patterns, pitfalls, and performance optimization techniques.</p><div class="flex items-center justify-between"><div class="flex items-center space-x-4 text-sm text-gray-600"><div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-4 h-4 mr-1"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>January 28, 2023</div><div class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user w-4 h-4 mr-1"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Core Team</div></div><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 w-4 h-4 mr-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>Share</button></div></div><div class="rounded-lg border bg-card text-card-foreground shadow-sm"><div class="p-6 pt-6"><div class="prose prose-gray max-w-none"><p class="mb-4">Memory management is one of Sacalon&#x27;s key strengths, offering developers fine-grained control over memory allocation while maintaining safety and performance. This comprehensive guide covers best practices, common patterns, and optimization techniques for effective memory management in Sacalon.</p><br/><h2 class="text-2xl font-bold mt-6 mb-3">Understanding Sacalon&#x27;s Memory Model</h2><br/><p class="mb-4">Sacalon provides a hybrid approach to memory management:</p><br/><li class="ml-4">**Automatic Management**: For most common use cases</li><li class="ml-4">**Manual Control**: When you need precise control over allocation and deallocation</li><li class="ml-4">**Safety Guarantees**: Compile-time checks prevent common memory errors</li><br/><h3 class="text-xl font-bold mt-4 mb-2">Memory Ownership</h3><br/><p class="mb-4">Sacalon uses an ownership system similar to Rust but with more flexibility:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">struct Buffer {</p><p class="mb-4">    data: *mut u8,</p><p class="mb-4">    size: usize,</p><p class="mb-4">    capacity: usize</p><p class="mb-4">}</p><br/><p class="mb-4">impl Buffer {</p><p class="mb-4">    func new(capacity: usize) -&gt; Buffer {</p><p class="mb-4">        let data = allocate&lt;u8&gt;(capacity);</p><p class="mb-4">        return Buffer {</p><p class="mb-4">            data: data,</p><p class="mb-4">            size: 0,</p><p class="mb-4">            capacity: capacity</p><p class="mb-4">        };</p><p class="mb-4">    }</p><br/><p class="mb-4">    func destroy(self) {</p><p class="mb-4">        deallocate(self.data);</p><p class="mb-4">    }</p><p class="mb-4">}</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h2 class="text-2xl font-bold mt-6 mb-3">Best Practices</h2><br/><h3 class="text-xl font-bold mt-4 mb-2">1. Use RAII (Resource Acquisition Is Initialization)</h3><br/><p class="mb-4">Always tie resource lifetime to object lifetime:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">struct FileHandler {</p><p class="mb-4">    file: *File,</p><br/><p class="mb-4">    func new(filename: String) -&gt; Result&lt;FileHandler, Error&gt; {</p><p class="mb-4">        let file = openFile(filename)?;</p><p class="mb-4">        return Ok(FileHandler { file: file });</p><p class="mb-4">    }</p><br/><p class="mb-4">    func destroy(self) {</p><p class="mb-4">        closeFile(self.file);</p><p class="mb-4">    }</p><p class="mb-4">}</p><br/><p class="mb-4">// Usage</p><p class="mb-4">func processFile(filename: String) -&gt; Result&lt;(), Error&gt; {</p><p class="mb-4">    let handler = FileHandler::new(filename)?;</p><p class="mb-4">    // File automatically closed when handler goes out of scope</p><p class="mb-4">    return Ok(());</p><p class="mb-4">}</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h3 class="text-xl font-bold mt-4 mb-2">2. Prefer Stack Allocation When Possible</h3><br/><p class="mb-4">Stack allocation is faster and automatically managed:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">// Good: Stack allocated</p><p class="mb-4">func processSmallArray() {</p><p class="mb-4">    let array: [Int; 100] = [0; 100];</p><p class="mb-4">    // Automatically cleaned up</p><p class="mb-4">}</p><br/><p class="mb-4">// Use heap only when necessary</p><p class="mb-4">func processLargeArray(size: usize) {</p><p class="mb-4">    let array = allocateArray&lt;Int&gt;(size);</p><p class="mb-4">    defer deallocate(array);</p><p class="mb-4">    // Process array</p><p class="mb-4">}</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h3 class="text-xl font-bold mt-4 mb-2">3. Use Smart Pointers for Shared Ownership</h3><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">use std::memory::{Rc, Arc, Box};</p><br/><p class="mb-4">// Single ownership</p><p class="mb-4">let data = Box::new(ExpensiveData::new());</p><br/><p class="mb-4">// Shared ownership (single-threaded)</p><p class="mb-4">let shared_data = Rc::new(ExpensiveData::new());</p><p class="mb-4">let reference1 = shared_data.clone();</p><p class="mb-4">let reference2 = shared_data.clone();</p><br/><p class="mb-4">// Shared ownership (multi-threaded)</p><p class="mb-4">let thread_safe_data = Arc::new(ExpensiveData::new());</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h3 class="text-xl font-bold mt-4 mb-2">4. Implement Custom Allocators for Performance-Critical Code</h3><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">struct PoolAllocator {</p><p class="mb-4">    pool: *mut u8,</p><p class="mb-4">    size: usize,</p><p class="mb-4">    used: usize</p><p class="mb-4">}</p><br/><p class="mb-4">impl PoolAllocator {</p><p class="mb-4">    func new(size: usize) -&gt; PoolAllocator {</p><p class="mb-4">        let pool = allocate&lt;u8&gt;(size);</p><p class="mb-4">        return PoolAllocator {</p><p class="mb-4">            pool: pool,</p><p class="mb-4">            size: size,</p><p class="mb-4">            used: 0</p><p class="mb-4">        };</p><p class="mb-4">    }</p><br/><p class="mb-4">    func allocate&lt;T&gt;(self, count: usize) -&gt; *mut T {</p><p class="mb-4">        let needed = sizeof&lt;T&gt;() * count;</p><p class="mb-4">        if self.used + needed &gt; self.size {</p><p class="mb-4">            panic(&quot;Pool allocator out of memory&quot;);</p><p class="mb-4">        }</p><br/><p class="mb-4">        let ptr = self.pool + self.used as *mut T;</p><p class="mb-4">        self.used += needed;</p><p class="mb-4">        return ptr;</p><p class="mb-4">    }</p><br/><p class="mb-4">    func reset(self) {</p><p class="mb-4">        self.used = 0;</p><p class="mb-4">    }</p><p class="mb-4">}</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h2 class="text-2xl font-bold mt-6 mb-3">Common Patterns</h2><br/><h3 class="text-xl font-bold mt-4 mb-2">1. Object Pools</h3><br/><p class="mb-4">Reuse expensive objects to reduce allocation overhead:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">struct ObjectPool&lt;T&gt; {</p><p class="mb-4">    available: Vec&lt;T&gt;,</p><p class="mb-4">    create_fn: func() -&gt; T</p><p class="mb-4">}</p><br/><p class="mb-4">impl&lt;T&gt; ObjectPool&lt;T&gt; {</p><p class="mb-4">    func new(create_fn: func() -&gt; T) -&gt; ObjectPool&lt;T&gt; {</p><p class="mb-4">        return ObjectPool {</p><p class="mb-4">            available: Vec::new(),</p><p class="mb-4">            create_fn: create_fn</p><p class="mb-4">        };</p><p class="mb-4">    }</p><br/><p class="mb-4">    func acquire(self) -&gt; T {</p><p class="mb-4">        if self.available.isEmpty() {</p><p class="mb-4">            return (self.create_fn)();</p><p class="mb-4">        } else {</p><p class="mb-4">            return self.available.pop().unwrap();</p><p class="mb-4">        }</p><p class="mb-4">    }</p><br/><p class="mb-4">    func release(self, obj: T) {</p><p class="mb-4">        self.available.push(obj);</p><p class="mb-4">    }</p><p class="mb-4">}</p><br/><p class="mb-4">// Usage</p><p class="mb-4">let pool = ObjectPool::new(|| ExpensiveObject::new());</p><p class="mb-4">let obj = pool.acquire();</p><p class="mb-4">// Use object</p><p class="mb-4">pool.release(obj);</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h3 class="text-xl font-bold mt-4 mb-2">2. Memory-Mapped Files</h3><br/><p class="mb-4">For large file processing:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">use std::memory::MemoryMap;</p><br/><p class="mb-4">func processLargeFile(filename: String) -&gt; Result&lt;(), Error&gt; {</p><p class="mb-4">    let map = MemoryMap::open(filename)?;</p><p class="mb-4">    let data = map.asSlice&lt;u8&gt;();</p><br/><p class="mb-4">    // Process data without loading entire file into memory</p><p class="mb-4">    for chunk in data.chunks(4096) {</p><p class="mb-4">        processChunk(chunk);</p><p class="mb-4">    }</p><br/><p class="mb-4">    return Ok(());</p><p class="mb-4">}</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h3 class="text-xl font-bold mt-4 mb-2">3. Copy-on-Write (COW) Strings</h3><br/><p class="mb-4">Optimize string operations:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">enum CowString {</p><p class="mb-4">    Borrowed(*const str),</p><p class="mb-4">    Owned(String)</p><p class="mb-4">}</p><br/><p class="mb-4">impl CowString {</p><p class="mb-4">    func new(s: *const str) -&gt; CowString {</p><p class="mb-4">        return CowString::Borrowed(s);</p><p class="mb-4">    }</p><br/><p class="mb-4">    func toOwned(self) -&gt; String {</p><p class="mb-4">        match self {</p><p class="mb-4">            Borrowed(s) =&gt; String::from(s),</p><p class="mb-4">            Owned(s) =&gt; s</p><p class="mb-4">        }</p><p class="mb-4">    }</p><br/><p class="mb-4">    func makeOwned(self) {</p><p class="mb-4">        match self {</p><p class="mb-4">            Borrowed(s) =&gt; {</p><p class="mb-4">                self = CowString::Owned(String::from(s));</p><p class="mb-4">            },</p><p class="mb-4">            Owned(_) =&gt; {} // Already owned</p><p class="mb-4">        }</p><p class="mb-4">    }</p><p class="mb-4">}</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h2 class="text-2xl font-bold mt-6 mb-3">Performance Optimization Techniques</h2><br/><h3 class="text-xl font-bold mt-4 mb-2">1. Memory Layout Optimization</h3><br/><p class="mb-4">Structure your data for cache efficiency:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">// Bad: Poor cache locality</p><p class="mb-4">struct BadLayout {</p><p class="mb-4">    flag1: bool,    // 1 byte + 7 bytes padding</p><p class="mb-4">    value1: i64,    // 8 bytes</p><p class="mb-4">    flag2: bool,    // 1 byte + 7 bytes padding</p><p class="mb-4">    value2: i64     // 8 bytes</p><p class="mb-4">}</p><br/><p class="mb-4">// Good: Better cache locality</p><p class="mb-4">struct GoodLayout {</p><p class="mb-4">    value1: i64,    // 8 bytes</p><p class="mb-4">    value2: i64,    // 8 bytes</p><p class="mb-4">    flag1: bool,    // 1 byte</p><p class="mb-4">    flag2: bool     // 1 byte + 6 bytes padding</p><p class="mb-4">}</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h3 class="text-xl font-bold mt-4 mb-2">2. Memory Pool Strategies</h3><br/><p class="mb-4">Different strategies for different use cases:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">// Linear allocator for temporary allocations</p><p class="mb-4">struct LinearAllocator {</p><p class="mb-4">    buffer: *mut u8,</p><p class="mb-4">    size: usize,</p><p class="mb-4">    offset: usize</p><p class="mb-4">}</p><br/><p class="mb-4">// Stack allocator for LIFO allocations</p><p class="mb-4">struct StackAllocator {</p><p class="mb-4">    buffer: *mut u8,</p><p class="mb-4">    size: usize,</p><p class="mb-4">    top: usize</p><p class="mb-4">}</p><br/><p class="mb-4">// Free list allocator for general purpose</p><p class="mb-4">struct FreeListAllocator {</p><p class="mb-4">    buffer: *mut u8,</p><p class="mb-4">    size: usize,</p><p class="mb-4">    free_blocks: Vec&lt;Block&gt;</p><p class="mb-4">}</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h2 class="text-2xl font-bold mt-6 mb-3">Common Pitfalls and How to Avoid Them</h2><br/><h3 class="text-xl font-bold mt-4 mb-2">1. Memory Leaks</h3><br/><p class="mb-4">Always pair allocations with deallocations:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">// Bad: Potential memory leak</p><p class="mb-4">func processData() {</p><p class="mb-4">    let data = allocate&lt;u8&gt;(1024);</p><p class="mb-4">    if someCondition() {</p><p class="mb-4">        return; // Memory leak!</p><p class="mb-4">    }</p><p class="mb-4">    deallocate(data);</p><p class="mb-4">}</p><br/><p class="mb-4">// Good: Use RAII or defer</p><p class="mb-4">func processData() {</p><p class="mb-4">    let data = allocate&lt;u8&gt;(1024);</p><p class="mb-4">    defer deallocate(data);</p><br/><p class="mb-4">    if someCondition() {</p><p class="mb-4">        return; // Memory automatically freed</p><p class="mb-4">    }</p><p class="mb-4">}</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h3 class="text-xl font-bold mt-4 mb-2">2. Use After Free</h3><br/><p class="mb-4">Sacalon&#x27;s ownership system helps prevent this:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">// Compile-time error prevention</p><p class="mb-4">func dangerousCode() {</p><p class="mb-4">    let data = Box::new(42);</p><p class="mb-4">    let ptr = data.asPtr();</p><p class="mb-4">    drop(data); // data is moved and freed</p><p class="mb-4">    // println(*ptr); // Compile error: use after free</p><p class="mb-4">}</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h3 class="text-xl font-bold mt-4 mb-2">3. Double Free</h3><br/><p class="mb-4">Use smart pointers to prevent double free:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">// Bad: Manual management</p><p class="mb-4">let ptr = allocate&lt;i32&gt;(1);</p><p class="mb-4">deallocate(ptr);</p><p class="mb-4">// deallocate(ptr); // Double free!</p><br/><p class="mb-4">// Good: Smart pointer</p><p class="mb-4">let data = Box::new(42);</p><p class="mb-4">// Automatically freed when data goes out of scope</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h2 class="text-2xl font-bold mt-6 mb-3">Profiling and Debugging</h2><br/><h3 class="text-xl font-bold mt-4 mb-2">Memory Profiling Tools</h3><br/><p class="mb-4">Use Sacalon&#x27;s built-in profiling tools:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">use std::profiler;</p><br/><p class="mb-4">func main() {</p><p class="mb-4">    profiler::startMemoryProfiling();</p><br/><p class="mb-4">    // Your code here</p><p class="mb-4">    heavyMemoryOperation();</p><br/><p class="mb-4">    let report = profiler::getMemoryReport();</p><p class="mb-4">    println(&quot;Peak memory usage: {} MB&quot;, report.peakUsage / 1024 / 1024);</p><p class="mb-4">    println(&quot;Total allocations: {}&quot;, report.totalAllocations);</p><p class="mb-4">    println(&quot;Memory leaks: {}&quot;, report.leaks.len());</p><p class="mb-4">}</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h3 class="text-xl font-bold mt-4 mb-2">Debug Builds</h3><br/><p class="mb-4">Enable memory debugging in debug builds:</p><br/><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><p class="mb-4">#[cfg(debug)]</p><p class="mb-4">use std::memory::debug;</p><br/><p class="mb-4">func allocateDebug&lt;T&gt;(count: usize) -&gt; *mut T {</p><p class="mb-4">    let ptr = allocate&lt;T&gt;(count);</p><p class="mb-4">    debug::trackAllocation(ptr, sizeof&lt;T&gt;() * count);</p><p class="mb-4">    return ptr;</p><p class="mb-4">}</p><div class="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto"><pre>acalon
+struct Buffer {
+    data: *mut u8,
+    size: usize,
+    capacity: usize
+}
+
+impl Buffer {
+    func new(capacity: usize) -&gt; Buffer {
+        let data = allocate&lt;u8&gt;(capacity);
+        return Buffer {
+            data: data,
+            size: 0,
+            capacity: capacity
+        };
+    }
+    
+    func destroy(self) {
+        deallocate(self.data);
+    }
+}
+</pre></div><br/><h2 class="text-2xl font-bold mt-6 mb-3">Conclusion</h2><br/><p class="mb-4">Effective memory management in Sacalon requires understanding the language&#x27;s ownership model, following best practices, and using the right tools for profiling and debugging. By applying these techniques, you can build high-performance applications that are both safe and efficient.</p><br/><p class="mb-4">Remember:</p><li class="ml-4">Use RAII patterns whenever possible</li><li class="ml-4">Prefer stack allocation for small, short-lived data</li><li class="ml-4">Use smart pointers for automatic memory management</li><li class="ml-4">Profile your applications to identify memory bottlenecks</li><li class="ml-4">Test thoroughly with memory debugging tools enabled</li><br/><p class="mb-4">Happy coding with Sacalon!</p><br/><p class="mb-4">*The Core Team*</p></div></div></div><div class="mt-12"><h3 class="text-2xl font-bold text-gray-900 mb-6">Related Articles</h3><div class="grid md:grid-cols-2 gap-6"><div class="rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-shadow"><div class="flex flex-col space-y-1.5 p-6"><div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-green-100 text-green-800" style="width:fit-content">Release</div><div class="font-semibold tracking-tight text-lg"><a class="hover:text-blue-600 transition-colors" href="/news/sacalon-v1-4-1-released-performance-improvements">Sacalon v1.4.1 Released with Performance Improvements</a></div><p class="text-sm text-gray-600">The latest version of Sacalon brings significant performance improvements and bug fixes, making your code run faster than ever.</p></div></div><div class="rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-shadow"><div class="flex flex-col space-y-1.5 p-6"><div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-blue-100 text-blue-800" style="width:fit-content">Documentation</div><div class="font-semibold tracking-tight text-lg"><a class="hover:text-blue-600 transition-colors" href="/news/new-http-library-documentation-available">New HTTP Library Documentation Available</a></div><p class="text-sm text-gray-600">Comprehensive documentation for Sacalon&#x27;s built-in HTTP library is now available, including examples and best practices.</p></div></div></div></div><div class="rounded-lg border bg-card shadow-sm mt-12 bg-gradient-to-r from-blue-600 to-purple-600 text-white"><div class="p-6 pt-6"><div class="text-center"><h3 class="text-2xl font-bold mb-4">Stay Updated</h3><p class="mb-6 opacity-90">Subscribe to our newsletter to get the latest Sacalon news and updates.</p><div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"><input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded-lg text-gray-900"/><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2">Subscribe</button></div></div></div></div></div></div><footer class="bg-gray-900 text-white py-12 px-4"><div class="container mx-auto"><div class="grid md:grid-cols-4 gap-8"><div><div class="flex items-center space-x-2 mb-4"><img src="/sacalon-logo.jpeg" alt="Sacalon Logo" class="w-8 h-8 rounded-lg"/><span class="text-xl font-bold">Sacalon</span></div><p class="text-gray-400">Building the future of software development with optimal, maintainable, and efficient code.</p></div><div><h3 class="font-semibold mb-4">Language</h3><ul class="space-y-2 text-gray-400"><li><a class="hover:text-white transition-colors" href="/foundation">Foundation</a></li><li><a class="hover:text-white transition-colors" href="/download">Download</a></li><li><a class="hover:text-white transition-colors" href="/donate">Donate</a></li></ul></div><div><h3 class="font-semibold mb-4">Community</h3><ul class="space-y-2 text-gray-400"><li><a class="hover:text-white transition-colors" href="https://github.com/sacalon/sacalon">GitHub</a></li><li><a class="hover:text-white transition-colors" href="https://github.com/sacalon/sacalon/discussions">Discussions</a></li><li><a class="hover:text-white transition-colors" href="https://discord.gg/sacalon">Discord</a></li><li><a class="hover:text-white transition-colors" href="https://twitter.com/sacalon_lang">Twitter</a></li></ul></div><div><h3 class="font-semibold mb-4">Resources</h3><ul class="space-y-2 text-gray-400"><li><a class="hover:text-white transition-colors" href="#">Documentation</a></li><li><a class="hover:text-white transition-colors" href="#">Examples</a></li></ul></div></div><div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"><p>© 2019-2025 Sacalon Programming Language. Open source under BSD-3-Clause license.</p></div></div></footer></div><!--/$--><script src="/_next/static/chunks/webpack-57f139aa5b5fb95e.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[7555,[],\"\"]\n3:I[1295,[],\"\"]\n4:I[6874,[\"874\",\"static/chunks/874-db6e9370384cd204.js\",\"120\",\"static/chunks/app/news/%5Bslug%5D/page-29ff450de32e7b28.js\"],\"\"]\n5:I[9665,[],\"OutletBoundary\"]\n8:I[9665,[],\"ViewportBoundary\"]\na:I[9665,[],\"MetadataBoundary\"]\nc:I[6614,[],\"\"]\n:HL[\"/_next/static/css/7dff6f8d89147752.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"5t1QE2VOA-xVswbyN2kjv\",\"p\":\"\",\"c\":[\"\",\"news\",\"memory-management-best-practices-guide\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"news\",{\"children\":[[\"slug\",\"memory-management-best-practices-guide\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/7dff6f8d89147752.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[\"$\",\"body\",null,{\"className\":\"__className_e8ce0c\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[\"news\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"slug\",\"memory-management-best-practices-guide\",\"d\"],[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"div\",null,{\"className\":\"min-h-screen bg-gradient-to-br from-slate-50 to-blue-50\",\"children\":[[\"$\",\"nav\",null,{\"className\":\"border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50\",\"children\":[\"$\",\"div\",null,{\"className\":\"container mx-auto px-4 py-4\",\"children\":[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center space-x-2\",\"children\":[[\"$\",\"img\",null,{\"src\":\"/sacalon-logo.jpeg\",\"alt\":\"Sacalon Logo\",\"className\":\"w-8 h-8 rounded-lg\"}],[\"$\",\"span\",null,{\"className\":\"text-xl font-bold text-gray-900\",\"children\":\"Sacalon\"}]]}],[\"$\",\"div\",null,{\"className\":\"hidden md:flex items-center space-x-6\",\"children\":[[\"$\",\"$L4\",null,{\"href\":\"/\",\"className\":\"text-gray-700 hover:text-blue-600 transition-colors\",\"children\":\"Home\"}],[\"$\",\"$L4\",null,{\"href\":\"/foundation\",\"className\":\"text-gray-700 hover:text-blue-600 transition-colors\",\"children\":\"Foundation\"}],[\"$\",\"$L4\",null,{\"href\":\"/download\",\"className\":\"text-gray-700 hover:text-blue-600 transition-colors\",\"children\":\"Download\"}],[\"$\",\"$L4\",null,{\"href\":\"/news\",\"className\":\"text-blue-600 font-medium\",\"children\":\"News\"}],[\"$\",\"$L4\",null,{\"href\":\"https://github.com/sacalon/sacalon\",\"target\":\"_blank\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":24,\"height\":24,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-github w-4 h-4 mr-2\",\"children\":[[\"$\",\"path\",\"tonef\",{\"d\":\"M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4\"}],[\"$\",\"path\",\"9comsn\",{\"d\":\"M9 18c-4.51 2-5-2-7-2\"}],\"$undefined\"]}],\"GitHub\"],\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3\",\"ref\":null}]]}]]}]}]}],[\"$\",\"div\",null,{\"className\":\"container mx-auto px-4 py-12\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-4xl mx-auto\",\"children\":[[\"$\",\"$L4\",null,{\"href\":\"/news\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":24,\"height\":24,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left w-4 h-4 mr-2\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Back to News\"],\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 mb-6\",\"ref\":null}],[\"$\",\"div\",null,{\"className\":\"mb-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-2 mb-4\",\"children\":[[\"$\",\"div\",null,{\"className\":\"inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-orange-100 text-orange-800\",\"children\":\"Tutorial\"}],[\"$\",\"div\",null,{\"className\":\"flex items-center text-sm text-gray-500\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":24,\"height\":24,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-clock w-4 h-4 mr-1\",\"children\":[[\"$\",\"circle\",\"1mglay\",{\"cx\":\"12\",\"cy\":\"12\",\"r\":\"10\"}],[\"$\",\"polyline\",\"68esgv\",{\"points\":\"12 6 12 12 16 14\"}],\"$undefined\"]}],\"15 min read\"]}]]}],[\"$\",\"h1\",null,{\"className\":\"text-4xl font-bold text-gray-900 mb-4\",\"children\":\"Memory Management Best Practices Guide\"}],[\"$\",\"p\",null,{\"className\":\"text-xl text-gray-600 mb-6\",\"children\":\"A comprehensive guide to manual memory management in Sacalon, covering patterns, pitfalls, and performance optimization techniques.\"}],[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center space-x-4 text-sm text-gray-600\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":24,\"height\":24,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-calendar w-4 h-4 mr-1\",\"children\":[[\"$\",\"path\",\"1cmpym\",{\"d\":\"M8 2v4\"}],[\"$\",\"path\",\"4m81vk\",{\"d\":\"M16 2v4\"}],[\"$\",\"rect\",\"1hopcy\",{\"width\":\"18\",\"height\":\"18\",\"x\":\"3\",\"y\":\"4\",\"rx\":\"2\"}],[\"$\",\"path\",\"8toen8\",{\"d\":\"M3 10h18\"}],\"$undefined\"]}],\"January 28, 2023\"]}],[\"$\",\"div\",null,{\"className\":\"flex items-center\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":24,\"height\":24,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-user w-4 h-4 mr-1\",\"children\":[[\"$\",\"path\",\"975kel\",{\"d\":\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\"}],[\"$\",\"circle\",\"17ys0d\",{\"cx\":\"12\",\"cy\":\"7\",\"r\":\"4\"}],\"$undefined\"]}],\"Core Team\"]}]]}],[\"$\",\"button\",null,{\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3\",\"ref\":\"$undefined\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":24,\"height\":24,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-share2 w-4 h-4 mr-2\",\"children\":[[\"$\",\"circle\",\"gq8acd\",{\"cx\":\"18\",\"cy\":\"5\",\"r\":\"3\"}],[\"$\",\"circle\",\"w7nqdw\",{\"cx\":\"6\",\"cy\":\"12\",\"r\":\"3\"}],[\"$\",\"circle\",\"1xt0gg\",{\"cx\":\"18\",\"cy\":\"19\",\"r\":\"3\"}],[\"$\",\"line\",\"47mynk\",{\"x1\":\"8.59\",\"x2\":\"15.42\",\"y1\":\"13.51\",\"y2\":\"17.49\"}],[\"$\",\"line\",\"1n3mei\",{\"x1\":\"15.41\",\"x2\":\"8.59\",\"y1\":\"6.51\",\"y2\":\"10.49\"}],\"$undefined\"]}],\"Share\"]}]]}]]}],[\"$\",\"div\",null,{\"ref\":\"$undefined\",\"className\":\"rounded-lg border bg-card text-card-foreground shadow-sm\",\"children\":[\"$\",\"div\",null,{\"ref\":\"$undefined\",\"className\":\"p-6 pt-6\",\"children\":[\"$\",\"div\",null,{\"className\":\"prose prose-gray max-w-none\",\"children\":[[\"$\",\"p\",\"0\",{\"className\":\"mb-4\",\"children\":\"Memory management is one of Sacalon's key strengths, offering developers fine-grained control over memory allocation while maintaining safety and performance. This comprehensive guide covers best practices, common patterns, and optimization techniques for effective memory management in Sacalon.\"}],[\"$\",\"br\",\"1\",{}],[\"$\",\"h2\",\"2\",{\"className\":\"text-2xl font-bold mt-6 mb-3\",\"children\":\"Understanding Sacalon's Memory Model\"}],[\"$\",\"br\",\"3\",{}],[\"$\",\"p\",\"4\",{\"className\":\"mb-4\",\"children\":\"Sacalon provides a hybrid approach to memory management:\"}],[\"$\",\"br\",\"5\",{}],[\"$\",\"li\",\"6\",{\"className\":\"ml-4\",\"children\":\"**Automatic Management**: For most common use cases\"}],[\"$\",\"li\",\"7\",{\"className\":\"ml-4\",\"children\":\"**Manual Control**: When you need precise control over allocation and deallocation\"}],[\"$\",\"li\",\"8\",{\"className\":\"ml-4\",\"children\":\"**Safety Guarantees**: Compile-time checks prevent common memory errors\"}],[\"$\",\"br\",\"9\",{}],[\"$\",\"h3\",\"10\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"Memory Ownership\"}],[\"$\",\"br\",\"11\",{}],[\"$\",\"p\",\"12\",{\"className\":\"mb-4\",\"children\":\"Sacalon uses an ownership system similar to Rust but with more flexibility:\"}],[\"$\",\"br\",\"13\",{}],[\"$\",\"div\",\"14\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"15\",{\"className\":\"mb-4\",\"children\":\"struct Buffer {\"}],[\"$\",\"p\",\"16\",{\"className\":\"mb-4\",\"children\":\"    data: *mut u8,\"}],[\"$\",\"p\",\"17\",{\"className\":\"mb-4\",\"children\":\"    size: usize,\"}],[\"$\",\"p\",\"18\",{\"className\":\"mb-4\",\"children\":\"    capacity: usize\"}],[\"$\",\"p\",\"19\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"br\",\"20\",{}],[\"$\",\"p\",\"21\",{\"className\":\"mb-4\",\"children\":\"impl Buffer {\"}],[\"$\",\"p\",\"22\",{\"className\":\"mb-4\",\"children\":\"    func new(capacity: usize) -\u003e Buffer {\"}],[\"$\",\"p\",\"23\",{\"className\":\"mb-4\",\"children\":\"        let data = allocate\u003cu8\u003e(capacity);\"}],[\"$\",\"p\",\"24\",{\"className\":\"mb-4\",\"children\":\"        return Buffer {\"}],[\"$\",\"p\",\"25\",{\"className\":\"mb-4\",\"children\":\"            data: data,\"}],[\"$\",\"p\",\"26\",{\"className\":\"mb-4\",\"children\":\"            size: 0,\"}],[\"$\",\"p\",\"27\",{\"className\":\"mb-4\",\"children\":\"            capacity: capacity\"}],[\"$\",\"p\",\"28\",{\"className\":\"mb-4\",\"children\":\"        };\"}],[\"$\",\"p\",\"29\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"br\",\"30\",{}],[\"$\",\"p\",\"31\",{\"className\":\"mb-4\",\"children\":\"    func destroy(self) {\"}],[\"$\",\"p\",\"32\",{\"className\":\"mb-4\",\"children\":\"        deallocate(self.data);\"}],[\"$\",\"p\",\"33\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"p\",\"34\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"div\",\"35\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"36\",{}],[\"$\",\"h2\",\"37\",{\"className\":\"text-2xl font-bold mt-6 mb-3\",\"children\":\"Best Practices\"}],[\"$\",\"br\",\"38\",{}],[\"$\",\"h3\",\"39\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"1. Use RAII (Resource Acquisition Is Initialization)\"}],[\"$\",\"br\",\"40\",{}],[\"$\",\"p\",\"41\",{\"className\":\"mb-4\",\"children\":\"Always tie resource lifetime to object lifetime:\"}],[\"$\",\"br\",\"42\",{}],[\"$\",\"div\",\"43\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"44\",{\"className\":\"mb-4\",\"children\":\"struct FileHandler {\"}],[\"$\",\"p\",\"45\",{\"className\":\"mb-4\",\"children\":\"    file: *File,\"}],[\"$\",\"br\",\"46\",{}],[\"$\",\"p\",\"47\",{\"className\":\"mb-4\",\"children\":\"    func new(filename: String) -\u003e Result\u003cFileHandler, Error\u003e {\"}],[\"$\",\"p\",\"48\",{\"className\":\"mb-4\",\"children\":\"        let file = openFile(filename)?;\"}],[\"$\",\"p\",\"49\",{\"className\":\"mb-4\",\"children\":\"        return Ok(FileHandler { file: file });\"}],[\"$\",\"p\",\"50\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"br\",\"51\",{}],[\"$\",\"p\",\"52\",{\"className\":\"mb-4\",\"children\":\"    func destroy(self) {\"}],[\"$\",\"p\",\"53\",{\"className\":\"mb-4\",\"children\":\"        closeFile(self.file);\"}],[\"$\",\"p\",\"54\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"p\",\"55\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"br\",\"56\",{}],[\"$\",\"p\",\"57\",{\"className\":\"mb-4\",\"children\":\"// Usage\"}],[\"$\",\"p\",\"58\",{\"className\":\"mb-4\",\"children\":\"func processFile(filename: String) -\u003e Result\u003c(), Error\u003e {\"}],[\"$\",\"p\",\"59\",{\"className\":\"mb-4\",\"children\":\"    let handler = FileHandler::new(filename)?;\"}],[\"$\",\"p\",\"60\",{\"className\":\"mb-4\",\"children\":\"    // File automatically closed when handler goes out of scope\"}],[\"$\",\"p\",\"61\",{\"className\":\"mb-4\",\"children\":\"    return Ok(());\"}],[\"$\",\"p\",\"62\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"div\",\"63\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"64\",{}],[\"$\",\"h3\",\"65\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"2. Prefer Stack Allocation When Possible\"}],[\"$\",\"br\",\"66\",{}],[\"$\",\"p\",\"67\",{\"className\":\"mb-4\",\"children\":\"Stack allocation is faster and automatically managed:\"}],[\"$\",\"br\",\"68\",{}],[\"$\",\"div\",\"69\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"70\",{\"className\":\"mb-4\",\"children\":\"// Good: Stack allocated\"}],[\"$\",\"p\",\"71\",{\"className\":\"mb-4\",\"children\":\"func processSmallArray() {\"}],[\"$\",\"p\",\"72\",{\"className\":\"mb-4\",\"children\":\"    let array: [Int; 100] = [0; 100];\"}],[\"$\",\"p\",\"73\",{\"className\":\"mb-4\",\"children\":\"    // Automatically cleaned up\"}],[\"$\",\"p\",\"74\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"br\",\"75\",{}],[\"$\",\"p\",\"76\",{\"className\":\"mb-4\",\"children\":\"// Use heap only when necessary\"}],[\"$\",\"p\",\"77\",{\"className\":\"mb-4\",\"children\":\"func processLargeArray(size: usize) {\"}],[\"$\",\"p\",\"78\",{\"className\":\"mb-4\",\"children\":\"    let array = allocateArray\u003cInt\u003e(size);\"}],[\"$\",\"p\",\"79\",{\"className\":\"mb-4\",\"children\":\"    defer deallocate(array);\"}],[\"$\",\"p\",\"80\",{\"className\":\"mb-4\",\"children\":\"    // Process array\"}],[\"$\",\"p\",\"81\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"div\",\"82\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"83\",{}],[\"$\",\"h3\",\"84\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"3. Use Smart Pointers for Shared Ownership\"}],[\"$\",\"br\",\"85\",{}],[\"$\",\"div\",\"86\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"87\",{\"className\":\"mb-4\",\"children\":\"use std::memory::{Rc, Arc, Box};\"}],[\"$\",\"br\",\"88\",{}],[\"$\",\"p\",\"89\",{\"className\":\"mb-4\",\"children\":\"// Single ownership\"}],[\"$\",\"p\",\"90\",{\"className\":\"mb-4\",\"children\":\"let data = Box::new(ExpensiveData::new());\"}],[\"$\",\"br\",\"91\",{}],[\"$\",\"p\",\"92\",{\"className\":\"mb-4\",\"children\":\"// Shared ownership (single-threaded)\"}],[\"$\",\"p\",\"93\",{\"className\":\"mb-4\",\"children\":\"let shared_data = Rc::new(ExpensiveData::new());\"}],[\"$\",\"p\",\"94\",{\"className\":\"mb-4\",\"children\":\"let reference1 = shared_data.clone();\"}],[\"$\",\"p\",\"95\",{\"className\":\"mb-4\",\"children\":\"let reference2 = shared_data.clone();\"}],[\"$\",\"br\",\"96\",{}],[\"$\",\"p\",\"97\",{\"className\":\"mb-4\",\"children\":\"// Shared ownership (multi-threaded)\"}],[\"$\",\"p\",\"98\",{\"className\":\"mb-4\",\"children\":\"let thread_safe_data = Arc::new(ExpensiveData::new());\"}],[\"$\",\"div\",\"99\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"100\",{}],[\"$\",\"h3\",\"101\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"4. Implement Custom Allocators for Performance-Critical Code\"}],[\"$\",\"br\",\"102\",{}],[\"$\",\"div\",\"103\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"104\",{\"className\":\"mb-4\",\"children\":\"struct PoolAllocator {\"}],[\"$\",\"p\",\"105\",{\"className\":\"mb-4\",\"children\":\"    pool: *mut u8,\"}],[\"$\",\"p\",\"106\",{\"className\":\"mb-4\",\"children\":\"    size: usize,\"}],[\"$\",\"p\",\"107\",{\"className\":\"mb-4\",\"children\":\"    used: usize\"}],[\"$\",\"p\",\"108\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"br\",\"109\",{}],[\"$\",\"p\",\"110\",{\"className\":\"mb-4\",\"children\":\"impl PoolAllocator {\"}],[\"$\",\"p\",\"111\",{\"className\":\"mb-4\",\"children\":\"    func new(size: usize) -\u003e PoolAllocator {\"}],[\"$\",\"p\",\"112\",{\"className\":\"mb-4\",\"children\":\"        let pool = allocate\u003cu8\u003e(size);\"}],[\"$\",\"p\",\"113\",{\"className\":\"mb-4\",\"children\":\"        return PoolAllocator {\"}],[\"$\",\"p\",\"114\",{\"className\":\"mb-4\",\"children\":\"            pool: pool,\"}],[\"$\",\"p\",\"115\",{\"className\":\"mb-4\",\"children\":\"            size: size,\"}],[\"$\",\"p\",\"116\",{\"className\":\"mb-4\",\"children\":\"            used: 0\"}],[\"$\",\"p\",\"117\",{\"className\":\"mb-4\",\"children\":\"        };\"}],[\"$\",\"p\",\"118\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"br\",\"119\",{}],[\"$\",\"p\",\"120\",{\"className\":\"mb-4\",\"children\":\"    func allocate\u003cT\u003e(self, count: usize) -\u003e *mut T {\"}],[\"$\",\"p\",\"121\",{\"className\":\"mb-4\",\"children\":\"        let needed = sizeof\u003cT\u003e() * count;\"}],[\"$\",\"p\",\"122\",{\"className\":\"mb-4\",\"children\":\"        if self.used + needed \u003e self.size {\"}],[\"$\",\"p\",\"123\",{\"className\":\"mb-4\",\"children\":\"            panic(\\\"Pool allocator out of memory\\\");\"}],[\"$\",\"p\",\"124\",{\"className\":\"mb-4\",\"children\":\"        }\"}],[\"$\",\"br\",\"125\",{}],[\"$\",\"p\",\"126\",{\"className\":\"mb-4\",\"children\":\"        let ptr = self.pool + self.used as *mut T;\"}],[\"$\",\"p\",\"127\",{\"className\":\"mb-4\",\"children\":\"        self.used += needed;\"}],[\"$\",\"p\",\"128\",{\"className\":\"mb-4\",\"children\":\"        return ptr;\"}],[\"$\",\"p\",\"129\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"br\",\"130\",{}],[\"$\",\"p\",\"131\",{\"className\":\"mb-4\",\"children\":\"    func reset(self) {\"}],[\"$\",\"p\",\"132\",{\"className\":\"mb-4\",\"children\":\"        self.used = 0;\"}],[\"$\",\"p\",\"133\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"p\",\"134\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"div\",\"135\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"136\",{}],[\"$\",\"h2\",\"137\",{\"className\":\"text-2xl font-bold mt-6 mb-3\",\"children\":\"Common Patterns\"}],[\"$\",\"br\",\"138\",{}],[\"$\",\"h3\",\"139\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"1. Object Pools\"}],[\"$\",\"br\",\"140\",{}],[\"$\",\"p\",\"141\",{\"className\":\"mb-4\",\"children\":\"Reuse expensive objects to reduce allocation overhead:\"}],[\"$\",\"br\",\"142\",{}],[\"$\",\"div\",\"143\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"144\",{\"className\":\"mb-4\",\"children\":\"struct ObjectPool\u003cT\u003e {\"}],[\"$\",\"p\",\"145\",{\"className\":\"mb-4\",\"children\":\"    available: Vec\u003cT\u003e,\"}],[\"$\",\"p\",\"146\",{\"className\":\"mb-4\",\"children\":\"    create_fn: func() -\u003e T\"}],[\"$\",\"p\",\"147\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"br\",\"148\",{}],[\"$\",\"p\",\"149\",{\"className\":\"mb-4\",\"children\":\"impl\u003cT\u003e ObjectPool\u003cT\u003e {\"}],[\"$\",\"p\",\"150\",{\"className\":\"mb-4\",\"children\":\"    func new(create_fn: func() -\u003e T) -\u003e ObjectPool\u003cT\u003e {\"}],[\"$\",\"p\",\"151\",{\"className\":\"mb-4\",\"children\":\"        return ObjectPool {\"}],[\"$\",\"p\",\"152\",{\"className\":\"mb-4\",\"children\":\"            available: Vec::new(),\"}],[\"$\",\"p\",\"153\",{\"className\":\"mb-4\",\"children\":\"            create_fn: create_fn\"}],[\"$\",\"p\",\"154\",{\"className\":\"mb-4\",\"children\":\"        };\"}],[\"$\",\"p\",\"155\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"br\",\"156\",{}],[\"$\",\"p\",\"157\",{\"className\":\"mb-4\",\"children\":\"    func acquire(self) -\u003e T {\"}],[\"$\",\"p\",\"158\",{\"className\":\"mb-4\",\"children\":\"        if self.available.isEmpty() {\"}],[\"$\",\"p\",\"159\",{\"className\":\"mb-4\",\"children\":\"            return (self.create_fn)();\"}],[\"$\",\"p\",\"160\",{\"className\":\"mb-4\",\"children\":\"        } else {\"}],[\"$\",\"p\",\"161\",{\"className\":\"mb-4\",\"children\":\"            return self.available.pop().unwrap();\"}],[\"$\",\"p\",\"162\",{\"className\":\"mb-4\",\"children\":\"        }\"}],[\"$\",\"p\",\"163\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"br\",\"164\",{}],[\"$\",\"p\",\"165\",{\"className\":\"mb-4\",\"children\":\"    func release(self, obj: T) {\"}],[\"$\",\"p\",\"166\",{\"className\":\"mb-4\",\"children\":\"        self.available.push(obj);\"}],[\"$\",\"p\",\"167\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"p\",\"168\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"br\",\"169\",{}],[\"$\",\"p\",\"170\",{\"className\":\"mb-4\",\"children\":\"// Usage\"}],[\"$\",\"p\",\"171\",{\"className\":\"mb-4\",\"children\":\"let pool = ObjectPool::new(|| ExpensiveObject::new());\"}],[\"$\",\"p\",\"172\",{\"className\":\"mb-4\",\"children\":\"let obj = pool.acquire();\"}],[\"$\",\"p\",\"173\",{\"className\":\"mb-4\",\"children\":\"// Use object\"}],[\"$\",\"p\",\"174\",{\"className\":\"mb-4\",\"children\":\"pool.release(obj);\"}],[\"$\",\"div\",\"175\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"176\",{}],[\"$\",\"h3\",\"177\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"2. Memory-Mapped Files\"}],[\"$\",\"br\",\"178\",{}],[\"$\",\"p\",\"179\",{\"className\":\"mb-4\",\"children\":\"For large file processing:\"}],[\"$\",\"br\",\"180\",{}],[\"$\",\"div\",\"181\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"182\",{\"className\":\"mb-4\",\"children\":\"use std::memory::MemoryMap;\"}],[\"$\",\"br\",\"183\",{}],[\"$\",\"p\",\"184\",{\"className\":\"mb-4\",\"children\":\"func processLargeFile(filename: String) -\u003e Result\u003c(), Error\u003e {\"}],[\"$\",\"p\",\"185\",{\"className\":\"mb-4\",\"children\":\"    let map = MemoryMap::open(filename)?;\"}],[\"$\",\"p\",\"186\",{\"className\":\"mb-4\",\"children\":\"    let data = map.asSlice\u003cu8\u003e();\"}],[\"$\",\"br\",\"187\",{}],[\"$\",\"p\",\"188\",{\"className\":\"mb-4\",\"children\":\"    // Process data without loading entire file into memory\"}],[\"$\",\"p\",\"189\",{\"className\":\"mb-4\",\"children\":\"    for chunk in data.chunks(4096) {\"}],[\"$\",\"p\",\"190\",{\"className\":\"mb-4\",\"children\":\"        processChunk(chunk);\"}],[\"$\",\"p\",\"191\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"br\",\"192\",{}],[\"$\",\"p\",\"193\",{\"className\":\"mb-4\",\"children\":\"    return Ok(());\"}],[\"$\",\"p\",\"194\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"div\",\"195\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"196\",{}],[\"$\",\"h3\",\"197\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"3. Copy-on-Write (COW) Strings\"}],[\"$\",\"br\",\"198\",{}],[\"$\",\"p\",\"199\",{\"className\":\"mb-4\",\"children\":\"Optimize string operations:\"}],[\"$\",\"br\",\"200\",{}],[\"$\",\"div\",\"201\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"202\",{\"className\":\"mb-4\",\"children\":\"enum CowString {\"}],[\"$\",\"p\",\"203\",{\"className\":\"mb-4\",\"children\":\"    Borrowed(*const str),\"}],[\"$\",\"p\",\"204\",{\"className\":\"mb-4\",\"children\":\"    Owned(String)\"}],[\"$\",\"p\",\"205\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"br\",\"206\",{}],[\"$\",\"p\",\"207\",{\"className\":\"mb-4\",\"children\":\"impl CowString {\"}],[\"$\",\"p\",\"208\",{\"className\":\"mb-4\",\"children\":\"    func new(s: *const str) -\u003e CowString {\"}],[\"$\",\"p\",\"209\",{\"className\":\"mb-4\",\"children\":\"        return CowString::Borrowed(s);\"}],[\"$\",\"p\",\"210\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"br\",\"211\",{}],[\"$\",\"p\",\"212\",{\"className\":\"mb-4\",\"children\":\"    func toOwned(self) -\u003e String {\"}],[\"$\",\"p\",\"213\",{\"className\":\"mb-4\",\"children\":\"        match self {\"}],[\"$\",\"p\",\"214\",{\"className\":\"mb-4\",\"children\":\"            Borrowed(s) =\u003e String::from(s),\"}],[\"$\",\"p\",\"215\",{\"className\":\"mb-4\",\"children\":\"            Owned(s) =\u003e s\"}],[\"$\",\"p\",\"216\",{\"className\":\"mb-4\",\"children\":\"        }\"}],[\"$\",\"p\",\"217\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"br\",\"218\",{}],[\"$\",\"p\",\"219\",{\"className\":\"mb-4\",\"children\":\"    func makeOwned(self) {\"}],[\"$\",\"p\",\"220\",{\"className\":\"mb-4\",\"children\":\"        match self {\"}],[\"$\",\"p\",\"221\",{\"className\":\"mb-4\",\"children\":\"            Borrowed(s) =\u003e {\"}],[\"$\",\"p\",\"222\",{\"className\":\"mb-4\",\"children\":\"                self = CowString::Owned(String::from(s));\"}],[\"$\",\"p\",\"223\",{\"className\":\"mb-4\",\"children\":\"            },\"}],[\"$\",\"p\",\"224\",{\"className\":\"mb-4\",\"children\":\"            Owned(_) =\u003e {} // Already owned\"}],[\"$\",\"p\",\"225\",{\"className\":\"mb-4\",\"children\":\"        }\"}],[\"$\",\"p\",\"226\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"p\",\"227\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"div\",\"228\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"229\",{}],[\"$\",\"h2\",\"230\",{\"className\":\"text-2xl font-bold mt-6 mb-3\",\"children\":\"Performance Optimization Techniques\"}],[\"$\",\"br\",\"231\",{}],[\"$\",\"h3\",\"232\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"1. Memory Layout Optimization\"}],[\"$\",\"br\",\"233\",{}],[\"$\",\"p\",\"234\",{\"className\":\"mb-4\",\"children\":\"Structure your data for cache efficiency:\"}],[\"$\",\"br\",\"235\",{}],[\"$\",\"div\",\"236\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"237\",{\"className\":\"mb-4\",\"children\":\"// Bad: Poor cache locality\"}],[\"$\",\"p\",\"238\",{\"className\":\"mb-4\",\"children\":\"struct BadLayout {\"}],[\"$\",\"p\",\"239\",{\"className\":\"mb-4\",\"children\":\"    flag1: bool,    // 1 byte + 7 bytes padding\"}],[\"$\",\"p\",\"240\",{\"className\":\"mb-4\",\"children\":\"    value1: i64,    // 8 bytes\"}],[\"$\",\"p\",\"241\",{\"className\":\"mb-4\",\"children\":\"    flag2: bool,    // 1 byte + 7 bytes padding\"}],[\"$\",\"p\",\"242\",{\"className\":\"mb-4\",\"children\":\"    value2: i64     // 8 bytes\"}],[\"$\",\"p\",\"243\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"br\",\"244\",{}],[\"$\",\"p\",\"245\",{\"className\":\"mb-4\",\"children\":\"// Good: Better cache locality\"}],[\"$\",\"p\",\"246\",{\"className\":\"mb-4\",\"children\":\"struct GoodLayout {\"}],[\"$\",\"p\",\"247\",{\"className\":\"mb-4\",\"children\":\"    value1: i64,    // 8 bytes\"}],[\"$\",\"p\",\"248\",{\"className\":\"mb-4\",\"children\":\"    value2: i64,    // 8 bytes\"}],[\"$\",\"p\",\"249\",{\"className\":\"mb-4\",\"children\":\"    flag1: bool,    // 1 byte\"}],[\"$\",\"p\",\"250\",{\"className\":\"mb-4\",\"children\":\"    flag2: bool     // 1 byte + 6 bytes padding\"}],[\"$\",\"p\",\"251\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"div\",\"252\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"253\",{}],[\"$\",\"h3\",\"254\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"2. Memory Pool Strategies\"}],[\"$\",\"br\",\"255\",{}],[\"$\",\"p\",\"256\",{\"className\":\"mb-4\",\"children\":\"Different strategies for different use cases:\"}],[\"$\",\"br\",\"257\",{}],[\"$\",\"div\",\"258\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"259\",{\"className\":\"mb-4\",\"children\":\"// Linear allocator for temporary allocations\"}],[\"$\",\"p\",\"260\",{\"className\":\"mb-4\",\"children\":\"struct LinearAllocator {\"}],[\"$\",\"p\",\"261\",{\"className\":\"mb-4\",\"children\":\"    buffer: *mut u8,\"}],[\"$\",\"p\",\"262\",{\"className\":\"mb-4\",\"children\":\"    size: usize,\"}],[\"$\",\"p\",\"263\",{\"className\":\"mb-4\",\"children\":\"    offset: usize\"}],[\"$\",\"p\",\"264\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"br\",\"265\",{}],[\"$\",\"p\",\"266\",{\"className\":\"mb-4\",\"children\":\"// Stack allocator for LIFO allocations\"}],[\"$\",\"p\",\"267\",{\"className\":\"mb-4\",\"children\":\"struct StackAllocator {\"}],[\"$\",\"p\",\"268\",{\"className\":\"mb-4\",\"children\":\"    buffer: *mut u8,\"}],[\"$\",\"p\",\"269\",{\"className\":\"mb-4\",\"children\":\"    size: usize,\"}],[\"$\",\"p\",\"270\",{\"className\":\"mb-4\",\"children\":\"    top: usize\"}],[\"$\",\"p\",\"271\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"br\",\"272\",{}],[\"$\",\"p\",\"273\",{\"className\":\"mb-4\",\"children\":\"// Free list allocator for general purpose\"}],[\"$\",\"p\",\"274\",{\"className\":\"mb-4\",\"children\":\"struct FreeListAllocator {\"}],[\"$\",\"p\",\"275\",{\"className\":\"mb-4\",\"children\":\"    buffer: *mut u8,\"}],[\"$\",\"p\",\"276\",{\"className\":\"mb-4\",\"children\":\"    size: usize,\"}],[\"$\",\"p\",\"277\",{\"className\":\"mb-4\",\"children\":\"    free_blocks: Vec\u003cBlock\u003e\"}],[\"$\",\"p\",\"278\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"div\",\"279\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"280\",{}],[\"$\",\"h2\",\"281\",{\"className\":\"text-2xl font-bold mt-6 mb-3\",\"children\":\"Common Pitfalls and How to Avoid Them\"}],[\"$\",\"br\",\"282\",{}],[\"$\",\"h3\",\"283\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"1. Memory Leaks\"}],[\"$\",\"br\",\"284\",{}],[\"$\",\"p\",\"285\",{\"className\":\"mb-4\",\"children\":\"Always pair allocations with deallocations:\"}],[\"$\",\"br\",\"286\",{}],[\"$\",\"div\",\"287\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"288\",{\"className\":\"mb-4\",\"children\":\"// Bad: Potential memory leak\"}],[\"$\",\"p\",\"289\",{\"className\":\"mb-4\",\"children\":\"func processData() {\"}],[\"$\",\"p\",\"290\",{\"className\":\"mb-4\",\"children\":\"    let data = allocate\u003cu8\u003e(1024);\"}],[\"$\",\"p\",\"291\",{\"className\":\"mb-4\",\"children\":\"    if someCondition() {\"}],[\"$\",\"p\",\"292\",{\"className\":\"mb-4\",\"children\":\"        return; // Memory leak!\"}],[\"$\",\"p\",\"293\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"p\",\"294\",{\"className\":\"mb-4\",\"children\":\"    deallocate(data);\"}],[\"$\",\"p\",\"295\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"br\",\"296\",{}],[\"$\",\"p\",\"297\",{\"className\":\"mb-4\",\"children\":\"// Good: Use RAII or defer\"}],[\"$\",\"p\",\"298\",{\"className\":\"mb-4\",\"children\":\"func processData() {\"}],[\"$\",\"p\",\"299\",{\"className\":\"mb-4\",\"children\":\"    let data = allocate\u003cu8\u003e(1024);\"}],[\"$\",\"p\",\"300\",{\"className\":\"mb-4\",\"children\":\"    defer deallocate(data);\"}],[\"$\",\"br\",\"301\",{}],[\"$\",\"p\",\"302\",{\"className\":\"mb-4\",\"children\":\"    if someCondition() {\"}],[\"$\",\"p\",\"303\",{\"className\":\"mb-4\",\"children\":\"        return; // Memory automatically freed\"}],[\"$\",\"p\",\"304\",{\"className\":\"mb-4\",\"children\":\"    }\"}],[\"$\",\"p\",\"305\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"div\",\"306\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"307\",{}],[\"$\",\"h3\",\"308\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"2. Use After Free\"}],[\"$\",\"br\",\"309\",{}],[\"$\",\"p\",\"310\",{\"className\":\"mb-4\",\"children\":\"Sacalon's ownership system helps prevent this:\"}],[\"$\",\"br\",\"311\",{}],[\"$\",\"div\",\"312\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"313\",{\"className\":\"mb-4\",\"children\":\"// Compile-time error prevention\"}],[\"$\",\"p\",\"314\",{\"className\":\"mb-4\",\"children\":\"func dangerousCode() {\"}],[\"$\",\"p\",\"315\",{\"className\":\"mb-4\",\"children\":\"    let data = Box::new(42);\"}],[\"$\",\"p\",\"316\",{\"className\":\"mb-4\",\"children\":\"    let ptr = data.asPtr();\"}],[\"$\",\"p\",\"317\",{\"className\":\"mb-4\",\"children\":\"    drop(data); // data is moved and freed\"}],[\"$\",\"p\",\"318\",{\"className\":\"mb-4\",\"children\":\"    // println(*ptr); // Compile error: use after free\"}],[\"$\",\"p\",\"319\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"div\",\"320\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"321\",{}],[\"$\",\"h3\",\"322\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"3. Double Free\"}],[\"$\",\"br\",\"323\",{}],[\"$\",\"p\",\"324\",{\"className\":\"mb-4\",\"children\":\"Use smart pointers to prevent double free:\"}],[\"$\",\"br\",\"325\",{}],[\"$\",\"div\",\"326\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"327\",{\"className\":\"mb-4\",\"children\":\"// Bad: Manual management\"}],[\"$\",\"p\",\"328\",{\"className\":\"mb-4\",\"children\":\"let ptr = allocate\u003ci32\u003e(1);\"}],[\"$\",\"p\",\"329\",{\"className\":\"mb-4\",\"children\":\"deallocate(ptr);\"}],[\"$\",\"p\",\"330\",{\"className\":\"mb-4\",\"children\":\"// deallocate(ptr); // Double free!\"}],[\"$\",\"br\",\"331\",{}],[\"$\",\"p\",\"332\",{\"className\":\"mb-4\",\"children\":\"// Good: Smart pointer\"}],[\"$\",\"p\",\"333\",{\"className\":\"mb-4\",\"children\":\"let data = Box::new(42);\"}],[\"$\",\"p\",\"334\",{\"className\":\"mb-4\",\"children\":\"// Automatically freed when data goes out of scope\"}],[\"$\",\"div\",\"335\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"336\",{}],[\"$\",\"h2\",\"337\",{\"className\":\"text-2xl font-bold mt-6 mb-3\",\"children\":\"Profiling and Debugging\"}],[\"$\",\"br\",\"338\",{}],[\"$\",\"h3\",\"339\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"Memory Profiling Tools\"}],[\"$\",\"br\",\"340\",{}],[\"$\",\"p\",\"341\",{\"className\":\"mb-4\",\"children\":\"Use Sacalon's built-in profiling tools:\"}],[\"$\",\"br\",\"342\",{}],[\"$\",\"div\",\"343\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"344\",{\"className\":\"mb-4\",\"children\":\"use std::profiler;\"}],[\"$\",\"br\",\"345\",{}],[\"$\",\"p\",\"346\",{\"className\":\"mb-4\",\"children\":\"func main() {\"}],[\"$\",\"p\",\"347\",{\"className\":\"mb-4\",\"children\":\"    profiler::startMemoryProfiling();\"}],[\"$\",\"br\",\"348\",{}],[\"$\",\"p\",\"349\",{\"className\":\"mb-4\",\"children\":\"    // Your code here\"}],[\"$\",\"p\",\"350\",{\"className\":\"mb-4\",\"children\":\"    heavyMemoryOperation();\"}],[\"$\",\"br\",\"351\",{}],[\"$\",\"p\",\"352\",{\"className\":\"mb-4\",\"children\":\"    let report = profiler::getMemoryReport();\"}],[\"$\",\"p\",\"353\",{\"className\":\"mb-4\",\"children\":\"    println(\\\"Peak memory usage: {} MB\\\", report.peakUsage / 1024 / 1024);\"}],[\"$\",\"p\",\"354\",{\"className\":\"mb-4\",\"children\":\"    println(\\\"Total allocations: {}\\\", report.totalAllocations);\"}],[\"$\",\"p\",\"355\",{\"className\":\"mb-4\",\"children\":\"    println(\\\"Memory leaks: {}\\\", report.leaks.len());\"}],[\"$\",\"p\",\"356\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"div\",\"357\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"358\",{}],[\"$\",\"h3\",\"359\",{\"className\":\"text-xl font-bold mt-4 mb-2\",\"children\":\"Debug Builds\"}],[\"$\",\"br\",\"360\",{}],[\"$\",\"p\",\"361\",{\"className\":\"mb-4\",\"children\":\"Enable memory debugging in debug builds:\"}],[\"$\",\"br\",\"362\",{}],[\"$\",\"div\",\"363\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"struct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"p\",\"364\",{\"className\":\"mb-4\",\"children\":\"#[cfg(debug)]\"}],[\"$\",\"p\",\"365\",{\"className\":\"mb-4\",\"children\":\"use std::memory::debug;\"}],[\"$\",\"br\",\"366\",{}],[\"$\",\"p\",\"367\",{\"className\":\"mb-4\",\"children\":\"func allocateDebug\u003cT\u003e(count: usize) -\u003e *mut T {\"}],[\"$\",\"p\",\"368\",{\"className\":\"mb-4\",\"children\":\"    let ptr = allocate\u003cT\u003e(count);\"}],[\"$\",\"p\",\"369\",{\"className\":\"mb-4\",\"children\":\"    debug::trackAllocation(ptr, sizeof\u003cT\u003e() * count);\"}],[\"$\",\"p\",\"370\",{\"className\":\"mb-4\",\"children\":\"    return ptr;\"}],[\"$\",\"p\",\"371\",{\"className\":\"mb-4\",\"children\":\"}\"}],[\"$\",\"div\",\"372\",{\"className\":\"bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm my-4 overflow-x-auto\",\"children\":[\"$\",\"pre\",null,{\"children\":\"acalon\\nstruct Buffer {\\n    data: *mut u8,\\n    size: usize,\\n    capacity: usize\\n}\\n\\nimpl Buffer {\\n    func new(capacity: usize) -\u003e Buffer {\\n        let data = allocate\u003cu8\u003e(capacity);\\n        return Buffer {\\n            data: data,\\n            size: 0,\\n            capacity: capacity\\n        };\\n    }\\n    \\n    func destroy(self) {\\n        deallocate(self.data);\\n    }\\n}\\n\"}]}],[\"$\",\"br\",\"373\",{}],[\"$\",\"h2\",\"374\",{\"className\":\"text-2xl font-bold mt-6 mb-3\",\"children\":\"Conclusion\"}],[\"$\",\"br\",\"375\",{}],[\"$\",\"p\",\"376\",{\"className\":\"mb-4\",\"children\":\"Effective memory management in Sacalon requires understanding the language's ownership model, following best practices, and using the right tools for profiling and debugging. By applying these techniques, you can build high-performance applications that are both safe and efficient.\"}],[\"$\",\"br\",\"377\",{}],[\"$\",\"p\",\"378\",{\"className\":\"mb-4\",\"children\":\"Remember:\"}],[\"$\",\"li\",\"379\",{\"className\":\"ml-4\",\"children\":\"Use RAII patterns whenever possible\"}],[\"$\",\"li\",\"380\",{\"className\":\"ml-4\",\"children\":\"Prefer stack allocation for small, short-lived data\"}],[\"$\",\"li\",\"381\",{\"className\":\"ml-4\",\"children\":\"Use smart pointers for automatic memory management\"}],[\"$\",\"li\",\"382\",{\"className\":\"ml-4\",\"children\":\"Profile your applications to identify memory bottlenecks\"}],[\"$\",\"li\",\"383\",{\"className\":\"ml-4\",\"children\":\"Test thoroughly with memory debugging tools enabled\"}],[\"$\",\"br\",\"384\",{}],[\"$\",\"p\",\"385\",{\"className\":\"mb-4\",\"children\":\"Happy coding with Sacalon!\"}],[\"$\",\"br\",\"386\",{}],[\"$\",\"p\",\"387\",{\"className\":\"mb-4\",\"children\":\"*The Core Team*\"}]]}]}]}],[\"$\",\"div\",null,{\"className\":\"mt-12\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"text-2xl font-bold text-gray-900 mb-6\",\"children\":\"Related Articles\"}],[\"$\",\"div\",null,{\"className\":\"grid md:grid-cols-2 gap-6\",\"children\":[[\"$\",\"div\",\"sacalon-v1-4-1-released-performance-improvements\",{\"ref\":\"$undefined\",\"className\":\"rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-shadow\",\"children\":[\"$\",\"div\",null,{\"ref\":\"$undefined\",\"className\":\"flex flex-col space-y-1.5 p-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-green-100 text-green-800\",\"style\":{\"width\":\"fit-content\"},\"children\":\"Release\"}],[\"$\",\"div\",null,{\"ref\":\"$undefined\",\"className\":\"font-semibold tracking-tight text-lg\",\"children\":[\"$\",\"$L4\",null,{\"href\":\"/news/sacalon-v1-4-1-released-performance-improvements\",\"className\":\"hover:text-blue-600 transition-colors\",\"children\":\"Sacalon v1.4.1 Released with Performance Improvements\"}]}],[\"$\",\"p\",null,{\"className\":\"text-sm text-gray-600\",\"children\":\"The latest version of Sacalon brings significant performance improvements and bug fixes, making your code run faster than ever.\"}]]}]}],[\"$\",\"div\",\"new-http-library-documentation-available\",{\"ref\":\"$undefined\",\"className\":\"rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-shadow\",\"children\":[\"$\",\"div\",null,{\"ref\":\"$undefined\",\"className\":\"flex flex-col space-y-1.5 p-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-primary/80 bg-blue-100 text-blue-800\",\"style\":{\"width\":\"fit-content\"},\"children\":\"Documentation\"}],[\"$\",\"div\",null,{\"ref\":\"$undefined\",\"className\":\"font-semibold tracking-tight text-lg\",\"children\":[\"$\",\"$L4\",null,{\"href\":\"/news/new-http-library-documentation-available\",\"className\":\"hover:text-blue-600 transition-colors\",\"children\":\"New HTTP Library Documentation Available\"}]}],[\"$\",\"p\",null,{\"className\":\"text-sm text-gray-600\",\"children\":\"Comprehensive documentation for Sacalon's built-in HTTP library is now available, including examples and best practices.\"}]]}]}]]}]]}],[\"$\",\"div\",null,{\"ref\":\"$undefined\",\"className\":\"rounded-lg border bg-card shadow-sm mt-12 bg-gradient-to-r from-blue-600 to-purple-600 text-white\",\"children\":[\"$\",\"div\",null,{\"ref\":\"$undefined\",\"className\":\"p-6 pt-6\",\"children\":[\"$\",\"div\",null,{\"className\":\"text-center\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"text-2xl font-bold mb-4\",\"children\":\"Stay Updated\"}],[\"$\",\"p\",null,{\"className\":\"mb-6 opacity-90\",\"children\":\"Subscribe to our newsletter to get the latest Sacalon news and updates.\"}],[\"$\",\"div\",null,{\"className\":\"flex flex-col sm:flex-row gap-4 max-w-md mx-auto\",\"children\":[[\"$\",\"input\",null,{\"type\":\"email\",\"placeholder\":\"Enter your email\",\"className\":\"flex-1 px-4 py-2 rounded-lg text-gray-900\"}],[\"$\",\"button\",null,{\"className\":\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [\u0026_svg]:pointer-events-none [\u0026_svg]:size-4 [\u0026_svg]:shrink-0 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2\",\"ref\":\"$undefined\",\"children\":\"Subscribe\"}]]}]]}]}]}]]}]}],[\"$\",\"footer\",null,{\"className\":\"bg-gray-900 text-white py-12 px-4\",\"children\":[\"$\",\"div\",null,{\"className\":\"container mx-auto\",\"children\":[[\"$\",\"div\",null,{\"className\":\"grid md:grid-cols-4 gap-8\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center space-x-2 mb-4\",\"children\":[[\"$\",\"img\",null,{\"src\":\"/sacalon-logo.jpeg\",\"alt\":\"Sacalon Logo\",\"className\":\"w-8 h-8 rounded-lg\"}],[\"$\",\"span\",null,{\"className\":\"text-xl font-bold\",\"children\":\"Sacalon\"}]]}],[\"$\",\"p\",null,{\"className\":\"text-gray-400\",\"children\":\"Building the future of software development with optimal, maintainable, and efficient code.\"}]]}],[\"$\",\"div\",null,{\"children\":[[\"$\",\"h3\",null,{\"className\":\"font-semibold mb-4\",\"children\":\"Language\"}],[\"$\",\"ul\",null,{\"className\":\"space-y-2 text-gray-400\",\"children\":[[\"$\",\"li\",null,{\"children\":[\"$\",\"$L4\",null,{\"href\":\"/foundation\",\"className\":\"hover:text-white transition-colors\",\"children\":\"Foundation\"}]}],[\"$\",\"li\",null,{\"children\":[\"$\",\"$L4\",null,{\"href\":\"/download\",\"className\":\"hover:text-white transition-colors\",\"children\":\"Download\"}]}],[\"$\",\"li\",null,{\"children\":[\"$\",\"$L4\",null,{\"href\":\"/donate\",\"className\":\"hover:text-white transition-colors\",\"children\":\"Donate\"}]}]]}]]}],[\"$\",\"div\",null,{\"children\":[[\"$\",\"h3\",null,{\"className\":\"font-semibold mb-4\",\"children\":\"Community\"}],[\"$\",\"ul\",null,{\"className\":\"space-y-2 text-gray-400\",\"children\":[[\"$\",\"li\",null,{\"children\":[\"$\",\"$L4\",null,{\"href\":\"https://github.com/sacalon/sacalon\",\"className\":\"hover:text-white transition-colors\",\"children\":\"GitHub\"}]}],[\"$\",\"li\",null,{\"children\":[\"$\",\"$L4\",null,{\"href\":\"https://github.com/sacalon/sacalon/discussions\",\"className\":\"hover:text-white transition-colors\",\"children\":\"Discussions\"}]}],[\"$\",\"li\",null,{\"children\":[\"$\",\"$L4\",null,{\"href\":\"https://discord.gg/sacalon\",\"className\":\"hover:text-white transition-colors\",\"children\":\"Discord\"}]}],[\"$\",\"li\",null,{\"children\":[\"$\",\"$L4\",null,{\"href\":\"https://twitter.com/sacalon_lang\",\"className\":\"hover:text-white transition-colors\",\"children\":\"Twitter\"}]}]]}]]}],[\"$\",\"div\",null,{\"children\":[[\"$\",\"h3\",null,{\"className\":\"font-semibold mb-4\",\"children\":\"Resources\"}],[\"$\",\"ul\",null,{\"className\":\"space-y-2 text-gray-400\",\"children\":[[\"$\",\"li\",null,{\"children\":[\"$\",\"$L4\",null,{\"href\":\"#\",\"className\":\"hover:text-white transition-colors\",\"children\":\"Documentation\"}]}],[\"$\",\"li\",null,{\"children\":[\"$\",\"$L4\",null,{\"href\":\"#\",\"className\":\"hover:text-white transition-colors\",\"children\":\"Examples\"}]}]]}]]}]]}],[\"$\",\"div\",null,{\"className\":\"border-t border-gray-800 mt-8 pt-8 text-center text-gray-400\",\"children\":[\"$\",\"p\",null,{\"children\":\"© 2019-2025 Sacalon Programming Language. Open source under BSD-3-Clause license.\"}]}]]}]}]]}],\"$undefined\",null,[\"$\",\"$L5\",null,{\"children\":[\"$L6\",\"$L7\",null]}]]}],{},null,false]},[null,[],[]],false]},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$1\",\"ueVshoixKn6Fy6ik7YSQ6\",{\"children\":[[\"$\",\"$L8\",null,{\"children\":\"$L9\"}],null]}],[\"$\",\"$La\",null,{\"children\":\"$Lb\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$c\",\"$undefined\"],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"9:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n6:null\n"])</script><script>self.__next_f.push([1,"7:null\nb:[[\"$\",\"title\",\"0\",{\"children\":\"Memory Management Best Practices Guide - Sacalon News\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"A comprehensive guide to manual memory management in Sacalon, covering patterns, pitfalls, and performance optimization techniques.\"}],[\"$\",\"meta\",\"2\",{\"name\":\"generator\",\"content\":\"v0.dev\"}],[\"$\",\"meta\",\"3\",{\"property\":\"og:title\",\"content\":\"Memory Management Best Practices Guide\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:description\",\"content\":\"A comprehensive guide to manual memory management in Sacalon, covering patterns, pitfalls, and performance optimization techniques.\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"6\",{\"property\":\"article:published_time\",\"content\":\"January 28, 2023\"}],[\"$\",\"meta\",\"7\",{\"property\":\"article:author\",\"content\":\"Core Team\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:card\",\"content\":\"summary_large_image\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:title\",\"content\":\"Memory Management Best Practices Guide\"}],[\"$\",\"meta\",\"10\",{\"name\":\"twitter:description\",\"content\":\"A comprehensive guide to manual memory management in Sacalon, covering patterns, pitfalls, and performance optimization techniques.\"}]]\n"])</script></body></html>
